@@ -5,7 +5,8 @@ import { NamedTypeIR, transformNamedType } from './NamedTypeIR'
 export interface SchemaIR {
   types: Record<string, NamedTypeIR>
 }
-export default function transformSchema(schema: GraphQLSchema): SchemaIR {
+
+export function transformSchema(schema: GraphQLSchema): SchemaIR {
   const types = zipObj(
     keys(schema.getTypeMap()) as string[],
     values(schema.getTypeMap())

@@ -1,16 +1,5 @@
-import {
-  GraphQLObjectType,
-  GraphQLType,
-  isScalarType,
-  isObjectType,
-  isInterfaceType,
-  isUnionType,
-  isEnumType,
-  isInputObjectType,
-  isListType,
-  isNonNullType,
-} from 'graphql'
-import { map, zip, keys, values, zipObj } from 'rambda'
+import { GraphQLObjectType } from 'graphql'
+import { keys, values, zipObj } from 'rambda'
 import { TypeIR, transformType } from './TypeIR'
 
 export interface ObjectTypeIR {

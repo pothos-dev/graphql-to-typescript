@@ -1,7 +1,7 @@
 import { loadSchema, downloadSchema, saveSchema } from './graphql/Schema'
 import { writeFileSync } from 'fs'
-import transformSchema from './transform/SchemaIR'
 import prettyJson from 'prettyjson'
+import { transformSchema } from './transform/SchemaIR'
 
 downloadSchema('https://api.graphloc.com/graphql').then((schema) => {
   const schemaIR = transformSchema(schema)
