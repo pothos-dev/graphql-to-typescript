@@ -6,6 +6,8 @@ import {
   isUnionType,
   isEnumType,
   isInputObjectType,
+  isListType,
+  isNonNullType,
 } from 'graphql'
 import { ScalarTypeIR, transformScalarType } from './ScalarTypeIR'
 import {
@@ -43,4 +45,15 @@ export function transformType(T: GraphQLType): TypeIR {
   if (isInputObjectType(T)) {
     return transformInputObjectType(T)
   }
+}
+
+export function identifyType(T: GraphQLType): string {
+  if (isScalarType(T)) return 'Scalar'
+  if (isObjectType(T)) return 'Object'
+  if (isInterfaceType(T)) return 'Interface'
+  if (isUnionType(T)) return 'Union'
+  if (isEnumType(T)) return 'Enum'
+  if (isInputObjectType(T)) return 'InputIbject'
+  if (isListType(T)) return 'List'
+  if (isNonNullType(T)) return 'NonNull'
 }

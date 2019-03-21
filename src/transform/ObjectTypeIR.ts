@@ -11,10 +11,11 @@ import {
   isNonNullType,
 } from 'graphql'
 import { map, zip, keys, values, zipObj } from 'rambda'
+import { TypeIR, transformType } from './TypeIR'
 
 export interface ObjectTypeIR {
   kind: 'object'
-  fields?: Record<string, unknown>
+  fields?: Record<string, TypeIR>
   interfaces?: unknown
 }
 export function transformObjectType(T: GraphQLObjectType): ObjectTypeIR {
@@ -24,21 +25,10 @@ export function transformObjectType(T: GraphQLObjectType): ObjectTypeIR {
     keys(fields) as string[],
     values(fields)
       .map((field) => field.type)
-      .map(identifyType)
+      .map(transformType)
   )
   return {
     kind: 'object',
-    // fields: fieldsIR,
+    fields: fieldsIR,
   }
-}
-
-function identifyType(T: GraphQLType): string {
-  if (isScalarType(T)) return 'Scalar'
-  if (isObjectType(T)) return 'Object'
-  if (isInterfaceType(T)) return 'Interface'
-  if (isUnionType(T)) return 'Union'
-  if (isEnumType(T)) return 'Enum'
-  if (isInputObjectType(T)) return 'InputIbject'
-  if (isListType(T)) return 'List'
-  if (isNonNullType(T)) return 'NonNull'
 }
