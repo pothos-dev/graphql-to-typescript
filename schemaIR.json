@@ -1,0 +1,1025 @@
+{
+  "types": [
+    {
+      "kind": "object",
+      "fields": {
+        "getLocation": {
+          "kind": "object",
+          "fields": {
+            "city": {
+              "kind": "object",
+              "fields": {
+                "geoname_id": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "names": {
+                  "kind": "object",
+                  "fields": {
+                    "de": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "en": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "es": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "fr": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "ja": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "ru": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    }
+                  }
+                }
+              }
+            },
+            "continent": {
+              "kind": "object",
+              "fields": {
+                "code": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "geoname_id": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "names": {
+                  "kind": "object",
+                  "fields": {
+                    "de": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "en": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "es": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "fr": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "ja": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "ru": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    }
+                  }
+                }
+              }
+            },
+            "country": {
+              "kind": "object",
+              "fields": {
+                "iso_code": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "geoname_id": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "names": {
+                  "kind": "object",
+                  "fields": {
+                    "de": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "en": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "es": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "fr": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "ja": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "ru": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    }
+                  }
+                }
+              }
+            },
+            "location": {
+              "kind": "object",
+              "fields": {
+                "latitude": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "longitude": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "metro_code": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "time_zone": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "accuracy_radius": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "names": {
+                  "kind": "object",
+                  "fields": {
+                    "de": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "en": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "es": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "fr": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "ja": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "ru": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    }
+                  }
+                }
+              }
+            },
+            "postal": {
+              "kind": "object",
+              "fields": {
+                "code": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                }
+              }
+            },
+            "registered_country": {
+              "kind": "object",
+              "fields": {
+                "geoname_id": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "iso_code": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "names": {
+                  "kind": "object",
+                  "fields": {
+                    "de": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "en": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "es": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "fr": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "ja": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "ru": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    }
+                  }
+                }
+              }
+            },
+            "subdivisions": {
+              "kind": "object",
+              "fields": {
+                "geoname_id": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "iso_code": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "names": {
+                  "kind": "object",
+                  "fields": {
+                    "de": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "en": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "es": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "fr": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "ja": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    },
+                    "ru": {
+                      "kind": "scalar",
+                      "scalar": "String"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "typename": "Query"
+    },
+    {
+      "kind": "scalar",
+      "scalar": "String",
+      "typename": "String"
+    },
+    {
+      "kind": "object",
+      "fields": {
+        "city": {
+          "kind": "object",
+          "fields": {
+            "geoname_id": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "names": {
+              "kind": "object",
+              "fields": {
+                "de": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "en": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "es": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "fr": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "ja": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "ru": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                }
+              }
+            }
+          }
+        },
+        "continent": {
+          "kind": "object",
+          "fields": {
+            "code": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "geoname_id": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "names": {
+              "kind": "object",
+              "fields": {
+                "de": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "en": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "es": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "fr": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "ja": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "ru": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                }
+              }
+            }
+          }
+        },
+        "country": {
+          "kind": "object",
+          "fields": {
+            "iso_code": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "geoname_id": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "names": {
+              "kind": "object",
+              "fields": {
+                "de": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "en": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "es": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "fr": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "ja": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "ru": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                }
+              }
+            }
+          }
+        },
+        "location": {
+          "kind": "object",
+          "fields": {
+            "latitude": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "longitude": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "metro_code": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "time_zone": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "accuracy_radius": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "names": {
+              "kind": "object",
+              "fields": {
+                "de": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "en": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "es": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "fr": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "ja": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "ru": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                }
+              }
+            }
+          }
+        },
+        "postal": {
+          "kind": "object",
+          "fields": {
+            "code": {
+              "kind": "scalar",
+              "scalar": "String"
+            }
+          }
+        },
+        "registered_country": {
+          "kind": "object",
+          "fields": {
+            "geoname_id": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "iso_code": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "names": {
+              "kind": "object",
+              "fields": {
+                "de": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "en": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "es": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "fr": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "ja": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "ru": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                }
+              }
+            }
+          }
+        },
+        "subdivisions": {
+          "kind": "object",
+          "fields": {
+            "geoname_id": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "iso_code": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "names": {
+              "kind": "object",
+              "fields": {
+                "de": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "en": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "es": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "fr": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "ja": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                },
+                "ru": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                }
+              }
+            }
+          }
+        }
+      },
+      "typename": "locdata"
+    },
+    {
+      "kind": "object",
+      "fields": {
+        "geoname_id": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "names": {
+          "kind": "object",
+          "fields": {
+            "de": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "en": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "es": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "fr": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "ja": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "ru": {
+              "kind": "scalar",
+              "scalar": "String"
+            }
+          }
+        }
+      },
+      "typename": "city"
+    },
+    {
+      "kind": "object",
+      "fields": {
+        "de": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "en": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "es": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "fr": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "ja": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "ru": {
+          "kind": "scalar",
+          "scalar": "String"
+        }
+      },
+      "typename": "cityNames"
+    },
+    {
+      "kind": "object",
+      "fields": {
+        "code": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "geoname_id": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "names": {
+          "kind": "object",
+          "fields": {
+            "de": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "en": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "es": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "fr": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "ja": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "ru": {
+              "kind": "scalar",
+              "scalar": "String"
+            }
+          }
+        }
+      },
+      "typename": "continent"
+    },
+    {
+      "kind": "object",
+      "fields": {
+        "de": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "en": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "es": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "fr": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "ja": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "ru": {
+          "kind": "scalar",
+          "scalar": "String"
+        }
+      },
+      "typename": "continentNames"
+    },
+    {
+      "kind": "object",
+      "fields": {
+        "iso_code": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "geoname_id": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "names": {
+          "kind": "object",
+          "fields": {
+            "de": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "en": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "es": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "fr": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "ja": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "ru": {
+              "kind": "scalar",
+              "scalar": "String"
+            }
+          }
+        }
+      },
+      "typename": "country"
+    },
+    {
+      "kind": "object",
+      "fields": {
+        "de": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "en": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "es": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "fr": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "ja": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "ru": {
+          "kind": "scalar",
+          "scalar": "String"
+        }
+      },
+      "typename": "countryNames"
+    },
+    {
+      "kind": "object",
+      "fields": {
+        "latitude": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "longitude": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "metro_code": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "time_zone": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "accuracy_radius": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "names": {
+          "kind": "object",
+          "fields": {
+            "de": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "en": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "es": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "fr": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "ja": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "ru": {
+              "kind": "scalar",
+              "scalar": "String"
+            }
+          }
+        }
+      },
+      "typename": "location"
+    },
+    {
+      "kind": "object",
+      "fields": {
+        "de": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "en": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "es": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "fr": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "ja": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "ru": {
+          "kind": "scalar",
+          "scalar": "String"
+        }
+      },
+      "typename": "locationNames"
+    },
+    {
+      "kind": "object",
+      "fields": {
+        "code": {
+          "kind": "scalar",
+          "scalar": "String"
+        }
+      },
+      "typename": "postal"
+    },
+    {
+      "kind": "object",
+      "fields": {
+        "geoname_id": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "iso_code": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "names": {
+          "kind": "object",
+          "fields": {
+            "de": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "en": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "es": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "fr": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "ja": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "ru": {
+              "kind": "scalar",
+              "scalar": "String"
+            }
+          }
+        }
+      },
+      "typename": "registered_country"
+    },
+    {
+      "kind": "object",
+      "fields": {
+        "de": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "en": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "es": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "fr": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "ja": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "ru": {
+          "kind": "scalar",
+          "scalar": "String"
+        }
+      },
+      "typename": "registered_countryNames"
+    },
+    {
+      "kind": "object",
+      "fields": {
+        "geoname_id": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "iso_code": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "names": {
+          "kind": "object",
+          "fields": {
+            "de": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "en": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "es": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "fr": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "ja": {
+              "kind": "scalar",
+              "scalar": "String"
+            },
+            "ru": {
+              "kind": "scalar",
+              "scalar": "String"
+            }
+          }
+        }
+      },
+      "typename": "subdivisions"
+    },
+    {
+      "kind": "object",
+      "fields": {
+        "de": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "en": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "es": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "fr": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "ja": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "ru": {
+          "kind": "scalar",
+          "scalar": "String"
+        }
+      },
+      "typename": "subdivisionsNames"
+    },
+    {
+      "kind": "scalar",
+      "scalar": "Boolean",
+      "typename": "Boolean"
+    }
+  ]
+}

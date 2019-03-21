@@ -5,7 +5,8 @@ import prettyJson from 'prettyjson'
 
 downloadSchema('https://api.graphloc.com/graphql').then((schema) => {
   const schemaIR = transformSchema(schema)
-  console.log(prettyJson.render(schemaIR))
+  writeFileSync('schemaIR.json', JSON.stringify(schemaIR, null, 2))
+  // console.log(prettyJson.render(schemaIR))
 })
 
 // const schema = loadSchema('schema.json')
