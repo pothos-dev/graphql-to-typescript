@@ -1,0 +1,16 @@
+{
+  "name": "graphql-client-ts",
+  "description": "",
+  "version": "0.0.0",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "start": "ts-node-dev src/index.ts"
+  },
+  "devDependencies": {
+    "typescript": "^3.4.0-rc"
+  },
+  "dependencies": {
+    "ts-node-dev": "^1.0.0-pre.32"
+  }
+}
