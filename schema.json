@@ -1,140 +1,41 @@
 {
-  "types": [
-    {
-      "kind": "object",
-      "fields": [
-        [
-          "continents",
-          "List"
-        ],
-        [
-          "continent",
-          "Object"
-        ],
-        [
-          "countries",
-          "List"
-        ],
-        [
-          "country",
-          "Object"
-        ],
-        [
-          "languages",
-          "List"
-        ],
-        [
-          "language",
-          "Object"
-        ]
-      ],
-      "typename": "Query"
-    },
-    {
-      "kind": "object",
-      "fields": [
-        [
-          "code",
-          "Scalar"
-        ],
-        [
-          "name",
-          "Scalar"
-        ],
-        [
-          "countries",
-          "List"
-        ]
-      ],
-      "typename": "Continent"
-    },
-    {
-      "kind": "scalar",
-      "scalar": "String",
-      "typename": "String"
-    },
-    {
-      "kind": "object",
-      "fields": [
-        [
-          "code",
-          "Scalar"
-        ],
-        [
-          "name",
-          "Scalar"
-        ],
-        [
-          "native",
-          "Scalar"
-        ],
-        [
-          "phone",
-          "Scalar"
-        ],
-        [
-          "continent",
-          "Object"
-        ],
-        [
-          "currency",
-          "Scalar"
-        ],
-        [
-          "languages",
-          "List"
-        ],
-        [
-          "emoji",
-          "Scalar"
-        ],
-        [
-          "emojiU",
-          "Scalar"
-        ]
-      ],
-      "typename": "Country"
-    },
-    {
-      "kind": "object",
-      "fields": [
-        [
-          "code",
-          "Scalar"
-        ],
-        [
-          "name",
-          "Scalar"
-        ],
-        [
-          "native",
-          "Scalar"
-        ],
-        [
-          "rtl",
-          "Scalar"
-        ]
-      ],
-      "typename": "Language"
-    },
-    {
-      "kind": "scalar",
-      "scalar": "Int",
-      "typename": "Int"
-    },
-    {
-      "kind": "scalar",
-      "scalar": "Boolean",
-      "typename": "Boolean"
-    },
-    {
-      "kind": "enum",
-      "typename": "CacheControlScope"
-    },
-    {
-      "kind": "scalar",
-      "scalar": "Upload",
-      "typename": "Upload"
-    }
-  ]
+  "__validationErrors": [],
+  "__allowedLegacyNames": [],
+  "_queryType": "Query",
+  "_mutationType": null,
+  "_subscriptionType": null,
+  "_directives": [
+    "@skip",
+    "@include",
+    "@deprecated"
+  ],
+  "_typeMap": {
+    "Query": "Query",
+    "String": "String",
+    "locdata": "locdata",
+    "city": "city",
+    "cityNames": "cityNames",
+    "continent": "continent",
+    "continentNames": "continentNames",
+    "country": "country",
+    "countryNames": "countryNames",
+    "location": "location",
+    "locationNames": "locationNames",
+    "postal": "postal",
+    "registered_country": "registered_country",
+    "registered_countryNames": "registered_countryNames",
+    "subdivisions": "subdivisions",
+    "subdivisionsNames": "subdivisionsNames",
+    "__Schema": "__Schema",
+    "__Type": "__Type",
+    "__TypeKind": "__TypeKind",
+    "Boolean": "Boolean",
+    "__Field": "__Field",
+    "__InputValue": "__InputValue",
+    "__EnumValue": "__EnumValue",
+    "__Directive": "__Directive",
+    "__DirectiveLocation": "__DirectiveLocation"
+  },
+  "_possibleTypeMap": {},
+  "_implementations": {}
 }

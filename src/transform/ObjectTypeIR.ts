@@ -10,26 +10,25 @@ import {
   isListType,
   isNonNullType,
 } from 'graphql'
-import { map, zip, keys, values } from 'rambda'
+import { map, zip, keys, values, zipObj } from 'rambda'
 
 export interface ObjectTypeIR {
   kind: 'object'
-  fields: Record<string, unknown>
+  fields?: Record<string, unknown>
   interfaces?: unknown
 }
 export function transformObjectType(T: GraphQLObjectType): ObjectTypeIR {
   const fields = T.getFields()
 
-  const fieldsIR = zip(
-    keys(fields),
+  const fieldsIR = zipObj(
+    keys(fields) as string[],
     values(fields)
       .map((field) => field.type)
       .map(identifyType)
   )
-
   return {
     kind: 'object',
-    fields: fieldsIR,
+    // fields: fieldsIR,
   }
 }
 

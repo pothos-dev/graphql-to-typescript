@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "incremental": true,
+    "incremental": false,
 
     "target": "es5",
     "outDir": "dist",
