@@ -1,6 +1,6 @@
 {
-  "types": [
-    {
+  "types": {
+    "Query": {
       "kind": "object",
       "fields": {
         "getLocation": {
@@ -280,12 +280,12 @@
       },
       "typename": "Query"
     },
-    {
+    "String": {
       "kind": "scalar",
       "scalar": "String",
       "typename": "String"
     },
-    {
+    "locdata": {
       "kind": "object",
       "fields": {
         "city": {
@@ -560,7 +560,7 @@
       },
       "typename": "locdata"
     },
-    {
+    "city": {
       "kind": "object",
       "fields": {
         "geoname_id": {
@@ -599,7 +599,7 @@
       },
       "typename": "city"
     },
-    {
+    "cityNames": {
       "kind": "object",
       "fields": {
         "de": {
@@ -629,7 +629,7 @@
       },
       "typename": "cityNames"
     },
-    {
+    "continent": {
       "kind": "object",
       "fields": {
         "code": {
@@ -672,7 +672,7 @@
       },
       "typename": "continent"
     },
-    {
+    "continentNames": {
       "kind": "object",
       "fields": {
         "de": {
@@ -702,7 +702,7 @@
       },
       "typename": "continentNames"
     },
-    {
+    "country": {
       "kind": "object",
       "fields": {
         "iso_code": {
@@ -745,7 +745,7 @@
       },
       "typename": "country"
     },
-    {
+    "countryNames": {
       "kind": "object",
       "fields": {
         "de": {
@@ -775,7 +775,7 @@
       },
       "typename": "countryNames"
     },
-    {
+    "location": {
       "kind": "object",
       "fields": {
         "latitude": {
@@ -830,7 +830,7 @@
       },
       "typename": "location"
     },
-    {
+    "locationNames": {
       "kind": "object",
       "fields": {
         "de": {
@@ -860,7 +860,7 @@
       },
       "typename": "locationNames"
     },
-    {
+    "postal": {
       "kind": "object",
       "fields": {
         "code": {
@@ -870,7 +870,7 @@
       },
       "typename": "postal"
     },
-    {
+    "registered_country": {
       "kind": "object",
       "fields": {
         "geoname_id": {
@@ -913,7 +913,7 @@
       },
       "typename": "registered_country"
     },
-    {
+    "registered_countryNames": {
       "kind": "object",
       "fields": {
         "de": {
@@ -943,7 +943,7 @@
       },
       "typename": "registered_countryNames"
     },
-    {
+    "subdivisions": {
       "kind": "object",
       "fields": {
         "geoname_id": {
@@ -986,7 +986,7 @@
       },
       "typename": "subdivisions"
     },
-    {
+    "subdivisionsNames": {
       "kind": "object",
       "fields": {
         "de": {
@@ -1016,10 +1016,10 @@
       },
       "typename": "subdivisionsNames"
     },
-    {
+    "__Schema": {
       "kind": "scalar",
       "scalar": "Boolean",
       "typename": "Boolean"
     }
-  ]
+  }
 }

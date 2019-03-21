@@ -1,14 +1,17 @@
 import { GraphQLSchema } from 'graphql'
-import { values } from 'rambda'
+import { values, zipObj, keys } from 'rambda'
 import { NamedTypeIR, transformNamedType } from './NamedTypeIR'
 
 export interface SchemaIR {
-  types: NamedTypeIR[]
+  types: Record<string, NamedTypeIR>
 }
 export default function transformSchema(schema: GraphQLSchema): SchemaIR {
-  const types = values(schema.getTypeMap())
-    .filter((T) => !T.name.startsWith('__'))
-    .map(transformNamedType)
+  const types = zipObj(
+    keys(schema.getTypeMap()) as string[],
+    values(schema.getTypeMap())
+      .filter((T) => !T.name.startsWith('__'))
+      .map(transformNamedType)
+  )
 
   return { types }
 }

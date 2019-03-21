@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
-    "incremental": false,
-
     "target": "es5",
     "outDir": "dist",
     "declaration": true,
