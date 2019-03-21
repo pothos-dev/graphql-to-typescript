@@ -1,0 +1,140 @@
+{
+  "types": [
+    {
+      "kind": "object",
+      "fields": [
+        [
+          "continents",
+          "List"
+        ],
+        [
+          "continent",
+          "Object"
+        ],
+        [
+          "countries",
+          "List"
+        ],
+        [
+          "country",
+          "Object"
+        ],
+        [
+          "languages",
+          "List"
+        ],
+        [
+          "language",
+          "Object"
+        ]
+      ],
+      "typename": "Query"
+    },
+    {
+      "kind": "object",
+      "fields": [
+        [
+          "code",
+          "Scalar"
+        ],
+        [
+          "name",
+          "Scalar"
+        ],
+        [
+          "countries",
+          "List"
+        ]
+      ],
+      "typename": "Continent"
+    },
+    {
+      "kind": "scalar",
+      "scalar": "String",
+      "typename": "String"
+    },
+    {
+      "kind": "object",
+      "fields": [
+        [
+          "code",
+          "Scalar"
+        ],
+        [
+          "name",
+          "Scalar"
+        ],
+        [
+          "native",
+          "Scalar"
+        ],
+        [
+          "phone",
+          "Scalar"
+        ],
+        [
+          "continent",
+          "Object"
+        ],
+        [
+          "currency",
+          "Scalar"
+        ],
+        [
+          "languages",
+          "List"
+        ],
+        [
+          "emoji",
+          "Scalar"
+        ],
+        [
+          "emojiU",
+          "Scalar"
+        ]
+      ],
+      "typename": "Country"
+    },
+    {
+      "kind": "object",
+      "fields": [
+        [
+          "code",
+          "Scalar"
+        ],
+        [
+          "name",
+          "Scalar"
+        ],
+        [
+          "native",
+          "Scalar"
+        ],
+        [
+          "rtl",
+          "Scalar"
+        ]
+      ],
+      "typename": "Language"
+    },
+    {
+      "kind": "scalar",
+      "scalar": "Int",
+      "typename": "Int"
+    },
+    {
+      "kind": "scalar",
+      "scalar": "Boolean",
+      "typename": "Boolean"
+    },
+    {
+      "kind": "enum",
+      "typename": "CacheControlScope"
+    },
+    {
+      "kind": "scalar",
+      "scalar": "Upload",
+      "typename": "Upload"
+    }
+  ]
+}

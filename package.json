@@ -10,11 +10,13 @@
   "devDependencies": {
     "@types/graphql": "^14.0.7",
     "@types/node": "^11.11.4",
+    "@types/prettyjson": "0.0.28",
     "typescript": "^3.4.0-rc"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "graphql": "^14.1.1",
+    "prettyjson": "^1.2.1",
     "rambda": "^2.4.1",
     "ts-node-dev": "^1.0.0-pre.32"
   }
