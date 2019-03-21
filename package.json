@@ -5,12 +5,17 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "ts-node-dev src/index.ts"
+    "start": "ts-node-dev --respawn src/index.ts"
   },
   "devDependencies": {
+    "@types/graphql": "^14.0.7",
+    "@types/node": "^11.11.4",
     "typescript": "^3.4.0-rc"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "graphql": "^14.1.1",
+    "rambda": "^2.4.1",
     "ts-node-dev": "^1.0.0-pre.32"
   }
 }

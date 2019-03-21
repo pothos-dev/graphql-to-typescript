@@ -1,7 +1,18 @@
 {
   "compilerOptions": {
     "incremental": true,
-    "outDir": "dist"
+
+    "target": "es5",
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+
+    "lib": ["esnext"],
+
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src"]
 }
