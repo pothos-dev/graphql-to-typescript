@@ -3,15 +3,11 @@ import { zipObj } from 'rambda'
 import { OperationIR, transformOperation } from './OperationIR'
 
 export interface DocumentIR {
-  operations: Record<string, OperationIR>
+  operations: OperationIR[]
 }
 
 export function transformDocument(T: DocumentNode): DocumentIR {
-  const ops = T.definitions.map(transformDefinition)
-
-  const operations = zipObj(ops.map((it) => it.kind), ops)
-
-  return { operations }
+  return { operations: T.definitions.map(transformDefinition) }
 }
 
 export function transformDefinition(T: DefinitionNode): OperationIR {

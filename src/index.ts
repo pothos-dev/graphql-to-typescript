@@ -5,6 +5,8 @@ import { loadDocument } from './graphql/Document'
 import { loadSchema } from './graphql/Schema'
 import { transformDocument } from './transform/DocumentIR'
 import { render } from 'prettyjson'
+import { generate } from './generate'
+import { transformSchema } from './transform/SchemaIR'
 
 main()
 
@@ -30,13 +32,13 @@ async function main() {
       loadSchema('https://api.graphloc.com/graphql'),
     ])
     const validationErrors = validate(schema, document)
-
     for (const e of validationErrors) {
       throw { message: `Error validating document: ${e.message}` }
     }
 
+    const schemaIR = transformSchema(schema)
     const documentIR = transformDocument(document)
-    console.log(render(documentIR))
+    console.log(generate(schemaIR, documentIR))
   } catch (e) {
     console.error(e.message)
   }
