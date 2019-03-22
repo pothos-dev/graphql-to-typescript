@@ -4,6 +4,7 @@ import { loadIntrospection } from './graphql/Introspection'
 import { loadDocument } from './graphql/Document'
 import { loadSchema } from './graphql/Schema'
 import { transformDocument } from './transform/DocumentIR'
+import { render } from 'prettyjson'
 
 main()
 
@@ -35,7 +36,7 @@ async function main() {
     }
 
     const documentIR = transformDocument(document)
-    console.log(documentIR)
+    console.log(render(documentIR))
   } catch (e) {
     console.error(e.message)
   }
