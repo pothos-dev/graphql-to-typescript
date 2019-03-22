@@ -1,8 +1,10 @@
-import { loadSchema, downloadSchema, saveSchema } from './graphql/Schema'
-import { writeFileSync, readFileSync, writeFile } from 'fs'
-import prettyJson from 'prettyjson'
-import { transformSchema } from './transform/SchemaIR'
-import { generate } from './generate'
+import { readFileSync } from 'fs'
+import { parse, validate, buildClientSchema } from 'graphql'
+import { loadIntrospection } from './graphql/Introspection'
+import { loadDocument } from './graphql/Document'
+import { loadSchema } from './graphql/Schema'
+
+main()
 
 // downloadSchema('https://api.graphloc.com/graphql').then((schema) => {
 //   const schemaIR = transformSchema(schema)
@@ -16,5 +18,21 @@ import { generate } from './generate'
 
 // // console.log(prettyJson.render(loadSchema('schema.json')))
 
-const schemaIR = JSON.parse(readFileSync('schemaIR.json', { encoding: 'utf8' }))
-writeFileSync('output.ts', generate(schemaIR))
+// const schemaIR = JSON.parse(readFileSync('schemaIR.json', { encoding: 'utf8' }))
+// writeFileSync('output.ts', generate(schemaIR))
+
+async function main() {
+  try {
+    const [document, schema] = await Promise.all([
+      loadDocument('document.gql'),
+      loadSchema('https://api.graphloc.com/graphql'),
+    ])
+    const validationErrors = validate(schema, document)
+
+    for (const e of validationErrors) {
+      throw { message: `Error validating document: ${e.message}` }
+    }
+  } catch (e) {
+    console.error(e.message)
+  }
+}

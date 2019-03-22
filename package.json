@@ -8,6 +8,7 @@
     "start": "ts-node-dev --respawn src/index.ts"
   },
   "devDependencies": {
+    "@types/fs-extra": "^5.0.5",
     "@types/graphql": "^14.0.7",
     "@types/node": "^11.11.4",
     "@types/prettyjson": "0.0.28",
@@ -15,6 +16,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "fs-extra": "^7.0.1",
     "graphql": "^14.1.1",
     "prettyjson": "^1.2.1",
     "rambda": "^2.4.1",
