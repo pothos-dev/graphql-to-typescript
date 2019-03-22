@@ -3,6 +3,7 @@ import { parse, validate, buildClientSchema } from 'graphql'
 import { loadIntrospection } from './graphql/Introspection'
 import { loadDocument } from './graphql/Document'
 import { loadSchema } from './graphql/Schema'
+import { transformDocument } from './transform/DocumentIR'
 
 main()
 
@@ -32,6 +33,9 @@ async function main() {
     for (const e of validationErrors) {
       throw { message: `Error validating document: ${e.message}` }
     }
+
+    const documentIR = transformDocument(document)
+    console.log(documentIR)
   } catch (e) {
     console.error(e.message)
   }

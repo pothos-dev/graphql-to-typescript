@@ -1,7 +1,7 @@
 import fs from 'fs-extra'
-import { parse } from 'graphql'
+import { parse, DocumentNode } from 'graphql'
 
-export async function loadDocument(filepath: string) {
+export async function loadDocument(filepath: string): Promise<DocumentNode> {
   try {
     const fileContent = await fs.readFile(filepath, { encoding: 'utf8' })
     return parse(fileContent)
