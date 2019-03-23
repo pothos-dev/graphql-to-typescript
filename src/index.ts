@@ -18,17 +18,19 @@ async function main() {
     validateDocument(document, schema)
 
     const schemaIR = transformSchema(schema)
-    const documentIR = transformDocument(document)
-    const output = await generate(schemaIR, documentIR, sourceCode)
+    await writeFile(
+      'src/output/schemaIR.json',
+      JSON.stringify(schemaIR, null, 2)
+    )
 
-    await Promise.all([
-      writeFile('src/output/schemaIR.json', JSON.stringify(schemaIR, null, 2)),
-      writeFile(
-        'src/output/documentIR.json',
-        JSON.stringify(documentIR, null, 2)
-      ),
-      writeFile('src/output/output.ts', output),
-    ])
+    const documentIR = transformDocument(document)
+    await writeFile(
+      'src/output/documentIR.json',
+      JSON.stringify(documentIR, null, 2)
+    )
+
+    const output = await generate(schemaIR, documentIR, sourceCode)
+    await writeFile('src/output/output.ts', output)
   } catch (e) {
     console.error('Caught exception: ' + e.message)
   }
