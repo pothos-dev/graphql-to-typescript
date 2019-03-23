@@ -41,6 +41,28 @@
         0,
         135
       ]
+    },
+    {
+      "kind": "query",
+      "name": "testNullability",
+      "data": [
+        {
+          "name": "nullableBoolean",
+          "schemaName": "nullableBoolean"
+        },
+        {
+          "name": "nonNullableBoolean",
+          "schemaName": "nonNullableBoolean"
+        }
+      ],
+      "variables": {
+        "kind": "object",
+        "fields": {}
+      },
+      "sourceCodeRange": [
+        137,
+        201
+      ]
     }
   ]
 }

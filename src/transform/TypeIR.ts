@@ -9,6 +9,7 @@ import {
   isListType,
   isNonNullType,
   isNamedType,
+  TypeNode,
 } from 'graphql'
 import { ScalarTypeIR, transformScalarType } from './ScalarTypeIR'
 import {
@@ -20,6 +21,8 @@ import { UnionTypeIR, transformUnionType } from './UnionTypeIR'
 import { transformEnumType, EnumTypeIR } from './EnumTypeIR'
 import { InterfaceTypeIR, transformInterfaceType } from './InterfaceTypeIR'
 import { NamedTypeIR, transformNamedType } from './NamedTypeIR'
+import { NonNullTypeIR, transformNonNull } from './NonNullTypeIR'
+import { transformListType, ListTypeIR } from './ListTypeIR'
 
 export type TypeIR =
   | NamedTypeIR
@@ -29,6 +32,8 @@ export type TypeIR =
   | UnionTypeIR
   | EnumTypeIR
   | InputObjectTypeIR
+  | NonNullTypeIR
+  | ListTypeIR
 
 export function transformType(T: GraphQLType): TypeIR
 export function transformType(T: GraphQLType, skipNamedTypes: boolean): TypeIR
@@ -54,6 +59,13 @@ export function transformType(T: GraphQLType, skipNamedTypes?: boolean) {
   if (isInputObjectType(T)) {
     return transformInputObjectType(T)
   }
+  if (isListType(T)) {
+    return transformListType(T)
+  }
+  if (isNonNullType(T)) {
+    return transformNonNull(T)
+  }
+  throw { message: 'unhandled type in transformType' }
 }
 
 export function identifyType(T: GraphQLType): string {

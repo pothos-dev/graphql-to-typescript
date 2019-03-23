@@ -24,3 +24,15 @@ const testScalars: __typed_query<
     renamedString: scalarString
   }
 `
+const testNullability: __typed_query<
+  {},
+  {
+    nullableBoolean: boolean,
+    nonNullableBoolean: unknown,
+  }
+> = gql`
+  query testNullability {
+    nullableBoolean
+    nonNullableBoolean
+  }
+`

@@ -31,6 +31,13 @@
           "kind": "scalar",
           "scalar": "Boolean"
         },
+        "nonNullableBoolean": {
+          "kind": "nonNull",
+          "wrappedType": {
+            "kind": "scalar",
+            "scalar": "Boolean"
+          }
+        },
         "nestedObject": {
           "kind": "object",
           "fields": {
@@ -50,7 +57,24 @@
             "scalar": {
               "kind": "scalar",
               "scalar": "Boolean"
+            },
+            "list": {
+              "kind": "list",
+              "wrappedType": {
+                "kind": "nonNull",
+                "wrappedType": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                }
+              }
             }
+          }
+        },
+        "listOfNestedObject": {
+          "kind": "list",
+          "wrappedType": {
+            "kind": "namedType",
+            "typename": "ObjectType"
           }
         },
         "union": {
@@ -78,6 +102,13 @@
         "method": {
           "kind": "scalar",
           "scalar": "CustomScalar"
+        },
+        "method2": {
+          "kind": "list",
+          "wrappedType": {
+            "kind": "scalar",
+            "scalar": "CustomScalar"
+          }
         }
       }
     },
@@ -124,6 +155,16 @@
         "scalar": {
           "kind": "scalar",
           "scalar": "Boolean"
+        },
+        "list": {
+          "kind": "list",
+          "wrappedType": {
+            "kind": "nonNull",
+            "wrappedType": {
+              "kind": "scalar",
+              "scalar": "String"
+            }
+          }
         }
       }
     },
@@ -221,6 +262,13 @@
           "kind": "scalar",
           "scalar": "Boolean"
         },
+        "nonNullableBoolean": {
+          "kind": "nonNull",
+          "wrappedType": {
+            "kind": "scalar",
+            "scalar": "Boolean"
+          }
+        },
         "nestedObject": {
           "kind": "object",
           "fields": {
@@ -240,12 +288,36 @@
             "scalar": {
               "kind": "scalar",
               "scalar": "Boolean"
+            },
+            "list": {
+              "kind": "list",
+              "wrappedType": {
+                "kind": "nonNull",
+                "wrappedType": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                }
+              }
             }
+          }
+        },
+        "listOfNestedObject": {
+          "kind": "list",
+          "wrappedType": {
+            "kind": "namedType",
+            "typename": "ObjectType"
           }
         },
         "method": {
           "kind": "scalar",
           "scalar": "CustomScalar"
+        },
+        "method2": {
+          "kind": "list",
+          "wrappedType": {
+            "kind": "scalar",
+            "scalar": "CustomScalar"
+          }
         }
       }
     }

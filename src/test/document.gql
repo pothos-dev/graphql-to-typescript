@@ -9,10 +9,10 @@ query testScalars {
   renamedString: scalarString
 }
 
-# query testNullability {
-#   nullableBoolean
-#   nonNullableBoolean
-# }
+query testNullability {
+  nullableBoolean
+  nonNullableBoolean
+}
 
 # query testNesting {
 #   nestedObject {
