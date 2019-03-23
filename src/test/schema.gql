@@ -1,0 +1,94 @@
+scalar CustomScalar
+
+type Query {
+  # Test Scalars
+  scalarString: String
+  scalarInt: Int
+  scalarFloat: Float
+  scalarBoolean: Boolean
+  scalarID: ID
+  scalarCustom: CustomScalar
+
+  # Test nullability
+  nullableBoolean: Boolean
+  nonNullableBoolean: Boolean!
+
+  # Test nesting
+  nestedObject: ObjectType
+
+  # Test lists
+  listOfNestedObject: [ObjectType]
+
+  # Test unions
+  union: UnionType
+
+  # Test methods
+  method(
+    requiredParam: String!
+    optionalParam: Float
+    input: InputType
+  ): CustomScalar
+  method2(list1: [CustomScalar!], list2: [CustomScalar]!): [CustomScalar]
+}
+
+type Mutation {
+  # Test Scalars
+  scalarString: String
+  scalarInt: Int
+  scalarFloat: Float
+  scalarBoolean: Boolean
+  scalarID: ID
+  scalarCustom: CustomScalar
+
+  # Test nullability
+  nullableBoolean: Boolean
+  nonNullableBoolean: Boolean!
+
+  # Test nesting
+  nestedObject: ObjectType
+
+  # Test lists
+  listOfNestedObject: [ObjectType]
+
+  # Test methods
+  method(
+    requiredParam: String!
+    optionalParam: Float
+    input: InputType
+  ): CustomScalar
+  method2(list1: [CustomScalar!], list2: [CustomScalar]!): [CustomScalar]
+}
+
+type ObjectType {
+  recursive: ObjectType
+  nested: NestedObjectType
+  scalar: Boolean
+  list: [String!]
+}
+
+type NestedObjectType {
+  scalar: Int
+}
+
+type Tomato {
+  id: ID
+  color: String
+}
+
+type Potato {
+  id: ID
+  origin: String
+}
+
+union UnionType = Tomato | Potato
+
+input InputType {
+  recursive: InputType
+  nested: NestedInputType
+  scalar: Boolean
+  list: [String!]
+}
+
+input NestedInputType {
+  scalar: Int
+}
