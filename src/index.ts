@@ -40,7 +40,12 @@ async function main() {
     const schemaIR = transformSchema(schema)
     const documentIR = transformDocument(document)
     const output = await generate(schemaIR, documentIR, sourceCode)
-    await writeFile('output.ts', output)
+
+    await Promise.all([
+      writeFile('schemaIR.json', JSON.stringify(schemaIR, null, 2)),
+      writeFile('documentIR.json', JSON.stringify(documentIR, null, 2)),
+      writeFile('output.ts', output),
+    ])
   } catch (e) {
     console.error(e.message)
   }
