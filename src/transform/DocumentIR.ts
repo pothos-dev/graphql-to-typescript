@@ -1,5 +1,4 @@
 import { DocumentNode, DefinitionNode } from 'graphql'
-import { zipObj } from 'rambda'
 import { OperationIR, transformOperation } from './OperationIR'
 
 export interface DocumentIR {

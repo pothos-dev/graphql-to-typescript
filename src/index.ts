@@ -27,6 +27,6 @@ async function main() {
       writeFile('output/output.ts', output),
     ])
   } catch (e) {
-    console.error(e.message)
+    console.error('Caught exception: ' + e.message)
   }
 }

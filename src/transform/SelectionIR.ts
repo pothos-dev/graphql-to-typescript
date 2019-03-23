@@ -32,9 +32,9 @@ function transformField(T: FieldNode): SelectionIR {
 }
 
 function transformFragmentSpread(T: FragmentSpreadNode): SelectionIR {
-  throw 'not yet implemented'
+  throw { message: 'not yet implemented' }
 }
 
 function transformInlineFragment(T: InlineFragmentNode): SelectionIR {
-  throw 'not yet implemented'
+  throw { message: 'not yet implemented' }
 }
