@@ -1,10 +1,10 @@
-import { validate } from 'graphql'
 import { loadDocument } from './graphql/Document'
 import { loadSchema } from './graphql/Schema'
 import { transformDocument } from './transform/DocumentIR'
 import { generate } from './generate'
 import { transformSchema } from './transform/SchemaIR'
 import { writeFile } from 'fs-extra'
+import { validateDocument } from './graphql/Validation'
 
 main()
 
@@ -14,10 +14,8 @@ async function main() {
       loadDocument('document.gql'),
       loadSchema('https://api.graphloc.com/graphql'),
     ])
-    const validationErrors = validate(schema, document)
-    for (const e of validationErrors) {
-      throw { message: `Error validating document: ${e.message}` }
-    }
+
+    validateDocument(document, schema)
 
     const schemaIR = transformSchema(schema)
     const documentIR = transformDocument(document)
