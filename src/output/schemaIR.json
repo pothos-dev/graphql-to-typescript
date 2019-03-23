@@ -1,64 +1,253 @@
 {
   "types": {
     "Query": {
-      "kind": "namedType",
-      "typename": "Query"
+      "kind": "object",
+      "fields": {
+        "scalarString": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "scalarInt": {
+          "kind": "scalar",
+          "scalar": "Int"
+        },
+        "scalarFloat": {
+          "kind": "scalar",
+          "scalar": "Float"
+        },
+        "scalarBoolean": {
+          "kind": "scalar",
+          "scalar": "Boolean"
+        },
+        "scalarID": {
+          "kind": "scalar",
+          "scalar": "ID"
+        },
+        "scalarCustom": {
+          "kind": "scalar",
+          "scalar": "CustomScalar"
+        },
+        "nullableBoolean": {
+          "kind": "scalar",
+          "scalar": "Boolean"
+        },
+        "nestedObject": {
+          "kind": "object",
+          "fields": {
+            "recursive": {
+              "kind": "namedType",
+              "typename": "ObjectType"
+            },
+            "nested": {
+              "kind": "object",
+              "fields": {
+                "scalar": {
+                  "kind": "scalar",
+                  "scalar": "Int"
+                }
+              }
+            },
+            "scalar": {
+              "kind": "scalar",
+              "scalar": "Boolean"
+            }
+          }
+        },
+        "union": {
+          "kind": "union",
+          "types": [
+            {
+              "kind": "namedType",
+              "typename": "Tomato"
+            },
+            {
+              "kind": "object",
+              "fields": {
+                "id": {
+                  "kind": "scalar",
+                  "scalar": "ID"
+                },
+                "origin": {
+                  "kind": "scalar",
+                  "scalar": "String"
+                }
+              }
+            }
+          ]
+        },
+        "method": {
+          "kind": "scalar",
+          "scalar": "CustomScalar"
+        }
+      }
     },
     "String": {
-      "kind": "namedType",
-      "typename": "String"
+      "kind": "scalar",
+      "scalar": "String"
     },
     "Int": {
-      "kind": "namedType",
-      "typename": "Int"
+      "kind": "scalar",
+      "scalar": "Int"
     },
     "Float": {
-      "kind": "namedType",
-      "typename": "Float"
+      "kind": "scalar",
+      "scalar": "Float"
     },
     "Boolean": {
-      "kind": "namedType",
-      "typename": "Boolean"
+      "kind": "scalar",
+      "scalar": "Boolean"
     },
     "ID": {
-      "kind": "namedType",
-      "typename": "ID"
+      "kind": "scalar",
+      "scalar": "ID"
     },
     "CustomScalar": {
-      "kind": "namedType",
-      "typename": "CustomScalar"
+      "kind": "scalar",
+      "scalar": "CustomScalar"
     },
     "ObjectType": {
-      "kind": "namedType",
-      "typename": "ObjectType"
+      "kind": "object",
+      "fields": {
+        "recursive": {
+          "kind": "namedType",
+          "typename": "ObjectType"
+        },
+        "nested": {
+          "kind": "object",
+          "fields": {
+            "scalar": {
+              "kind": "scalar",
+              "scalar": "Int"
+            }
+          }
+        },
+        "scalar": {
+          "kind": "scalar",
+          "scalar": "Boolean"
+        }
+      }
     },
     "NestedObjectType": {
-      "kind": "namedType",
-      "typename": "NestedObjectType"
+      "kind": "object",
+      "fields": {
+        "scalar": {
+          "kind": "scalar",
+          "scalar": "Int"
+        }
+      }
     },
     "UnionType": {
-      "kind": "namedType",
-      "typename": "UnionType"
+      "kind": "union",
+      "types": [
+        {
+          "kind": "namedType",
+          "typename": "Tomato"
+        },
+        {
+          "kind": "object",
+          "fields": {
+            "id": {
+              "kind": "scalar",
+              "scalar": "ID"
+            },
+            "origin": {
+              "kind": "scalar",
+              "scalar": "String"
+            }
+          }
+        }
+      ]
     },
     "Tomato": {
-      "kind": "namedType",
-      "typename": "Tomato"
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "scalar",
+          "scalar": "ID"
+        },
+        "color": {
+          "kind": "scalar",
+          "scalar": "String"
+        }
+      }
     },
     "Potato": {
-      "kind": "namedType",
-      "typename": "Potato"
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "scalar",
+          "scalar": "ID"
+        },
+        "origin": {
+          "kind": "scalar",
+          "scalar": "String"
+        }
+      }
     },
     "InputType": {
-      "kind": "namedType",
-      "typename": "InputType"
+      "kind": "inputObject"
     },
     "NestedInputType": {
-      "kind": "namedType",
-      "typename": "NestedInputType"
+      "kind": "inputObject"
     },
     "Mutation": {
-      "kind": "namedType",
-      "typename": "Mutation"
+      "kind": "object",
+      "fields": {
+        "scalarString": {
+          "kind": "scalar",
+          "scalar": "String"
+        },
+        "scalarInt": {
+          "kind": "scalar",
+          "scalar": "Int"
+        },
+        "scalarFloat": {
+          "kind": "scalar",
+          "scalar": "Float"
+        },
+        "scalarBoolean": {
+          "kind": "scalar",
+          "scalar": "Boolean"
+        },
+        "scalarID": {
+          "kind": "scalar",
+          "scalar": "ID"
+        },
+        "scalarCustom": {
+          "kind": "scalar",
+          "scalar": "CustomScalar"
+        },
+        "nullableBoolean": {
+          "kind": "scalar",
+          "scalar": "Boolean"
+        },
+        "nestedObject": {
+          "kind": "object",
+          "fields": {
+            "recursive": {
+              "kind": "namedType",
+              "typename": "ObjectType"
+            },
+            "nested": {
+              "kind": "object",
+              "fields": {
+                "scalar": {
+                  "kind": "scalar",
+                  "scalar": "Int"
+                }
+              }
+            },
+            "scalar": {
+              "kind": "scalar",
+              "scalar": "Boolean"
+            }
+          }
+        },
+        "method": {
+          "kind": "scalar",
+          "scalar": "CustomScalar"
+        }
+      }
     }
   }
 }

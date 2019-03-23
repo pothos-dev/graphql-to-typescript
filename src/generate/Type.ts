@@ -11,6 +11,8 @@ export function generateType(
   schema: SchemaIR
 ) {
   switch (schemaType.kind) {
+    case 'namedType':
+      return generateType(selections, schema.types[schemaType.typename], schema)
     case 'enum':
       break
     case 'inputObject':

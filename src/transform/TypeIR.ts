@@ -30,12 +30,14 @@ export type TypeIR =
   | EnumTypeIR
   | InputObjectTypeIR
 
-export function transformType(T: GraphQLType): TypeIR {
-  if (isNamedType(T)) {
-    return transformNamedType(T)
-  }
+export function transformType(T: GraphQLType): TypeIR
+export function transformType(T: GraphQLType, skipNamedTypes: boolean): TypeIR
+export function transformType(T: GraphQLType, skipNamedTypes?: boolean) {
   if (isScalarType(T)) {
     return transformScalarType(T)
+  }
+  if (!skipNamedTypes && isNamedType(T)) {
+    return transformNamedType(T)
   }
   if (isObjectType(T)) {
     return transformObjectType(T)
