@@ -22,9 +22,12 @@ async function main() {
     const output = await generate(schemaIR, documentIR, sourceCode)
 
     await Promise.all([
-      writeFile('output/schemaIR.json', JSON.stringify(schemaIR, null, 2)),
-      writeFile('output/documentIR.json', JSON.stringify(documentIR, null, 2)),
-      writeFile('output/output.ts', output),
+      writeFile('src/output/schemaIR.json', JSON.stringify(schemaIR, null, 2)),
+      writeFile(
+        'src/output/documentIR.json',
+        JSON.stringify(documentIR, null, 2)
+      ),
+      writeFile('src/output/output.ts', output),
     ])
   } catch (e) {
     console.error('Caught exception: ' + e.message)

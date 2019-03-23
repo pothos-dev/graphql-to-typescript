@@ -1,0 +1,42 @@
+{
+  "operations": [
+    {
+      "kind": "query",
+      "name": "testScalars",
+      "data": [
+        {
+          "name": "scalarString",
+          "schemaName": "scalarString"
+        },
+        {
+          "name": "scalarInt",
+          "schemaName": "scalarInt"
+        },
+        {
+          "name": "scalarFloat",
+          "schemaName": "scalarFloat"
+        },
+        {
+          "name": "scalarBoolean",
+          "schemaName": "scalarBoolean"
+        },
+        {
+          "name": "scalarID",
+          "schemaName": "scalarID"
+        },
+        {
+          "name": "scalarCustom",
+          "schemaName": "scalarCustom"
+        },
+        {
+          "name": "renamedString",
+          "schemaName": "scalarString"
+        }
+      ],
+      "sourceCodeRange": [
+        0,
+        135
+      ]
+    }
+  ]
+}

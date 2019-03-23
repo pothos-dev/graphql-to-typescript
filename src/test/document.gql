@@ -9,96 +9,96 @@ query testScalars {
   renamedString: scalarString
 }
 
-query testNullability {
-  nullableBoolean
-  nonNullableBoolean
-}
+# query testNullability {
+#   nullableBoolean
+#   nonNullableBoolean
+# }
 
-query testNesting {
-  nestedObject {
-    recursive {
-      recursive {
-        scalar
-      }
-    }
-    nested {
-      scalar
-    }
-    scalar
-    list
-  }
-}
+# query testNesting {
+#   nestedObject {
+#     recursive {
+#       recursive {
+#         scalar
+#       }
+#     }
+#     nested {
+#       scalar
+#     }
+#     scalar
+#     list
+#   }
+# }
 
-query testUnion {
-  union {
-    ... on Tomato {
-      id
-      color
-    }
-    ... on Potato {
-      id
-      origin
-    }
-  }
-}
+# query testUnion {
+#   union {
+#     ... on Tomato {
+#       id
+#       color
+#     }
+#     ... on Potato {
+#       id
+#       origin
+#     }
+#   }
+# }
 
-query testMethods(
-  $reqParam: String!
-  $optParam: Float!
-  $input: InputType
-  $list2: [CustomScalar!]!
-) {
-  method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
-  renamedMethod: method2(list2: $list2)
-}
+# query testMethods(
+#   $reqParam: String!
+#   $optParam: Float!
+#   $input: InputType
+#   $list2: [CustomScalar!]!
+# ) {
+#   method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
+#   renamedMethod: method2(list2: $list2)
+# }
 
-mutation testScalarsMutation {
-  scalarString
-  scalarInt
-  scalarFloat
-  scalarBoolean
-  scalarID
-  scalarCustom
+# mutation testScalarsMutation {
+#   scalarString
+#   scalarInt
+#   scalarFloat
+#   scalarBoolean
+#   scalarID
+#   scalarCustom
 
-  renamedString: scalarString
-}
+#   renamedString: scalarString
+# }
 
-mutation testNullabilityMutation {
-  nullableBoolean
-  nonNullableBoolean
-}
+# mutation testNullabilityMutation {
+#   nullableBoolean
+#   nonNullableBoolean
+# }
 
-mutation testNestingMutation {
-  nestedObject {
-    recursive {
-      recursive {
-        scalar
-      }
-    }
-    nested {
-      scalar
-    }
-    scalar
-    list
-  }
-}
+# mutation testNestingMutation {
+#   nestedObject {
+#     recursive {
+#       recursive {
+#         scalar
+#       }
+#     }
+#     nested {
+#       scalar
+#     }
+#     scalar
+#     list
+#   }
+# }
 
-mutation testMethodsMutation(
-  $reqParam: String!
-  $optParam: Float!
-  $input: InputType
-  $list2: [CustomScalar!]!
-) {
-  method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
-  renamedMethod: method2(list2: $list2)
-}
+# mutation testMethodsMutation(
+#   $reqParam: String!
+#   $optParam: Float!
+#   $input: InputType
+#   $list2: [CustomScalar!]!
+# ) {
+#   method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
+#   renamedMethod: method2(list2: $list2)
+# }
 
-fragment ObjectTypeFields on ObjectType {
-  scalar
-}
+# fragment ObjectTypeFields on ObjectType {
+#   scalar
+# }
 
-query testFragments {
-  nestedObject {
-    ...ObjectTypeFields
-  }
-}
+# query testFragments {
+#   nestedObject {
+#     ...ObjectTypeFields
+#   }
+# }

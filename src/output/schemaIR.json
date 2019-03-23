@@ -1,0 +1,64 @@
+{
+  "types": {
+    "Query": {
+      "kind": "namedType",
+      "typename": "Query"
+    },
+    "String": {
+      "kind": "namedType",
+      "typename": "String"
+    },
+    "Int": {
+      "kind": "namedType",
+      "typename": "Int"
+    },
+    "Float": {
+      "kind": "namedType",
+      "typename": "Float"
+    },
+    "Boolean": {
+      "kind": "namedType",
+      "typename": "Boolean"
+    },
+    "ID": {
+      "kind": "namedType",
+      "typename": "ID"
+    },
+    "CustomScalar": {
+      "kind": "namedType",
+      "typename": "CustomScalar"
+    },
+    "ObjectType": {
+      "kind": "namedType",
+      "typename": "ObjectType"
+    },
+    "NestedObjectType": {
+      "kind": "namedType",
+      "typename": "NestedObjectType"
+    },
+    "UnionType": {
+      "kind": "namedType",
+      "typename": "UnionType"
+    },
+    "Tomato": {
+      "kind": "namedType",
+      "typename": "Tomato"
+    },
+    "Potato": {
+      "kind": "namedType",
+      "typename": "Potato"
+    },
+    "InputType": {
+      "kind": "namedType",
+      "typename": "InputType"
+    },
+    "NestedInputType": {
+      "kind": "namedType",
+      "typename": "NestedInputType"
+    },
+    "Mutation": {
+      "kind": "namedType",
+      "typename": "Mutation"
+    }
+  }
+}
