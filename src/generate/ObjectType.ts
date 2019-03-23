@@ -11,7 +11,11 @@ export function generateObjectType(
 ) {
   return ts.createTypeLiteralNode(selections.map(generateProperty))
   function generateProperty(selection: SelectionIR) {
-    const fieldType = schemaType.fields[selection.schemaName]
+    let fieldType = schemaType.fields[selection.schemaName]
+    while (fieldType.kind == 'namedType') {
+      fieldType = schema.types[fieldType.typename]
+    }
+
     return ts.createPropertySignature(
       undefined,
       ts.createIdentifier(selection.name),

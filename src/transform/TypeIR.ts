@@ -8,6 +8,7 @@ import {
   isInputObjectType,
   isListType,
   isNonNullType,
+  isNamedType,
 } from 'graphql'
 import { ScalarTypeIR, transformScalarType } from './ScalarTypeIR'
 import {
@@ -18,15 +19,21 @@ import { transformObjectType, ObjectTypeIR } from './ObjectTypeIR'
 import { UnionTypeIR, transformUnionType } from './UnionTypeIR'
 import { transformEnumType, EnumTypeIR } from './EnumTypeIR'
 import { InterfaceTypeIR, transformInterfaceType } from './InterfaceTypeIR'
+import { NamedTypeIR, transformNamedType } from './NamedTypeIR'
 
 export type TypeIR =
+  | NamedTypeIR
   | ScalarTypeIR
   | ObjectTypeIR
   | InterfaceTypeIR
   | UnionTypeIR
   | EnumTypeIR
   | InputObjectTypeIR
+
 export function transformType(T: GraphQLType): TypeIR {
+  if (isNamedType(T)) {
+    return transformNamedType(T)
+  }
   if (isScalarType(T)) {
     return transformScalarType(T)
   }
@@ -48,6 +55,7 @@ export function transformType(T: GraphQLType): TypeIR {
 }
 
 export function identifyType(T: GraphQLType): string {
+  if (isNamedType(T)) return 'NamedType'
   if (isScalarType(T)) return 'Scalar'
   if (isObjectType(T)) return 'Object'
   if (isInterfaceType(T)) return 'Interface'
