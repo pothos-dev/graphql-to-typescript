@@ -60,7 +60,7 @@ type Mutation {
 }
 
 type ObjectType {
-  recursive: ObjectType
+  # recursive: ObjectType
   nested: NestedObjectType
   scalar: Boolean
   list: [String!]

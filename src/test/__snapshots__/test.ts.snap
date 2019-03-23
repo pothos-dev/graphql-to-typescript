@@ -1,0 +1,295 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parse schema 1`] = `
+Object {
+  "types": Object {
+    "Boolean": Object {
+      "kind": "scalar",
+      "scalar": "Boolean",
+      "typename": "Boolean",
+    },
+    "CustomScalar": Object {
+      "kind": "scalar",
+      "scalar": "CustomScalar",
+      "typename": "CustomScalar",
+    },
+    "Float": Object {
+      "kind": "scalar",
+      "scalar": "Float",
+      "typename": "Float",
+    },
+    "ID": Object {
+      "kind": "scalar",
+      "scalar": "ID",
+      "typename": "ID",
+    },
+    "InputType": Object {
+      "kind": "inputObject",
+      "typename": "InputType",
+    },
+    "Int": Object {
+      "kind": "scalar",
+      "scalar": "Int",
+      "typename": "Int",
+    },
+    "Mutation": Object {
+      "fields": Object {
+        "listOfNestedObject": undefined,
+        "method": Object {
+          "kind": "scalar",
+          "scalar": "CustomScalar",
+        },
+        "method2": undefined,
+        "nestedObject": Object {
+          "fields": Object {
+            "list": undefined,
+            "nested": Object {
+              "fields": Object {
+                "scalar": Object {
+                  "kind": "scalar",
+                  "scalar": "Int",
+                },
+              },
+              "kind": "object",
+            },
+            "scalar": Object {
+              "kind": "scalar",
+              "scalar": "Boolean",
+            },
+          },
+          "kind": "object",
+        },
+        "nonNullableBoolean": undefined,
+        "nullableBoolean": Object {
+          "kind": "scalar",
+          "scalar": "Boolean",
+        },
+        "scalarBoolean": Object {
+          "kind": "scalar",
+          "scalar": "Boolean",
+        },
+        "scalarCustom": Object {
+          "kind": "scalar",
+          "scalar": "CustomScalar",
+        },
+        "scalarFloat": Object {
+          "kind": "scalar",
+          "scalar": "Float",
+        },
+        "scalarID": Object {
+          "kind": "scalar",
+          "scalar": "ID",
+        },
+        "scalarInt": Object {
+          "kind": "scalar",
+          "scalar": "Int",
+        },
+        "scalarString": Object {
+          "kind": "scalar",
+          "scalar": "String",
+        },
+      },
+      "kind": "object",
+      "typename": "Mutation",
+    },
+    "NestedInputType": Object {
+      "kind": "inputObject",
+      "typename": "NestedInputType",
+    },
+    "NestedObjectType": Object {
+      "fields": Object {
+        "scalar": Object {
+          "kind": "scalar",
+          "scalar": "Int",
+        },
+      },
+      "kind": "object",
+      "typename": "NestedObjectType",
+    },
+    "ObjectType": Object {
+      "fields": Object {
+        "list": undefined,
+        "nested": Object {
+          "fields": Object {
+            "scalar": Object {
+              "kind": "scalar",
+              "scalar": "Int",
+            },
+          },
+          "kind": "object",
+        },
+        "scalar": Object {
+          "kind": "scalar",
+          "scalar": "Boolean",
+        },
+      },
+      "kind": "object",
+      "typename": "ObjectType",
+    },
+    "Potato": Object {
+      "fields": Object {
+        "id": Object {
+          "kind": "scalar",
+          "scalar": "ID",
+        },
+        "origin": Object {
+          "kind": "scalar",
+          "scalar": "String",
+        },
+      },
+      "kind": "object",
+      "typename": "Potato",
+    },
+    "Query": Object {
+      "fields": Object {
+        "listOfNestedObject": undefined,
+        "method": Object {
+          "kind": "scalar",
+          "scalar": "CustomScalar",
+        },
+        "method2": undefined,
+        "nestedObject": Object {
+          "fields": Object {
+            "list": undefined,
+            "nested": Object {
+              "fields": Object {
+                "scalar": Object {
+                  "kind": "scalar",
+                  "scalar": "Int",
+                },
+              },
+              "kind": "object",
+            },
+            "scalar": Object {
+              "kind": "scalar",
+              "scalar": "Boolean",
+            },
+          },
+          "kind": "object",
+        },
+        "nonNullableBoolean": undefined,
+        "nullableBoolean": Object {
+          "kind": "scalar",
+          "scalar": "Boolean",
+        },
+        "scalarBoolean": Object {
+          "kind": "scalar",
+          "scalar": "Boolean",
+        },
+        "scalarCustom": Object {
+          "kind": "scalar",
+          "scalar": "CustomScalar",
+        },
+        "scalarFloat": Object {
+          "kind": "scalar",
+          "scalar": "Float",
+        },
+        "scalarID": Object {
+          "kind": "scalar",
+          "scalar": "ID",
+        },
+        "scalarInt": Object {
+          "kind": "scalar",
+          "scalar": "Int",
+        },
+        "scalarString": Object {
+          "kind": "scalar",
+          "scalar": "String",
+        },
+        "union": Object {
+          "kind": "union",
+          "types": Array [
+            Object {
+              "fields": Object {
+                "color": Object {
+                  "kind": "scalar",
+                  "scalar": "String",
+                },
+                "id": Object {
+                  "kind": "scalar",
+                  "scalar": "ID",
+                },
+              },
+              "kind": "object",
+            },
+            Object {
+              "fields": Object {
+                "id": Object {
+                  "kind": "scalar",
+                  "scalar": "ID",
+                },
+                "origin": Object {
+                  "kind": "scalar",
+                  "scalar": "String",
+                },
+              },
+              "kind": "object",
+            },
+          ],
+        },
+      },
+      "kind": "object",
+      "typename": "Query",
+    },
+    "String": Object {
+      "kind": "scalar",
+      "scalar": "String",
+      "typename": "String",
+    },
+    "Tomato": Object {
+      "fields": Object {
+        "color": Object {
+          "kind": "scalar",
+          "scalar": "String",
+        },
+        "id": Object {
+          "kind": "scalar",
+          "scalar": "ID",
+        },
+      },
+      "kind": "object",
+      "typename": "Tomato",
+    },
+    "UnionType": Object {
+      "kind": "union",
+      "typename": "UnionType",
+      "types": Array [
+        Object {
+          "fields": Object {
+            "color": Object {
+              "kind": "scalar",
+              "scalar": "String",
+            },
+            "id": Object {
+              "kind": "scalar",
+              "scalar": "ID",
+            },
+          },
+          "kind": "object",
+        },
+        Object {
+          "fields": Object {
+            "id": Object {
+              "kind": "scalar",
+              "scalar": "ID",
+            },
+            "origin": Object {
+              "kind": "scalar",
+              "scalar": "String",
+            },
+          },
+          "kind": "object",
+        },
+      ],
+    },
+    "__Directive": undefined,
+    "__DirectiveLocation": undefined,
+    "__EnumValue": undefined,
+    "__Field": undefined,
+    "__InputValue": undefined,
+    "__Schema": undefined,
+    "__Type": undefined,
+    "__TypeKind": undefined,
+  },
+}
+`;
