@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs'
+import { readFileSync, writeFileSync } from 'fs'
 import { parse, validate, buildClientSchema } from 'graphql'
 import { loadIntrospection } from './graphql/Introspection'
 import { loadDocument } from './graphql/Document'
@@ -7,6 +7,7 @@ import { transformDocument } from './transform/DocumentIR'
 import { render } from 'prettyjson'
 import { generate } from './generate'
 import { transformSchema } from './transform/SchemaIR'
+import { writeFile } from 'fs-extra'
 
 main()
 
@@ -27,7 +28,7 @@ main()
 
 async function main() {
   try {
-    const [document, schema] = await Promise.all([
+    const [{ sourceCode, document }, schema] = await Promise.all([
       loadDocument('document.gql'),
       loadSchema('https://api.graphloc.com/graphql'),
     ])
@@ -38,7 +39,8 @@ async function main() {
 
     const schemaIR = transformSchema(schema)
     const documentIR = transformDocument(document)
-    console.log(generate(schemaIR, documentIR))
+    const output = generate(schemaIR, documentIR, sourceCode)
+    await writeFile('output.ts', output)
   } catch (e) {
     console.error(e.message)
   }
