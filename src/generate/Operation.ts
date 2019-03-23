@@ -12,7 +12,6 @@ export function generateOperation(
     operation.sourceCodeRange[1]
   )
   gqlSourceCode = gqlSourceCode.replace(/\n/g, ' ')
-  gqlSourceCode = gqlSourceCode.replace(/ +/g, ' ')
 
   const initializer = ts.createTaggedTemplate(
     ts.createIdentifier('gql'),

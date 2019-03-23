@@ -39,7 +39,7 @@ async function main() {
 
     const schemaIR = transformSchema(schema)
     const documentIR = transformDocument(document)
-    const output = generate(schemaIR, documentIR, sourceCode)
+    const output = await generate(schemaIR, documentIR, sourceCode)
     await writeFile('output.ts', output)
   } catch (e) {
     console.error(e.message)
