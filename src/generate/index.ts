@@ -4,6 +4,7 @@ import { DocumentIR } from '../transform/DocumentIR'
 import { OperationIR } from '../transform/OperationIR'
 import { generateOperation } from './Operation'
 import prettier from 'prettier'
+import { generateImport } from './Import'
 
 export async function generate(
   schema: SchemaIR,
@@ -16,10 +17,12 @@ export async function generate(
     return printer.printNode(ts.EmitHint.Unspecified, t, sourceFile)
   }
 
-  const outputFile = documentIR.operations
-    .map((op) => generateOperation(op, sourceCode))
-    .map(print)
-    .join('\n')
+  const nodes = [
+    generateImport('graphql-tag', 'gql'),
+    ...documentIR.operations.map((op) => generateOperation(op, sourceCode)),
+  ]
+
+  const outputFile = nodes.map(print).join('\n')
 
   const prettierConfig = await prettier.resolveConfig(process.cwd())
   return prettier.format(outputFile, prettierConfig)
