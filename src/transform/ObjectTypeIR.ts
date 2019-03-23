@@ -4,7 +4,7 @@ import { TypeIR, transformType } from './TypeIR'
 
 export interface ObjectTypeIR {
   kind: 'object'
-  fields?: Record<string, TypeIR>
+  fields: Record<string, TypeIR>
   interfaces?: unknown
 }
 export function transformObjectType(T: GraphQLObjectType): ObjectTypeIR {

@@ -21,7 +21,9 @@ export async function generate(
   const nodes = [
     generateImport('graphql-tag', 'gql'),
     ...generateHelperTypes(),
-    ...documentIR.operations.map((op) => generateOperation(op, sourceCode)),
+    ...documentIR.operations.map((op) =>
+      generateOperation(op, schema, sourceCode)
+    ),
   ]
 
   const outputFile = nodes.map(print).join('\n')
