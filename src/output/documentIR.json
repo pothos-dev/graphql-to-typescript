@@ -33,6 +33,10 @@
           "schemaName": "scalarString"
         }
       ],
+      "variables": {
+        "kind": "object",
+        "fields": {}
+      },
       "sourceCodeRange": [
         0,
         135

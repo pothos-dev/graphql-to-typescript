@@ -3,6 +3,7 @@ import { OperationIR } from '../transform/OperationIR'
 import { SchemaIR } from '../transform/SchemaIR'
 import { TypeIR } from '../transform/TypeIR'
 import { generateType } from './Type'
+import { generateObjectType } from './ObjectType'
 
 export function generateOperation(
   operation: OperationIR,
@@ -18,7 +19,7 @@ export function generateOperation(
           ts.createTypeReferenceNode(
             ts.createIdentifier(`__typed_${operation.kind}`),
             [
-              ts.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword),
+              generateOperationVariables(operation, schema),
               generateOperationData(operation, schema),
             ]
           ),
@@ -37,6 +38,11 @@ export function generateOperation(
       .substring(operation.sourceCodeRange[0], operation.sourceCodeRange[1])
       .replace(/\n/g, ' ')
   }
+}
+
+function generateOperationVariables(operation: OperationIR, schema: SchemaIR) {
+  // TODO
+  return ts.createTypeLiteralNode([])
 }
 
 function generateOperationData(operation: OperationIR, schema: SchemaIR) {
