@@ -2,8 +2,7 @@ import ts from 'typescript'
 import { OperationIR } from '../transform/OperationIR'
 import { SchemaIR } from '../transform/SchemaIR'
 import { TypeIR } from '../transform/TypeIR'
-import { generateType } from './Type'
-import { generateObjectType } from './ObjectType'
+import { generateNonNullType } from './Type'
 
 export function generateOperation(
   operation: OperationIR,
@@ -19,7 +18,7 @@ export function generateOperation(
           ts.createTypeReferenceNode(
             ts.createIdentifier(`__typed_${operation.kind}`),
             [
-              generateOperationVariables(operation, schema),
+              generateOperationVariables(),
               generateOperationData(operation, schema),
             ]
           ),
@@ -40,13 +39,13 @@ export function generateOperation(
   }
 }
 
-function generateOperationVariables(operation: OperationIR, schema: SchemaIR) {
+function generateOperationVariables() {
   // TODO
   return ts.createTypeLiteralNode([])
 }
 
 function generateOperationData(operation: OperationIR, schema: SchemaIR) {
-  return generateType(operation.data, getSchemaType(), schema)
+  return generateNonNullType(schema, getSchemaType(), operation.data)
 
   function getSchemaType(): TypeIR {
     if (operation.kind == 'query') return schema.types['Query']

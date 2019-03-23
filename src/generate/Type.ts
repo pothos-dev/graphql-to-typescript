@@ -6,13 +6,27 @@ import { generateScalarType } from './ScalarType'
 import { generateObjectType } from './ObjectType'
 
 export function generateType(
-  selections: SelectionIR[] | undefined,
+  schema: SchemaIR,
   schemaType: TypeIR,
-  schema: SchemaIR
+  selections?: SelectionIR[]
+) {
+  if (schemaType.kind == 'nonNull') {
+    return generateNonNullType(schema, schemaType.wrappedType, selections)
+  }
+
+  return ts.createTypeReferenceNode(ts.createIdentifier('Nullable'), [
+    generateNonNullType(schema, schemaType, selections),
+  ])
+}
+
+export function generateNonNullType(
+  schema: SchemaIR,
+  schemaType: TypeIR,
+  selections?: SelectionIR[]
 ) {
   switch (schemaType.kind) {
     case 'namedType':
-      return generateType(selections, schema.types[schemaType.typename], schema)
+      return generateType(schema, schema.types[schemaType.typename], selections)
     case 'enum':
       break
     case 'inputObject':
@@ -20,11 +34,16 @@ export function generateType(
     case 'interface':
       break
     case 'object':
-      return generateObjectType(selections || [], schemaType, schema)
+      return generateObjectType(schema, schemaType, selections || [])
     case 'scalar':
-      return generateScalarType(schemaType, schema)
+      return generateScalarType(schema, schemaType)
     case 'union':
       break
+    case 'list':
+      break
   }
+
+  console.log('Unhandled type in generateNonNullType: ' + schemaType.kind)
+
   return ts.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword)
 }

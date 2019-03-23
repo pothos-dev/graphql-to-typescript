@@ -2,16 +2,17 @@ import gql from 'graphql-tag'
 type __typed_query<D, V> = any
 type __typed_mutation<D, V> = any
 type __typed_subscription<D, V> = any
+type Nullable<T> = T | null
 const testScalars: __typed_query<
   {},
   {
-    scalarString: string,
-    scalarInt: number,
-    scalarFloat: number,
-    scalarBoolean: boolean,
-    scalarID: string,
-    scalarCustom: unknown,
-    renamedString: string,
+    scalarString: Nullable<string>,
+    scalarInt: Nullable<number>,
+    scalarFloat: Nullable<number>,
+    scalarBoolean: Nullable<boolean>,
+    scalarID: Nullable<string>,
+    scalarCustom: Nullable<unknown>,
+    renamedString: Nullable<string>,
   }
 > = gql`
   query testScalars {
@@ -27,8 +28,8 @@ const testScalars: __typed_query<
 const testNullability: __typed_query<
   {},
   {
-    nullableBoolean: boolean,
-    nonNullableBoolean: unknown,
+    nullableBoolean: Nullable<boolean>,
+    nonNullableBoolean: boolean,
   }
 > = gql`
   query testNullability {

@@ -1,4 +1,4 @@
-import { TypeIR, transformType, transformTypeNode } from './TypeIR'
+import { TypeIR, transformType } from './TypeIR'
 import { GraphQLList, GraphQLType } from 'graphql'
 
 export interface ListTypeIR {

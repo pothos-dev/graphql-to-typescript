@@ -5,6 +5,7 @@ export function generateHelperTypes() {
     generateOperationType('query'),
     generateOperationType('mutation'),
     generateOperationType('subscription'),
+    createNullableType(),
   ]
 }
 
@@ -26,5 +27,24 @@ function generateOperationType(operationName: string) {
       ),
     ],
     ts.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword)
+  )
+}
+
+function createNullableType() {
+  return ts.createTypeAliasDeclaration(
+    undefined,
+    undefined,
+    ts.createIdentifier('Nullable'),
+    [
+      ts.createTypeParameterDeclaration(
+        ts.createIdentifier('T'),
+        undefined,
+        undefined
+      ),
+    ],
+    ts.createUnionTypeNode([
+      ts.createTypeReferenceNode(ts.createIdentifier('T'), undefined),
+      ts.createNull(),
+    ])
   )
 }

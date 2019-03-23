@@ -5,9 +5,9 @@ import { ObjectTypeIR } from '../transform/ObjectTypeIR'
 import { generateType } from './Type'
 
 export function generateObjectType(
-  selections: SelectionIR[],
+  schema: SchemaIR,
   schemaType: ObjectTypeIR,
-  schema: SchemaIR
+  selections: SelectionIR[]
 ) {
   return ts.createTypeLiteralNode(selections.map(generateProperty))
   function generateProperty(selection: SelectionIR) {
@@ -20,7 +20,7 @@ export function generateObjectType(
       undefined,
       ts.createIdentifier(selection.name),
       undefined,
-      generateType(selection.selections, fieldType, schema),
+      generateType(schema, fieldType, selection.selections),
       undefined
     )
   }

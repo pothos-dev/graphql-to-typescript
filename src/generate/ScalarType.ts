@@ -2,7 +2,7 @@ import ts from 'typescript'
 import { SchemaIR } from '../transform/SchemaIR'
 import { ScalarTypeIR } from '../transform/ScalarTypeIR'
 
-export function generateScalarType(schemaType: ScalarTypeIR, schema: SchemaIR) {
+export function generateScalarType(schema: SchemaIR, schemaType: ScalarTypeIR) {
   switch (schemaType.scalar) {
     case 'String':
       return ts.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)

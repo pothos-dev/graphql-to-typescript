@@ -1,6 +1,7 @@
 import { OperationDefinitionNode } from 'graphql'
 import { SelectionIR, transformSelection } from './SelectionIR'
 import { ObjectTypeIR } from './ObjectTypeIR'
+import { NonNullTypeIR } from './NonNullTypeIR'
 
 export interface OperationIR {
   kind: 'query' | 'mutation' | 'subscription'
