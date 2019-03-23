@@ -11,8 +11,8 @@ main()
 async function main() {
   try {
     const [{ sourceCode, document }, schema] = await Promise.all([
-      loadDocument('document.gql'),
-      loadSchema('https://api.graphloc.com/graphql'),
+      loadDocument('src/test/document.gql'),
+      loadSchema('src/text/schema.gql'),
     ])
 
     validateDocument(document, schema)
