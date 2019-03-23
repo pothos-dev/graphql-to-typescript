@@ -5,6 +5,7 @@ import { OperationIR } from '../transform/OperationIR'
 import { generateOperation } from './Operation'
 import prettier from 'prettier'
 import { generateImport } from './Import'
+import { generateHelperTypes } from './HelperTypes'
 
 export async function generate(
   schema: SchemaIR,
@@ -19,6 +20,7 @@ export async function generate(
 
   const nodes = [
     generateImport('graphql-tag', 'gql'),
+    ...generateHelperTypes(),
     ...documentIR.operations.map((op) => generateOperation(op, sourceCode)),
   ]
 
