@@ -8,7 +8,7 @@ const getCountryName: __typed_query<
     getLocation: {
       country: {
         names: {
-          de: {},
+          de: string,
         },
       },
     },
