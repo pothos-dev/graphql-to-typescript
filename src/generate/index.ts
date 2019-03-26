@@ -29,5 +29,8 @@ export async function generate(
   const outputFile = nodes.map(print).join('\n')
 
   const prettierConfig = await prettier.resolveConfig(process.cwd())
-  return prettier.format(outputFile, prettierConfig)
+  return prettier.format(outputFile, {
+    ...prettierConfig,
+    parser: 'typescript',
+  })
 }

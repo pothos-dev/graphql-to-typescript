@@ -6,13 +6,13 @@ type Nullable<T> = T | null
 const testScalars: __typed_query<
   {},
   {
-    scalarString: Nullable<string>,
-    scalarInt: Nullable<number>,
-    scalarFloat: Nullable<number>,
-    scalarBoolean: Nullable<boolean>,
-    scalarID: Nullable<string>,
-    scalarCustom: Nullable<unknown>,
-    renamedString: Nullable<string>,
+    scalarString: Nullable<string>
+    scalarInt: Nullable<number>
+    scalarFloat: Nullable<number>
+    scalarBoolean: Nullable<boolean>
+    scalarID: Nullable<string>
+    scalarCustom: Nullable<unknown>
+    renamedString: Nullable<string>
   }
 > = gql`
   query testScalars {
@@ -28,8 +28,8 @@ const testScalars: __typed_query<
 const testNullability: __typed_query<
   {},
   {
-    nullableBoolean: Nullable<boolean>,
-    nonNullableBoolean: boolean,
+    nullableBoolean: Nullable<boolean>
+    nonNullableBoolean: boolean
   }
 > = gql`
   query testNullability {
