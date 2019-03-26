@@ -1,5 +1,796 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`generate code: code 1`] = `
+"import gql from 'graphql-tag'
+type __typed_query<D, V> = any
+type __typed_mutation<D, V> = any
+type __typed_subscription<D, V> = any
+type Nullable<T> = T | null
+const testScalars: __typed_query<
+  {},
+  {
+    scalarString: Nullable<string>
+    scalarInt: Nullable<number>
+    scalarFloat: Nullable<number>
+    scalarBoolean: Nullable<boolean>
+    scalarID: Nullable<string>
+    scalarCustom: Nullable<unknown>
+    renamedString: Nullable<string>
+  }
+> = gql\`
+  query testScalars {
+    scalarString
+    scalarInt
+    scalarFloat
+    scalarBoolean
+    scalarID
+    scalarCustom
+    renamedString: scalarString
+  }
+\`
+const testNullability: __typed_query<
+  {},
+  {
+    nullableBoolean: Nullable<boolean>
+    nonNullableBoolean: boolean
+  }
+> = gql\`
+  query testNullability {
+    nullableBoolean
+    nonNullableBoolean
+  }
+\`
+"
+`;
+
+exports[`load document: document 1`] = `
+Object {
+  "document": Object {
+    "definitions": Array [
+      Object {
+        "directives": Array [],
+        "kind": "OperationDefinition",
+        "loc": Object {
+          "end": 135,
+          "start": 0,
+        },
+        "name": Object {
+          "kind": "Name",
+          "loc": Object {
+            "end": 17,
+            "start": 6,
+          },
+          "value": "testScalars",
+        },
+        "operation": "query",
+        "selectionSet": Object {
+          "kind": "SelectionSet",
+          "loc": Object {
+            "end": 135,
+            "start": 18,
+          },
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 34,
+                "start": 22,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 34,
+                  "start": 22,
+                },
+                "value": "scalarString",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 46,
+                "start": 37,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 46,
+                  "start": 37,
+                },
+                "value": "scalarInt",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 60,
+                "start": 49,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 60,
+                  "start": 49,
+                },
+                "value": "scalarFloat",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 76,
+                "start": 63,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 76,
+                  "start": 63,
+                },
+                "value": "scalarBoolean",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 87,
+                "start": 79,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 87,
+                  "start": 79,
+                },
+                "value": "scalarID",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 102,
+                "start": 90,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 102,
+                  "start": 90,
+                },
+                "value": "scalarCustom",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 119,
+                  "start": 106,
+                },
+                "value": "renamedString",
+              },
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 133,
+                "start": 106,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 133,
+                  "start": 121,
+                },
+                "value": "scalarString",
+              },
+              "selectionSet": undefined,
+            },
+          ],
+        },
+        "variableDefinitions": Array [],
+      },
+      Object {
+        "directives": Array [],
+        "kind": "OperationDefinition",
+        "loc": Object {
+          "end": 201,
+          "start": 137,
+        },
+        "name": Object {
+          "kind": "Name",
+          "loc": Object {
+            "end": 158,
+            "start": 143,
+          },
+          "value": "testNullability",
+        },
+        "operation": "query",
+        "selectionSet": Object {
+          "kind": "SelectionSet",
+          "loc": Object {
+            "end": 201,
+            "start": 159,
+          },
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 178,
+                "start": 163,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 178,
+                  "start": 163,
+                },
+                "value": "nullableBoolean",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 199,
+                "start": 181,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 199,
+                  "start": 181,
+                },
+                "value": "nonNullableBoolean",
+              },
+              "selectionSet": undefined,
+            },
+          ],
+        },
+        "variableDefinitions": Array [],
+      },
+    ],
+    "kind": "Document",
+    "loc": Object {
+      "end": 1639,
+      "start": 0,
+    },
+  },
+  "sourceCode": "query testScalars {
+  scalarString
+  scalarInt
+  scalarFloat
+  scalarBoolean
+  scalarID
+  scalarCustom
+
+  renamedString: scalarString
+}
+
+query testNullability {
+  nullableBoolean
+  nonNullableBoolean
+}
+
+# query testNesting {
+#   nestedObject {
+#     recursive {
+#       recursive {
+#         scalar
+#       }
+#     }
+#     nested {
+#       scalar
+#     }
+#     scalar
+#     list
+#   }
+# }
+
+# query testUnion {
+#   union {
+#     ... on Tomato {
+#       id
+#       color
+#     }
+#     ... on Potato {
+#       id
+#       origin
+#     }
+#   }
+# }
+
+# query testMethods(
+#   $reqParam: String!
+#   $optParam: Float!
+#   $input: InputType
+#   $list2: [CustomScalar!]!
+# ) {
+#   method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
+#   renamedMethod: method2(list2: $list2)
+# }
+
+# mutation testScalarsMutation {
+#   scalarString
+#   scalarInt
+#   scalarFloat
+#   scalarBoolean
+#   scalarID
+#   scalarCustom
+
+#   renamedString: scalarString
+# }
+
+# mutation testNullabilityMutation {
+#   nullableBoolean
+#   nonNullableBoolean
+# }
+
+# mutation testNestingMutation {
+#   nestedObject {
+#     recursive {
+#       recursive {
+#         scalar
+#       }
+#     }
+#     nested {
+#       scalar
+#     }
+#     scalar
+#     list
+#   }
+# }
+
+# mutation testMethodsMutation(
+#   $reqParam: String!
+#   $optParam: Float!
+#   $input: InputType
+#   $list2: [CustomScalar!]!
+# ) {
+#   method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
+#   renamedMethod: method2(list2: $list2)
+# }
+
+# fragment ObjectTypeFields on ObjectType {
+#   scalar
+# }
+
+# query testFragments {
+#   nestedObject {
+#     ...ObjectTypeFields
+#   }
+# }
+",
+}
+`;
+
+exports[`load schema: schema 1`] = `
+GraphQLSchema {
+  "__allowedLegacyNames": Array [],
+  "__validationErrors": undefined,
+  "_directives": Array [
+    "@skip",
+    "@include",
+    "@deprecated",
+  ],
+  "_implementations": Object {
+    "UnionType": Array [],
+  },
+  "_mutationType": "Mutation",
+  "_possibleTypeMap": Object {},
+  "_queryType": "Query",
+  "_subscriptionType": null,
+  "_typeMap": Object {
+    "Boolean": "Boolean",
+    "CustomScalar": "CustomScalar",
+    "Float": "Float",
+    "ID": "ID",
+    "InputType": "InputType",
+    "Int": "Int",
+    "Mutation": "Mutation",
+    "NestedInputType": "NestedInputType",
+    "NestedObjectType": "NestedObjectType",
+    "ObjectType": "ObjectType",
+    "Potato": "Potato",
+    "Query": "Query",
+    "String": "String",
+    "Tomato": "Tomato",
+    "UnionType": "UnionType",
+    "__Directive": "__Directive",
+    "__DirectiveLocation": "__DirectiveLocation",
+    "__EnumValue": "__EnumValue",
+    "__Field": "__Field",
+    "__InputValue": "__InputValue",
+    "__Schema": "__Schema",
+    "__Type": "__Type",
+    "__TypeKind": "__TypeKind",
+  },
+  "astNode": undefined,
+  "extensionASTNodes": undefined,
+}
+`;
+
+exports[`parse document: Document 1`] = `
+Object {
+  "document": Object {
+    "definitions": Array [
+      Object {
+        "directives": Array [],
+        "kind": "OperationDefinition",
+        "loc": Object {
+          "end": 135,
+          "start": 0,
+        },
+        "name": Object {
+          "kind": "Name",
+          "loc": Object {
+            "end": 17,
+            "start": 6,
+          },
+          "value": "testScalars",
+        },
+        "operation": "query",
+        "selectionSet": Object {
+          "kind": "SelectionSet",
+          "loc": Object {
+            "end": 135,
+            "start": 18,
+          },
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 34,
+                "start": 22,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 34,
+                  "start": 22,
+                },
+                "value": "scalarString",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 46,
+                "start": 37,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 46,
+                  "start": 37,
+                },
+                "value": "scalarInt",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 60,
+                "start": 49,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 60,
+                  "start": 49,
+                },
+                "value": "scalarFloat",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 76,
+                "start": 63,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 76,
+                  "start": 63,
+                },
+                "value": "scalarBoolean",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 87,
+                "start": 79,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 87,
+                  "start": 79,
+                },
+                "value": "scalarID",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 102,
+                "start": 90,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 102,
+                  "start": 90,
+                },
+                "value": "scalarCustom",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 119,
+                  "start": 106,
+                },
+                "value": "renamedString",
+              },
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 133,
+                "start": 106,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 133,
+                  "start": 121,
+                },
+                "value": "scalarString",
+              },
+              "selectionSet": undefined,
+            },
+          ],
+        },
+        "variableDefinitions": Array [],
+      },
+      Object {
+        "directives": Array [],
+        "kind": "OperationDefinition",
+        "loc": Object {
+          "end": 201,
+          "start": 137,
+        },
+        "name": Object {
+          "kind": "Name",
+          "loc": Object {
+            "end": 158,
+            "start": 143,
+          },
+          "value": "testNullability",
+        },
+        "operation": "query",
+        "selectionSet": Object {
+          "kind": "SelectionSet",
+          "loc": Object {
+            "end": 201,
+            "start": 159,
+          },
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 178,
+                "start": 163,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 178,
+                  "start": 163,
+                },
+                "value": "nullableBoolean",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 199,
+                "start": 181,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 199,
+                  "start": 181,
+                },
+                "value": "nonNullableBoolean",
+              },
+              "selectionSet": undefined,
+            },
+          ],
+        },
+        "variableDefinitions": Array [],
+      },
+    ],
+    "kind": "Document",
+    "loc": Object {
+      "end": 1639,
+      "start": 0,
+    },
+  },
+  "sourceCode": "query testScalars {
+  scalarString
+  scalarInt
+  scalarFloat
+  scalarBoolean
+  scalarID
+  scalarCustom
+
+  renamedString: scalarString
+}
+
+query testNullability {
+  nullableBoolean
+  nonNullableBoolean
+}
+
+# query testNesting {
+#   nestedObject {
+#     recursive {
+#       recursive {
+#         scalar
+#       }
+#     }
+#     nested {
+#       scalar
+#     }
+#     scalar
+#     list
+#   }
+# }
+
+# query testUnion {
+#   union {
+#     ... on Tomato {
+#       id
+#       color
+#     }
+#     ... on Potato {
+#       id
+#       origin
+#     }
+#   }
+# }
+
+# query testMethods(
+#   $reqParam: String!
+#   $optParam: Float!
+#   $input: InputType
+#   $list2: [CustomScalar!]!
+# ) {
+#   method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
+#   renamedMethod: method2(list2: $list2)
+# }
+
+# mutation testScalarsMutation {
+#   scalarString
+#   scalarInt
+#   scalarFloat
+#   scalarBoolean
+#   scalarID
+#   scalarCustom
+
+#   renamedString: scalarString
+# }
+
+# mutation testNullabilityMutation {
+#   nullableBoolean
+#   nonNullableBoolean
+# }
+
+# mutation testNestingMutation {
+#   nestedObject {
+#     recursive {
+#       recursive {
+#         scalar
+#       }
+#     }
+#     nested {
+#       scalar
+#     }
+#     scalar
+#     list
+#   }
+# }
+
+# mutation testMethodsMutation(
+#   $reqParam: String!
+#   $optParam: Float!
+#   $input: InputType
+#   $list2: [CustomScalar!]!
+# ) {
+#   method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
+#   renamedMethod: method2(list2: $list2)
+# }
+
+# fragment ObjectTypeFields on ObjectType {
+#   scalar
+# }
+
+# query testFragments {
+#   nestedObject {
+#     ...ObjectTypeFields
+#   }
+# }
+",
+}
+`;
+
 exports[`parse schema: Schema 1`] = `
 GraphQLSchema {
   "__allowedLegacyNames": Array [],
@@ -380,4 +1171,528 @@ Object {
     "__TypeKind": undefined,
   },
 }
+`;
+
+exports[`transform document: documentIR 1`] = `
+Object {
+  "operations": Array [
+    Object {
+      "data": Array [
+        Object {
+          "name": "scalarString",
+          "schemaName": "scalarString",
+          "selections": undefined,
+        },
+        Object {
+          "name": "scalarInt",
+          "schemaName": "scalarInt",
+          "selections": undefined,
+        },
+        Object {
+          "name": "scalarFloat",
+          "schemaName": "scalarFloat",
+          "selections": undefined,
+        },
+        Object {
+          "name": "scalarBoolean",
+          "schemaName": "scalarBoolean",
+          "selections": undefined,
+        },
+        Object {
+          "name": "scalarID",
+          "schemaName": "scalarID",
+          "selections": undefined,
+        },
+        Object {
+          "name": "scalarCustom",
+          "schemaName": "scalarCustom",
+          "selections": undefined,
+        },
+        Object {
+          "name": "renamedString",
+          "schemaName": "scalarString",
+          "selections": undefined,
+        },
+      ],
+      "kind": "query",
+      "name": "testScalars",
+      "sourceCodeRange": Array [
+        0,
+        135,
+      ],
+      "variables": Object {
+        "fields": Object {},
+        "kind": "object",
+      },
+    },
+    Object {
+      "data": Array [
+        Object {
+          "name": "nullableBoolean",
+          "schemaName": "nullableBoolean",
+          "selections": undefined,
+        },
+        Object {
+          "name": "nonNullableBoolean",
+          "schemaName": "nonNullableBoolean",
+          "selections": undefined,
+        },
+      ],
+      "kind": "query",
+      "name": "testNullability",
+      "sourceCodeRange": Array [
+        137,
+        201,
+      ],
+      "variables": Object {
+        "fields": Object {},
+        "kind": "object",
+      },
+    },
+  ],
+}
+`;
+
+exports[`transform schema: schemaIR 1`] = `
+Object {
+  "types": Object {
+    "Boolean": Object {
+      "kind": "scalar",
+      "scalar": "Boolean",
+    },
+    "CustomScalar": Object {
+      "kind": "scalar",
+      "scalar": "CustomScalar",
+    },
+    "Float": Object {
+      "kind": "scalar",
+      "scalar": "Float",
+    },
+    "ID": Object {
+      "kind": "scalar",
+      "scalar": "ID",
+    },
+    "InputType": Object {
+      "kind": "inputObject",
+    },
+    "Int": Object {
+      "kind": "scalar",
+      "scalar": "Int",
+    },
+    "Mutation": Object {
+      "fields": Object {
+        "listOfNestedObject": Object {
+          "kind": "list",
+          "wrappedType": Object {
+            "kind": "namedType",
+            "typename": "ObjectType",
+          },
+        },
+        "method": Object {
+          "kind": "scalar",
+          "scalar": "CustomScalar",
+        },
+        "method2": Object {
+          "kind": "list",
+          "wrappedType": Object {
+            "kind": "scalar",
+            "scalar": "CustomScalar",
+          },
+        },
+        "nestedObject": Object {
+          "fields": Object {
+            "list": Object {
+              "kind": "list",
+              "wrappedType": Object {
+                "kind": "nonNull",
+                "wrappedType": Object {
+                  "kind": "scalar",
+                  "scalar": "String",
+                },
+              },
+            },
+            "nested": Object {
+              "fields": Object {
+                "scalar": Object {
+                  "kind": "scalar",
+                  "scalar": "Int",
+                },
+              },
+              "kind": "object",
+            },
+            "recursive": Object {
+              "kind": "namedType",
+              "typename": "ObjectType",
+            },
+            "scalar": Object {
+              "kind": "scalar",
+              "scalar": "Boolean",
+            },
+          },
+          "kind": "object",
+        },
+        "nonNullableBoolean": Object {
+          "kind": "nonNull",
+          "wrappedType": Object {
+            "kind": "scalar",
+            "scalar": "Boolean",
+          },
+        },
+        "nullableBoolean": Object {
+          "kind": "scalar",
+          "scalar": "Boolean",
+        },
+        "scalarBoolean": Object {
+          "kind": "scalar",
+          "scalar": "Boolean",
+        },
+        "scalarCustom": Object {
+          "kind": "scalar",
+          "scalar": "CustomScalar",
+        },
+        "scalarFloat": Object {
+          "kind": "scalar",
+          "scalar": "Float",
+        },
+        "scalarID": Object {
+          "kind": "scalar",
+          "scalar": "ID",
+        },
+        "scalarInt": Object {
+          "kind": "scalar",
+          "scalar": "Int",
+        },
+        "scalarString": Object {
+          "kind": "scalar",
+          "scalar": "String",
+        },
+      },
+      "kind": "object",
+    },
+    "NestedInputType": Object {
+      "kind": "inputObject",
+    },
+    "NestedObjectType": Object {
+      "fields": Object {
+        "scalar": Object {
+          "kind": "scalar",
+          "scalar": "Int",
+        },
+      },
+      "kind": "object",
+    },
+    "ObjectType": Object {
+      "fields": Object {
+        "list": Object {
+          "kind": "list",
+          "wrappedType": Object {
+            "kind": "nonNull",
+            "wrappedType": Object {
+              "kind": "scalar",
+              "scalar": "String",
+            },
+          },
+        },
+        "nested": Object {
+          "fields": Object {
+            "scalar": Object {
+              "kind": "scalar",
+              "scalar": "Int",
+            },
+          },
+          "kind": "object",
+        },
+        "recursive": Object {
+          "kind": "namedType",
+          "typename": "ObjectType",
+        },
+        "scalar": Object {
+          "kind": "scalar",
+          "scalar": "Boolean",
+        },
+      },
+      "kind": "object",
+    },
+    "Potato": Object {
+      "fields": Object {
+        "id": Object {
+          "kind": "scalar",
+          "scalar": "ID",
+        },
+        "origin": Object {
+          "kind": "scalar",
+          "scalar": "String",
+        },
+      },
+      "kind": "object",
+    },
+    "Query": Object {
+      "fields": Object {
+        "listOfNestedObject": Object {
+          "kind": "list",
+          "wrappedType": Object {
+            "kind": "namedType",
+            "typename": "ObjectType",
+          },
+        },
+        "method": Object {
+          "kind": "scalar",
+          "scalar": "CustomScalar",
+        },
+        "method2": Object {
+          "kind": "list",
+          "wrappedType": Object {
+            "kind": "scalar",
+            "scalar": "CustomScalar",
+          },
+        },
+        "nestedObject": Object {
+          "fields": Object {
+            "list": Object {
+              "kind": "list",
+              "wrappedType": Object {
+                "kind": "nonNull",
+                "wrappedType": Object {
+                  "kind": "scalar",
+                  "scalar": "String",
+                },
+              },
+            },
+            "nested": Object {
+              "fields": Object {
+                "scalar": Object {
+                  "kind": "scalar",
+                  "scalar": "Int",
+                },
+              },
+              "kind": "object",
+            },
+            "recursive": Object {
+              "kind": "namedType",
+              "typename": "ObjectType",
+            },
+            "scalar": Object {
+              "kind": "scalar",
+              "scalar": "Boolean",
+            },
+          },
+          "kind": "object",
+        },
+        "nonNullableBoolean": Object {
+          "kind": "nonNull",
+          "wrappedType": Object {
+            "kind": "scalar",
+            "scalar": "Boolean",
+          },
+        },
+        "nullableBoolean": Object {
+          "kind": "scalar",
+          "scalar": "Boolean",
+        },
+        "scalarBoolean": Object {
+          "kind": "scalar",
+          "scalar": "Boolean",
+        },
+        "scalarCustom": Object {
+          "kind": "scalar",
+          "scalar": "CustomScalar",
+        },
+        "scalarFloat": Object {
+          "kind": "scalar",
+          "scalar": "Float",
+        },
+        "scalarID": Object {
+          "kind": "scalar",
+          "scalar": "ID",
+        },
+        "scalarInt": Object {
+          "kind": "scalar",
+          "scalar": "Int",
+        },
+        "scalarString": Object {
+          "kind": "scalar",
+          "scalar": "String",
+        },
+        "union": Object {
+          "kind": "union",
+          "types": Array [
+            Object {
+              "kind": "namedType",
+              "typename": "Tomato",
+            },
+            Object {
+              "fields": Object {
+                "id": Object {
+                  "kind": "scalar",
+                  "scalar": "ID",
+                },
+                "origin": Object {
+                  "kind": "scalar",
+                  "scalar": "String",
+                },
+              },
+              "kind": "object",
+            },
+          ],
+        },
+      },
+      "kind": "object",
+    },
+    "String": Object {
+      "kind": "scalar",
+      "scalar": "String",
+    },
+    "Tomato": Object {
+      "fields": Object {
+        "color": Object {
+          "kind": "scalar",
+          "scalar": "String",
+        },
+        "id": Object {
+          "kind": "scalar",
+          "scalar": "ID",
+        },
+      },
+      "kind": "object",
+    },
+    "UnionType": Object {
+      "kind": "union",
+      "types": Array [
+        Object {
+          "kind": "namedType",
+          "typename": "Tomato",
+        },
+        Object {
+          "fields": Object {
+            "id": Object {
+              "kind": "scalar",
+              "scalar": "ID",
+            },
+            "origin": Object {
+              "kind": "scalar",
+              "scalar": "String",
+            },
+          },
+          "kind": "object",
+        },
+      ],
+    },
+    "__Directive": undefined,
+    "__DirectiveLocation": undefined,
+    "__EnumValue": undefined,
+    "__Field": undefined,
+    "__InputValue": undefined,
+    "__Schema": undefined,
+    "__Type": undefined,
+    "__TypeKind": undefined,
+  },
+}
+`;
+
+exports[`validate document: sourceCode 1`] = `
+"query testScalars {
+  scalarString
+  scalarInt
+  scalarFloat
+  scalarBoolean
+  scalarID
+  scalarCustom
+
+  renamedString: scalarString
+}
+
+query testNullability {
+  nullableBoolean
+  nonNullableBoolean
+}
+
+# query testNesting {
+#   nestedObject {
+#     recursive {
+#       recursive {
+#         scalar
+#       }
+#     }
+#     nested {
+#       scalar
+#     }
+#     scalar
+#     list
+#   }
+# }
+
+# query testUnion {
+#   union {
+#     ... on Tomato {
+#       id
+#       color
+#     }
+#     ... on Potato {
+#       id
+#       origin
+#     }
+#   }
+# }
+
+# query testMethods(
+#   $reqParam: String!
+#   $optParam: Float!
+#   $input: InputType
+#   $list2: [CustomScalar!]!
+# ) {
+#   method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
+#   renamedMethod: method2(list2: $list2)
+# }
+
+# mutation testScalarsMutation {
+#   scalarString
+#   scalarInt
+#   scalarFloat
+#   scalarBoolean
+#   scalarID
+#   scalarCustom
+
+#   renamedString: scalarString
+# }
+
+# mutation testNullabilityMutation {
+#   nullableBoolean
+#   nonNullableBoolean
+# }
+
+# mutation testNestingMutation {
+#   nestedObject {
+#     recursive {
+#       recursive {
+#         scalar
+#       }
+#     }
+#     nested {
+#       scalar
+#     }
+#     scalar
+#     list
+#   }
+# }
+
+# mutation testMethodsMutation(
+#   $reqParam: String!
+#   $optParam: Float!
+#   $input: InputType
+#   $list2: [CustomScalar!]!
+# ) {
+#   method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
+#   renamedMethod: method2(list2: $list2)
+# }
+
+# fragment ObjectTypeFields on ObjectType {
+#   scalar
+# }
+
+# query testFragments {
+#   nestedObject {
+#     ...ObjectTypeFields
+#   }
+# }
+"
 `;

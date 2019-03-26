@@ -7,7 +7,7 @@ import prettier from 'prettier'
 import { generateImport } from './Import'
 import { generateHelperTypes } from './HelperTypes'
 
-export async function generate(
+export async function generateCode(
   schema: SchemaIR,
   documentIR: DocumentIR,
   sourceCode: string

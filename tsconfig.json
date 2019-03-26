@@ -12,6 +12,5 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src"],
-  "exclude": ["src/test"]
+  "include": ["src"]
 }

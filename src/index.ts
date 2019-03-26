@@ -1,7 +1,7 @@
 import { loadDocument } from './graphql/Document'
 import { loadSchema } from './graphql/Schema'
 import { transformDocument } from './transform/DocumentIR'
-import { generate } from './generate'
+import { generateCode } from './generate'
 import { transformSchema } from './transform/SchemaIR'
 import { writeFile } from 'fs-extra'
 import { validateDocument } from './graphql/Validation'
@@ -29,7 +29,7 @@ async function main() {
       JSON.stringify(documentIR, null, 2)
     )
 
-    const output = await generate(schemaIR, documentIR, sourceCode)
+    const output = await generateCode(schemaIR, documentIR, sourceCode)
     await writeFile('src/output/output.ts', output)
   } catch (e) {
     console.error('Caught exception: ' + e.message)
