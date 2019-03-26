@@ -37,3 +37,35 @@ const testNullability: __typed_query<
     nonNullableBoolean
   }
 `
+const testNesting: __typed_query<
+  {},
+  {
+    nestedObject: Nullable<{
+      recursive: Nullable<{
+        recursive: Nullable<{
+          scalar: Nullable<boolean>
+        }>
+      }>
+      nested: Nullable<{
+        scalar: Nullable<number>
+      }>
+      scalar: Nullable<boolean>
+      list: Nullable<ReadonlyArray<string>>
+    }>
+  }
+> = gql`
+  query testNesting {
+    nestedObject {
+      recursive {
+        recursive {
+          scalar
+        }
+      }
+      nested {
+        scalar
+      }
+      scalar
+      list
+    }
+  }
+`

@@ -4,6 +4,7 @@ import { SelectionIR } from '../transform/SelectionIR'
 import { TypeIR } from '../transform/TypeIR'
 import { generateScalarType } from './ScalarType'
 import { generateObjectType } from './ObjectType'
+import { generateListType } from './ListType'
 
 export function generateType(
   schema: SchemaIR,
@@ -40,10 +41,11 @@ export function generateNonNullType(
     case 'union':
       break
     case 'list':
+      return generateListType(schema, schemaType)
       break
   }
 
-  console.log('Unhandled type in generateNonNullType: ' + schemaType.kind)
+  throw 'Unhandled type in generateNonNullType: ' + schemaType.kind
 
   return ts.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword)
 }

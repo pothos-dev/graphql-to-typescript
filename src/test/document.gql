@@ -14,20 +14,20 @@ query testNullability {
   nonNullableBoolean
 }
 
-# query testNesting {
-#   nestedObject {
-#     recursive {
-#       recursive {
-#         scalar
-#       }
-#     }
-#     nested {
-#       scalar
-#     }
-#     scalar
-#     list
-#   }
-# }
+query testNesting {
+  nestedObject {
+    recursive {
+      recursive {
+        scalar
+      }
+    }
+    nested {
+      scalar
+    }
+    scalar
+    list
+  }
+}
 
 # query testUnion {
 #   union {

@@ -4,6 +4,7 @@ import { validateDocument } from '../graphql/Validation'
 import { transformSchema } from '../transform/SchemaIR'
 import { transformDocument } from '../transform/DocumentIR'
 import { generateCode } from '../generate'
+import { writeFileSync } from 'fs'
 
 function loadTestSchema() {
   return loadSchema('src/test/schema.gql')
@@ -49,4 +50,5 @@ test('generate code', async () => {
   const schemaIR = transformSchema(schema)
   const code = await generateCode(schemaIR, documentIR, sourceCode)
   expect(code).toMatchSnapshot('code')
+  writeFileSync('src/output/output.ts', code)
 })
