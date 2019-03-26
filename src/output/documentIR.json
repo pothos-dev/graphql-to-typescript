@@ -3,40 +3,41 @@
     {
       "kind": "query",
       "name": "testScalars",
-      "data": [
-        {
-          "name": "scalarString",
-          "schemaName": "scalarString"
-        },
-        {
-          "name": "scalarInt",
-          "schemaName": "scalarInt"
-        },
-        {
-          "name": "scalarFloat",
-          "schemaName": "scalarFloat"
-        },
-        {
-          "name": "scalarBoolean",
-          "schemaName": "scalarBoolean"
-        },
-        {
-          "name": "scalarID",
-          "schemaName": "scalarID"
-        },
-        {
-          "name": "scalarCustom",
-          "schemaName": "scalarCustom"
-        },
-        {
-          "name": "renamedString",
-          "schemaName": "scalarString"
-        }
-      ],
-      "variables": {
-        "kind": "object",
-        "fields": {}
+      "data": {
+        "fields": [
+          {
+            "name": "scalarString",
+            "schemaName": "scalarString"
+          },
+          {
+            "name": "scalarInt",
+            "schemaName": "scalarInt"
+          },
+          {
+            "name": "scalarFloat",
+            "schemaName": "scalarFloat"
+          },
+          {
+            "name": "scalarBoolean",
+            "schemaName": "scalarBoolean"
+          },
+          {
+            "name": "scalarID",
+            "schemaName": "scalarID"
+          },
+          {
+            "name": "scalarCustom",
+            "schemaName": "scalarCustom"
+          },
+          {
+            "name": "renamedString",
+            "schemaName": "scalarString"
+          }
+        ],
+        "unions": {},
+        "fragments": []
       },
+      "variables": {},
       "sourceCodeRange": [
         0,
         135
@@ -45,23 +46,395 @@
     {
       "kind": "query",
       "name": "testNullability",
-      "data": [
-        {
-          "name": "nullableBoolean",
-          "schemaName": "nullableBoolean"
-        },
-        {
-          "name": "nonNullableBoolean",
-          "schemaName": "nonNullableBoolean"
-        }
-      ],
-      "variables": {
-        "kind": "object",
-        "fields": {}
+      "data": {
+        "fields": [
+          {
+            "name": "nullableBoolean",
+            "schemaName": "nullableBoolean"
+          },
+          {
+            "name": "nonNullableBoolean",
+            "schemaName": "nonNullableBoolean"
+          }
+        ],
+        "unions": {},
+        "fragments": []
       },
+      "variables": {},
       "sourceCodeRange": [
         137,
         201
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "testNesting",
+      "data": {
+        "fields": [
+          {
+            "name": "nestedObject",
+            "schemaName": "nestedObject",
+            "selectionSet": {
+              "fields": [
+                {
+                  "name": "recursive",
+                  "schemaName": "recursive",
+                  "selectionSet": {
+                    "fields": [
+                      {
+                        "name": "recursive",
+                        "schemaName": "recursive",
+                        "selectionSet": {
+                          "fields": [
+                            {
+                              "name": "scalar",
+                              "schemaName": "scalar"
+                            }
+                          ],
+                          "unions": {},
+                          "fragments": []
+                        }
+                      }
+                    ],
+                    "unions": {},
+                    "fragments": []
+                  }
+                },
+                {
+                  "name": "nested",
+                  "schemaName": "nested",
+                  "selectionSet": {
+                    "fields": [
+                      {
+                        "name": "scalar",
+                        "schemaName": "scalar"
+                      }
+                    ],
+                    "unions": {},
+                    "fragments": []
+                  }
+                },
+                {
+                  "name": "scalar",
+                  "schemaName": "scalar"
+                },
+                {
+                  "name": "list",
+                  "schemaName": "list"
+                }
+              ],
+              "unions": {},
+              "fragments": []
+            }
+          }
+        ],
+        "unions": {},
+        "fragments": []
+      },
+      "variables": {},
+      "sourceCodeRange": [
+        203,
+        360
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "testUnion",
+      "data": {
+        "fields": [
+          {
+            "name": "union",
+            "schemaName": "union",
+            "selectionSet": {
+              "fields": [],
+              "unions": {
+                "Tomato": {
+                  "fields": [
+                    {
+                      "name": "id",
+                      "schemaName": "id"
+                    },
+                    {
+                      "name": "color",
+                      "schemaName": "color"
+                    }
+                  ],
+                  "unions": {},
+                  "fragments": []
+                },
+                "Potato": {
+                  "fields": [
+                    {
+                      "name": "id",
+                      "schemaName": "id"
+                    },
+                    {
+                      "name": "origin",
+                      "schemaName": "origin"
+                    }
+                  ],
+                  "unions": {},
+                  "fragments": []
+                }
+              },
+              "fragments": []
+            }
+          }
+        ],
+        "unions": {},
+        "fragments": []
+      },
+      "variables": {},
+      "sourceCodeRange": [
+        362,
+        490
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "testMethods",
+      "data": {
+        "fields": [
+          {
+            "name": "method",
+            "schemaName": "method"
+          },
+          {
+            "name": "renamedMethod",
+            "schemaName": "method2"
+          }
+        ],
+        "unions": {},
+        "fragments": []
+      },
+      "variables": {
+        "reqParam": {
+          "kind": "nonNull",
+          "wrappedType": {
+            "kind": "namedType",
+            "typename": "String"
+          }
+        },
+        "optParam": {
+          "kind": "nonNull",
+          "wrappedType": {
+            "kind": "namedType",
+            "typename": "Float"
+          }
+        },
+        "input": {
+          "kind": "namedType",
+          "typename": "InputType"
+        },
+        "list2": {
+          "kind": "nonNull",
+          "wrappedType": {
+            "kind": "list",
+            "wrappedType": {
+              "kind": "nonNull",
+              "wrappedType": {
+                "kind": "namedType",
+                "typename": "CustomScalar"
+              }
+            }
+          }
+        }
+      },
+      "sourceCodeRange": [
+        492,
+        720
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "testScalarsMutation",
+      "data": {
+        "fields": [
+          {
+            "name": "scalarString",
+            "schemaName": "scalarString"
+          },
+          {
+            "name": "scalarInt",
+            "schemaName": "scalarInt"
+          },
+          {
+            "name": "scalarFloat",
+            "schemaName": "scalarFloat"
+          },
+          {
+            "name": "scalarBoolean",
+            "schemaName": "scalarBoolean"
+          },
+          {
+            "name": "scalarID",
+            "schemaName": "scalarID"
+          },
+          {
+            "name": "scalarCustom",
+            "schemaName": "scalarCustom"
+          },
+          {
+            "name": "renamedString",
+            "schemaName": "scalarString"
+          }
+        ],
+        "unions": {},
+        "fragments": []
+      },
+      "variables": {},
+      "sourceCodeRange": [
+        722,
+        868
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "testNullabilityMutation",
+      "data": {
+        "fields": [
+          {
+            "name": "nullableBoolean",
+            "schemaName": "nullableBoolean"
+          },
+          {
+            "name": "nonNullableBoolean",
+            "schemaName": "nonNullableBoolean"
+          }
+        ],
+        "unions": {},
+        "fragments": []
+      },
+      "variables": {},
+      "sourceCodeRange": [
+        870,
+        945
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "testNestingMutation",
+      "data": {
+        "fields": [
+          {
+            "name": "nestedObject",
+            "schemaName": "nestedObject",
+            "selectionSet": {
+              "fields": [
+                {
+                  "name": "recursive",
+                  "schemaName": "recursive",
+                  "selectionSet": {
+                    "fields": [
+                      {
+                        "name": "recursive",
+                        "schemaName": "recursive",
+                        "selectionSet": {
+                          "fields": [
+                            {
+                              "name": "scalar",
+                              "schemaName": "scalar"
+                            }
+                          ],
+                          "unions": {},
+                          "fragments": []
+                        }
+                      }
+                    ],
+                    "unions": {},
+                    "fragments": []
+                  }
+                },
+                {
+                  "name": "nested",
+                  "schemaName": "nested",
+                  "selectionSet": {
+                    "fields": [
+                      {
+                        "name": "scalar",
+                        "schemaName": "scalar"
+                      }
+                    ],
+                    "unions": {},
+                    "fragments": []
+                  }
+                },
+                {
+                  "name": "scalar",
+                  "schemaName": "scalar"
+                },
+                {
+                  "name": "list",
+                  "schemaName": "list"
+                }
+              ],
+              "unions": {},
+              "fragments": []
+            }
+          }
+        ],
+        "unions": {},
+        "fragments": []
+      },
+      "variables": {},
+      "sourceCodeRange": [
+        947,
+        1115
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "testMethodsMutation",
+      "data": {
+        "fields": [
+          {
+            "name": "method",
+            "schemaName": "method"
+          },
+          {
+            "name": "renamedMethod",
+            "schemaName": "method2"
+          }
+        ],
+        "unions": {},
+        "fragments": []
+      },
+      "variables": {
+        "reqParam": {
+          "kind": "nonNull",
+          "wrappedType": {
+            "kind": "namedType",
+            "typename": "String"
+          }
+        },
+        "optParam": {
+          "kind": "nonNull",
+          "wrappedType": {
+            "kind": "namedType",
+            "typename": "Float"
+          }
+        },
+        "input": {
+          "kind": "namedType",
+          "typename": "InputType"
+        },
+        "list2": {
+          "kind": "nonNull",
+          "wrappedType": {
+            "kind": "list",
+            "wrappedType": {
+              "kind": "nonNull",
+              "wrappedType": {
+                "kind": "namedType",
+                "typename": "CustomScalar"
+              }
+            }
+          }
+        }
+      },
+      "sourceCodeRange": [
+        1117,
+        1356
       ]
     }
   ]

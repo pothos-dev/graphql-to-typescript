@@ -1,12 +1,13 @@
 import { OperationDefinitionNode } from 'graphql'
-import { ObjectTypeIR } from './ObjectTypeIR'
 import { SelectionSetIR, transformSelectionSet } from './SelectionIR'
+import { fromPairs } from 'lodash'
+import { transformVariable, VariableIR } from './VariableIR'
 
 export interface OperationIR {
   kind: 'query' | 'mutation' | 'subscription'
   name: string
   data: SelectionSetIR
-  variables: ObjectTypeIR
+  variables: Record<string, VariableIR>
   sourceCodeRange: [number, number]
 }
 
@@ -22,15 +23,7 @@ export function transformOperation(T: OperationDefinitionNode): OperationIR {
     kind: T.operation,
     name: T.name.value,
     data: transformSelectionSet(T.selectionSet),
-    variables: transformVariables(T),
+    variables: fromPairs((T.variableDefinitions || []).map(transformVariable)),
     sourceCodeRange: [T.loc.start, T.loc.end],
-  }
-}
-
-function transformVariables(T: OperationDefinitionNode): ObjectTypeIR {
-  // TODO
-  return {
-    kind: 'object',
-    fields: {},
   }
 }

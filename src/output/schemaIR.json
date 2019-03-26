@@ -85,17 +85,8 @@
               "typename": "Tomato"
             },
             {
-              "kind": "object",
-              "fields": {
-                "id": {
-                  "kind": "scalar",
-                  "scalar": "ID"
-                },
-                "origin": {
-                  "kind": "scalar",
-                  "scalar": "String"
-                }
-              }
+              "kind": "namedType",
+              "typename": "Potato"
             }
           ]
         },
@@ -185,17 +176,8 @@
           "typename": "Tomato"
         },
         {
-          "kind": "object",
-          "fields": {
-            "id": {
-              "kind": "scalar",
-              "scalar": "ID"
-            },
-            "origin": {
-              "kind": "scalar",
-              "scalar": "String"
-            }
-          }
+          "kind": "namedType",
+          "typename": "Potato"
         }
       ]
     },

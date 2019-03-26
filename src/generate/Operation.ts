@@ -3,6 +3,8 @@ import { OperationIR } from '../transform/OperationIR'
 import { SchemaIR } from '../transform/SchemaIR'
 import { TypeIR } from '../transform/TypeIR'
 import { generateNonNullType } from './Type'
+import { toPairs } from 'lodash'
+import { VariableIR } from '../transform/VariableIR'
 
 export function generateOperation(
   operation: OperationIR,
@@ -15,13 +17,11 @@ export function generateOperation(
       [
         ts.createVariableDeclaration(
           ts.createIdentifier(operation.name),
-          ts.createTypeReferenceNode(
-            ts.createIdentifier(`__typed_${operation.kind}`),
-            [
-              generateOperationVariables(),
-              generateOperationData(operation, schema),
-            ]
-          ),
+          ts.createTypeReferenceNode(ts.createIdentifier('__typed_operation'), [
+            ts.createLiteralTypeNode(ts.createLiteral(operation.kind)),
+            generateVariables(),
+            generateData(),
+          ]),
           ts.createTaggedTemplate(
             ts.createIdentifier('gql'),
             ts.createNoSubstitutionTemplateLiteral(formatGqlSource())
@@ -37,20 +37,56 @@ export function generateOperation(
       .substring(operation.sourceCodeRange[0], operation.sourceCodeRange[1])
       .replace(/\n/g, ' ')
   }
-}
 
-function generateOperationVariables() {
-  // TODO
-  return ts.createTypeLiteralNode([])
-}
+  function generateVariables(): ts.TypeLiteralNode {
+    return ts.createTypeLiteralNode(
+      toPairs(operation.variables || {}).map(([name, variable]) =>
+        ts.createPropertySignature(
+          undefined,
+          ts.createIdentifier(name),
+          undefined,
+          generateVariableType(variable),
+          undefined
+        )
+      )
+    )
 
-function generateOperationData(operation: OperationIR, schema: SchemaIR) {
-  return generateNonNullType(schema, getSchemaType(), operation.data)
+    function generateVariableType(
+      variable: VariableIR,
+      nullable?: boolean
+    ): ts.TypeNode {
+      if (variable.kind == 'nonNull') {
+        return generateVariableType(variable.wrappedType, false)
+      }
 
-  function getSchemaType(): TypeIR {
-    if (operation.kind == 'query') return schema.types['Query']
-    if (operation.kind == 'mutation') return schema.types['Mutation']
-    if (operation.kind == 'subscription') return schema.types['Subscription']
-    throw 'unexpected operation.kind ' + operation.kind
+      if (nullable == null || nullable == true) {
+        return ts.createTypeReferenceNode(ts.createIdentifier('Nullable'), [
+          generateVariableType(variable, false),
+        ])
+      }
+
+      if (variable.kind == 'list') {
+        return ts.createTypeReferenceNode(
+          ts.createIdentifier('ReadonlyArray'),
+          [generateVariableType(variable.wrappedType)]
+        )
+      }
+
+      return ts.createTypeReferenceNode(
+        ts.createIdentifier(variable.typename),
+        undefined
+      )
+    }
+  }
+
+  function generateData() {
+    return generateNonNullType(schema, getSchemaType(), operation.data)
+
+    function getSchemaType(): TypeIR {
+      if (operation.kind == 'query') return schema.types['Query']
+      if (operation.kind == 'mutation') return schema.types['Mutation']
+      if (operation.kind == 'subscription') return schema.types['Subscription']
+      throw 'unexpected operation.kind ' + operation.kind
+    }
   }
 }

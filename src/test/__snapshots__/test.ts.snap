@@ -8,7 +8,8 @@ type Float = number
 type Boolean = boolean
 type ID = string
 type CustomScalar = string
-const testScalars: __typed_query<
+const testScalars: __typed_operation<
+  'query',
   {},
   {
     scalarString: Nullable<String>
@@ -30,7 +31,8 @@ const testScalars: __typed_query<
     renamedString: scalarString
   }
 \`
-const testNullability: __typed_query<
+const testNullability: __typed_operation<
+  'query',
   {},
   {
     nullableBoolean: Nullable<Boolean>
@@ -42,7 +44,8 @@ const testNullability: __typed_query<
     nonNullableBoolean
   }
 \`
-const testNesting: __typed_query<
+const testNesting: __typed_operation<
+  'query',
   {},
   {
     nestedObject: Nullable<{
@@ -74,7 +77,8 @@ const testNesting: __typed_query<
     }
   }
 \`
-const testUnion: __typed_query<
+const testUnion: __typed_operation<
+  'query',
   {},
   {
     union: Nullable<
@@ -104,14 +108,112 @@ const testUnion: __typed_query<
     }
   }
 \`
-const testMethods: __typed_query<
-  {},
+const testMethods: __typed_operation<
+  'query',
+  {
+    reqParam: String
+    optParam: Float
+    input: Nullable<InputType>
+    list2: ReadonlyArray<CustomScalar>
+  },
   {
     method: Nullable<CustomScalar>
     renamedMethod: Nullable<ReadonlyArray<Nullable<CustomScalar>>>
   }
 > = gql\`
   query testMethods(
+    $reqParam: String!
+    $optParam: Float!
+    $input: InputType
+    $list2: [CustomScalar!]!
+  ) {
+    method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
+    renamedMethod: method2(list2: $list2)
+  }
+\`
+const testScalarsMutation: __typed_operation<
+  'mutation',
+  {},
+  {
+    scalarString: Nullable<String>
+    scalarInt: Nullable<Int>
+    scalarFloat: Nullable<Float>
+    scalarBoolean: Nullable<Boolean>
+    scalarID: Nullable<ID>
+    scalarCustom: Nullable<CustomScalar>
+    renamedString: Nullable<String>
+  }
+> = gql\`
+  mutation testScalarsMutation {
+    scalarString
+    scalarInt
+    scalarFloat
+    scalarBoolean
+    scalarID
+    scalarCustom
+    renamedString: scalarString
+  }
+\`
+const testNullabilityMutation: __typed_operation<
+  'mutation',
+  {},
+  {
+    nullableBoolean: Nullable<Boolean>
+    nonNullableBoolean: Boolean
+  }
+> = gql\`
+  mutation testNullabilityMutation {
+    nullableBoolean
+    nonNullableBoolean
+  }
+\`
+const testNestingMutation: __typed_operation<
+  'mutation',
+  {},
+  {
+    nestedObject: Nullable<{
+      recursive: Nullable<{
+        recursive: Nullable<{
+          scalar: Nullable<Boolean>
+        }>
+      }>
+      nested: Nullable<{
+        scalar: Nullable<Int>
+      }>
+      scalar: Nullable<Boolean>
+      list: Nullable<ReadonlyArray<String>>
+    }>
+  }
+> = gql\`
+  mutation testNestingMutation {
+    nestedObject {
+      recursive {
+        recursive {
+          scalar
+        }
+      }
+      nested {
+        scalar
+      }
+      scalar
+      list
+    }
+  }
+\`
+const testMethodsMutation: __typed_operation<
+  'mutation',
+  {
+    reqParam: String
+    optParam: Float
+    input: Nullable<InputType>
+    list2: ReadonlyArray<CustomScalar>
+  },
+  {
+    method: Nullable<CustomScalar>
+    renamedMethod: Nullable<ReadonlyArray<Nullable<CustomScalar>>>
+  }
+> = gql\`
+  mutation testMethodsMutation(
     $reqParam: String!
     $optParam: Float!
     $input: InputType
@@ -1155,10 +1257,839 @@ Object {
           },
         ],
       },
+      Object {
+        "directives": Array [],
+        "kind": "OperationDefinition",
+        "loc": Object {
+          "end": 868,
+          "start": 722,
+        },
+        "name": Object {
+          "kind": "Name",
+          "loc": Object {
+            "end": 750,
+            "start": 731,
+          },
+          "value": "testScalarsMutation",
+        },
+        "operation": "mutation",
+        "selectionSet": Object {
+          "kind": "SelectionSet",
+          "loc": Object {
+            "end": 868,
+            "start": 751,
+          },
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 767,
+                "start": 755,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 767,
+                  "start": 755,
+                },
+                "value": "scalarString",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 779,
+                "start": 770,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 779,
+                  "start": 770,
+                },
+                "value": "scalarInt",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 793,
+                "start": 782,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 793,
+                  "start": 782,
+                },
+                "value": "scalarFloat",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 809,
+                "start": 796,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 809,
+                  "start": 796,
+                },
+                "value": "scalarBoolean",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 820,
+                "start": 812,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 820,
+                  "start": 812,
+                },
+                "value": "scalarID",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 835,
+                "start": 823,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 835,
+                  "start": 823,
+                },
+                "value": "scalarCustom",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 852,
+                  "start": 839,
+                },
+                "value": "renamedString",
+              },
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 866,
+                "start": 839,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 866,
+                  "start": 854,
+                },
+                "value": "scalarString",
+              },
+              "selectionSet": undefined,
+            },
+          ],
+        },
+        "variableDefinitions": Array [],
+      },
+      Object {
+        "directives": Array [],
+        "kind": "OperationDefinition",
+        "loc": Object {
+          "end": 945,
+          "start": 870,
+        },
+        "name": Object {
+          "kind": "Name",
+          "loc": Object {
+            "end": 902,
+            "start": 879,
+          },
+          "value": "testNullabilityMutation",
+        },
+        "operation": "mutation",
+        "selectionSet": Object {
+          "kind": "SelectionSet",
+          "loc": Object {
+            "end": 945,
+            "start": 903,
+          },
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 922,
+                "start": 907,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 922,
+                  "start": 907,
+                },
+                "value": "nullableBoolean",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 943,
+                "start": 925,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 943,
+                  "start": 925,
+                },
+                "value": "nonNullableBoolean",
+              },
+              "selectionSet": undefined,
+            },
+          ],
+        },
+        "variableDefinitions": Array [],
+      },
+      Object {
+        "directives": Array [],
+        "kind": "OperationDefinition",
+        "loc": Object {
+          "end": 1115,
+          "start": 947,
+        },
+        "name": Object {
+          "kind": "Name",
+          "loc": Object {
+            "end": 975,
+            "start": 956,
+          },
+          "value": "testNestingMutation",
+        },
+        "operation": "mutation",
+        "selectionSet": Object {
+          "kind": "SelectionSet",
+          "loc": Object {
+            "end": 1115,
+            "start": 976,
+          },
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 1113,
+                "start": 980,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 992,
+                  "start": 980,
+                },
+                "value": "nestedObject",
+              },
+              "selectionSet": Object {
+                "kind": "SelectionSet",
+                "loc": Object {
+                  "end": 1113,
+                  "start": 993,
+                },
+                "selections": Array [
+                  Object {
+                    "alias": undefined,
+                    "arguments": Array [],
+                    "directives": Array [],
+                    "kind": "Field",
+                    "loc": Object {
+                      "end": 1057,
+                      "start": 999,
+                    },
+                    "name": Object {
+                      "kind": "Name",
+                      "loc": Object {
+                        "end": 1008,
+                        "start": 999,
+                      },
+                      "value": "recursive",
+                    },
+                    "selectionSet": Object {
+                      "kind": "SelectionSet",
+                      "loc": Object {
+                        "end": 1057,
+                        "start": 1009,
+                      },
+                      "selections": Array [
+                        Object {
+                          "alias": undefined,
+                          "arguments": Array [],
+                          "directives": Array [],
+                          "kind": "Field",
+                          "loc": Object {
+                            "end": 1051,
+                            "start": 1017,
+                          },
+                          "name": Object {
+                            "kind": "Name",
+                            "loc": Object {
+                              "end": 1026,
+                              "start": 1017,
+                            },
+                            "value": "recursive",
+                          },
+                          "selectionSet": Object {
+                            "kind": "SelectionSet",
+                            "loc": Object {
+                              "end": 1051,
+                              "start": 1027,
+                            },
+                            "selections": Array [
+                              Object {
+                                "alias": undefined,
+                                "arguments": Array [],
+                                "directives": Array [],
+                                "kind": "Field",
+                                "loc": Object {
+                                  "end": 1043,
+                                  "start": 1037,
+                                },
+                                "name": Object {
+                                  "kind": "Name",
+                                  "loc": Object {
+                                    "end": 1043,
+                                    "start": 1037,
+                                  },
+                                  "value": "scalar",
+                                },
+                                "selectionSet": undefined,
+                              },
+                            ],
+                          },
+                        },
+                      ],
+                    },
+                  },
+                  Object {
+                    "alias": undefined,
+                    "arguments": Array [],
+                    "directives": Array [],
+                    "kind": "Field",
+                    "loc": Object {
+                      "end": 1089,
+                      "start": 1062,
+                    },
+                    "name": Object {
+                      "kind": "Name",
+                      "loc": Object {
+                        "end": 1068,
+                        "start": 1062,
+                      },
+                      "value": "nested",
+                    },
+                    "selectionSet": Object {
+                      "kind": "SelectionSet",
+                      "loc": Object {
+                        "end": 1089,
+                        "start": 1069,
+                      },
+                      "selections": Array [
+                        Object {
+                          "alias": undefined,
+                          "arguments": Array [],
+                          "directives": Array [],
+                          "kind": "Field",
+                          "loc": Object {
+                            "end": 1083,
+                            "start": 1077,
+                          },
+                          "name": Object {
+                            "kind": "Name",
+                            "loc": Object {
+                              "end": 1083,
+                              "start": 1077,
+                            },
+                            "value": "scalar",
+                          },
+                          "selectionSet": undefined,
+                        },
+                      ],
+                    },
+                  },
+                  Object {
+                    "alias": undefined,
+                    "arguments": Array [],
+                    "directives": Array [],
+                    "kind": "Field",
+                    "loc": Object {
+                      "end": 1100,
+                      "start": 1094,
+                    },
+                    "name": Object {
+                      "kind": "Name",
+                      "loc": Object {
+                        "end": 1100,
+                        "start": 1094,
+                      },
+                      "value": "scalar",
+                    },
+                    "selectionSet": undefined,
+                  },
+                  Object {
+                    "alias": undefined,
+                    "arguments": Array [],
+                    "directives": Array [],
+                    "kind": "Field",
+                    "loc": Object {
+                      "end": 1109,
+                      "start": 1105,
+                    },
+                    "name": Object {
+                      "kind": "Name",
+                      "loc": Object {
+                        "end": 1109,
+                        "start": 1105,
+                      },
+                      "value": "list",
+                    },
+                    "selectionSet": undefined,
+                  },
+                ],
+              },
+            },
+          ],
+        },
+        "variableDefinitions": Array [],
+      },
+      Object {
+        "directives": Array [],
+        "kind": "OperationDefinition",
+        "loc": Object {
+          "end": 1356,
+          "start": 1117,
+        },
+        "name": Object {
+          "kind": "Name",
+          "loc": Object {
+            "end": 1145,
+            "start": 1126,
+          },
+          "value": "testMethodsMutation",
+        },
+        "operation": "mutation",
+        "selectionSet": Object {
+          "kind": "SelectionSet",
+          "loc": Object {
+            "end": 1356,
+            "start": 1237,
+          },
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": Array [
+                Object {
+                  "kind": "Argument",
+                  "loc": Object {
+                    "end": 1272,
+                    "start": 1248,
+                  },
+                  "name": Object {
+                    "kind": "Name",
+                    "loc": Object {
+                      "end": 1261,
+                      "start": 1248,
+                    },
+                    "value": "requiredParam",
+                  },
+                  "value": Object {
+                    "kind": "Variable",
+                    "loc": Object {
+                      "end": 1272,
+                      "start": 1263,
+                    },
+                    "name": Object {
+                      "kind": "Name",
+                      "loc": Object {
+                        "end": 1272,
+                        "start": 1264,
+                      },
+                      "value": "reqParam",
+                    },
+                  },
+                },
+                Object {
+                  "kind": "Argument",
+                  "loc": Object {
+                    "end": 1298,
+                    "start": 1274,
+                  },
+                  "name": Object {
+                    "kind": "Name",
+                    "loc": Object {
+                      "end": 1287,
+                      "start": 1274,
+                    },
+                    "value": "optionalParam",
+                  },
+                  "value": Object {
+                    "kind": "Variable",
+                    "loc": Object {
+                      "end": 1298,
+                      "start": 1289,
+                    },
+                    "name": Object {
+                      "kind": "Name",
+                      "loc": Object {
+                        "end": 1298,
+                        "start": 1290,
+                      },
+                      "value": "optParam",
+                    },
+                  },
+                },
+                Object {
+                  "kind": "Argument",
+                  "loc": Object {
+                    "end": 1313,
+                    "start": 1300,
+                  },
+                  "name": Object {
+                    "kind": "Name",
+                    "loc": Object {
+                      "end": 1305,
+                      "start": 1300,
+                    },
+                    "value": "input",
+                  },
+                  "value": Object {
+                    "kind": "Variable",
+                    "loc": Object {
+                      "end": 1313,
+                      "start": 1307,
+                    },
+                    "name": Object {
+                      "kind": "Name",
+                      "loc": Object {
+                        "end": 1313,
+                        "start": 1308,
+                      },
+                      "value": "input",
+                    },
+                  },
+                },
+              ],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 1314,
+                "start": 1241,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 1247,
+                  "start": 1241,
+                },
+                "value": "method",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 1330,
+                  "start": 1317,
+                },
+                "value": "renamedMethod",
+              },
+              "arguments": Array [
+                Object {
+                  "kind": "Argument",
+                  "loc": Object {
+                    "end": 1353,
+                    "start": 1340,
+                  },
+                  "name": Object {
+                    "kind": "Name",
+                    "loc": Object {
+                      "end": 1345,
+                      "start": 1340,
+                    },
+                    "value": "list2",
+                  },
+                  "value": Object {
+                    "kind": "Variable",
+                    "loc": Object {
+                      "end": 1353,
+                      "start": 1347,
+                    },
+                    "name": Object {
+                      "kind": "Name",
+                      "loc": Object {
+                        "end": 1353,
+                        "start": 1348,
+                      },
+                      "value": "list2",
+                    },
+                  },
+                },
+              ],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 1354,
+                "start": 1317,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 1339,
+                  "start": 1332,
+                },
+                "value": "method2",
+              },
+              "selectionSet": undefined,
+            },
+          ],
+        },
+        "variableDefinitions": Array [
+          Object {
+            "defaultValue": undefined,
+            "directives": Array [],
+            "kind": "VariableDefinition",
+            "loc": Object {
+              "end": 1167,
+              "start": 1149,
+            },
+            "type": Object {
+              "kind": "NonNullType",
+              "loc": Object {
+                "end": 1167,
+                "start": 1160,
+              },
+              "type": Object {
+                "kind": "NamedType",
+                "loc": Object {
+                  "end": 1166,
+                  "start": 1160,
+                },
+                "name": Object {
+                  "kind": "Name",
+                  "loc": Object {
+                    "end": 1166,
+                    "start": 1160,
+                  },
+                  "value": "String",
+                },
+              },
+            },
+            "variable": Object {
+              "kind": "Variable",
+              "loc": Object {
+                "end": 1158,
+                "start": 1149,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 1158,
+                  "start": 1150,
+                },
+                "value": "reqParam",
+              },
+            },
+          },
+          Object {
+            "defaultValue": undefined,
+            "directives": Array [],
+            "kind": "VariableDefinition",
+            "loc": Object {
+              "end": 1187,
+              "start": 1170,
+            },
+            "type": Object {
+              "kind": "NonNullType",
+              "loc": Object {
+                "end": 1187,
+                "start": 1181,
+              },
+              "type": Object {
+                "kind": "NamedType",
+                "loc": Object {
+                  "end": 1186,
+                  "start": 1181,
+                },
+                "name": Object {
+                  "kind": "Name",
+                  "loc": Object {
+                    "end": 1186,
+                    "start": 1181,
+                  },
+                  "value": "Float",
+                },
+              },
+            },
+            "variable": Object {
+              "kind": "Variable",
+              "loc": Object {
+                "end": 1179,
+                "start": 1170,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 1179,
+                  "start": 1171,
+                },
+                "value": "optParam",
+              },
+            },
+          },
+          Object {
+            "defaultValue": undefined,
+            "directives": Array [],
+            "kind": "VariableDefinition",
+            "loc": Object {
+              "end": 1207,
+              "start": 1190,
+            },
+            "type": Object {
+              "kind": "NamedType",
+              "loc": Object {
+                "end": 1207,
+                "start": 1198,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 1207,
+                  "start": 1198,
+                },
+                "value": "InputType",
+              },
+            },
+            "variable": Object {
+              "kind": "Variable",
+              "loc": Object {
+                "end": 1196,
+                "start": 1190,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 1196,
+                  "start": 1191,
+                },
+                "value": "input",
+              },
+            },
+          },
+          Object {
+            "defaultValue": undefined,
+            "directives": Array [],
+            "kind": "VariableDefinition",
+            "loc": Object {
+              "end": 1234,
+              "start": 1210,
+            },
+            "type": Object {
+              "kind": "NonNullType",
+              "loc": Object {
+                "end": 1234,
+                "start": 1218,
+              },
+              "type": Object {
+                "kind": "ListType",
+                "loc": Object {
+                  "end": 1233,
+                  "start": 1218,
+                },
+                "type": Object {
+                  "kind": "NonNullType",
+                  "loc": Object {
+                    "end": 1232,
+                    "start": 1219,
+                  },
+                  "type": Object {
+                    "kind": "NamedType",
+                    "loc": Object {
+                      "end": 1231,
+                      "start": 1219,
+                    },
+                    "name": Object {
+                      "kind": "Name",
+                      "loc": Object {
+                        "end": 1231,
+                        "start": 1219,
+                      },
+                      "value": "CustomScalar",
+                    },
+                  },
+                },
+              },
+            },
+            "variable": Object {
+              "kind": "Variable",
+              "loc": Object {
+                "end": 1216,
+                "start": 1210,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 1216,
+                  "start": 1211,
+                },
+                "value": "list2",
+              },
+            },
+          },
+        ],
+      },
     ],
     "kind": "Document",
     "loc": Object {
-      "end": 1569,
+      "end": 1497,
       "start": 0,
     },
   },
@@ -1216,46 +2147,46 @@ query testMethods(
   renamedMethod: method2(list2: $list2)
 }
 
-# mutation testScalarsMutation {
-#   scalarString
-#   scalarInt
-#   scalarFloat
-#   scalarBoolean
-#   scalarID
-#   scalarCustom
+mutation testScalarsMutation {
+  scalarString
+  scalarInt
+  scalarFloat
+  scalarBoolean
+  scalarID
+  scalarCustom
 
-#   renamedString: scalarString
-# }
+  renamedString: scalarString
+}
 
-# mutation testNullabilityMutation {
-#   nullableBoolean
-#   nonNullableBoolean
-# }
+mutation testNullabilityMutation {
+  nullableBoolean
+  nonNullableBoolean
+}
 
-# mutation testNestingMutation {
-#   nestedObject {
-#     recursive {
-#       recursive {
-#         scalar
-#       }
-#     }
-#     nested {
-#       scalar
-#     }
-#     scalar
-#     list
-#   }
-# }
+mutation testNestingMutation {
+  nestedObject {
+    recursive {
+      recursive {
+        scalar
+      }
+    }
+    nested {
+      scalar
+    }
+    scalar
+    list
+  }
+}
 
-# mutation testMethodsMutation(
-#   $reqParam: String!
-#   $optParam: Float!
-#   $input: InputType
-#   $list2: [CustomScalar!]!
-# ) {
-#   method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
-#   renamedMethod: method2(list2: $list2)
-# }
+mutation testMethodsMutation(
+  $reqParam: String!
+  $optParam: Float!
+  $input: InputType
+  $list2: [CustomScalar!]!
+) {
+  method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
+  renamedMethod: method2(list2: $list2)
+}
 
 # fragment ObjectTypeFields on ObjectType {
 #   scalar
@@ -1367,10 +2298,7 @@ Object {
         0,
         135,
       ],
-      "variables": Object {
-        "fields": Object {},
-        "kind": "object",
-      },
+      "variables": Object {},
     },
     Object {
       "data": Object {
@@ -1395,10 +2323,7 @@ Object {
         137,
         201,
       ],
-      "variables": Object {
-        "fields": Object {},
-        "kind": "object",
-      },
+      "variables": Object {},
     },
     Object {
       "data": Object {
@@ -1473,10 +2398,7 @@ Object {
         203,
         360,
       ],
-      "variables": Object {
-        "fields": Object {},
-        "kind": "object",
-      },
+      "variables": Object {},
     },
     Object {
       "data": Object {
@@ -1533,10 +2455,7 @@ Object {
         362,
         490,
       ],
-      "variables": Object {
-        "fields": Object {},
-        "kind": "object",
-      },
+      "variables": Object {},
     },
     Object {
       "data": Object {
@@ -1562,8 +2481,244 @@ Object {
         720,
       ],
       "variables": Object {
-        "fields": Object {},
-        "kind": "object",
+        "input": Object {
+          "kind": "namedType",
+          "typename": "InputType",
+        },
+        "list2": Object {
+          "kind": "nonNull",
+          "wrappedType": Object {
+            "kind": "list",
+            "wrappedType": Object {
+              "kind": "nonNull",
+              "wrappedType": Object {
+                "kind": "namedType",
+                "typename": "CustomScalar",
+              },
+            },
+          },
+        },
+        "optParam": Object {
+          "kind": "nonNull",
+          "wrappedType": Object {
+            "kind": "namedType",
+            "typename": "Float",
+          },
+        },
+        "reqParam": Object {
+          "kind": "nonNull",
+          "wrappedType": Object {
+            "kind": "namedType",
+            "typename": "String",
+          },
+        },
+      },
+    },
+    Object {
+      "data": Object {
+        "fields": Array [
+          Object {
+            "name": "scalarString",
+            "schemaName": "scalarString",
+            "selectionSet": undefined,
+          },
+          Object {
+            "name": "scalarInt",
+            "schemaName": "scalarInt",
+            "selectionSet": undefined,
+          },
+          Object {
+            "name": "scalarFloat",
+            "schemaName": "scalarFloat",
+            "selectionSet": undefined,
+          },
+          Object {
+            "name": "scalarBoolean",
+            "schemaName": "scalarBoolean",
+            "selectionSet": undefined,
+          },
+          Object {
+            "name": "scalarID",
+            "schemaName": "scalarID",
+            "selectionSet": undefined,
+          },
+          Object {
+            "name": "scalarCustom",
+            "schemaName": "scalarCustom",
+            "selectionSet": undefined,
+          },
+          Object {
+            "name": "renamedString",
+            "schemaName": "scalarString",
+            "selectionSet": undefined,
+          },
+        ],
+        "fragments": Array [],
+        "unions": Object {},
+      },
+      "kind": "mutation",
+      "name": "testScalarsMutation",
+      "sourceCodeRange": Array [
+        722,
+        868,
+      ],
+      "variables": Object {},
+    },
+    Object {
+      "data": Object {
+        "fields": Array [
+          Object {
+            "name": "nullableBoolean",
+            "schemaName": "nullableBoolean",
+            "selectionSet": undefined,
+          },
+          Object {
+            "name": "nonNullableBoolean",
+            "schemaName": "nonNullableBoolean",
+            "selectionSet": undefined,
+          },
+        ],
+        "fragments": Array [],
+        "unions": Object {},
+      },
+      "kind": "mutation",
+      "name": "testNullabilityMutation",
+      "sourceCodeRange": Array [
+        870,
+        945,
+      ],
+      "variables": Object {},
+    },
+    Object {
+      "data": Object {
+        "fields": Array [
+          Object {
+            "name": "nestedObject",
+            "schemaName": "nestedObject",
+            "selectionSet": Object {
+              "fields": Array [
+                Object {
+                  "name": "recursive",
+                  "schemaName": "recursive",
+                  "selectionSet": Object {
+                    "fields": Array [
+                      Object {
+                        "name": "recursive",
+                        "schemaName": "recursive",
+                        "selectionSet": Object {
+                          "fields": Array [
+                            Object {
+                              "name": "scalar",
+                              "schemaName": "scalar",
+                              "selectionSet": undefined,
+                            },
+                          ],
+                          "fragments": Array [],
+                          "unions": Object {},
+                        },
+                      },
+                    ],
+                    "fragments": Array [],
+                    "unions": Object {},
+                  },
+                },
+                Object {
+                  "name": "nested",
+                  "schemaName": "nested",
+                  "selectionSet": Object {
+                    "fields": Array [
+                      Object {
+                        "name": "scalar",
+                        "schemaName": "scalar",
+                        "selectionSet": undefined,
+                      },
+                    ],
+                    "fragments": Array [],
+                    "unions": Object {},
+                  },
+                },
+                Object {
+                  "name": "scalar",
+                  "schemaName": "scalar",
+                  "selectionSet": undefined,
+                },
+                Object {
+                  "name": "list",
+                  "schemaName": "list",
+                  "selectionSet": undefined,
+                },
+              ],
+              "fragments": Array [],
+              "unions": Object {},
+            },
+          },
+        ],
+        "fragments": Array [],
+        "unions": Object {},
+      },
+      "kind": "mutation",
+      "name": "testNestingMutation",
+      "sourceCodeRange": Array [
+        947,
+        1115,
+      ],
+      "variables": Object {},
+    },
+    Object {
+      "data": Object {
+        "fields": Array [
+          Object {
+            "name": "method",
+            "schemaName": "method",
+            "selectionSet": undefined,
+          },
+          Object {
+            "name": "renamedMethod",
+            "schemaName": "method2",
+            "selectionSet": undefined,
+          },
+        ],
+        "fragments": Array [],
+        "unions": Object {},
+      },
+      "kind": "mutation",
+      "name": "testMethodsMutation",
+      "sourceCodeRange": Array [
+        1117,
+        1356,
+      ],
+      "variables": Object {
+        "input": Object {
+          "kind": "namedType",
+          "typename": "InputType",
+        },
+        "list2": Object {
+          "kind": "nonNull",
+          "wrappedType": Object {
+            "kind": "list",
+            "wrappedType": Object {
+              "kind": "nonNull",
+              "wrappedType": Object {
+                "kind": "namedType",
+                "typename": "CustomScalar",
+              },
+            },
+          },
+        },
+        "optParam": Object {
+          "kind": "nonNull",
+          "wrappedType": Object {
+            "kind": "namedType",
+            "typename": "Float",
+          },
+        },
+        "reqParam": Object {
+          "kind": "nonNull",
+          "wrappedType": Object {
+            "kind": "namedType",
+            "typename": "String",
+          },
+        },
       },
     },
   ],
@@ -1943,46 +3098,46 @@ query testMethods(
   renamedMethod: method2(list2: $list2)
 }
 
-# mutation testScalarsMutation {
-#   scalarString
-#   scalarInt
-#   scalarFloat
-#   scalarBoolean
-#   scalarID
-#   scalarCustom
+mutation testScalarsMutation {
+  scalarString
+  scalarInt
+  scalarFloat
+  scalarBoolean
+  scalarID
+  scalarCustom
 
-#   renamedString: scalarString
-# }
+  renamedString: scalarString
+}
 
-# mutation testNullabilityMutation {
-#   nullableBoolean
-#   nonNullableBoolean
-# }
+mutation testNullabilityMutation {
+  nullableBoolean
+  nonNullableBoolean
+}
 
-# mutation testNestingMutation {
-#   nestedObject {
-#     recursive {
-#       recursive {
-#         scalar
-#       }
-#     }
-#     nested {
-#       scalar
-#     }
-#     scalar
-#     list
-#   }
-# }
+mutation testNestingMutation {
+  nestedObject {
+    recursive {
+      recursive {
+        scalar
+      }
+    }
+    nested {
+      scalar
+    }
+    scalar
+    list
+  }
+}
 
-# mutation testMethodsMutation(
-#   $reqParam: String!
-#   $optParam: Float!
-#   $input: InputType
-#   $list2: [CustomScalar!]!
-# ) {
-#   method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
-#   renamedMethod: method2(list2: $list2)
-# }
+mutation testMethodsMutation(
+  $reqParam: String!
+  $optParam: Float!
+  $input: InputType
+  $list2: [CustomScalar!]!
+) {
+  method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
+  renamedMethod: method2(list2: $list2)
+}
 
 # fragment ObjectTypeFields on ObjectType {
 #   scalar
