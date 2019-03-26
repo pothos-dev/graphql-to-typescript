@@ -42,15 +42,15 @@ query testUnion {
   }
 }
 
-# query testMethods(
-#   $reqParam: String!
-#   $optParam: Float!
-#   $input: InputType
-#   $list2: [CustomScalar!]!
-# ) {
-#   method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
-#   renamedMethod: method2(list2: $list2)
-# }
+query testMethods(
+  $reqParam: String!
+  $optParam: Float!
+  $input: InputType
+  $list2: [CustomScalar!]!
+) {
+  method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
+  renamedMethod: method2(list2: $list2)
+}
 
 # mutation testScalarsMutation {
 #   scalarString

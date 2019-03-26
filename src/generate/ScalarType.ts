@@ -3,17 +3,34 @@ import { SchemaIR } from '../transform/SchemaIR'
 import { ScalarTypeIR } from '../transform/ScalarTypeIR'
 
 export function generateScalarType(schema: SchemaIR, schemaType: ScalarTypeIR) {
-  switch (schemaType.scalar) {
-    case 'String':
-      return ts.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)
-    case 'Int':
-    case 'Float':
-      return ts.createKeywordTypeNode(ts.SyntaxKind.NumberKeyword)
-    case 'Boolean':
-      return ts.createKeywordTypeNode(ts.SyntaxKind.BooleanKeyword)
-    case 'ID':
-      return ts.createKeywordTypeNode(ts.SyntaxKind.StringKeyword) // TODO custom ID type
+  return ts.createTypeReferenceNode(
+    ts.createIdentifier(schemaType.scalar),
+    undefined
+  )
+}
+
+export function generateScalarTypeAlias(
+  scalarType: ScalarTypeIR
+): ts.TypeAliasDeclaration {
+  return ts.createTypeAliasDeclaration(
+    undefined,
+    undefined,
+    ts.createIdentifier(scalarType.scalar),
+    undefined,
+    selectKeyword()
+  )
+
+  function selectKeyword() {
+    switch (scalarType.scalar) {
+      case 'Boolean':
+        return ts.createKeywordTypeNode(ts.SyntaxKind.BooleanKeyword)
+      case 'Int':
+      case 'Float':
+        return ts.createKeywordTypeNode(ts.SyntaxKind.NumberKeyword)
+      case 'String':
+      case 'ID':
+      default:
+        return ts.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)
+    }
   }
-  // TODO custom scalar type
-  return ts.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword)
 }

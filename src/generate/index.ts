@@ -6,10 +6,12 @@ import { generateOperation } from './Operation'
 import prettier from 'prettier'
 import { generateImport } from './Import'
 import { generateHelperTypes } from './HelperTypes'
+import { generateScalarTypeAlias } from './ScalarType'
+import { ScalarTypeIR } from '../transform/ScalarTypeIR'
 
 export async function generateCode(
   schema: SchemaIR,
-  documentIR: DocumentIR,
+  document: DocumentIR,
   sourceCode: string
 ): Promise<string> {
   const sourceFile = ts.createSourceFile('', '', ts.ScriptTarget.Latest)
@@ -20,10 +22,14 @@ export async function generateCode(
 
   const nodes = [
     generateImport('graphql-tag', 'gql'),
-    ...generateHelperTypes(),
-    ...documentIR.operations.map((op) =>
+    ...Object.values(schema.types)
+      .filter((it) => it && it.kind == 'scalar')
+      .map((it) => it as ScalarTypeIR)
+      .map(generateScalarTypeAlias),
+    ...document.operations.map((op) =>
       generateOperation(op, schema, sourceCode)
     ),
+    ...generateHelperTypes(),
   ]
 
   const code = nodes.map(print).join('\n')

@@ -1,18 +1,20 @@
 import gql from 'graphql-tag'
-type __typed_query<D, V> = any
-type __typed_mutation<D, V> = any
-type __typed_subscription<D, V> = any
-type Nullable<T> = T | null
+type String = string
+type Int = number
+type Float = number
+type Boolean = boolean
+type ID = string
+type CustomScalar = string
 const testScalars: __typed_query<
   {},
   {
-    scalarString: Nullable<string>
-    scalarInt: Nullable<number>
-    scalarFloat: Nullable<number>
-    scalarBoolean: Nullable<boolean>
-    scalarID: Nullable<string>
-    scalarCustom: Nullable<unknown>
-    renamedString: Nullable<string>
+    scalarString: Nullable<String>
+    scalarInt: Nullable<Int>
+    scalarFloat: Nullable<Float>
+    scalarBoolean: Nullable<Boolean>
+    scalarID: Nullable<ID>
+    scalarCustom: Nullable<CustomScalar>
+    renamedString: Nullable<String>
   }
 > = gql`
   query testScalars {
@@ -28,8 +30,8 @@ const testScalars: __typed_query<
 const testNullability: __typed_query<
   {},
   {
-    nullableBoolean: Nullable<boolean>
-    nonNullableBoolean: boolean
+    nullableBoolean: Nullable<Boolean>
+    nonNullableBoolean: Boolean
   }
 > = gql`
   query testNullability {
@@ -43,14 +45,14 @@ const testNesting: __typed_query<
     nestedObject: Nullable<{
       recursive: Nullable<{
         recursive: Nullable<{
-          scalar: Nullable<boolean>
+          scalar: Nullable<Boolean>
         }>
       }>
       nested: Nullable<{
-        scalar: Nullable<number>
+        scalar: Nullable<Int>
       }>
-      scalar: Nullable<boolean>
-      list: Nullable<ReadonlyArray<string>>
+      scalar: Nullable<Boolean>
+      list: Nullable<ReadonlyArray<String>>
     }>
   }
 > = gql`
@@ -75,13 +77,13 @@ const testUnion: __typed_query<
     union: Nullable<
       | {
           __typename: 'Tomato'
-          id: Nullable<string>
-          color: Nullable<string>
+          id: Nullable<ID>
+          color: Nullable<String>
         }
       | {
           __typename: 'Potato'
-          id: Nullable<string>
-          origin: Nullable<string>
+          id: Nullable<ID>
+          origin: Nullable<String>
         }
     >
   }
@@ -99,3 +101,24 @@ const testUnion: __typed_query<
     }
   }
 `
+const testMethods: __typed_query<
+  {},
+  {
+    method: Nullable<CustomScalar>
+    renamedMethod: Nullable<ReadonlyArray<Nullable<CustomScalar>>>
+  }
+> = gql`
+  query testMethods(
+    $reqParam: String!
+    $optParam: Float!
+    $input: InputType
+    $list2: [CustomScalar!]!
+  ) {
+    method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)
+    renamedMethod: method2(list2: $list2)
+  }
+`
+type __typed_query<D, V> = any
+type __typed_mutation<D, V> = any
+type __typed_subscription<D, V> = any
+type Nullable<T> = T | null
