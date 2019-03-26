@@ -46,6 +46,4 @@ export function generateNonNullType(
   }
 
   throw 'Unhandled type in generateNonNullType: ' + schemaType.kind
-
-  return ts.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword)
 }
