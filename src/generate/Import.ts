@@ -5,14 +5,17 @@ export function generateImport(
   defaultImport: string | undefined,
   ...namedImports: string[]
 ) {
-  const defaultImportAST = defaultImport && ts.createIdentifier(defaultImport)
-  const namedImportAST =
-    namedImports.length &&
-    ts.createNamedImports(
-      namedImports.map((it) =>
-        ts.createImportSpecifier(undefined, ts.createIdentifier(it))
+  const defaultImportAST = defaultImport
+    ? ts.createIdentifier(defaultImport)
+    : undefined
+
+  const namedImportAST = namedImports.length
+    ? ts.createNamedImports(
+        namedImports.map((it) =>
+          ts.createImportSpecifier(undefined, ts.createIdentifier(it))
+        )
       )
-    )
+    : undefined
 
   return ts.createImportDeclaration(
     undefined,

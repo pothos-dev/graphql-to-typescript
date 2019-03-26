@@ -5,9 +5,6 @@ import { ListTypeIR } from '../transform/ListTypeIR'
 
 export function generateListType(schema: SchemaIR, schemaType: ListTypeIR) {
   return ts.createTypeReferenceNode(ts.createIdentifier('ReadonlyArray'), [
-    ts.createTypeReferenceNode(
-      generateType(schema, schemaType.wrappedType),
-      undefined
-    ),
+    generateType(schema, schemaType.wrappedType),
   ])
 }

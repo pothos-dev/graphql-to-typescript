@@ -11,6 +11,13 @@ export interface OperationIR {
 }
 
 export function transformOperation(T: OperationDefinitionNode): OperationIR {
+  if (T.name == null) {
+    throw 'expected operation to have a name'
+  }
+  if (T.loc == null) {
+    throw 'expected operation to have a loc'
+  }
+
   return {
     kind: T.operation,
     name: T.name.value,

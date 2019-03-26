@@ -51,5 +51,6 @@ function generateOperationData(operation: OperationIR, schema: SchemaIR) {
     if (operation.kind == 'query') return schema.types['Query']
     if (operation.kind == 'mutation') return schema.types['Mutation']
     if (operation.kind == 'subscription') return schema.types['Subscription']
+    throw 'unexpected operation.kind ' + operation.kind
   }
 }

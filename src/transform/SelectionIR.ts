@@ -21,17 +21,20 @@ export interface FieldSelectionIR {
 export function transformSelectionSet(T: SelectionSetNode): SelectionSetIR {
   const fields = T.selections
     .filter((it) => it.kind == 'Field')
+    .map((it) => it as FieldNode)
     .map(transformField)
 
-  const unions = {}
+  const unions: Record<string, SelectionSetIR> = {}
   for (const [typename, selectionSetIR] of T.selections
     .filter((it) => it.kind == 'InlineFragment')
+    .map((it) => it as InlineFragmentNode)
     .map(transformInlineFragment)) {
     unions[typename] = selectionSetIR
   }
 
   const fragments = T.selections
     .filter((it) => it.kind == 'FragmentSpread')
+    .map((it) => it as FragmentSpreadNode)
     .map(transformFragmentSpread)
 
   return { fields, unions, fragments }
@@ -52,5 +55,8 @@ function transformFragmentSpread(T: FragmentSpreadNode): string {
 function transformInlineFragment(
   T: InlineFragmentNode
 ): [string, SelectionSetIR] {
+  if (!T.typeCondition) {
+    throw 'Expected InlineFragmentNode to have a non-null typeCondition'
+  }
   return [T.typeCondition.name.value, transformSelectionSet(T.selectionSet)]
 }

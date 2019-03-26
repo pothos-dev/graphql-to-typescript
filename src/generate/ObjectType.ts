@@ -7,9 +7,13 @@ import { generateType } from './Type'
 export function generateObjectType(
   schema: SchemaIR,
   schemaType: ObjectTypeIR,
-  selectionSet: SelectionSetIR,
+  selectionSet?: SelectionSetIR,
   typename?: string
 ) {
+  if (selectionSet == null) {
+    throw 'expected ObjectType to have a SelectionSet'
+  }
+
   let properties = selectionSet.fields.map(generateProperty)
   if (typename) {
     properties = [generateTypenameProperty(typename), ...properties]

@@ -14,7 +14,7 @@ export function transformDefinition(T: DefinitionNode): OperationIR {
     case 'OperationDefinition':
       return transformOperation(T)
     default: {
-      console.warn(`Unhandled DefinitionNode.kind '${T.kind}'`)
+      throw `Unhandled DefinitionNode.kind '${T.kind}'`
     }
   }
 }

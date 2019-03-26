@@ -78,4 +78,5 @@ export function identifyType(T: GraphQLType): string {
   if (isInputObjectType(T)) return 'InputIbject'
   if (isListType(T)) return 'List'
   if (isNonNullType(T)) return 'NonNull'
+  throw 'unexpected type in identifyType'
 }

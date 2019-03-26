@@ -10,7 +10,9 @@
 
     "module": "commonjs",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+
+    "strict": true
   },
   "include": ["src"],
   "exclude": ["src/test"]

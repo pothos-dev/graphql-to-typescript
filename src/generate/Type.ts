@@ -5,14 +5,14 @@ import { generateScalarType } from './ScalarType'
 import { generateObjectType } from './ObjectType'
 import { generateListType } from './ListType'
 import { SelectionSetIR } from '../transform/SelectionIR'
-import { UnionTypeIR } from '../transform/UnionTypeIR'
+import { generateUnionType } from './UnionType'
 
 export function generateType(
   schema: SchemaIR,
   schemaType: TypeIR,
   selectionSet?: SelectionSetIR,
   typename?: string
-) {
+): ts.TypeNode {
   if (schemaType.kind == 'nonNull') {
     return generateNonNullType(schema, schemaType.wrappedType, selectionSet)
   }
@@ -27,7 +27,7 @@ export function generateNonNullType(
   schemaType: TypeIR,
   selectionSet?: SelectionSetIR,
   typename?: string
-) {
+): ts.TypeNode {
   switch (schemaType.kind) {
     case 'namedType':
       return generateType(
@@ -53,32 +53,4 @@ export function generateNonNullType(
   }
 
   throw 'Unhandled type in generateNonNullType: ' + schemaType.kind
-}
-
-export function generateUnionType(
-  schema: SchemaIR,
-  schemaType: UnionTypeIR,
-  selectionSet: SelectionSetIR
-) {
-  return ts.createUnionTypeNode(
-    schemaType.types.map((it) => {
-      if (it.kind != 'namedType') {
-        throw 'Expected union element to be NamedTypeIR, but is ' + it.kind
-      }
-      const elementTypename = it.typename
-      const elementType = schema.types[elementTypename]
-      if (elementType.kind !== 'object') {
-        throw 'Expected Union element to be ObjectTypeIR, but is ' +
-          elementType.kind
-      }
-
-      const elementSelectionSet = selectionSet.unions[elementTypename]
-      return generateObjectType(
-        schema,
-        elementType,
-        elementSelectionSet,
-        elementTypename
-      )
-    })
-  )
 }
