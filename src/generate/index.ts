@@ -26,10 +26,13 @@ export async function generate(
     ),
   ]
 
-  const outputFile = nodes.map(print).join('\n')
+  const code = nodes.map(print).join('\n')
+  return await cleanup(code)
+}
 
+async function cleanup(code: string) {
   const prettierConfig = await prettier.resolveConfig(process.cwd())
-  return prettier.format(outputFile, {
+  return prettier.format(code, {
     ...prettierConfig,
     parser: 'typescript',
   })
