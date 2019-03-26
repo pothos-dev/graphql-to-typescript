@@ -50,64 +50,325 @@ exports[`parse schema: SchemaIR 1`] = `
 Object {
   "types": Object {
     "Boolean": Object {
-      "kind": "namedType",
-      "typename": "Boolean",
+      "kind": "scalar",
+      "scalar": "Boolean",
     },
     "CustomScalar": Object {
-      "kind": "namedType",
-      "typename": "CustomScalar",
+      "kind": "scalar",
+      "scalar": "CustomScalar",
     },
     "Float": Object {
-      "kind": "namedType",
-      "typename": "Float",
+      "kind": "scalar",
+      "scalar": "Float",
     },
     "ID": Object {
-      "kind": "namedType",
-      "typename": "ID",
+      "kind": "scalar",
+      "scalar": "ID",
     },
     "InputType": Object {
-      "kind": "namedType",
-      "typename": "InputType",
+      "kind": "inputObject",
     },
     "Int": Object {
-      "kind": "namedType",
-      "typename": "Int",
+      "kind": "scalar",
+      "scalar": "Int",
     },
     "Mutation": Object {
-      "kind": "namedType",
-      "typename": "Mutation",
+      "fields": Object {
+        "listOfNestedObject": Object {
+          "kind": "list",
+          "wrappedType": Object {
+            "kind": "namedType",
+            "typename": "ObjectType",
+          },
+        },
+        "method": Object {
+          "kind": "scalar",
+          "scalar": "CustomScalar",
+        },
+        "method2": Object {
+          "kind": "list",
+          "wrappedType": Object {
+            "kind": "scalar",
+            "scalar": "CustomScalar",
+          },
+        },
+        "nestedObject": Object {
+          "fields": Object {
+            "list": Object {
+              "kind": "list",
+              "wrappedType": Object {
+                "kind": "nonNull",
+                "wrappedType": Object {
+                  "kind": "scalar",
+                  "scalar": "String",
+                },
+              },
+            },
+            "nested": Object {
+              "fields": Object {
+                "scalar": Object {
+                  "kind": "scalar",
+                  "scalar": "Int",
+                },
+              },
+              "kind": "object",
+            },
+            "recursive": Object {
+              "kind": "namedType",
+              "typename": "ObjectType",
+            },
+            "scalar": Object {
+              "kind": "scalar",
+              "scalar": "Boolean",
+            },
+          },
+          "kind": "object",
+        },
+        "nonNullableBoolean": Object {
+          "kind": "nonNull",
+          "wrappedType": Object {
+            "kind": "scalar",
+            "scalar": "Boolean",
+          },
+        },
+        "nullableBoolean": Object {
+          "kind": "scalar",
+          "scalar": "Boolean",
+        },
+        "scalarBoolean": Object {
+          "kind": "scalar",
+          "scalar": "Boolean",
+        },
+        "scalarCustom": Object {
+          "kind": "scalar",
+          "scalar": "CustomScalar",
+        },
+        "scalarFloat": Object {
+          "kind": "scalar",
+          "scalar": "Float",
+        },
+        "scalarID": Object {
+          "kind": "scalar",
+          "scalar": "ID",
+        },
+        "scalarInt": Object {
+          "kind": "scalar",
+          "scalar": "Int",
+        },
+        "scalarString": Object {
+          "kind": "scalar",
+          "scalar": "String",
+        },
+      },
+      "kind": "object",
     },
     "NestedInputType": Object {
-      "kind": "namedType",
-      "typename": "NestedInputType",
+      "kind": "inputObject",
     },
     "NestedObjectType": Object {
-      "kind": "namedType",
-      "typename": "NestedObjectType",
+      "fields": Object {
+        "scalar": Object {
+          "kind": "scalar",
+          "scalar": "Int",
+        },
+      },
+      "kind": "object",
     },
     "ObjectType": Object {
-      "kind": "namedType",
-      "typename": "ObjectType",
+      "fields": Object {
+        "list": Object {
+          "kind": "list",
+          "wrappedType": Object {
+            "kind": "nonNull",
+            "wrappedType": Object {
+              "kind": "scalar",
+              "scalar": "String",
+            },
+          },
+        },
+        "nested": Object {
+          "fields": Object {
+            "scalar": Object {
+              "kind": "scalar",
+              "scalar": "Int",
+            },
+          },
+          "kind": "object",
+        },
+        "recursive": Object {
+          "kind": "namedType",
+          "typename": "ObjectType",
+        },
+        "scalar": Object {
+          "kind": "scalar",
+          "scalar": "Boolean",
+        },
+      },
+      "kind": "object",
     },
     "Potato": Object {
-      "kind": "namedType",
-      "typename": "Potato",
+      "fields": Object {
+        "id": Object {
+          "kind": "scalar",
+          "scalar": "ID",
+        },
+        "origin": Object {
+          "kind": "scalar",
+          "scalar": "String",
+        },
+      },
+      "kind": "object",
     },
     "Query": Object {
-      "kind": "namedType",
-      "typename": "Query",
+      "fields": Object {
+        "listOfNestedObject": Object {
+          "kind": "list",
+          "wrappedType": Object {
+            "kind": "namedType",
+            "typename": "ObjectType",
+          },
+        },
+        "method": Object {
+          "kind": "scalar",
+          "scalar": "CustomScalar",
+        },
+        "method2": Object {
+          "kind": "list",
+          "wrappedType": Object {
+            "kind": "scalar",
+            "scalar": "CustomScalar",
+          },
+        },
+        "nestedObject": Object {
+          "fields": Object {
+            "list": Object {
+              "kind": "list",
+              "wrappedType": Object {
+                "kind": "nonNull",
+                "wrappedType": Object {
+                  "kind": "scalar",
+                  "scalar": "String",
+                },
+              },
+            },
+            "nested": Object {
+              "fields": Object {
+                "scalar": Object {
+                  "kind": "scalar",
+                  "scalar": "Int",
+                },
+              },
+              "kind": "object",
+            },
+            "recursive": Object {
+              "kind": "namedType",
+              "typename": "ObjectType",
+            },
+            "scalar": Object {
+              "kind": "scalar",
+              "scalar": "Boolean",
+            },
+          },
+          "kind": "object",
+        },
+        "nonNullableBoolean": Object {
+          "kind": "nonNull",
+          "wrappedType": Object {
+            "kind": "scalar",
+            "scalar": "Boolean",
+          },
+        },
+        "nullableBoolean": Object {
+          "kind": "scalar",
+          "scalar": "Boolean",
+        },
+        "scalarBoolean": Object {
+          "kind": "scalar",
+          "scalar": "Boolean",
+        },
+        "scalarCustom": Object {
+          "kind": "scalar",
+          "scalar": "CustomScalar",
+        },
+        "scalarFloat": Object {
+          "kind": "scalar",
+          "scalar": "Float",
+        },
+        "scalarID": Object {
+          "kind": "scalar",
+          "scalar": "ID",
+        },
+        "scalarInt": Object {
+          "kind": "scalar",
+          "scalar": "Int",
+        },
+        "scalarString": Object {
+          "kind": "scalar",
+          "scalar": "String",
+        },
+        "union": Object {
+          "kind": "union",
+          "types": Array [
+            Object {
+              "kind": "namedType",
+              "typename": "Tomato",
+            },
+            Object {
+              "fields": Object {
+                "id": Object {
+                  "kind": "scalar",
+                  "scalar": "ID",
+                },
+                "origin": Object {
+                  "kind": "scalar",
+                  "scalar": "String",
+                },
+              },
+              "kind": "object",
+            },
+          ],
+        },
+      },
+      "kind": "object",
     },
     "String": Object {
-      "kind": "namedType",
-      "typename": "String",
+      "kind": "scalar",
+      "scalar": "String",
     },
     "Tomato": Object {
-      "kind": "namedType",
-      "typename": "Tomato",
+      "fields": Object {
+        "color": Object {
+          "kind": "scalar",
+          "scalar": "String",
+        },
+        "id": Object {
+          "kind": "scalar",
+          "scalar": "ID",
+        },
+      },
+      "kind": "object",
     },
     "UnionType": Object {
-      "kind": "namedType",
-      "typename": "UnionType",
+      "kind": "union",
+      "types": Array [
+        Object {
+          "kind": "namedType",
+          "typename": "Tomato",
+        },
+        Object {
+          "fields": Object {
+            "id": Object {
+              "kind": "scalar",
+              "scalar": "ID",
+            },
+            "origin": Object {
+              "kind": "scalar",
+              "scalar": "String",
+            },
+          },
+          "kind": "object",
+        },
+      ],
     },
     "__Directive": undefined,
     "__DirectiveLocation": undefined,
