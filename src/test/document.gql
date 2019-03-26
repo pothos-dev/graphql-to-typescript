@@ -29,18 +29,18 @@ query testNesting {
   }
 }
 
-# query testUnion {
-#   union {
-#     ... on Tomato {
-#       id
-#       color
-#     }
-#     ... on Potato {
-#       id
-#       origin
-#     }
-#   }
-# }
+query testUnion {
+  union {
+    ... on Tomato {
+      id
+      color
+    }
+    ... on Potato {
+      id
+      origin
+    }
+  }
+}
 
 # query testMethods(
 #   $reqParam: String!

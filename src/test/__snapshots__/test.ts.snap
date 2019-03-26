@@ -72,6 +72,36 @@ const testNesting: __typed_query<
     }
   }
 \`
+const testUnion: __typed_query<
+  {},
+  {
+    union: Nullable<
+      | {
+          __typename: 'Tomato'
+          id: Nullable<string>
+          color: Nullable<string>
+        }
+      | {
+          __typename: 'Potato'
+          id: Nullable<string>
+          origin: Nullable<string>
+        }
+    >
+  }
+> = gql\`
+  query testUnion {
+    union {
+      ... on Tomato {
+        id
+        color
+      }
+      ... on Potato {
+        id
+        origin
+      }
+    }
+  }
+\`
 "
 `;
 
@@ -522,10 +552,204 @@ Object {
         },
         "variableDefinitions": Array [],
       },
+      Object {
+        "directives": Array [],
+        "kind": "OperationDefinition",
+        "loc": Object {
+          "end": 490,
+          "start": 362,
+        },
+        "name": Object {
+          "kind": "Name",
+          "loc": Object {
+            "end": 377,
+            "start": 368,
+          },
+          "value": "testUnion",
+        },
+        "operation": "query",
+        "selectionSet": Object {
+          "kind": "SelectionSet",
+          "loc": Object {
+            "end": 490,
+            "start": 378,
+          },
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 488,
+                "start": 382,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 387,
+                  "start": 382,
+                },
+                "value": "union",
+              },
+              "selectionSet": Object {
+                "kind": "SelectionSet",
+                "loc": Object {
+                  "end": 488,
+                  "start": 388,
+                },
+                "selections": Array [
+                  Object {
+                    "directives": Array [],
+                    "kind": "InlineFragment",
+                    "loc": Object {
+                      "end": 436,
+                      "start": 394,
+                    },
+                    "selectionSet": Object {
+                      "kind": "SelectionSet",
+                      "loc": Object {
+                        "end": 436,
+                        "start": 408,
+                      },
+                      "selections": Array [
+                        Object {
+                          "alias": undefined,
+                          "arguments": Array [],
+                          "directives": Array [],
+                          "kind": "Field",
+                          "loc": Object {
+                            "end": 418,
+                            "start": 416,
+                          },
+                          "name": Object {
+                            "kind": "Name",
+                            "loc": Object {
+                              "end": 418,
+                              "start": 416,
+                            },
+                            "value": "id",
+                          },
+                          "selectionSet": undefined,
+                        },
+                        Object {
+                          "alias": undefined,
+                          "arguments": Array [],
+                          "directives": Array [],
+                          "kind": "Field",
+                          "loc": Object {
+                            "end": 430,
+                            "start": 425,
+                          },
+                          "name": Object {
+                            "kind": "Name",
+                            "loc": Object {
+                              "end": 430,
+                              "start": 425,
+                            },
+                            "value": "color",
+                          },
+                          "selectionSet": undefined,
+                        },
+                      ],
+                    },
+                    "typeCondition": Object {
+                      "kind": "NamedType",
+                      "loc": Object {
+                        "end": 407,
+                        "start": 401,
+                      },
+                      "name": Object {
+                        "kind": "Name",
+                        "loc": Object {
+                          "end": 407,
+                          "start": 401,
+                        },
+                        "value": "Tomato",
+                      },
+                    },
+                  },
+                  Object {
+                    "directives": Array [],
+                    "kind": "InlineFragment",
+                    "loc": Object {
+                      "end": 484,
+                      "start": 441,
+                    },
+                    "selectionSet": Object {
+                      "kind": "SelectionSet",
+                      "loc": Object {
+                        "end": 484,
+                        "start": 455,
+                      },
+                      "selections": Array [
+                        Object {
+                          "alias": undefined,
+                          "arguments": Array [],
+                          "directives": Array [],
+                          "kind": "Field",
+                          "loc": Object {
+                            "end": 465,
+                            "start": 463,
+                          },
+                          "name": Object {
+                            "kind": "Name",
+                            "loc": Object {
+                              "end": 465,
+                              "start": 463,
+                            },
+                            "value": "id",
+                          },
+                          "selectionSet": undefined,
+                        },
+                        Object {
+                          "alias": undefined,
+                          "arguments": Array [],
+                          "directives": Array [],
+                          "kind": "Field",
+                          "loc": Object {
+                            "end": 478,
+                            "start": 472,
+                          },
+                          "name": Object {
+                            "kind": "Name",
+                            "loc": Object {
+                              "end": 478,
+                              "start": 472,
+                            },
+                            "value": "origin",
+                          },
+                          "selectionSet": undefined,
+                        },
+                      ],
+                    },
+                    "typeCondition": Object {
+                      "kind": "NamedType",
+                      "loc": Object {
+                        "end": 454,
+                        "start": 448,
+                      },
+                      "name": Object {
+                        "kind": "Name",
+                        "loc": Object {
+                          "end": 454,
+                          "start": 448,
+                        },
+                        "value": "Potato",
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          ],
+        },
+        "variableDefinitions": Array [],
+      },
     ],
     "kind": "Document",
     "loc": Object {
-      "end": 1611,
+      "end": 1587,
       "start": 0,
     },
   },
@@ -560,18 +784,18 @@ query testNesting {
   }
 }
 
-# query testUnion {
-#   union {
-#     ... on Tomato {
-#       id
-#       color
-#     }
-#     ... on Potato {
-#       id
-#       origin
-#     }
-#   }
-# }
+query testUnion {
+  union {
+    ... on Tomato {
+      id
+      color
+    }
+    ... on Potato {
+      id
+      origin
+    }
+  }
+}
 
 # query testMethods(
 #   $reqParam: String!
@@ -687,43 +911,47 @@ exports[`transform document: documentIR 1`] = `
 Object {
   "operations": Array [
     Object {
-      "data": Array [
-        Object {
-          "name": "scalarString",
-          "schemaName": "scalarString",
-          "selections": undefined,
-        },
-        Object {
-          "name": "scalarInt",
-          "schemaName": "scalarInt",
-          "selections": undefined,
-        },
-        Object {
-          "name": "scalarFloat",
-          "schemaName": "scalarFloat",
-          "selections": undefined,
-        },
-        Object {
-          "name": "scalarBoolean",
-          "schemaName": "scalarBoolean",
-          "selections": undefined,
-        },
-        Object {
-          "name": "scalarID",
-          "schemaName": "scalarID",
-          "selections": undefined,
-        },
-        Object {
-          "name": "scalarCustom",
-          "schemaName": "scalarCustom",
-          "selections": undefined,
-        },
-        Object {
-          "name": "renamedString",
-          "schemaName": "scalarString",
-          "selections": undefined,
-        },
-      ],
+      "data": Object {
+        "fields": Array [
+          Object {
+            "name": "scalarString",
+            "schemaName": "scalarString",
+            "selectionSet": undefined,
+          },
+          Object {
+            "name": "scalarInt",
+            "schemaName": "scalarInt",
+            "selectionSet": undefined,
+          },
+          Object {
+            "name": "scalarFloat",
+            "schemaName": "scalarFloat",
+            "selectionSet": undefined,
+          },
+          Object {
+            "name": "scalarBoolean",
+            "schemaName": "scalarBoolean",
+            "selectionSet": undefined,
+          },
+          Object {
+            "name": "scalarID",
+            "schemaName": "scalarID",
+            "selectionSet": undefined,
+          },
+          Object {
+            "name": "scalarCustom",
+            "schemaName": "scalarCustom",
+            "selectionSet": undefined,
+          },
+          Object {
+            "name": "renamedString",
+            "schemaName": "scalarString",
+            "selectionSet": undefined,
+          },
+        ],
+        "fragments": Array [],
+        "unions": Object {},
+      },
       "kind": "query",
       "name": "testScalars",
       "sourceCodeRange": Array [
@@ -736,18 +964,22 @@ Object {
       },
     },
     Object {
-      "data": Array [
-        Object {
-          "name": "nullableBoolean",
-          "schemaName": "nullableBoolean",
-          "selections": undefined,
-        },
-        Object {
-          "name": "nonNullableBoolean",
-          "schemaName": "nonNullableBoolean",
-          "selections": undefined,
-        },
-      ],
+      "data": Object {
+        "fields": Array [
+          Object {
+            "name": "nullableBoolean",
+            "schemaName": "nullableBoolean",
+            "selectionSet": undefined,
+          },
+          Object {
+            "name": "nonNullableBoolean",
+            "schemaName": "nonNullableBoolean",
+            "selectionSet": undefined,
+          },
+        ],
+        "fragments": Array [],
+        "unions": Object {},
+      },
       "kind": "query",
       "name": "testNullability",
       "sourceCodeRange": Array [
@@ -760,57 +992,137 @@ Object {
       },
     },
     Object {
-      "data": Array [
-        Object {
-          "name": "nestedObject",
-          "schemaName": "nestedObject",
-          "selections": Array [
-            Object {
-              "name": "recursive",
-              "schemaName": "recursive",
-              "selections": Array [
+      "data": Object {
+        "fields": Array [
+          Object {
+            "name": "nestedObject",
+            "schemaName": "nestedObject",
+            "selectionSet": Object {
+              "fields": Array [
                 Object {
                   "name": "recursive",
                   "schemaName": "recursive",
-                  "selections": Array [
-                    Object {
-                      "name": "scalar",
-                      "schemaName": "scalar",
-                      "selections": undefined,
-                    },
-                  ],
+                  "selectionSet": Object {
+                    "fields": Array [
+                      Object {
+                        "name": "recursive",
+                        "schemaName": "recursive",
+                        "selectionSet": Object {
+                          "fields": Array [
+                            Object {
+                              "name": "scalar",
+                              "schemaName": "scalar",
+                              "selectionSet": undefined,
+                            },
+                          ],
+                          "fragments": Array [],
+                          "unions": Object {},
+                        },
+                      },
+                    ],
+                    "fragments": Array [],
+                    "unions": Object {},
+                  },
                 },
-              ],
-            },
-            Object {
-              "name": "nested",
-              "schemaName": "nested",
-              "selections": Array [
+                Object {
+                  "name": "nested",
+                  "schemaName": "nested",
+                  "selectionSet": Object {
+                    "fields": Array [
+                      Object {
+                        "name": "scalar",
+                        "schemaName": "scalar",
+                        "selectionSet": undefined,
+                      },
+                    ],
+                    "fragments": Array [],
+                    "unions": Object {},
+                  },
+                },
                 Object {
                   "name": "scalar",
                   "schemaName": "scalar",
-                  "selections": undefined,
+                  "selectionSet": undefined,
+                },
+                Object {
+                  "name": "list",
+                  "schemaName": "list",
+                  "selectionSet": undefined,
                 },
               ],
+              "fragments": Array [],
+              "unions": Object {},
             },
-            Object {
-              "name": "scalar",
-              "schemaName": "scalar",
-              "selections": undefined,
-            },
-            Object {
-              "name": "list",
-              "schemaName": "list",
-              "selections": undefined,
-            },
-          ],
-        },
-      ],
+          },
+        ],
+        "fragments": Array [],
+        "unions": Object {},
+      },
       "kind": "query",
       "name": "testNesting",
       "sourceCodeRange": Array [
         203,
         360,
+      ],
+      "variables": Object {
+        "fields": Object {},
+        "kind": "object",
+      },
+    },
+    Object {
+      "data": Object {
+        "fields": Array [
+          Object {
+            "name": "union",
+            "schemaName": "union",
+            "selectionSet": Object {
+              "fields": Array [],
+              "fragments": Array [],
+              "unions": Object {
+                "Potato": Object {
+                  "fields": Array [
+                    Object {
+                      "name": "id",
+                      "schemaName": "id",
+                      "selectionSet": undefined,
+                    },
+                    Object {
+                      "name": "origin",
+                      "schemaName": "origin",
+                      "selectionSet": undefined,
+                    },
+                  ],
+                  "fragments": Array [],
+                  "unions": Object {},
+                },
+                "Tomato": Object {
+                  "fields": Array [
+                    Object {
+                      "name": "id",
+                      "schemaName": "id",
+                      "selectionSet": undefined,
+                    },
+                    Object {
+                      "name": "color",
+                      "schemaName": "color",
+                      "selectionSet": undefined,
+                    },
+                  ],
+                  "fragments": Array [],
+                  "unions": Object {},
+                },
+              },
+            },
+          },
+        ],
+        "fragments": Array [],
+        "unions": Object {},
+      },
+      "kind": "query",
+      "name": "testUnion",
+      "sourceCodeRange": Array [
+        362,
+        490,
       ],
       "variables": Object {
         "fields": Object {},
@@ -1089,17 +1401,8 @@ Object {
               "typename": "Tomato",
             },
             Object {
-              "fields": Object {
-                "id": Object {
-                  "kind": "scalar",
-                  "scalar": "ID",
-                },
-                "origin": Object {
-                  "kind": "scalar",
-                  "scalar": "String",
-                },
-              },
-              "kind": "object",
+              "kind": "namedType",
+              "typename": "Potato",
             },
           ],
         },
@@ -1131,17 +1434,8 @@ Object {
           "typename": "Tomato",
         },
         Object {
-          "fields": Object {
-            "id": Object {
-              "kind": "scalar",
-              "scalar": "ID",
-            },
-            "origin": Object {
-              "kind": "scalar",
-              "scalar": "String",
-            },
-          },
-          "kind": "object",
+          "kind": "namedType",
+          "typename": "Potato",
         },
       ],
     },
@@ -1189,18 +1483,18 @@ query testNesting {
   }
 }
 
-# query testUnion {
-#   union {
-#     ... on Tomato {
-#       id
-#       color
-#     }
-#     ... on Potato {
-#       id
-#       origin
-#     }
-#   }
-# }
+query testUnion {
+  union {
+    ... on Tomato {
+      id
+      color
+    }
+    ... on Potato {
+      id
+      origin
+    }
+  }
+}
 
 # query testMethods(
 #   $reqParam: String!

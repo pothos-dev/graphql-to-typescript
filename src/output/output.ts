@@ -69,3 +69,33 @@ const testNesting: __typed_query<
     }
   }
 `
+const testUnion: __typed_query<
+  {},
+  {
+    union: Nullable<
+      | {
+          __typename: 'Tomato'
+          id: Nullable<string>
+          color: Nullable<string>
+        }
+      | {
+          __typename: 'Potato'
+          id: Nullable<string>
+          origin: Nullable<string>
+        }
+    >
+  }
+> = gql`
+  query testUnion {
+    union {
+      ... on Tomato {
+        id
+        color
+      }
+      ... on Potato {
+        id
+        origin
+      }
+    }
+  }
+`

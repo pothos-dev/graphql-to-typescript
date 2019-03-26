@@ -1,12 +1,11 @@
 import { OperationDefinitionNode } from 'graphql'
-import { SelectionIR, transformSelection } from './SelectionIR'
 import { ObjectTypeIR } from './ObjectTypeIR'
-import { NonNullTypeIR } from './NonNullTypeIR'
+import { SelectionSetIR, transformSelectionSet } from './SelectionIR'
 
 export interface OperationIR {
   kind: 'query' | 'mutation' | 'subscription'
   name: string
-  data: SelectionIR[]
+  data: SelectionSetIR
   variables: ObjectTypeIR
   sourceCodeRange: [number, number]
 }
@@ -15,7 +14,7 @@ export function transformOperation(T: OperationDefinitionNode): OperationIR {
   return {
     kind: T.operation,
     name: T.name.value,
-    data: T.selectionSet.selections.map(transformSelection),
+    data: transformSelectionSet(T.selectionSet),
     variables: transformVariables(T),
     sourceCodeRange: [T.loc.start, T.loc.end],
   }
