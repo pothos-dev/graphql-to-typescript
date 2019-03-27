@@ -1,0 +1,15 @@
+{
+  "name": "@bearbytes/graphql-axios",
+  "description": "",
+  "version": "0.0.0",
+  "author": "",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@bearbytes/graphql-to-typescript": "*"
+  }
+}
