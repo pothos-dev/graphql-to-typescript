@@ -11,8 +11,8 @@ type CustomScalar = string
 
 // Input Types
 interface InputType {
-  recursive: InputType
-  nested: NestedInputType
+  recursive: Nullable<InputType>
+  nested: Nullable<NestedInputType>
   scalar: Nullable<Boolean>
   list: Nullable<ReadonlyArray<String>>
 }

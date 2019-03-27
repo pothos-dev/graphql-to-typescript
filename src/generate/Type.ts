@@ -19,7 +19,7 @@ export function generateType(
   }
 
   return ts.createTypeReferenceNode(ts.createIdentifier('Nullable'), [
-    generateNonNullType(schema, schemaType, selectionSet),
+    generateNonNullType(schema, schemaType, selectionSet, typename),
   ])
 }
 
@@ -31,7 +31,7 @@ export function generateNonNullType(
 ): ts.TypeNode {
   switch (schemaType.kind) {
     case 'namedType':
-      return generateType(
+      return generateNonNullType(
         schema,
         schema.types[schemaType.typename],
         selectionSet,
@@ -39,8 +39,11 @@ export function generateNonNullType(
       )
     case 'enum':
       break
-    // case 'inputObject':
-    //   return generateInputObjectType(schema, schemaType, typename)
+    case 'inputObject':
+      return ts.createTypeReferenceNode(
+        ts.createIdentifier(typename!),
+        undefined
+      )
     case 'interface':
       break
     case 'object':

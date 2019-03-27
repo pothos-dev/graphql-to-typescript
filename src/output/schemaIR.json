@@ -208,10 +208,40 @@
       }
     },
     "InputType": {
-      "kind": "inputObject"
+      "kind": "inputObject",
+      "fields": {
+        "recursive": {
+          "kind": "namedType",
+          "typename": "InputType"
+        },
+        "nested": {
+          "kind": "namedType",
+          "typename": "NestedInputType"
+        },
+        "scalar": {
+          "kind": "scalar",
+          "scalar": "Boolean"
+        },
+        "list": {
+          "kind": "list",
+          "wrappedType": {
+            "kind": "nonNull",
+            "wrappedType": {
+              "kind": "scalar",
+              "scalar": "String"
+            }
+          }
+        }
+      }
     },
     "NestedInputType": {
-      "kind": "inputObject"
+      "kind": "inputObject",
+      "fields": {
+        "scalar": {
+          "kind": "scalar",
+          "scalar": "Int"
+        }
+      }
     },
     "Mutation": {
       "kind": "object",

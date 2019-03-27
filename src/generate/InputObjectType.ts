@@ -16,24 +16,14 @@ export function generateInputObjectType(
     ts.createIdentifier(typename),
     undefined,
     undefined,
-    toPairs(inputObjectType.fields).map(([name, type]) =>
+    toPairs(inputObjectType.fields).map(([typename, type]) =>
       ts.createPropertySignature(
         undefined,
-        ts.createIdentifier(name),
+        ts.createIdentifier(typename),
         undefined,
-        generateInputField(schema, type),
+        generateType(schema, type, undefined, typename),
         undefined
       )
     )
   )
-}
-
-function generateInputField(schema: SchemaIR, type: TypeIR): ts.TypeNode {
-  if (type.kind == 'namedType') {
-    return ts.createTypeReferenceNode(
-      ts.createIdentifier(type.typename),
-      undefined
-    )
-  }
-  return generateType(schema, type)
 }
