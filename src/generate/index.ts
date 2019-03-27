@@ -8,6 +8,9 @@ import { generateImport } from './Import'
 import { generateHelperTypes } from './HelperTypes'
 import { generateScalarTypeAlias } from './ScalarType'
 import { ScalarTypeIR } from '../transform/ScalarTypeIR'
+import { InputObjectTypeIR } from '../transform/InputObjectTypeIR'
+import { generateInputObjectType } from './InputObjectType'
+import { isIP } from 'net'
 
 export async function generateCode(
   schema: SchemaIR,
@@ -25,7 +28,17 @@ export async function generateCode(
     ...Object.values(schema.types)
       .filter((it) => it && it.kind == 'scalar')
       .map((it) => it as ScalarTypeIR)
-      .map(generateScalarTypeAlias),
+      .map((it) => generateScalarTypeAlias(it)),
+    ...Object.entries(schema.types)
+      .map(([typename, type]) => ({ typename, type }))
+      .filter((it) => it.type && it.type.kind == 'inputObject')
+      .map((it) =>
+        generateInputObjectType(
+          schema,
+          it.type as InputObjectTypeIR,
+          it.typename
+        )
+      ),
     ...document.operations.map((op) =>
       generateOperation(op, schema, sourceCode)
     ),

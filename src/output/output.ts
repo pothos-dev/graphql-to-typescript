@@ -5,7 +5,16 @@ type Float = number
 type Boolean = boolean
 type ID = string
 type CustomScalar = string
-const testScalars: __typed_operation<
+interface InputType {
+  recursive: InputType
+  nested: NestedInputType
+  scalar: Nullable<Boolean>
+  list: Nullable<ReadonlyArray<String>>
+}
+interface NestedInputType {
+  scalar: Nullable<Int>
+}
+const testScalars: __operation<
   'query',
   {},
   {
@@ -28,7 +37,7 @@ const testScalars: __typed_operation<
     renamedString: scalarString
   }
 `
-const testNullability: __typed_operation<
+const testNullability: __operation<
   'query',
   {},
   {
@@ -41,7 +50,7 @@ const testNullability: __typed_operation<
     nonNullableBoolean
   }
 `
-const testNesting: __typed_operation<
+const testNesting: __operation<
   'query',
   {},
   {
@@ -74,7 +83,7 @@ const testNesting: __typed_operation<
     }
   }
 `
-const testUnion: __typed_operation<
+const testUnion: __operation<
   'query',
   {},
   {
@@ -105,7 +114,7 @@ const testUnion: __typed_operation<
     }
   }
 `
-const testMethods: __typed_operation<
+const testMethods: __operation<
   'query',
   {
     reqParam: String
@@ -128,7 +137,7 @@ const testMethods: __typed_operation<
     renamedMethod: method2(list2: $list2)
   }
 `
-const testScalarsMutation: __typed_operation<
+const testScalarsMutation: __operation<
   'mutation',
   {},
   {
@@ -151,7 +160,7 @@ const testScalarsMutation: __typed_operation<
     renamedString: scalarString
   }
 `
-const testNullabilityMutation: __typed_operation<
+const testNullabilityMutation: __operation<
   'mutation',
   {},
   {
@@ -164,7 +173,7 @@ const testNullabilityMutation: __typed_operation<
     nonNullableBoolean
   }
 `
-const testNestingMutation: __typed_operation<
+const testNestingMutation: __operation<
   'mutation',
   {},
   {
@@ -197,7 +206,7 @@ const testNestingMutation: __typed_operation<
     }
   }
 `
-const testMethodsMutation: __typed_operation<
+const testMethodsMutation: __operation<
   'mutation',
   {
     reqParam: String
@@ -220,7 +229,5 @@ const testMethodsMutation: __typed_operation<
     renamedMethod: method2(list2: $list2)
   }
 `
-type __typed_query<D, V> = any
-type __typed_mutation<D, V> = any
-type __typed_subscription<D, V> = any
+type __operation<Kind, Data, Variables> = any
 type Nullable<T> = T | null

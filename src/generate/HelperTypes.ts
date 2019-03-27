@@ -1,27 +1,27 @@
 import ts from 'typescript'
 
 export function generateHelperTypes() {
-  return [
-    generateOperationType('query'),
-    generateOperationType('mutation'),
-    generateOperationType('subscription'),
-    createNullableType(),
-  ]
+  return [generateOperationType(), createNullableType()]
 }
 
-function generateOperationType(operationName: string) {
+function generateOperationType() {
   return ts.createTypeAliasDeclaration(
     undefined,
     undefined,
-    ts.createIdentifier(`__typed_${operationName}`),
+    ts.createIdentifier(`__operation`),
     [
       ts.createTypeParameterDeclaration(
-        ts.createIdentifier('D'),
+        ts.createIdentifier('Kind'),
         undefined,
         undefined
       ),
       ts.createTypeParameterDeclaration(
-        ts.createIdentifier('V'),
+        ts.createIdentifier('Data'),
+        undefined,
+        undefined
+      ),
+      ts.createTypeParameterDeclaration(
+        ts.createIdentifier('Variables'),
         undefined,
         undefined
       ),

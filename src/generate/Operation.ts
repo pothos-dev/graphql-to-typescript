@@ -17,7 +17,7 @@ export function generateOperation(
       [
         ts.createVariableDeclaration(
           ts.createIdentifier(operation.name),
-          ts.createTypeReferenceNode(ts.createIdentifier('__typed_operation'), [
+          ts.createTypeReferenceNode(ts.createIdentifier('__operation'), [
             ts.createLiteralTypeNode(ts.createLiteral(operation.kind)),
             generateVariables(),
             generateData(),
