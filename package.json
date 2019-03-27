@@ -7,8 +7,9 @@
   "scripts": {
     "postinstall": "lerna bootstrap",
     "clean": "lerna clean -y && lerna run clean",
-    "build": "lerna run build",
-    "start": "lerna run start"
+    "build": "lerna run build --stream",
+    "start": "lerna run start --stream",
+    "test": "lerna run test --stream"
   },
   "devDependencies": {
     "lerna": "^3.4.0"

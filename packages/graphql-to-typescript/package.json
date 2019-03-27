@@ -1,12 +1,11 @@
 {
-  "name": "graphql-to-typescript",
+  "name": "@bearbytes/graphql-to-typescript",
   "description": "",
   "version": "0.0.0",
   "author": "",
   "license": "ISC",
   "scripts": {
-    "build": "tsc",
-    "test": "jest"
+    "build": "tsc"
   },
   "devDependencies": {
     "@types/fs-extra": "^5.0.5",
