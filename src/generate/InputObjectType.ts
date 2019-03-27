@@ -12,7 +12,7 @@ export function generateInputObjectTypeAsInterface(
 ): ts.InterfaceDeclaration {
   return ts.createInterfaceDeclaration(
     undefined,
-    undefined,
+    [ts.createModifier(ts.SyntaxKind.ExportKeyword)],
     ts.createIdentifier(typename),
     undefined,
     undefined,

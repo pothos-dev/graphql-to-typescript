@@ -14,7 +14,7 @@ export function generateScalarTypeAlias(
 ): ts.TypeAliasDeclaration {
   return ts.createTypeAliasDeclaration(
     undefined,
-    undefined,
+    [ts.createModifier(ts.SyntaxKind.ExportKeyword)],
     ts.createIdentifier(scalarType.scalar),
     undefined,
     selectKeyword()

@@ -4,7 +4,7 @@ export function generateHelperTypes() {
   return [
     ts.createTypeAliasDeclaration(
       undefined,
-      undefined,
+      [ts.createModifier(ts.SyntaxKind.ExportKeyword)],
       ts.createIdentifier('Nullable'),
       [
         ts.createTypeParameterDeclaration(
@@ -20,7 +20,7 @@ export function generateHelperTypes() {
     ),
     ts.createTypeAliasDeclaration(
       undefined,
-      undefined,
+      [ts.createModifier(ts.SyntaxKind.ExportKeyword)],
       ts.createIdentifier('__Operation'),
       [
         ts.createTypeParameterDeclaration(
@@ -43,14 +43,14 @@ export function generateHelperTypes() {
     ),
     ts.createTypeAliasDeclaration(
       undefined,
-      undefined,
+      [ts.createModifier(ts.SyntaxKind.ExportKeyword)],
       ts.createIdentifier('__Operations'),
       undefined,
       ts.createTypeQueryNode(ts.createIdentifier('__operations'))
     ),
     ts.createTypeAliasDeclaration(
       undefined,
-      undefined,
+      [ts.createModifier(ts.SyntaxKind.ExportKeyword)],
       ts.createIdentifier('__OperationName'),
       undefined,
       ts.createTypeOperatorNode(
@@ -63,7 +63,7 @@ export function generateHelperTypes() {
     ),
     ts.createTypeAliasDeclaration(
       undefined,
-      undefined,
+      [ts.createModifier(ts.SyntaxKind.ExportKeyword)],
       ts.createIdentifier('__OperationKind'),
       [
         ts.createTypeParameterDeclaration(
@@ -100,7 +100,7 @@ export function generateHelperTypes() {
     ),
     ts.createTypeAliasDeclaration(
       undefined,
-      undefined,
+      [ts.createModifier(ts.SyntaxKind.ExportKeyword)],
       ts.createIdentifier('OperationVariables'),
       [
         ts.createTypeParameterDeclaration(
@@ -137,7 +137,7 @@ export function generateHelperTypes() {
     ),
     ts.createTypeAliasDeclaration(
       undefined,
-      undefined,
+      [ts.createModifier(ts.SyntaxKind.ExportKeyword)],
       ts.createIdentifier('OperationData'),
       [
         ts.createTypeParameterDeclaration(
