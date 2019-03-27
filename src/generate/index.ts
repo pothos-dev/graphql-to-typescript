@@ -2,7 +2,7 @@ import ts from 'typescript'
 import { SchemaIR } from '../transform/SchemaIR'
 import { DocumentIR } from '../transform/DocumentIR'
 import { OperationIR } from '../transform/OperationIR'
-import { generateOperation } from './Operation'
+import { generateOperations } from './Operation'
 import prettier from 'prettier'
 import { generateImport } from './Import'
 import { generateHelperTypes } from './HelperTypes'
@@ -70,8 +70,7 @@ function printOperations(
 ) {
   return (
     '// Operations\n' +
-    document.operations
-      .map((it) => generateOperation(it, schema, sourceCode))
+    [generateOperations(schema, sourceCode, document.operations)]
       .map(print)
       .join('\n')
   )
