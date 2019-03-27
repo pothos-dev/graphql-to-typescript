@@ -1,16 +1,30 @@
 import program from 'commander'
+import generate from '@bearbytes/graphql-to-typescript'
 
 program.version('0.0.0')
 
 program
   .option(
-    '-s, --schema',
+    '-s, --schema <uri>',
     'Schema file, Introspection JSON file or GraphQL Endpoint'
   )
   .option(
-    '-o --operations',
-    'Operations file (Queries, Mutations, Subscriptions)'
+    '-d, --documents <file>',
+    'Document file (Queries, Mutations, Subscriptions, Fragments)'
   )
+  .option('-o, --outfile <file>', 'Path of the generated file')
   .parse(process.argv)
 
-console.log('Hello world')
+main()
+
+async function main() {
+  try {
+    await generate({
+      schema: program.schema,
+      document: program.documents,
+      outFile: program.outfile,
+    })
+  } catch (error) {
+    console.error(error.message)
+  }
+}
