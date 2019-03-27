@@ -5,21 +5,21 @@ exports[`generate code: code 1`] = `
 import gql from 'graphql-tag'
 
 // Scalar Types
-type String = string
-type Int = number
-type Float = number
-type Boolean = boolean
-type ID = string
-type CustomScalar = string
+export type String = string
+export type Int = number
+export type Float = number
+export type Boolean = boolean
+export type ID = string
+export type CustomScalar = string
 
 // Input Types
-interface InputType {
+export interface InputType {
   recursive: Nullable<InputType>
   nested: Nullable<NestedInputType>
   scalar: Nullable<Boolean>
   list: Nullable<ReadonlyArray<String>>
 }
-interface NestedInputType {
+export interface NestedInputType {
   scalar: Nullable<Int>
 }
 
@@ -243,19 +243,19 @@ const __operations = {
 }
 
 // Helper types
-type Nullable<T> = T | null
-type __Operation<Kind, Variables, Data> = {}
-type __Operations = typeof __operations
-type __OperationName = keyof __Operations
-type __OperationKind<
+export type Nullable<T> = T | null
+export type __Operation<Kind, Variables, Data> = {}
+export type __Operations = typeof __operations
+export type __OperationName = keyof __Operations
+export type __OperationKind<
   Name extends __OperationName
 > = __Operations[Name] extends __Operation<infer Kind, any, any> ? Kind : never
-type OperationVariables<
+export type OperationVariables<
   Name extends __OperationName
 > = __Operations[Name] extends __Operation<any, infer Variables, any>
   ? Variables
   : never
-type OperationData<
+export type OperationData<
   Name extends __OperationName
 > = __Operations[Name] extends __Operation<any, any, infer Data> ? Data : never
 "
@@ -2247,7 +2247,7 @@ GraphQLSchema {
   "_mutationType": "Mutation",
   "_possibleTypeMap": Object {},
   "_queryType": "Query",
-  "_subscriptionType": null,
+  "_subscriptionType": undefined,
   "_typeMap": Object {
     "Boolean": "Boolean",
     "CustomScalar": "CustomScalar",

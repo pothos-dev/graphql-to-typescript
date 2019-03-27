@@ -7,11 +7,11 @@ import { generateCode } from 'graphql-to-typescript/src/generate'
 import { writeFileSync } from 'fs'
 
 function loadTestSchema() {
-  return loadSchema('src/test/schema.gql')
+  return loadSchema('src/schema.gql')
 }
 
 function loadTestDocument() {
-  return loadDocument('src/test/document.gql')
+  return loadDocument('src/document.gql')
 }
 
 test('load document', async () => {
@@ -50,5 +50,5 @@ test('generate code', async () => {
   const schemaIR = transformSchema(schema)
   const code = await generateCode(schemaIR, documentIR, sourceCode)
   expect(code).toMatchSnapshot('code')
-  writeFileSync('src/output/output.ts', code)
+  writeFileSync('src/output.ts', code)
 })

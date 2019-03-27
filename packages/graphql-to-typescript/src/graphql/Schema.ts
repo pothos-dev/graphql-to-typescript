@@ -13,8 +13,6 @@ export async function loadSchema(uri: string) {
 }
 
 async function loadSchemaFromFile(filePath: string) {
-  const fileContent = await readFile('src/test/schema.gql', {
-    encoding: 'utf8',
-  })
+  const fileContent = await readFile(filePath, { encoding: 'utf8' })
   return buildSchema(fileContent)
 }
