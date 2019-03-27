@@ -9,7 +9,7 @@ import { generateHelperTypes } from './HelperTypes'
 import { generateScalarTypeAlias } from './ScalarType'
 import { ScalarTypeIR } from '../transform/ScalarTypeIR'
 import { InputObjectTypeIR } from '../transform/InputObjectTypeIR'
-import { generateInputObjectType } from './InputObjectType'
+import { generateInputObjectTypeAsInterface } from './InputObjectType'
 
 export async function generateCode(
   schema: SchemaIR,
@@ -52,7 +52,7 @@ function printInputTypes(schema: SchemaIR): string {
       .map(([typename, type]) => ({ typename, type }))
       .filter((it) => it.type && it.type.kind == 'inputObject')
       .map((it) =>
-        generateInputObjectType(
+        generateInputObjectTypeAsInterface(
           schema,
           it.type as InputObjectTypeIR,
           it.typename
