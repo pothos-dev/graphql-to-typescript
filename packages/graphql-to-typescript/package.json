@@ -2,10 +2,13 @@
   "name": "@bearbytes/graphql-to-typescript",
   "description": "",
   "version": "0.0.0",
-  "author": "",
+  "author": "bearbytes",
   "license": "ISC",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc"
   },
@@ -20,6 +23,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "commander": "^2.19.0",
     "fs-extra": "^7.0.1",
     "graphql": "^14.1.1",
     "lodash": "^4.17.11",

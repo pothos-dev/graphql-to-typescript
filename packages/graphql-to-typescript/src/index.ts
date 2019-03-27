@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { loadDocument } from './graphql/Document'
 import { loadSchema } from './graphql/Schema'
 import { transformDocument, DocumentIR } from './transform/DocumentIR'
