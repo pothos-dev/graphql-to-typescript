@@ -10,7 +10,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
+    "build:graphql": "graphql-to-typescript -s src/schema.gql -d src/document.gql -o src/output.ts",
+    "build": "npm run build:graphql && tsc",
     "test": "npx majestic"
   },
   "dependencies": {
