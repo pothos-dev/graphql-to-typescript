@@ -13,7 +13,5 @@
     "allowSyntheticDefaultImports": true,
 
     "strict": true
-  },
-  "include": ["src"],
-  "exclude": ["src/test"]
+  }
 }

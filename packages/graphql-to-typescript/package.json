@@ -1,0 +1,28 @@
+{
+  "name": "graphql-to-typescript",
+  "description": "",
+  "version": "0.0.0",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^5.0.5",
+    "@types/graphql": "^14.0.7",
+    "@types/lodash": "^4.14.123",
+    "@types/node": "^11.11.4",
+    "@types/prettier": "^1.16.1",
+    "graphql-tag": "^2.10.1",
+    "typescript": "^3.3.4000"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "fs-extra": "^7.0.1",
+    "graphql": "^14.1.1",
+    "lodash": "^4.17.11",
+    "prettier": "^1.16.4",
+    "rambda": "^2.4.1"
+  }
+}

@@ -1,9 +1,9 @@
-import { loadSchema } from '../graphql/Schema'
-import { loadDocument } from '../graphql/Document'
-import { validateDocument } from '../graphql/Validation'
-import { transformSchema } from '../transform/SchemaIR'
-import { transformDocument } from '../transform/DocumentIR'
-import { generateCode } from '../generate'
+import { loadSchema } from '../../graphql-to-typescript/src/graphql/Schema'
+import { loadDocument } from '../../graphql-to-typescript/src/graphql/Document'
+import { validateDocument } from '../../graphql-to-typescript/src/graphql/Validation'
+import { transformSchema } from '../../graphql-to-typescript/src/transform/SchemaIR'
+import { transformDocument } from '../../graphql-to-typescript/src/transform/DocumentIR'
+import { generateCode } from '../../graphql-to-typescript/src/generate'
 import { writeFileSync } from 'fs'
 
 function loadTestSchema() {
