@@ -14,12 +14,17 @@ export function generateObjectType(
     throw 'expected ObjectType to have a SelectionSet'
   }
 
-  let properties = selectionSet.fields.map(generateProperty)
-  if (typename) {
-    properties = [generateTypenameProperty(typename), ...properties]
-  }
+  return ts.createIntersectionTypeNode([
+    ...selectionSet.fragments.map(generateFragmentSpread),
+    ts.createTypeLiteralNode([
+      ...(typename ? [generateTypenameProperty(typename)] : []),
+      ...selectionSet.fields.map(generateProperty),
+    ]),
+  ])
 
-  return ts.createTypeLiteralNode(properties)
+  function generateFragmentSpread(name: string) {
+    return ts.createTypeReferenceNode(ts.createIdentifier(name), undefined)
+  }
 
   function generateTypenameProperty(typename: string) {
     return ts.createPropertySignature(

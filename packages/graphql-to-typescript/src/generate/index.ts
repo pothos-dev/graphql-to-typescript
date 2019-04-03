@@ -10,6 +10,7 @@ import { generateScalarTypeAlias } from './ScalarType'
 import { ScalarTypeIR } from '../transform/ScalarTypeIR'
 import { InputObjectTypeIR } from '../transform/InputObjectTypeIR'
 import { generateInputObjectTypeAsInterface } from './InputObjectType'
+import { generateFragment } from './Fragment'
 
 export async function generateCode(
   schema: SchemaIR,
@@ -20,6 +21,7 @@ export async function generateCode(
     [
       printHeader(),
       printScalarTypes(schema),
+      printFragmentTypes(schema, document),
       printInputTypes(schema),
       printOperations(schema, document, sourceCode),
       printHelperTypes(),
@@ -39,7 +41,17 @@ function printScalarTypes(schema: SchemaIR): string {
     Object.values(schema.types)
       .filter((it) => it && it.kind == 'scalar')
       .map((it) => it as ScalarTypeIR)
-      .map((it) => generateScalarTypeAlias(it))
+      .map(generateScalarTypeAlias)
+      .map(print)
+      .join('\n')
+  )
+}
+
+function printFragmentTypes(schema: SchemaIR, document: DocumentIR): string {
+  return (
+    '// Fragment Types\n' +
+    document.fragments
+      .map((it) => generateFragment(schema, it))
       .map(print)
       .join('\n')
   )

@@ -9,6 +9,12 @@ export type Boolean = boolean
 export type ID = string
 export type CustomScalar = string
 
+// Fragment Types
+export type ObjectTypeFields = {
+  __typename: 'ObjectType'
+  scalar: Nullable<Boolean>
+}
+
 // Input Types
 export interface InputType {
   recursive: Nullable<InputType>
@@ -109,16 +115,16 @@ const __operations = {
     {},
     {
       union: Nullable<
-        | {
+        | ({
             __typename: 'Tomato'
             id: Nullable<ID>
             color: Nullable<String>
-          }
-        | {
+          })
+        | ({
             __typename: 'Potato'
             id: Nullable<ID>
             origin: Nullable<String>
-          }
+          })
       >
     }
   >,
@@ -247,7 +253,7 @@ const __operations = {
     'query',
     {},
     {
-      nestedObject: Nullable<{}>
+      nestedObject: Nullable<ObjectTypeFields & {}>
     }
   >,
 }

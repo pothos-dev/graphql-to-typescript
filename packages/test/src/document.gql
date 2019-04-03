@@ -93,12 +93,12 @@ mutation testMethodsMutation(
   renamedMethod: method2(list2: $list2)
 }
 
-# fragment ObjectTypeFields on ObjectType {
-#   scalar
-# }
+fragment ObjectTypeFields on ObjectType {
+  scalar
+}
 
-# query testFragments {
-#   nestedObject {
-#     ...ObjectTypeFields
-#   }
-# }
+query testFragments {
+  nestedObject {
+    ...ObjectTypeFields
+  }
+}

@@ -1,20 +1,26 @@
-import { DocumentNode, DefinitionNode } from 'graphql'
+import {
+  DocumentNode,
+  DefinitionNode,
+  OperationDefinitionNode,
+  FragmentDefinitionNode,
+} from 'graphql'
 import { OperationIR, transformOperation } from './OperationIR'
+import { FragmentIR, transformFragment } from './FragmentIR'
 
 export interface DocumentIR {
   operations: OperationIR[]
+  fragments: FragmentIR[]
 }
 
 export function transformDocument(T: DocumentNode): DocumentIR {
-  return { operations: T.definitions.map(transformDefinition) }
-}
-
-export function transformDefinition(T: DefinitionNode): OperationIR {
-  switch (T.kind) {
-    case 'OperationDefinition':
-      return transformOperation(T)
-    default: {
-      throw `Unhandled DefinitionNode.kind '${T.kind}'`
-    }
+  return {
+    operations: T.definitions
+      .filter((it) => it.kind == 'OperationDefinition')
+      .map((it) => it as OperationDefinitionNode)
+      .map(transformOperation),
+    fragments: T.definitions
+      .filter((it) => it.kind == 'FragmentDefinition')
+      .map((it) => it as FragmentDefinitionNode)
+      .map(transformFragment),
   }
 }
