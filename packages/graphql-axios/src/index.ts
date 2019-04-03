@@ -38,6 +38,6 @@ export function createClient<T>(
       }
       // axiosConfig
     )
-    return response
+    return response.data
   }
 }
