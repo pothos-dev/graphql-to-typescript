@@ -1,5 +1,5 @@
 import program from 'commander'
-import generate from '@bearbytes/graphql-to-typescript'
+import generate from '@bearbytes/graphql-client-types'
 
 program.version('0.0.0')
 

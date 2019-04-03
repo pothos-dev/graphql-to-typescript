@@ -10,13 +10,13 @@
     "dist"
   ],
   "scripts": {
-    "build:graphql": "graphql-to-typescript -s src/schema.gql -d src/document.gql -o src/output.ts",
+    "build:graphql": "graphql-client-types -s src/schema.gql -d src/document.gql -o src/output.ts",
     "build": "npm run build:graphql && tsc",
     "test": "npx majestic"
   },
   "dependencies": {
-    "@bearbytes/graphql-to-typescript": "*",
-    "@bearbytes/graphql-to-typescript-cli": "*",
+    "@bearbytes/graphql-client-types": "*",
+    "@bearbytes/graphql-client-types-cli": "*",
     "@bearbytes/graphql-axios": "*",
     "graphql-tag": "^2.10.1"
   },

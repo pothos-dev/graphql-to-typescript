@@ -11,6 +11,6 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "@bearbytes/graphql-to-typescript": "*"
+    "@bearbytes/graphql-client-types": "*"
   }
 }

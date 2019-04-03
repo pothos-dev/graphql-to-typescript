@@ -1,6 +1,6 @@
 import { Client, OperationOptions, OperationResult, Config } from './types'
 import axios, { AxiosRequestConfig } from 'axios'
-import { Query, Mutation } from '@bearbytes/graphql-to-typescript'
+import { Query, Mutation } from '@bearbytes/graphql-client-types'
 
 export * from './types'
 

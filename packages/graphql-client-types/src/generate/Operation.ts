@@ -20,13 +20,10 @@ export function generateOperations(
         ts.createPropertyAssignment(
           ts.createIdentifier(operation.name),
           ts.createAsExpression(
-            ts.createTaggedTemplate(
-              ts.createIdentifier('gql'),
-              ts.createNoSubstitutionTemplateLiteral(
-                formatGqlSource(sourceCode, operation)
-              )
+            ts.createNoSubstitutionTemplateLiteral(
+              formatGqlSource(sourceCode, operation)
             ),
-            ts.createTypeReferenceNode(ts.createIdentifier('__Operation'), [
+            ts.createTypeReferenceNode(ts.createIdentifier('Operation'), [
               ts.createLiteralTypeNode(ts.createLiteral(operation.kind)),
               generateVariables(operation),
               generateData(schema, operation),
@@ -42,6 +39,7 @@ function formatGqlSource(sourceCode: string, operation: OperationIR): string {
   return sourceCode
     .substring(operation.sourceCodeRange[0], operation.sourceCodeRange[1])
     .replace(/\n/g, ' ')
+    .replace(/' +'/g, ' ')
 }
 
 function generateVariables(operation: OperationIR): ts.TypeLiteralNode {

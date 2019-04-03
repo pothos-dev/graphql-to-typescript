@@ -1,6 +1,8 @@
 import typedGraphQL from './outputs/output'
 import { createClient } from '@bearbytes/graphql-axios'
 
+test('empty', () => {})
+
 async function tryAxios() {
   const client = createClient(typedGraphQL, { url: '' })
 

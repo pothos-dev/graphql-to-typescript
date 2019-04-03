@@ -1,9 +1,9 @@
-import { loadSchema } from '@bearbytes/graphql-to-typescript/src/graphql/Schema'
-import { loadDocument } from '@bearbytes/graphql-to-typescript/src/graphql/Document'
-import { validateDocument } from '@bearbytes/graphql-to-typescript/src/graphql/Validation'
-import { transformSchema } from '@bearbytes/graphql-to-typescript/src/transform/SchemaIR'
-import { transformDocument } from '@bearbytes/graphql-to-typescript/src/transform/DocumentIR'
-import { generateCode } from '@bearbytes/graphql-to-typescript/src/generate'
+import { loadSchema } from '@bearbytes/graphql-client-types/src/graphql/Schema'
+import { loadDocument } from '@bearbytes/graphql-client-types/src/graphql/Document'
+import { validateDocument } from '@bearbytes/graphql-client-types/src/graphql/Validation'
+import { transformSchema } from '@bearbytes/graphql-client-types/src/transform/SchemaIR'
+import { transformDocument } from '@bearbytes/graphql-client-types/src/transform/DocumentIR'
+import { generateCode } from '@bearbytes/graphql-client-types/src/generate'
 import { writeFileSync } from 'fs'
 
 function loadTestSchema() {
