@@ -1,5 +1,5 @@
 {
-  "name": "@bearbytes/graphql-client-types-cli",
+  "name": "@bearbytes/graphql-to-typescript-cli",
   "description": "",
   "version": "0.0.0",
   "author": "",
@@ -10,11 +10,11 @@
     "build": "tsc"
   },
   "bin": {
-    "graphql-client-types": "./bin/graphql-client-types.js"
+    "graphql-to-typescript": "./bin/graphql-to-typescript.js"
   },
   "dependencies": {
     "@types/node": "^11.12.0",
-    "@bearbytes/graphql-client-types": "*",
+    "@bearbytes/graphql-to-typescript": "*",
     "commander": "^2.19.0"
   }
 }

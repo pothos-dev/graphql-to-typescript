@@ -4,12 +4,12 @@ import {
   Mutation,
   Subscription,
   OperationVariables,
-} from '@bearbytes/graphql-client-types'
-import { AxiosRequestConfig } from 'axios'
+} from '@bearbytes/graphql-to-typescript'
+// import { AxiosRequestConfig } from 'axios'
 
 export interface Config {
   url: string
-  axiosConfig?: AxiosRequestConfig
+  // axiosConfig?: AxiosRequestConfig
 }
 
 export interface Client<T> {

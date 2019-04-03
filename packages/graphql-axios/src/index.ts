@@ -1,6 +1,6 @@
 import { Client, OperationOptions, OperationResult, Config } from './types'
 import axios, { AxiosRequestConfig } from 'axios'
-import { Query, Mutation } from '@bearbytes/graphql-client-types'
+import { Query, Mutation } from '@bearbytes/graphql-to-typescript'
 
 export * from './types'
 
@@ -20,14 +20,14 @@ export function createClient<T>(
     operationName: Name,
     options: OperationOptions<T, Name>
   ): Promise<OperationResult<T, Name>> {
-    const { url, axiosConfig } = clientConfig
+    const { url } = clientConfig
     const response = await axios.post(
       url,
       {
         query: typedGraphQL[operationName],
         variables: options.variables,
-      },
-      axiosConfig
+      }
+      // axiosConfig
     )
     return response
   }
