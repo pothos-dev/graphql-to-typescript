@@ -2,11 +2,13 @@
 import { loadDocument } from './graphql/Document'
 import { loadSchema } from './graphql/Schema'
 import { transformDocument, DocumentIR } from './transform/DocumentIR'
-import { generateCode } from './generate'
 import { transformSchema, SchemaIR } from './transform/SchemaIR'
 import { validateDocument } from './graphql/Validation'
 import { GraphQLSchema } from 'graphql'
+import { generateCode } from './generate'
 import fs from 'fs-extra'
+
+export * from './types'
 
 type URL = string
 type FilePath = string

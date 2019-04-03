@@ -30,7 +30,7 @@ export interface NestedInputType {
 }
 
 // Operations
-const __operations = {
+export default {
   testScalars: gql\`
     query testScalars {
       scalarString
@@ -118,16 +118,16 @@ const __operations = {
     {},
     {
       union: Nullable<
-        | {
+        | ({
             __typename: 'Tomato'
             id: Nullable<ID>
             color: Nullable<String>
-          }
-        | {
+          })
+        | ({
             __typename: 'Potato'
             id: Nullable<ID>
             origin: Nullable<String>
-          }
+          })
       >
     }
   >,
@@ -256,7 +256,7 @@ const __operations = {
     'query',
     {},
     {
-      nestedObject: Nullable<{}>
+      nestedObject: Nullable<ObjectTypeFields & {}>
     }
   >,
 }
@@ -264,19 +264,6 @@ const __operations = {
 // Helper types
 export type Nullable<T> = T | null
 export type __Operation<Kind, Variables, Data> = {}
-export type __Operations = typeof __operations
-export type __OperationName = keyof __Operations
-export type __OperationKind<
-  Name extends __OperationName
-> = __Operations[Name] extends __Operation<infer Kind, any, any> ? Kind : never
-export type OperationVariables<
-  Name extends __OperationName
-> = __Operations[Name] extends __Operation<any, infer Variables, any>
-  ? Variables
-  : never
-export type OperationData<
-  Name extends __OperationName
-> = __Operations[Name] extends __Operation<any, any, infer Data> ? Data : never
 "
 `;
 

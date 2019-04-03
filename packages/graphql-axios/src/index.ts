@@ -1,1 +1,5 @@
-import gl2ts from '@bearbytes/graphql-to-typescript'
+import { Client } from './types'
+
+function createClient<T>(typedGraphQL: T, axios: any): Client<T> {
+  throw 'todo'
+}

@@ -2,13 +2,13 @@ export type Nullable<T> = T | null
 export type Operation<Kind, Variables, Data> = {}
 
 // Library Types
-export type __Mutation<T> = {
+export type Mutation<T> = {
   [Name in keyof T]: OperationKind<T, Name> extends 'mutation' ? Name : never
 }[keyof T]
-export type __Query<T> = {
+export type Query<T> = {
   [Name in keyof T]: OperationKind<T, Name> extends 'query' ? Name : never
 }[keyof T]
-export type __Subscription<T> = {
+export type Subscription<T> = {
   [Name in keyof T]: OperationKind<T, Name> extends 'subscription'
     ? Name
     : never
@@ -20,11 +20,14 @@ export type OperationKind<T, Name extends keyof T> = T[Name] extends Operation<
 >
   ? Kind
   : never
-export type __OperationVariables<
+export type OperationVariables<
   T,
   Name extends keyof T
 > = T[Name] extends Operation<any, infer Variables, any> ? Variables : never
-export type __OperationData<
-  T,
-  Name extends keyof T
-> = T[Name] extends Operation<any, any, infer Data> ? Data : never
+export type OperationData<T, Name extends keyof T> = T[Name] extends Operation<
+  any,
+  any,
+  infer Data
+>
+  ? Data
+  : never

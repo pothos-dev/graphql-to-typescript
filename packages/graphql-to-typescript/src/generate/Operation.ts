@@ -11,41 +11,29 @@ export function generateOperations(
   sourceCode: string,
   operations: OperationIR[]
 ) {
-  return ts.createVariableStatement(
+  return ts.createExportAssignment(
     undefined,
-    ts.createVariableDeclarationList(
-      [
-        ts.createVariableDeclaration(
-          ts.createIdentifier('__operations'),
-          undefined,
-          ts.createObjectLiteral(
-            operations.map((operation) =>
-              ts.createPropertyAssignment(
-                ts.createIdentifier(operation.name),
-                ts.createAsExpression(
-                  ts.createTaggedTemplate(
-                    ts.createIdentifier('gql'),
-                    ts.createNoSubstitutionTemplateLiteral(
-                      formatGqlSource(sourceCode, operation)
-                    )
-                  ),
-                  ts.createTypeReferenceNode(
-                    ts.createIdentifier('__Operation'),
-                    [
-                      ts.createLiteralTypeNode(
-                        ts.createLiteral(operation.kind)
-                      ),
-                      generateVariables(operation),
-                      generateData(schema, operation),
-                    ]
-                  )
-                )
+    undefined,
+    undefined,
+    ts.createObjectLiteral(
+      operations.map((operation) =>
+        ts.createPropertyAssignment(
+          ts.createIdentifier(operation.name),
+          ts.createAsExpression(
+            ts.createTaggedTemplate(
+              ts.createIdentifier('gql'),
+              ts.createNoSubstitutionTemplateLiteral(
+                formatGqlSource(sourceCode, operation)
               )
-            )
+            ),
+            ts.createTypeReferenceNode(ts.createIdentifier('__Operation'), [
+              ts.createLiteralTypeNode(ts.createLiteral(operation.kind)),
+              generateVariables(operation),
+              generateData(schema, operation),
+            ])
           )
-        ),
-      ],
-      ts.NodeFlags.Const
+        )
+      )
     )
   )
 }
