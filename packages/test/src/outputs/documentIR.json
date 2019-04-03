@@ -436,6 +436,48 @@
         1117,
         1356
       ]
+    },
+    {
+      "kind": "query",
+      "name": "testFragments",
+      "data": {
+        "fields": [
+          {
+            "name": "nestedObject",
+            "schemaName": "nestedObject",
+            "selectionSet": {
+              "fields": [],
+              "unions": {},
+              "fragments": [
+                "ObjectTypeFields"
+              ]
+            }
+          }
+        ],
+        "unions": {},
+        "fragments": []
+      },
+      "variables": {},
+      "sourceCodeRange": [
+        1412,
+        1480
+      ]
+    }
+  ],
+  "fragments": [
+    {
+      "name": "ObjectTypeFields",
+      "schemaObjectName": "ObjectType",
+      "selectionSet": {
+        "fields": [
+          {
+            "name": "scalar",
+            "schemaName": "scalar"
+          }
+        ],
+        "unions": {},
+        "fragments": []
+      }
     }
   ]
 }

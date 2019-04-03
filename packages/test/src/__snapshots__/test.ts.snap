@@ -240,6 +240,19 @@ const __operations = {
       renamedMethod: Nullable<ReadonlyArray<Nullable<CustomScalar>>>
     }
   >,
+  testFragments: gql\`
+    query testFragments {
+      nestedObject {
+        ...ObjectTypeFields
+      }
+    }
+  \` as __Operation<
+    'query',
+    {},
+    {
+      nestedObject: Nullable<{}>
+    }
+  >,
 }
 
 // Helper types
@@ -2117,10 +2130,139 @@ Object {
           },
         ],
       },
+      Object {
+        "directives": Array [],
+        "kind": "FragmentDefinition",
+        "loc": Object {
+          "end": 1410,
+          "start": 1358,
+        },
+        "name": Object {
+          "kind": "Name",
+          "loc": Object {
+            "end": 1383,
+            "start": 1367,
+          },
+          "value": "ObjectTypeFields",
+        },
+        "selectionSet": Object {
+          "kind": "SelectionSet",
+          "loc": Object {
+            "end": 1410,
+            "start": 1398,
+          },
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 1408,
+                "start": 1402,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 1408,
+                  "start": 1402,
+                },
+                "value": "scalar",
+              },
+              "selectionSet": undefined,
+            },
+          ],
+        },
+        "typeCondition": Object {
+          "kind": "NamedType",
+          "loc": Object {
+            "end": 1397,
+            "start": 1387,
+          },
+          "name": Object {
+            "kind": "Name",
+            "loc": Object {
+              "end": 1397,
+              "start": 1387,
+            },
+            "value": "ObjectType",
+          },
+        },
+      },
+      Object {
+        "directives": Array [],
+        "kind": "OperationDefinition",
+        "loc": Object {
+          "end": 1480,
+          "start": 1412,
+        },
+        "name": Object {
+          "kind": "Name",
+          "loc": Object {
+            "end": 1431,
+            "start": 1418,
+          },
+          "value": "testFragments",
+        },
+        "operation": "query",
+        "selectionSet": Object {
+          "kind": "SelectionSet",
+          "loc": Object {
+            "end": 1480,
+            "start": 1432,
+          },
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 1478,
+                "start": 1436,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 1448,
+                  "start": 1436,
+                },
+                "value": "nestedObject",
+              },
+              "selectionSet": Object {
+                "kind": "SelectionSet",
+                "loc": Object {
+                  "end": 1478,
+                  "start": 1449,
+                },
+                "selections": Array [
+                  Object {
+                    "directives": Array [],
+                    "kind": "FragmentSpread",
+                    "loc": Object {
+                      "end": 1474,
+                      "start": 1455,
+                    },
+                    "name": Object {
+                      "kind": "Name",
+                      "loc": Object {
+                        "end": 1474,
+                        "start": 1458,
+                      },
+                      "value": "ObjectTypeFields",
+                    },
+                  },
+                ],
+              },
+            },
+          ],
+        },
+        "variableDefinitions": Array [],
+      },
     ],
     "kind": "Document",
     "loc": Object {
-      "end": 1497,
+      "end": 1481,
       "start": 0,
     },
   },
@@ -2219,15 +2361,15 @@ mutation testMethodsMutation(
   renamedMethod: method2(list2: $list2)
 }
 
-# fragment ObjectTypeFields on ObjectType {
-#   scalar
-# }
+fragment ObjectTypeFields on ObjectType {
+  scalar
+}
 
-# query testFragments {
-#   nestedObject {
-#     ...ObjectTypeFields
-#   }
-# }
+query testFragments {
+  nestedObject {
+    ...ObjectTypeFields
+  }
+}
 ",
 }
 `;
@@ -2280,6 +2422,23 @@ GraphQLSchema {
 
 exports[`transform document: documentIR 1`] = `
 Object {
+  "fragments": Array [
+    Object {
+      "name": "ObjectTypeFields",
+      "schemaObjectName": "ObjectType",
+      "selectionSet": Object {
+        "fields": Array [
+          Object {
+            "name": "scalar",
+            "schemaName": "scalar",
+            "selectionSet": undefined,
+          },
+        ],
+        "fragments": Array [],
+        "unions": Object {},
+      },
+    },
+  ],
   "operations": Array [
     Object {
       "data": Object {
@@ -2752,6 +2911,32 @@ Object {
         },
       },
     },
+    Object {
+      "data": Object {
+        "fields": Array [
+          Object {
+            "name": "nestedObject",
+            "schemaName": "nestedObject",
+            "selectionSet": Object {
+              "fields": Array [],
+              "fragments": Array [
+                "ObjectTypeFields",
+              ],
+              "unions": Object {},
+            },
+          },
+        ],
+        "fragments": Array [],
+        "unions": Object {},
+      },
+      "kind": "query",
+      "name": "testFragments",
+      "sourceCodeRange": Array [
+        1412,
+        1480,
+      ],
+      "variables": Object {},
+    },
   ],
 }
 `;
@@ -3200,14 +3385,14 @@ mutation testMethodsMutation(
   renamedMethod: method2(list2: $list2)
 }
 
-# fragment ObjectTypeFields on ObjectType {
-#   scalar
-# }
+fragment ObjectTypeFields on ObjectType {
+  scalar
+}
 
-# query testFragments {
-#   nestedObject {
-#     ...ObjectTypeFields
-#   }
-# }
+query testFragments {
+  nestedObject {
+    ...ObjectTypeFields
+  }
+}
 "
 `;

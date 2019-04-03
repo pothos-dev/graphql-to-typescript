@@ -237,6 +237,19 @@ const __operations = {
       renamedMethod: Nullable<ReadonlyArray<Nullable<CustomScalar>>>
     }
   >,
+  testFragments: gql`
+    query testFragments {
+      nestedObject {
+        ...ObjectTypeFields
+      }
+    }
+  ` as __Operation<
+    'query',
+    {},
+    {
+      nestedObject: Nullable<{}>
+    }
+  >,
 }
 
 // Helper types

@@ -50,5 +50,11 @@ test('generate code', async () => {
   const schemaIR = transformSchema(schema)
   const code = await generateCode(schemaIR, documentIR, sourceCode)
   expect(code).toMatchSnapshot('code')
-  writeFileSync('src/output.ts', code)
+
+  writeFileSync('src/outputs/schemaIR.json', JSON.stringify(schemaIR, null, 2))
+  writeFileSync(
+    'src/outputs/documentIR.json',
+    JSON.stringify(documentIR, null, 2)
+  )
+  writeFileSync('src/outputs/output.ts', code)
 })
