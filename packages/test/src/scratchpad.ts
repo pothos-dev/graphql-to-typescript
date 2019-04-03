@@ -1,15 +1,8 @@
-import GraphQL from './outputs/output'
-import {
-  Query,
-  OperationVariables,
-  OperationData,
-  Operation,
-  Mutation,
-  Subscription,
-} from '@bearbytes/graphql-to-typescript'
+import typedGraphQL from './outputs/output'
+import { createClient } from '@bearbytes/graphql-axios'
 
 async function tryAxios() {
-  const client: Client<typeof GraphQL> = null as any
+  const client = createClient(typedGraphQL, { url: '' })
 
   const response = await client.query('testMethods', {
     variables: {

@@ -17,6 +17,7 @@
   "dependencies": {
     "@bearbytes/graphql-to-typescript": "*",
     "@bearbytes/graphql-to-typescript-cli": "*",
+    "@bearbytes/graphql-axios": "*",
     "graphql-tag": "^2.10.1"
   },
   "devDependencies": {
