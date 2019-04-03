@@ -2,6 +2,25 @@
   "operations": [
     {
       "kind": "query",
+      "name": "simpleQuery",
+      "data": {
+        "fields": [
+          {
+            "name": "scalarString",
+            "schemaName": "scalarString"
+          }
+        ],
+        "unions": {},
+        "fragments": []
+      },
+      "variables": {},
+      "sourceCodeRange": [
+        0,
+        36
+      ]
+    },
+    {
+      "kind": "query",
       "name": "testScalars",
       "data": {
         "fields": [
@@ -39,8 +58,8 @@
       },
       "variables": {},
       "sourceCodeRange": [
-        0,
-        135
+        38,
+        173
       ]
     },
     {
@@ -62,8 +81,8 @@
       },
       "variables": {},
       "sourceCodeRange": [
-        137,
-        201
+        175,
+        239
       ]
     },
     {
@@ -133,8 +152,8 @@
       },
       "variables": {},
       "sourceCodeRange": [
-        203,
-        360
+        241,
+        398
       ]
     },
     {
@@ -186,8 +205,8 @@
       },
       "variables": {},
       "sourceCodeRange": [
-        362,
-        490
+        400,
+        528
       ]
     },
     {
@@ -241,8 +260,8 @@
         }
       },
       "sourceCodeRange": [
-        492,
-        720
+        530,
+        758
       ]
     },
     {
@@ -284,8 +303,8 @@
       },
       "variables": {},
       "sourceCodeRange": [
-        722,
-        868
+        760,
+        906
       ]
     },
     {
@@ -307,8 +326,8 @@
       },
       "variables": {},
       "sourceCodeRange": [
-        870,
-        945
+        908,
+        983
       ]
     },
     {
@@ -378,8 +397,8 @@
       },
       "variables": {},
       "sourceCodeRange": [
-        947,
-        1115
+        985,
+        1153
       ]
     },
     {
@@ -433,8 +452,8 @@
         }
       },
       "sourceCodeRange": [
-        1117,
-        1356
+        1155,
+        1394
       ]
     },
     {
@@ -459,8 +478,8 @@
       },
       "variables": {},
       "sourceCodeRange": [
-        1412,
-        1480
+        1450,
+        1518
       ]
     }
   ],

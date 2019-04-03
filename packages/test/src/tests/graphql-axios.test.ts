@@ -7,12 +7,13 @@ import {
   Subscription,
   OperationVariables,
 } from '@bearbytes/graphql-to-typescript'
+import { startServer } from '../graphql-server'
 
-test('empty', () => {})
+const client = createClient<typeof typedGraphQL>(typedGraphQL, {
+  url: 'http://localhost:5000',
+})
 
-async function tryAxios() {
-  const client = createClient<typeof typedGraphQL>(typedGraphQL, {
-    url: 'http://localhost:5000',
-  })
-  client.query
-}
+test('simple query', async () => {
+  const response = await client.query('simpleQuery', { variables: {} })
+  expect(response).toMatchSnapshot()
+})

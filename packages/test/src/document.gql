@@ -1,3 +1,7 @@
+query simpleQuery {
+  scalarString
+}
+
 query testScalars {
   scalarString
   scalarInt

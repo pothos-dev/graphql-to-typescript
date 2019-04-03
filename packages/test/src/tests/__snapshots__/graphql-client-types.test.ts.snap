@@ -31,6 +31,13 @@ export interface NestedInputType {
 
 // Operations
 export default {
+  simpleQuery: \`query simpleQuery {\\\\n  scalarString\\\\n}\` as Operation<
+    'query',
+    {},
+    {
+      scalarString: Nullable<String>
+    }
+  >,
   testScalars: \`query testScalars {\\\\n  scalarString\\\\n  scalarInt\\\\n  scalarFloat\\\\n  scalarBoolean\\\\n  scalarID\\\\n  scalarCustom\\\\n\\\\n  renamedString: scalarString\\\\n}\` as Operation<
     'query',
     {},
@@ -176,7 +183,7 @@ Object {
         "directives": Array [],
         "kind": "OperationDefinition",
         "loc": Object {
-          "end": 135,
+          "end": 36,
           "start": 0,
         },
         "name": Object {
@@ -185,13 +192,13 @@ Object {
             "end": 17,
             "start": 6,
           },
-          "value": "testScalars",
+          "value": "simpleQuery",
         },
         "operation": "query",
         "selectionSet": Object {
           "kind": "SelectionSet",
           "loc": Object {
-            "end": 135,
+            "end": 36,
             "start": 18,
           },
           "selections": Array [
@@ -214,20 +221,66 @@ Object {
               },
               "selectionSet": undefined,
             },
+          ],
+        },
+        "variableDefinitions": Array [],
+      },
+      Object {
+        "directives": Array [],
+        "kind": "OperationDefinition",
+        "loc": Object {
+          "end": 173,
+          "start": 38,
+        },
+        "name": Object {
+          "kind": "Name",
+          "loc": Object {
+            "end": 55,
+            "start": 44,
+          },
+          "value": "testScalars",
+        },
+        "operation": "query",
+        "selectionSet": Object {
+          "kind": "SelectionSet",
+          "loc": Object {
+            "end": 173,
+            "start": 56,
+          },
+          "selections": Array [
             Object {
               "alias": undefined,
               "arguments": Array [],
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 46,
-                "start": 37,
+                "end": 72,
+                "start": 60,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 46,
-                  "start": 37,
+                  "end": 72,
+                  "start": 60,
+                },
+                "value": "scalarString",
+              },
+              "selectionSet": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": Array [],
+              "directives": Array [],
+              "kind": "Field",
+              "loc": Object {
+                "end": 84,
+                "start": 75,
+              },
+              "name": Object {
+                "kind": "Name",
+                "loc": Object {
+                  "end": 84,
+                  "start": 75,
                 },
                 "value": "scalarInt",
               },
@@ -239,14 +292,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 60,
-                "start": 49,
+                "end": 98,
+                "start": 87,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 60,
-                  "start": 49,
+                  "end": 98,
+                  "start": 87,
                 },
                 "value": "scalarFloat",
               },
@@ -258,14 +311,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 76,
-                "start": 63,
+                "end": 114,
+                "start": 101,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 76,
-                  "start": 63,
+                  "end": 114,
+                  "start": 101,
                 },
                 "value": "scalarBoolean",
               },
@@ -277,14 +330,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 87,
-                "start": 79,
+                "end": 125,
+                "start": 117,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 87,
-                  "start": 79,
+                  "end": 125,
+                  "start": 117,
                 },
                 "value": "scalarID",
               },
@@ -296,14 +349,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 102,
-                "start": 90,
+                "end": 140,
+                "start": 128,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 102,
-                  "start": 90,
+                  "end": 140,
+                  "start": 128,
                 },
                 "value": "scalarCustom",
               },
@@ -313,8 +366,8 @@ Object {
               "alias": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 119,
-                  "start": 106,
+                  "end": 157,
+                  "start": 144,
                 },
                 "value": "renamedString",
               },
@@ -322,14 +375,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 133,
-                "start": 106,
+                "end": 171,
+                "start": 144,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 133,
-                  "start": 121,
+                  "end": 171,
+                  "start": 159,
                 },
                 "value": "scalarString",
               },
@@ -343,14 +396,14 @@ Object {
         "directives": Array [],
         "kind": "OperationDefinition",
         "loc": Object {
-          "end": 201,
-          "start": 137,
+          "end": 239,
+          "start": 175,
         },
         "name": Object {
           "kind": "Name",
           "loc": Object {
-            "end": 158,
-            "start": 143,
+            "end": 196,
+            "start": 181,
           },
           "value": "testNullability",
         },
@@ -358,8 +411,8 @@ Object {
         "selectionSet": Object {
           "kind": "SelectionSet",
           "loc": Object {
-            "end": 201,
-            "start": 159,
+            "end": 239,
+            "start": 197,
           },
           "selections": Array [
             Object {
@@ -368,14 +421,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 178,
-                "start": 163,
+                "end": 216,
+                "start": 201,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 178,
-                  "start": 163,
+                  "end": 216,
+                  "start": 201,
                 },
                 "value": "nullableBoolean",
               },
@@ -387,14 +440,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 199,
-                "start": 181,
+                "end": 237,
+                "start": 219,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 199,
-                  "start": 181,
+                  "end": 237,
+                  "start": 219,
                 },
                 "value": "nonNullableBoolean",
               },
@@ -408,14 +461,14 @@ Object {
         "directives": Array [],
         "kind": "OperationDefinition",
         "loc": Object {
-          "end": 360,
-          "start": 203,
+          "end": 398,
+          "start": 241,
         },
         "name": Object {
           "kind": "Name",
           "loc": Object {
-            "end": 220,
-            "start": 209,
+            "end": 258,
+            "start": 247,
           },
           "value": "testNesting",
         },
@@ -423,8 +476,8 @@ Object {
         "selectionSet": Object {
           "kind": "SelectionSet",
           "loc": Object {
-            "end": 360,
-            "start": 221,
+            "end": 398,
+            "start": 259,
           },
           "selections": Array [
             Object {
@@ -433,22 +486,22 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 358,
-                "start": 225,
+                "end": 396,
+                "start": 263,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 237,
-                  "start": 225,
+                  "end": 275,
+                  "start": 263,
                 },
                 "value": "nestedObject",
               },
               "selectionSet": Object {
                 "kind": "SelectionSet",
                 "loc": Object {
-                  "end": 358,
-                  "start": 238,
+                  "end": 396,
+                  "start": 276,
                 },
                 "selections": Array [
                   Object {
@@ -457,22 +510,22 @@ Object {
                     "directives": Array [],
                     "kind": "Field",
                     "loc": Object {
-                      "end": 302,
-                      "start": 244,
+                      "end": 340,
+                      "start": 282,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 253,
-                        "start": 244,
+                        "end": 291,
+                        "start": 282,
                       },
                       "value": "recursive",
                     },
                     "selectionSet": Object {
                       "kind": "SelectionSet",
                       "loc": Object {
-                        "end": 302,
-                        "start": 254,
+                        "end": 340,
+                        "start": 292,
                       },
                       "selections": Array [
                         Object {
@@ -481,22 +534,22 @@ Object {
                           "directives": Array [],
                           "kind": "Field",
                           "loc": Object {
-                            "end": 296,
-                            "start": 262,
+                            "end": 334,
+                            "start": 300,
                           },
                           "name": Object {
                             "kind": "Name",
                             "loc": Object {
-                              "end": 271,
-                              "start": 262,
+                              "end": 309,
+                              "start": 300,
                             },
                             "value": "recursive",
                           },
                           "selectionSet": Object {
                             "kind": "SelectionSet",
                             "loc": Object {
-                              "end": 296,
-                              "start": 272,
+                              "end": 334,
+                              "start": 310,
                             },
                             "selections": Array [
                               Object {
@@ -505,14 +558,14 @@ Object {
                                 "directives": Array [],
                                 "kind": "Field",
                                 "loc": Object {
-                                  "end": 288,
-                                  "start": 282,
+                                  "end": 326,
+                                  "start": 320,
                                 },
                                 "name": Object {
                                   "kind": "Name",
                                   "loc": Object {
-                                    "end": 288,
-                                    "start": 282,
+                                    "end": 326,
+                                    "start": 320,
                                   },
                                   "value": "scalar",
                                 },
@@ -530,22 +583,22 @@ Object {
                     "directives": Array [],
                     "kind": "Field",
                     "loc": Object {
-                      "end": 334,
-                      "start": 307,
+                      "end": 372,
+                      "start": 345,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 313,
-                        "start": 307,
+                        "end": 351,
+                        "start": 345,
                       },
                       "value": "nested",
                     },
                     "selectionSet": Object {
                       "kind": "SelectionSet",
                       "loc": Object {
-                        "end": 334,
-                        "start": 314,
+                        "end": 372,
+                        "start": 352,
                       },
                       "selections": Array [
                         Object {
@@ -554,14 +607,14 @@ Object {
                           "directives": Array [],
                           "kind": "Field",
                           "loc": Object {
-                            "end": 328,
-                            "start": 322,
+                            "end": 366,
+                            "start": 360,
                           },
                           "name": Object {
                             "kind": "Name",
                             "loc": Object {
-                              "end": 328,
-                              "start": 322,
+                              "end": 366,
+                              "start": 360,
                             },
                             "value": "scalar",
                           },
@@ -576,14 +629,14 @@ Object {
                     "directives": Array [],
                     "kind": "Field",
                     "loc": Object {
-                      "end": 345,
-                      "start": 339,
+                      "end": 383,
+                      "start": 377,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 345,
-                        "start": 339,
+                        "end": 383,
+                        "start": 377,
                       },
                       "value": "scalar",
                     },
@@ -595,14 +648,14 @@ Object {
                     "directives": Array [],
                     "kind": "Field",
                     "loc": Object {
-                      "end": 354,
-                      "start": 350,
+                      "end": 392,
+                      "start": 388,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 354,
-                        "start": 350,
+                        "end": 392,
+                        "start": 388,
                       },
                       "value": "list",
                     },
@@ -619,14 +672,14 @@ Object {
         "directives": Array [],
         "kind": "OperationDefinition",
         "loc": Object {
-          "end": 490,
-          "start": 362,
+          "end": 528,
+          "start": 400,
         },
         "name": Object {
           "kind": "Name",
           "loc": Object {
-            "end": 377,
-            "start": 368,
+            "end": 415,
+            "start": 406,
           },
           "value": "testUnion",
         },
@@ -634,8 +687,8 @@ Object {
         "selectionSet": Object {
           "kind": "SelectionSet",
           "loc": Object {
-            "end": 490,
-            "start": 378,
+            "end": 528,
+            "start": 416,
           },
           "selections": Array [
             Object {
@@ -644,36 +697,36 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 488,
-                "start": 382,
+                "end": 526,
+                "start": 420,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 387,
-                  "start": 382,
+                  "end": 425,
+                  "start": 420,
                 },
                 "value": "union",
               },
               "selectionSet": Object {
                 "kind": "SelectionSet",
                 "loc": Object {
-                  "end": 488,
-                  "start": 388,
+                  "end": 526,
+                  "start": 426,
                 },
                 "selections": Array [
                   Object {
                     "directives": Array [],
                     "kind": "InlineFragment",
                     "loc": Object {
-                      "end": 436,
-                      "start": 394,
+                      "end": 474,
+                      "start": 432,
                     },
                     "selectionSet": Object {
                       "kind": "SelectionSet",
                       "loc": Object {
-                        "end": 436,
-                        "start": 408,
+                        "end": 474,
+                        "start": 446,
                       },
                       "selections": Array [
                         Object {
@@ -682,14 +735,14 @@ Object {
                           "directives": Array [],
                           "kind": "Field",
                           "loc": Object {
-                            "end": 418,
-                            "start": 416,
+                            "end": 456,
+                            "start": 454,
                           },
                           "name": Object {
                             "kind": "Name",
                             "loc": Object {
-                              "end": 418,
-                              "start": 416,
+                              "end": 456,
+                              "start": 454,
                             },
                             "value": "id",
                           },
@@ -701,14 +754,14 @@ Object {
                           "directives": Array [],
                           "kind": "Field",
                           "loc": Object {
-                            "end": 430,
-                            "start": 425,
+                            "end": 468,
+                            "start": 463,
                           },
                           "name": Object {
                             "kind": "Name",
                             "loc": Object {
-                              "end": 430,
-                              "start": 425,
+                              "end": 468,
+                              "start": 463,
                             },
                             "value": "color",
                           },
@@ -719,14 +772,14 @@ Object {
                     "typeCondition": Object {
                       "kind": "NamedType",
                       "loc": Object {
-                        "end": 407,
-                        "start": 401,
+                        "end": 445,
+                        "start": 439,
                       },
                       "name": Object {
                         "kind": "Name",
                         "loc": Object {
-                          "end": 407,
-                          "start": 401,
+                          "end": 445,
+                          "start": 439,
                         },
                         "value": "Tomato",
                       },
@@ -736,14 +789,14 @@ Object {
                     "directives": Array [],
                     "kind": "InlineFragment",
                     "loc": Object {
-                      "end": 484,
-                      "start": 441,
+                      "end": 522,
+                      "start": 479,
                     },
                     "selectionSet": Object {
                       "kind": "SelectionSet",
                       "loc": Object {
-                        "end": 484,
-                        "start": 455,
+                        "end": 522,
+                        "start": 493,
                       },
                       "selections": Array [
                         Object {
@@ -752,14 +805,14 @@ Object {
                           "directives": Array [],
                           "kind": "Field",
                           "loc": Object {
-                            "end": 465,
-                            "start": 463,
+                            "end": 503,
+                            "start": 501,
                           },
                           "name": Object {
                             "kind": "Name",
                             "loc": Object {
-                              "end": 465,
-                              "start": 463,
+                              "end": 503,
+                              "start": 501,
                             },
                             "value": "id",
                           },
@@ -771,14 +824,14 @@ Object {
                           "directives": Array [],
                           "kind": "Field",
                           "loc": Object {
-                            "end": 478,
-                            "start": 472,
+                            "end": 516,
+                            "start": 510,
                           },
                           "name": Object {
                             "kind": "Name",
                             "loc": Object {
-                              "end": 478,
-                              "start": 472,
+                              "end": 516,
+                              "start": 510,
                             },
                             "value": "origin",
                           },
@@ -789,14 +842,14 @@ Object {
                     "typeCondition": Object {
                       "kind": "NamedType",
                       "loc": Object {
-                        "end": 454,
-                        "start": 448,
+                        "end": 492,
+                        "start": 486,
                       },
                       "name": Object {
                         "kind": "Name",
                         "loc": Object {
-                          "end": 454,
-                          "start": 448,
+                          "end": 492,
+                          "start": 486,
                         },
                         "value": "Potato",
                       },
@@ -813,14 +866,14 @@ Object {
         "directives": Array [],
         "kind": "OperationDefinition",
         "loc": Object {
-          "end": 720,
-          "start": 492,
+          "end": 758,
+          "start": 530,
         },
         "name": Object {
           "kind": "Name",
           "loc": Object {
-            "end": 509,
-            "start": 498,
+            "end": 547,
+            "start": 536,
           },
           "value": "testMethods",
         },
@@ -828,8 +881,8 @@ Object {
         "selectionSet": Object {
           "kind": "SelectionSet",
           "loc": Object {
-            "end": 720,
-            "start": 601,
+            "end": 758,
+            "start": 639,
           },
           "selections": Array [
             Object {
@@ -838,28 +891,28 @@ Object {
                 Object {
                   "kind": "Argument",
                   "loc": Object {
-                    "end": 636,
-                    "start": 612,
+                    "end": 674,
+                    "start": 650,
                   },
                   "name": Object {
                     "kind": "Name",
                     "loc": Object {
-                      "end": 625,
-                      "start": 612,
+                      "end": 663,
+                      "start": 650,
                     },
                     "value": "requiredParam",
                   },
                   "value": Object {
                     "kind": "Variable",
                     "loc": Object {
-                      "end": 636,
-                      "start": 627,
+                      "end": 674,
+                      "start": 665,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 636,
-                        "start": 628,
+                        "end": 674,
+                        "start": 666,
                       },
                       "value": "reqParam",
                     },
@@ -868,28 +921,28 @@ Object {
                 Object {
                   "kind": "Argument",
                   "loc": Object {
-                    "end": 662,
-                    "start": 638,
+                    "end": 700,
+                    "start": 676,
                   },
                   "name": Object {
                     "kind": "Name",
                     "loc": Object {
-                      "end": 651,
-                      "start": 638,
+                      "end": 689,
+                      "start": 676,
                     },
                     "value": "optionalParam",
                   },
                   "value": Object {
                     "kind": "Variable",
                     "loc": Object {
-                      "end": 662,
-                      "start": 653,
+                      "end": 700,
+                      "start": 691,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 662,
-                        "start": 654,
+                        "end": 700,
+                        "start": 692,
                       },
                       "value": "optParam",
                     },
@@ -898,28 +951,28 @@ Object {
                 Object {
                   "kind": "Argument",
                   "loc": Object {
-                    "end": 677,
-                    "start": 664,
+                    "end": 715,
+                    "start": 702,
                   },
                   "name": Object {
                     "kind": "Name",
                     "loc": Object {
-                      "end": 669,
-                      "start": 664,
+                      "end": 707,
+                      "start": 702,
                     },
                     "value": "input",
                   },
                   "value": Object {
                     "kind": "Variable",
                     "loc": Object {
-                      "end": 677,
-                      "start": 671,
+                      "end": 715,
+                      "start": 709,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 677,
-                        "start": 672,
+                        "end": 715,
+                        "start": 710,
                       },
                       "value": "input",
                     },
@@ -929,14 +982,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 678,
-                "start": 605,
+                "end": 716,
+                "start": 643,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 611,
-                  "start": 605,
+                  "end": 649,
+                  "start": 643,
                 },
                 "value": "method",
               },
@@ -946,8 +999,8 @@ Object {
               "alias": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 694,
-                  "start": 681,
+                  "end": 732,
+                  "start": 719,
                 },
                 "value": "renamedMethod",
               },
@@ -955,28 +1008,28 @@ Object {
                 Object {
                   "kind": "Argument",
                   "loc": Object {
-                    "end": 717,
-                    "start": 704,
+                    "end": 755,
+                    "start": 742,
                   },
                   "name": Object {
                     "kind": "Name",
                     "loc": Object {
-                      "end": 709,
-                      "start": 704,
+                      "end": 747,
+                      "start": 742,
                     },
                     "value": "list2",
                   },
                   "value": Object {
                     "kind": "Variable",
                     "loc": Object {
-                      "end": 717,
-                      "start": 711,
+                      "end": 755,
+                      "start": 749,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 717,
-                        "start": 712,
+                        "end": 755,
+                        "start": 750,
                       },
                       "value": "list2",
                     },
@@ -986,14 +1039,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 718,
-                "start": 681,
+                "end": 756,
+                "start": 719,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 703,
-                  "start": 696,
+                  "end": 741,
+                  "start": 734,
                 },
                 "value": "method2",
               },
@@ -1007,26 +1060,26 @@ Object {
             "directives": Array [],
             "kind": "VariableDefinition",
             "loc": Object {
-              "end": 531,
-              "start": 513,
+              "end": 569,
+              "start": 551,
             },
             "type": Object {
               "kind": "NonNullType",
               "loc": Object {
-                "end": 531,
-                "start": 524,
+                "end": 569,
+                "start": 562,
               },
               "type": Object {
                 "kind": "NamedType",
                 "loc": Object {
-                  "end": 530,
-                  "start": 524,
+                  "end": 568,
+                  "start": 562,
                 },
                 "name": Object {
                   "kind": "Name",
                   "loc": Object {
-                    "end": 530,
-                    "start": 524,
+                    "end": 568,
+                    "start": 562,
                   },
                   "value": "String",
                 },
@@ -1035,14 +1088,14 @@ Object {
             "variable": Object {
               "kind": "Variable",
               "loc": Object {
-                "end": 522,
-                "start": 513,
+                "end": 560,
+                "start": 551,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 522,
-                  "start": 514,
+                  "end": 560,
+                  "start": 552,
                 },
                 "value": "reqParam",
               },
@@ -1053,26 +1106,26 @@ Object {
             "directives": Array [],
             "kind": "VariableDefinition",
             "loc": Object {
-              "end": 551,
-              "start": 534,
+              "end": 589,
+              "start": 572,
             },
             "type": Object {
               "kind": "NonNullType",
               "loc": Object {
-                "end": 551,
-                "start": 545,
+                "end": 589,
+                "start": 583,
               },
               "type": Object {
                 "kind": "NamedType",
                 "loc": Object {
-                  "end": 550,
-                  "start": 545,
+                  "end": 588,
+                  "start": 583,
                 },
                 "name": Object {
                   "kind": "Name",
                   "loc": Object {
-                    "end": 550,
-                    "start": 545,
+                    "end": 588,
+                    "start": 583,
                   },
                   "value": "Float",
                 },
@@ -1081,14 +1134,14 @@ Object {
             "variable": Object {
               "kind": "Variable",
               "loc": Object {
-                "end": 543,
-                "start": 534,
+                "end": 581,
+                "start": 572,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 543,
-                  "start": 535,
+                  "end": 581,
+                  "start": 573,
                 },
                 "value": "optParam",
               },
@@ -1099,20 +1152,20 @@ Object {
             "directives": Array [],
             "kind": "VariableDefinition",
             "loc": Object {
-              "end": 571,
-              "start": 554,
+              "end": 609,
+              "start": 592,
             },
             "type": Object {
               "kind": "NamedType",
               "loc": Object {
-                "end": 571,
-                "start": 562,
+                "end": 609,
+                "start": 600,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 571,
-                  "start": 562,
+                  "end": 609,
+                  "start": 600,
                 },
                 "value": "InputType",
               },
@@ -1120,14 +1173,14 @@ Object {
             "variable": Object {
               "kind": "Variable",
               "loc": Object {
-                "end": 560,
-                "start": 554,
+                "end": 598,
+                "start": 592,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 560,
-                  "start": 555,
+                  "end": 598,
+                  "start": 593,
                 },
                 "value": "input",
               },
@@ -1138,38 +1191,38 @@ Object {
             "directives": Array [],
             "kind": "VariableDefinition",
             "loc": Object {
-              "end": 598,
-              "start": 574,
+              "end": 636,
+              "start": 612,
             },
             "type": Object {
               "kind": "NonNullType",
               "loc": Object {
-                "end": 598,
-                "start": 582,
+                "end": 636,
+                "start": 620,
               },
               "type": Object {
                 "kind": "ListType",
                 "loc": Object {
-                  "end": 597,
-                  "start": 582,
+                  "end": 635,
+                  "start": 620,
                 },
                 "type": Object {
                   "kind": "NonNullType",
                   "loc": Object {
-                    "end": 596,
-                    "start": 583,
+                    "end": 634,
+                    "start": 621,
                   },
                   "type": Object {
                     "kind": "NamedType",
                     "loc": Object {
-                      "end": 595,
-                      "start": 583,
+                      "end": 633,
+                      "start": 621,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 595,
-                        "start": 583,
+                        "end": 633,
+                        "start": 621,
                       },
                       "value": "CustomScalar",
                     },
@@ -1180,14 +1233,14 @@ Object {
             "variable": Object {
               "kind": "Variable",
               "loc": Object {
-                "end": 580,
-                "start": 574,
+                "end": 618,
+                "start": 612,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 580,
-                  "start": 575,
+                  "end": 618,
+                  "start": 613,
                 },
                 "value": "list2",
               },
@@ -1199,14 +1252,14 @@ Object {
         "directives": Array [],
         "kind": "OperationDefinition",
         "loc": Object {
-          "end": 868,
-          "start": 722,
+          "end": 906,
+          "start": 760,
         },
         "name": Object {
           "kind": "Name",
           "loc": Object {
-            "end": 750,
-            "start": 731,
+            "end": 788,
+            "start": 769,
           },
           "value": "testScalarsMutation",
         },
@@ -1214,8 +1267,8 @@ Object {
         "selectionSet": Object {
           "kind": "SelectionSet",
           "loc": Object {
-            "end": 868,
-            "start": 751,
+            "end": 906,
+            "start": 789,
           },
           "selections": Array [
             Object {
@@ -1224,14 +1277,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 767,
-                "start": 755,
+                "end": 805,
+                "start": 793,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 767,
-                  "start": 755,
+                  "end": 805,
+                  "start": 793,
                 },
                 "value": "scalarString",
               },
@@ -1243,14 +1296,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 779,
-                "start": 770,
+                "end": 817,
+                "start": 808,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 779,
-                  "start": 770,
+                  "end": 817,
+                  "start": 808,
                 },
                 "value": "scalarInt",
               },
@@ -1262,14 +1315,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 793,
-                "start": 782,
+                "end": 831,
+                "start": 820,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 793,
-                  "start": 782,
+                  "end": 831,
+                  "start": 820,
                 },
                 "value": "scalarFloat",
               },
@@ -1281,14 +1334,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 809,
-                "start": 796,
+                "end": 847,
+                "start": 834,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 809,
-                  "start": 796,
+                  "end": 847,
+                  "start": 834,
                 },
                 "value": "scalarBoolean",
               },
@@ -1300,14 +1353,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 820,
-                "start": 812,
+                "end": 858,
+                "start": 850,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 820,
-                  "start": 812,
+                  "end": 858,
+                  "start": 850,
                 },
                 "value": "scalarID",
               },
@@ -1319,14 +1372,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 835,
-                "start": 823,
+                "end": 873,
+                "start": 861,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 835,
-                  "start": 823,
+                  "end": 873,
+                  "start": 861,
                 },
                 "value": "scalarCustom",
               },
@@ -1336,8 +1389,8 @@ Object {
               "alias": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 852,
-                  "start": 839,
+                  "end": 890,
+                  "start": 877,
                 },
                 "value": "renamedString",
               },
@@ -1345,14 +1398,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 866,
-                "start": 839,
+                "end": 904,
+                "start": 877,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 866,
-                  "start": 854,
+                  "end": 904,
+                  "start": 892,
                 },
                 "value": "scalarString",
               },
@@ -1366,14 +1419,14 @@ Object {
         "directives": Array [],
         "kind": "OperationDefinition",
         "loc": Object {
-          "end": 945,
-          "start": 870,
+          "end": 983,
+          "start": 908,
         },
         "name": Object {
           "kind": "Name",
           "loc": Object {
-            "end": 902,
-            "start": 879,
+            "end": 940,
+            "start": 917,
           },
           "value": "testNullabilityMutation",
         },
@@ -1381,8 +1434,8 @@ Object {
         "selectionSet": Object {
           "kind": "SelectionSet",
           "loc": Object {
-            "end": 945,
-            "start": 903,
+            "end": 983,
+            "start": 941,
           },
           "selections": Array [
             Object {
@@ -1391,14 +1444,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 922,
-                "start": 907,
+                "end": 960,
+                "start": 945,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 922,
-                  "start": 907,
+                  "end": 960,
+                  "start": 945,
                 },
                 "value": "nullableBoolean",
               },
@@ -1410,14 +1463,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 943,
-                "start": 925,
+                "end": 981,
+                "start": 963,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 943,
-                  "start": 925,
+                  "end": 981,
+                  "start": 963,
                 },
                 "value": "nonNullableBoolean",
               },
@@ -1431,14 +1484,14 @@ Object {
         "directives": Array [],
         "kind": "OperationDefinition",
         "loc": Object {
-          "end": 1115,
-          "start": 947,
+          "end": 1153,
+          "start": 985,
         },
         "name": Object {
           "kind": "Name",
           "loc": Object {
-            "end": 975,
-            "start": 956,
+            "end": 1013,
+            "start": 994,
           },
           "value": "testNestingMutation",
         },
@@ -1446,8 +1499,8 @@ Object {
         "selectionSet": Object {
           "kind": "SelectionSet",
           "loc": Object {
-            "end": 1115,
-            "start": 976,
+            "end": 1153,
+            "start": 1014,
           },
           "selections": Array [
             Object {
@@ -1456,22 +1509,22 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 1113,
-                "start": 980,
+                "end": 1151,
+                "start": 1018,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 992,
-                  "start": 980,
+                  "end": 1030,
+                  "start": 1018,
                 },
                 "value": "nestedObject",
               },
               "selectionSet": Object {
                 "kind": "SelectionSet",
                 "loc": Object {
-                  "end": 1113,
-                  "start": 993,
+                  "end": 1151,
+                  "start": 1031,
                 },
                 "selections": Array [
                   Object {
@@ -1480,22 +1533,22 @@ Object {
                     "directives": Array [],
                     "kind": "Field",
                     "loc": Object {
-                      "end": 1057,
-                      "start": 999,
+                      "end": 1095,
+                      "start": 1037,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 1008,
-                        "start": 999,
+                        "end": 1046,
+                        "start": 1037,
                       },
                       "value": "recursive",
                     },
                     "selectionSet": Object {
                       "kind": "SelectionSet",
                       "loc": Object {
-                        "end": 1057,
-                        "start": 1009,
+                        "end": 1095,
+                        "start": 1047,
                       },
                       "selections": Array [
                         Object {
@@ -1504,22 +1557,22 @@ Object {
                           "directives": Array [],
                           "kind": "Field",
                           "loc": Object {
-                            "end": 1051,
-                            "start": 1017,
+                            "end": 1089,
+                            "start": 1055,
                           },
                           "name": Object {
                             "kind": "Name",
                             "loc": Object {
-                              "end": 1026,
-                              "start": 1017,
+                              "end": 1064,
+                              "start": 1055,
                             },
                             "value": "recursive",
                           },
                           "selectionSet": Object {
                             "kind": "SelectionSet",
                             "loc": Object {
-                              "end": 1051,
-                              "start": 1027,
+                              "end": 1089,
+                              "start": 1065,
                             },
                             "selections": Array [
                               Object {
@@ -1528,14 +1581,14 @@ Object {
                                 "directives": Array [],
                                 "kind": "Field",
                                 "loc": Object {
-                                  "end": 1043,
-                                  "start": 1037,
+                                  "end": 1081,
+                                  "start": 1075,
                                 },
                                 "name": Object {
                                   "kind": "Name",
                                   "loc": Object {
-                                    "end": 1043,
-                                    "start": 1037,
+                                    "end": 1081,
+                                    "start": 1075,
                                   },
                                   "value": "scalar",
                                 },
@@ -1553,22 +1606,22 @@ Object {
                     "directives": Array [],
                     "kind": "Field",
                     "loc": Object {
-                      "end": 1089,
-                      "start": 1062,
+                      "end": 1127,
+                      "start": 1100,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 1068,
-                        "start": 1062,
+                        "end": 1106,
+                        "start": 1100,
                       },
                       "value": "nested",
                     },
                     "selectionSet": Object {
                       "kind": "SelectionSet",
                       "loc": Object {
-                        "end": 1089,
-                        "start": 1069,
+                        "end": 1127,
+                        "start": 1107,
                       },
                       "selections": Array [
                         Object {
@@ -1577,14 +1630,14 @@ Object {
                           "directives": Array [],
                           "kind": "Field",
                           "loc": Object {
-                            "end": 1083,
-                            "start": 1077,
+                            "end": 1121,
+                            "start": 1115,
                           },
                           "name": Object {
                             "kind": "Name",
                             "loc": Object {
-                              "end": 1083,
-                              "start": 1077,
+                              "end": 1121,
+                              "start": 1115,
                             },
                             "value": "scalar",
                           },
@@ -1599,14 +1652,14 @@ Object {
                     "directives": Array [],
                     "kind": "Field",
                     "loc": Object {
-                      "end": 1100,
-                      "start": 1094,
+                      "end": 1138,
+                      "start": 1132,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 1100,
-                        "start": 1094,
+                        "end": 1138,
+                        "start": 1132,
                       },
                       "value": "scalar",
                     },
@@ -1618,14 +1671,14 @@ Object {
                     "directives": Array [],
                     "kind": "Field",
                     "loc": Object {
-                      "end": 1109,
-                      "start": 1105,
+                      "end": 1147,
+                      "start": 1143,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 1109,
-                        "start": 1105,
+                        "end": 1147,
+                        "start": 1143,
                       },
                       "value": "list",
                     },
@@ -1642,14 +1695,14 @@ Object {
         "directives": Array [],
         "kind": "OperationDefinition",
         "loc": Object {
-          "end": 1356,
-          "start": 1117,
+          "end": 1394,
+          "start": 1155,
         },
         "name": Object {
           "kind": "Name",
           "loc": Object {
-            "end": 1145,
-            "start": 1126,
+            "end": 1183,
+            "start": 1164,
           },
           "value": "testMethodsMutation",
         },
@@ -1657,8 +1710,8 @@ Object {
         "selectionSet": Object {
           "kind": "SelectionSet",
           "loc": Object {
-            "end": 1356,
-            "start": 1237,
+            "end": 1394,
+            "start": 1275,
           },
           "selections": Array [
             Object {
@@ -1667,28 +1720,28 @@ Object {
                 Object {
                   "kind": "Argument",
                   "loc": Object {
-                    "end": 1272,
-                    "start": 1248,
+                    "end": 1310,
+                    "start": 1286,
                   },
                   "name": Object {
                     "kind": "Name",
                     "loc": Object {
-                      "end": 1261,
-                      "start": 1248,
+                      "end": 1299,
+                      "start": 1286,
                     },
                     "value": "requiredParam",
                   },
                   "value": Object {
                     "kind": "Variable",
                     "loc": Object {
-                      "end": 1272,
-                      "start": 1263,
+                      "end": 1310,
+                      "start": 1301,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 1272,
-                        "start": 1264,
+                        "end": 1310,
+                        "start": 1302,
                       },
                       "value": "reqParam",
                     },
@@ -1697,28 +1750,28 @@ Object {
                 Object {
                   "kind": "Argument",
                   "loc": Object {
-                    "end": 1298,
-                    "start": 1274,
+                    "end": 1336,
+                    "start": 1312,
                   },
                   "name": Object {
                     "kind": "Name",
                     "loc": Object {
-                      "end": 1287,
-                      "start": 1274,
+                      "end": 1325,
+                      "start": 1312,
                     },
                     "value": "optionalParam",
                   },
                   "value": Object {
                     "kind": "Variable",
                     "loc": Object {
-                      "end": 1298,
-                      "start": 1289,
+                      "end": 1336,
+                      "start": 1327,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 1298,
-                        "start": 1290,
+                        "end": 1336,
+                        "start": 1328,
                       },
                       "value": "optParam",
                     },
@@ -1727,28 +1780,28 @@ Object {
                 Object {
                   "kind": "Argument",
                   "loc": Object {
-                    "end": 1313,
-                    "start": 1300,
+                    "end": 1351,
+                    "start": 1338,
                   },
                   "name": Object {
                     "kind": "Name",
                     "loc": Object {
-                      "end": 1305,
-                      "start": 1300,
+                      "end": 1343,
+                      "start": 1338,
                     },
                     "value": "input",
                   },
                   "value": Object {
                     "kind": "Variable",
                     "loc": Object {
-                      "end": 1313,
-                      "start": 1307,
+                      "end": 1351,
+                      "start": 1345,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 1313,
-                        "start": 1308,
+                        "end": 1351,
+                        "start": 1346,
                       },
                       "value": "input",
                     },
@@ -1758,14 +1811,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 1314,
-                "start": 1241,
+                "end": 1352,
+                "start": 1279,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 1247,
-                  "start": 1241,
+                  "end": 1285,
+                  "start": 1279,
                 },
                 "value": "method",
               },
@@ -1775,8 +1828,8 @@ Object {
               "alias": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 1330,
-                  "start": 1317,
+                  "end": 1368,
+                  "start": 1355,
                 },
                 "value": "renamedMethod",
               },
@@ -1784,28 +1837,28 @@ Object {
                 Object {
                   "kind": "Argument",
                   "loc": Object {
-                    "end": 1353,
-                    "start": 1340,
+                    "end": 1391,
+                    "start": 1378,
                   },
                   "name": Object {
                     "kind": "Name",
                     "loc": Object {
-                      "end": 1345,
-                      "start": 1340,
+                      "end": 1383,
+                      "start": 1378,
                     },
                     "value": "list2",
                   },
                   "value": Object {
                     "kind": "Variable",
                     "loc": Object {
-                      "end": 1353,
-                      "start": 1347,
+                      "end": 1391,
+                      "start": 1385,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 1353,
-                        "start": 1348,
+                        "end": 1391,
+                        "start": 1386,
                       },
                       "value": "list2",
                     },
@@ -1815,14 +1868,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 1354,
-                "start": 1317,
+                "end": 1392,
+                "start": 1355,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 1339,
-                  "start": 1332,
+                  "end": 1377,
+                  "start": 1370,
                 },
                 "value": "method2",
               },
@@ -1836,26 +1889,26 @@ Object {
             "directives": Array [],
             "kind": "VariableDefinition",
             "loc": Object {
-              "end": 1167,
-              "start": 1149,
+              "end": 1205,
+              "start": 1187,
             },
             "type": Object {
               "kind": "NonNullType",
               "loc": Object {
-                "end": 1167,
-                "start": 1160,
+                "end": 1205,
+                "start": 1198,
               },
               "type": Object {
                 "kind": "NamedType",
                 "loc": Object {
-                  "end": 1166,
-                  "start": 1160,
+                  "end": 1204,
+                  "start": 1198,
                 },
                 "name": Object {
                   "kind": "Name",
                   "loc": Object {
-                    "end": 1166,
-                    "start": 1160,
+                    "end": 1204,
+                    "start": 1198,
                   },
                   "value": "String",
                 },
@@ -1864,14 +1917,14 @@ Object {
             "variable": Object {
               "kind": "Variable",
               "loc": Object {
-                "end": 1158,
-                "start": 1149,
+                "end": 1196,
+                "start": 1187,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 1158,
-                  "start": 1150,
+                  "end": 1196,
+                  "start": 1188,
                 },
                 "value": "reqParam",
               },
@@ -1882,26 +1935,26 @@ Object {
             "directives": Array [],
             "kind": "VariableDefinition",
             "loc": Object {
-              "end": 1187,
-              "start": 1170,
+              "end": 1225,
+              "start": 1208,
             },
             "type": Object {
               "kind": "NonNullType",
               "loc": Object {
-                "end": 1187,
-                "start": 1181,
+                "end": 1225,
+                "start": 1219,
               },
               "type": Object {
                 "kind": "NamedType",
                 "loc": Object {
-                  "end": 1186,
-                  "start": 1181,
+                  "end": 1224,
+                  "start": 1219,
                 },
                 "name": Object {
                   "kind": "Name",
                   "loc": Object {
-                    "end": 1186,
-                    "start": 1181,
+                    "end": 1224,
+                    "start": 1219,
                   },
                   "value": "Float",
                 },
@@ -1910,14 +1963,14 @@ Object {
             "variable": Object {
               "kind": "Variable",
               "loc": Object {
-                "end": 1179,
-                "start": 1170,
+                "end": 1217,
+                "start": 1208,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 1179,
-                  "start": 1171,
+                  "end": 1217,
+                  "start": 1209,
                 },
                 "value": "optParam",
               },
@@ -1928,20 +1981,20 @@ Object {
             "directives": Array [],
             "kind": "VariableDefinition",
             "loc": Object {
-              "end": 1207,
-              "start": 1190,
+              "end": 1245,
+              "start": 1228,
             },
             "type": Object {
               "kind": "NamedType",
               "loc": Object {
-                "end": 1207,
-                "start": 1198,
+                "end": 1245,
+                "start": 1236,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 1207,
-                  "start": 1198,
+                  "end": 1245,
+                  "start": 1236,
                 },
                 "value": "InputType",
               },
@@ -1949,14 +2002,14 @@ Object {
             "variable": Object {
               "kind": "Variable",
               "loc": Object {
-                "end": 1196,
-                "start": 1190,
+                "end": 1234,
+                "start": 1228,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 1196,
-                  "start": 1191,
+                  "end": 1234,
+                  "start": 1229,
                 },
                 "value": "input",
               },
@@ -1967,38 +2020,38 @@ Object {
             "directives": Array [],
             "kind": "VariableDefinition",
             "loc": Object {
-              "end": 1234,
-              "start": 1210,
+              "end": 1272,
+              "start": 1248,
             },
             "type": Object {
               "kind": "NonNullType",
               "loc": Object {
-                "end": 1234,
-                "start": 1218,
+                "end": 1272,
+                "start": 1256,
               },
               "type": Object {
                 "kind": "ListType",
                 "loc": Object {
-                  "end": 1233,
-                  "start": 1218,
+                  "end": 1271,
+                  "start": 1256,
                 },
                 "type": Object {
                   "kind": "NonNullType",
                   "loc": Object {
-                    "end": 1232,
-                    "start": 1219,
+                    "end": 1270,
+                    "start": 1257,
                   },
                   "type": Object {
                     "kind": "NamedType",
                     "loc": Object {
-                      "end": 1231,
-                      "start": 1219,
+                      "end": 1269,
+                      "start": 1257,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 1231,
-                        "start": 1219,
+                        "end": 1269,
+                        "start": 1257,
                       },
                       "value": "CustomScalar",
                     },
@@ -2009,14 +2062,14 @@ Object {
             "variable": Object {
               "kind": "Variable",
               "loc": Object {
-                "end": 1216,
-                "start": 1210,
+                "end": 1254,
+                "start": 1248,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 1216,
-                  "start": 1211,
+                  "end": 1254,
+                  "start": 1249,
                 },
                 "value": "list2",
               },
@@ -2028,22 +2081,22 @@ Object {
         "directives": Array [],
         "kind": "FragmentDefinition",
         "loc": Object {
-          "end": 1410,
-          "start": 1358,
+          "end": 1448,
+          "start": 1396,
         },
         "name": Object {
           "kind": "Name",
           "loc": Object {
-            "end": 1383,
-            "start": 1367,
+            "end": 1421,
+            "start": 1405,
           },
           "value": "ObjectTypeFields",
         },
         "selectionSet": Object {
           "kind": "SelectionSet",
           "loc": Object {
-            "end": 1410,
-            "start": 1398,
+            "end": 1448,
+            "start": 1436,
           },
           "selections": Array [
             Object {
@@ -2052,14 +2105,14 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 1408,
-                "start": 1402,
+                "end": 1446,
+                "start": 1440,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 1408,
-                  "start": 1402,
+                  "end": 1446,
+                  "start": 1440,
                 },
                 "value": "scalar",
               },
@@ -2070,14 +2123,14 @@ Object {
         "typeCondition": Object {
           "kind": "NamedType",
           "loc": Object {
-            "end": 1397,
-            "start": 1387,
+            "end": 1435,
+            "start": 1425,
           },
           "name": Object {
             "kind": "Name",
             "loc": Object {
-              "end": 1397,
-              "start": 1387,
+              "end": 1435,
+              "start": 1425,
             },
             "value": "ObjectType",
           },
@@ -2087,14 +2140,14 @@ Object {
         "directives": Array [],
         "kind": "OperationDefinition",
         "loc": Object {
-          "end": 1480,
-          "start": 1412,
+          "end": 1518,
+          "start": 1450,
         },
         "name": Object {
           "kind": "Name",
           "loc": Object {
-            "end": 1431,
-            "start": 1418,
+            "end": 1469,
+            "start": 1456,
           },
           "value": "testFragments",
         },
@@ -2102,8 +2155,8 @@ Object {
         "selectionSet": Object {
           "kind": "SelectionSet",
           "loc": Object {
-            "end": 1480,
-            "start": 1432,
+            "end": 1518,
+            "start": 1470,
           },
           "selections": Array [
             Object {
@@ -2112,36 +2165,36 @@ Object {
               "directives": Array [],
               "kind": "Field",
               "loc": Object {
-                "end": 1478,
-                "start": 1436,
+                "end": 1516,
+                "start": 1474,
               },
               "name": Object {
                 "kind": "Name",
                 "loc": Object {
-                  "end": 1448,
-                  "start": 1436,
+                  "end": 1486,
+                  "start": 1474,
                 },
                 "value": "nestedObject",
               },
               "selectionSet": Object {
                 "kind": "SelectionSet",
                 "loc": Object {
-                  "end": 1478,
-                  "start": 1449,
+                  "end": 1516,
+                  "start": 1487,
                 },
                 "selections": Array [
                   Object {
                     "directives": Array [],
                     "kind": "FragmentSpread",
                     "loc": Object {
-                      "end": 1474,
-                      "start": 1455,
+                      "end": 1512,
+                      "start": 1493,
                     },
                     "name": Object {
                       "kind": "Name",
                       "loc": Object {
-                        "end": 1474,
-                        "start": 1458,
+                        "end": 1512,
+                        "start": 1496,
                       },
                       "value": "ObjectTypeFields",
                     },
@@ -2156,11 +2209,15 @@ Object {
     ],
     "kind": "Document",
     "loc": Object {
-      "end": 1481,
+      "end": 1519,
       "start": 0,
     },
   },
-  "sourceCode": "query testScalars {
+  "sourceCode": "query simpleQuery {
+  scalarString
+}
+
+query testScalars {
   scalarString
   scalarInt
   scalarFloat
@@ -2342,6 +2399,26 @@ Object {
             "schemaName": "scalarString",
             "selectionSet": undefined,
           },
+        ],
+        "fragments": Array [],
+        "unions": Object {},
+      },
+      "kind": "query",
+      "name": "simpleQuery",
+      "sourceCodeRange": Array [
+        0,
+        36,
+      ],
+      "variables": Object {},
+    },
+    Object {
+      "data": Object {
+        "fields": Array [
+          Object {
+            "name": "scalarString",
+            "schemaName": "scalarString",
+            "selectionSet": undefined,
+          },
           Object {
             "name": "scalarInt",
             "schemaName": "scalarInt",
@@ -2379,8 +2456,8 @@ Object {
       "kind": "query",
       "name": "testScalars",
       "sourceCodeRange": Array [
-        0,
-        135,
+        38,
+        173,
       ],
       "variables": Object {},
     },
@@ -2404,8 +2481,8 @@ Object {
       "kind": "query",
       "name": "testNullability",
       "sourceCodeRange": Array [
-        137,
-        201,
+        175,
+        239,
       ],
       "variables": Object {},
     },
@@ -2479,8 +2556,8 @@ Object {
       "kind": "query",
       "name": "testNesting",
       "sourceCodeRange": Array [
-        203,
-        360,
+        241,
+        398,
       ],
       "variables": Object {},
     },
@@ -2536,8 +2613,8 @@ Object {
       "kind": "query",
       "name": "testUnion",
       "sourceCodeRange": Array [
-        362,
-        490,
+        400,
+        528,
       ],
       "variables": Object {},
     },
@@ -2561,8 +2638,8 @@ Object {
       "kind": "query",
       "name": "testMethods",
       "sourceCodeRange": Array [
-        492,
-        720,
+        530,
+        758,
       ],
       "variables": Object {
         "input": Object {
@@ -2643,8 +2720,8 @@ Object {
       "kind": "mutation",
       "name": "testScalarsMutation",
       "sourceCodeRange": Array [
-        722,
-        868,
+        760,
+        906,
       ],
       "variables": Object {},
     },
@@ -2668,8 +2745,8 @@ Object {
       "kind": "mutation",
       "name": "testNullabilityMutation",
       "sourceCodeRange": Array [
-        870,
-        945,
+        908,
+        983,
       ],
       "variables": Object {},
     },
@@ -2743,8 +2820,8 @@ Object {
       "kind": "mutation",
       "name": "testNestingMutation",
       "sourceCodeRange": Array [
-        947,
-        1115,
+        985,
+        1153,
       ],
       "variables": Object {},
     },
@@ -2768,8 +2845,8 @@ Object {
       "kind": "mutation",
       "name": "testMethodsMutation",
       "sourceCodeRange": Array [
-        1117,
-        1356,
+        1155,
+        1394,
       ],
       "variables": Object {
         "input": Object {
@@ -2826,8 +2903,8 @@ Object {
       "kind": "query",
       "name": "testFragments",
       "sourceCodeRange": Array [
-        1412,
-        1480,
+        1450,
+        1518,
       ],
       "variables": Object {},
     },
@@ -3184,7 +3261,11 @@ Object {
 `;
 
 exports[`validate document: sourceCode 1`] = `
-"query testScalars {
+"query simpleQuery {
+  scalarString
+}
+
+query testScalars {
   scalarString
   scalarInt
   scalarFloat

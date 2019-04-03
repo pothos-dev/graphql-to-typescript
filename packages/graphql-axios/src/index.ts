@@ -21,11 +21,20 @@ export function createClient<T>(
     options: OperationOptions<T, Name>
   ): Promise<OperationResult<T, Name>> {
     const { url } = clientConfig
+
+    const body = {
+      operationName,
+      query: typedGraphQL[operationName],
+      variables: options.variables,
+    }
+
     const response = await axios.post(
       url,
+      body,
       {
-        query: typedGraphQL[operationName],
-        variables: options.variables,
+        headers: {
+          'Content-Type': 'application/json',
+        },
       }
       // axiosConfig
     )

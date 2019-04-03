@@ -28,6 +28,13 @@ export interface NestedInputType {
 
 // Operations
 export default {
+  simpleQuery: `query simpleQuery {\n  scalarString\n}` as Operation<
+    'query',
+    {},
+    {
+      scalarString: Nullable<String>
+    }
+  >,
   testScalars: `query testScalars {\n  scalarString\n  scalarInt\n  scalarFloat\n  scalarBoolean\n  scalarID\n  scalarCustom\n\n  renamedString: scalarString\n}` as Operation<
     'query',
     {},

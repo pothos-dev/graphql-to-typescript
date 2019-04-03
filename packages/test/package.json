@@ -11,18 +11,20 @@
   ],
   "scripts": {
     "start-server": "ts-node src/graphql-server.ts",
-    "build:graphql": "graphql-to-typescript -s src/schema.gql -d src/document.gql -o src/output.ts",
+    "build:graphql": "graphql-to-typescript -s src/schema.gql -d src/document.gql -o src/outputs/output.ts",
     "build": "npm run build:graphql && tsc",
-    "test": "npx majestic"
+    "test": "jest"
   },
   "dependencies": {
     "@bearbytes/graphql-to-typescript": "*",
     "@bearbytes/graphql-to-typescript-cli": "*",
     "@bearbytes/graphql-axios": "*",
-    "graphql-yoga": "^1.17.4"
+    "graphql-yoga": "^1.17.4",
+    "morgan": "^1.9.1"
   },
   "devDependencies": {
     "@types/jest": "^24.0.11",
+    "@types/morgan": "^1.7.35",
     "jest": "^24.5.0",
     "ts-jest": "^24.0.0",
     "typescript": "^3.3.4000"
