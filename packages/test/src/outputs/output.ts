@@ -28,7 +28,7 @@ export interface NestedInputType {
 
 // Operations
 export default {
-  testScalars: `query testScalars {   scalarString   scalarInt   scalarFloat   scalarBoolean   scalarID   scalarCustom    renamedString: scalarString }` as Operation<
+  testScalars: `query testScalars {\n  scalarString\n  scalarInt\n  scalarFloat\n  scalarBoolean\n  scalarID\n  scalarCustom\n\n  renamedString: scalarString\n}` as Operation<
     'query',
     {},
     {
@@ -41,7 +41,7 @@ export default {
       renamedString: Nullable<String>
     }
   >,
-  testNullability: `query testNullability {   nullableBoolean   nonNullableBoolean }` as Operation<
+  testNullability: `query testNullability {\n  nullableBoolean\n  nonNullableBoolean\n}` as Operation<
     'query',
     {},
     {
@@ -49,7 +49,7 @@ export default {
       nonNullableBoolean: Boolean
     }
   >,
-  testNesting: `query testNesting {   nestedObject {     recursive {       recursive {         scalar       }     }     nested {       scalar     }     scalar     list   } }` as Operation<
+  testNesting: `query testNesting {\n  nestedObject {\n    recursive {\n      recursive {\n        scalar\n      }\n    }\n    nested {\n      scalar\n    }\n    scalar\n    list\n  }\n}` as Operation<
     'query',
     {},
     {
@@ -67,7 +67,7 @@ export default {
       }>
     }
   >,
-  testUnion: `query testUnion {   union {     ... on Tomato {       id       color     }     ... on Potato {       id       origin     }   } }` as Operation<
+  testUnion: `query testUnion {\n  union {\n    ... on Tomato {\n      id\n      color\n    }\n    ... on Potato {\n      id\n      origin\n    }\n  }\n}` as Operation<
     'query',
     {},
     {
@@ -85,7 +85,7 @@ export default {
       >
     }
   >,
-  testMethods: `query testMethods(   $reqParam: String!   $optParam: Float!   $input: InputType   $list2: [CustomScalar!]! ) {   method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)   renamedMethod: method2(list2: $list2) }` as Operation<
+  testMethods: `query testMethods(\n  $reqParam: String!\n  $optParam: Float!\n  $input: InputType\n  $list2: [CustomScalar!]!\n) {\n  method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)\n  renamedMethod: method2(list2: $list2)\n}` as Operation<
     'query',
     {
       reqParam: String
@@ -98,7 +98,7 @@ export default {
       renamedMethod: Nullable<ReadonlyArray<Nullable<CustomScalar>>>
     }
   >,
-  testScalarsMutation: `mutation testScalarsMutation {   scalarString   scalarInt   scalarFloat   scalarBoolean   scalarID   scalarCustom    renamedString: scalarString }` as Operation<
+  testScalarsMutation: `mutation testScalarsMutation {\n  scalarString\n  scalarInt\n  scalarFloat\n  scalarBoolean\n  scalarID\n  scalarCustom\n\n  renamedString: scalarString\n}` as Operation<
     'mutation',
     {},
     {
@@ -111,7 +111,7 @@ export default {
       renamedString: Nullable<String>
     }
   >,
-  testNullabilityMutation: `mutation testNullabilityMutation {   nullableBoolean   nonNullableBoolean }` as Operation<
+  testNullabilityMutation: `mutation testNullabilityMutation {\n  nullableBoolean\n  nonNullableBoolean\n}` as Operation<
     'mutation',
     {},
     {
@@ -119,7 +119,7 @@ export default {
       nonNullableBoolean: Boolean
     }
   >,
-  testNestingMutation: `mutation testNestingMutation {   nestedObject {     recursive {       recursive {         scalar       }     }     nested {       scalar     }     scalar     list   } }` as Operation<
+  testNestingMutation: `mutation testNestingMutation {\n  nestedObject {\n    recursive {\n      recursive {\n        scalar\n      }\n    }\n    nested {\n      scalar\n    }\n    scalar\n    list\n  }\n}` as Operation<
     'mutation',
     {},
     {
@@ -137,7 +137,7 @@ export default {
       }>
     }
   >,
-  testMethodsMutation: `mutation testMethodsMutation(   $reqParam: String!   $optParam: Float!   $input: InputType   $list2: [CustomScalar!]! ) {   method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)   renamedMethod: method2(list2: $list2) }` as Operation<
+  testMethodsMutation: `mutation testMethodsMutation(\n  $reqParam: String!\n  $optParam: Float!\n  $input: InputType\n  $list2: [CustomScalar!]!\n) {\n  method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)\n  renamedMethod: method2(list2: $list2)\n}` as Operation<
     'mutation',
     {
       reqParam: String
@@ -150,7 +150,7 @@ export default {
       renamedMethod: Nullable<ReadonlyArray<Nullable<CustomScalar>>>
     }
   >,
-  testFragments: `query testFragments {   nestedObject {     ...ObjectTypeFields   } }` as Operation<
+  testFragments: `query testFragments {\n  nestedObject {\n    ...ObjectTypeFields\n  }\n}` as Operation<
     'query',
     {},
     {

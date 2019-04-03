@@ -36,10 +36,10 @@ export function generateOperations(
 }
 
 function formatGqlSource(sourceCode: string, operation: OperationIR): string {
-  return sourceCode
-    .substring(operation.sourceCodeRange[0], operation.sourceCodeRange[1])
-    .replace(/\n/g, ' ')
-    .replace(/' +'/g, ' ')
+  return sourceCode.substring(
+    operation.sourceCodeRange[0],
+    operation.sourceCodeRange[1]
+  )
 }
 
 function generateVariables(operation: OperationIR): ts.TypeLiteralNode {
