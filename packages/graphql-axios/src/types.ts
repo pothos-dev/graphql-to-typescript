@@ -5,6 +5,12 @@ import {
   Subscription,
   OperationVariables,
 } from '@bearbytes/graphql-to-typescript'
+import { AxiosRequestConfig } from 'axios'
+
+export interface Config {
+  url: string
+  axiosConfig?: AxiosRequestConfig
+}
 
 export interface Client<T> {
   query<Name extends Query<T>>(
