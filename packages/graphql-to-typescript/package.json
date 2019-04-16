@@ -12,6 +12,9 @@
   "files": [
     "dist"
   ],
+  "bin": {
+    "graphql-to-typescript": "./dist/cli.js"
+  },
   "scripts": {
     "build": "tsc"
   },
