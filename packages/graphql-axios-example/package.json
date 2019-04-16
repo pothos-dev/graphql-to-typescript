@@ -1,6 +1,6 @@
 {
   "name": "graphql-axios-example",
-  "version": "0.0.6-alpha.0",
+  "version": "0.0.7-alpha.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,6 +19,6 @@
     "typescript": "^3.4.3"
   },
   "dependencies": {
-    "@bearbytes/graphql-axios": "^0.0.6-alpha.0"
+    "@bearbytes/graphql-axios": "^0.0.7-alpha.0"
   }
 }
