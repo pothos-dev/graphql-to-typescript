@@ -5,12 +5,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "ts-node src/index.ts",
     "codegen": "graphql-to-typescript -s https://api.graphloc.com/graphql -d src/queries.gql -o src/queries.ts"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^3.4.3"
+    "typescript": "^3.4.3",
+    "ts-node": "^8.1.0"
   },
   "dependencies": {
     "@bearbytes/graphql-axios": "^0.0.5-alpha.0",
