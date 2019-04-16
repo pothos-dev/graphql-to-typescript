@@ -19,16 +19,8 @@
     "build": "tsc",
     "prepare": "npm run build"
   },
-  "devDependencies": {
-    "@types/fs-extra": "^5.0.5",
-    "@types/graphql": "^14.0.7",
-    "@types/lodash": "^4.14.123",
-    "@types/node": "^11.11.4",
-    "@types/prettier": "^1.16.1",
-    "graphql-tag": "^2.10.1",
-    "typescript": "^3.3.4000"
-  },
   "dependencies": {
+    "@types/graphql": "^14.0.7",
     "axios": "^0.18.0",
     "commander": "^2.19.0",
     "fs-extra": "^7.0.1",
@@ -36,6 +28,14 @@
     "lodash": "^4.17.11",
     "prettier": "^1.16.4",
     "rambda": "^2.4.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^5.0.5",
+    "@types/lodash": "^4.14.123",
+    "@types/node": "^11.11.4",
+    "@types/prettier": "^1.16.1",
+    "graphql-tag": "^2.10.1",
+    "typescript": "^3.3.4000"
   },
   "gitHead": "9b102415d2d5533a26b91b25bb9df8634141892d"
 }

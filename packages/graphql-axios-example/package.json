@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
+    "build": "tsc",
     "codegen": "graphql-to-typescript -s https://api.graphloc.com/graphql -d src/queries.gql -o src/queries.ts"
   },
   "author": "",
@@ -15,7 +16,6 @@
     "ts-node": "^8.1.0"
   },
   "dependencies": {
-    "@bearbytes/graphql-axios": "^0.0.5-alpha.0",
-    "graphql-cli": "^3.0.11"
+    "@bearbytes/graphql-axios": "^0.0.5-alpha.0"
   }
 }
