@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "test",
-  "version": "1.0.0",
+  "version": "0.0.1-alpha.0",
   "description": "",
   "author": "bearbytes",
   "license": "ISC",
@@ -17,9 +17,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "@bearbytes/graphql-to-typescript": "*",
-    "@bearbytes/graphql-to-typescript-cli": "*",
-    "@bearbytes/graphql-axios": "*",
+    "@bearbytes/graphql-axios": "^0.0.1-alpha.0",
+    "@bearbytes/graphql-to-typescript": "^0.0.1-alpha.0",
+    "@bearbytes/graphql-to-typescript-cli": "^0.0.1-alpha.0",
     "graphql-yoga": "^1.17.4",
     "morgan": "^1.9.1"
   },
