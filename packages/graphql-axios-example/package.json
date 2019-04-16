@@ -1,6 +1,9 @@
 {
+  "publishConfig": {
+    "access": "public"
+  },
   "name": "@bearbytes/graphql-axios-example",
-  "version": "0.0.7-alpha.0",
+  "version": "0.0.8-alpha.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,5 +23,6 @@
   },
   "dependencies": {
     "@bearbytes/graphql-axios": "^0.0.7-alpha.0"
-  }
+  },
+  "gitHead": "f83a7ffc8cdafb35edfb8427c67d1abc94cb06c1"
 }
