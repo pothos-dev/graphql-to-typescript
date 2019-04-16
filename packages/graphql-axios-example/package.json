@@ -11,5 +11,9 @@
   "license": "ISC",
   "devDependencies": {
     "typescript": "^3.4.3"
+  },
+  "dependencies": {
+    "@bearbytes/graphql-axios": "0.0.2-alpha.0",
+    "graphql-cli": "^3.0.11"
   }
 }

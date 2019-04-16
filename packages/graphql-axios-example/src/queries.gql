@@ -1,0 +1,15 @@
+query getLocationInfo {
+  getLocation(ip: "189.59.228.170") {
+    country {
+      names {
+        en
+      }
+      geoname_id
+      iso_code
+    }
+    location {
+      latitude
+      longitude
+    }
+  }
+}
