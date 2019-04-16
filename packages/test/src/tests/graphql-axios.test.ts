@@ -9,7 +9,7 @@ import {
 } from '@bearbytes/graphql-to-typescript'
 import { startServer } from '../graphql-server'
 
-const client = createClient<typeof typedGraphQL>(typedGraphQL, {
+const client = createClient(typedGraphQL, {
   url: 'http://localhost:5000',
 })
 
