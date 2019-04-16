@@ -18,29 +18,29 @@ export function generateHelperTypes() {
         ts.createNull(),
       ])
     ),
-    ts.createTypeAliasDeclaration(
-      undefined,
-      [ts.createModifier(ts.SyntaxKind.ExportKeyword)],
-      ts.createIdentifier('__Operation'),
-      [
-        ts.createTypeParameterDeclaration(
-          ts.createIdentifier('Kind'),
-          undefined,
-          undefined
-        ),
-        ts.createTypeParameterDeclaration(
-          ts.createIdentifier('Variables'),
-          undefined,
-          undefined
-        ),
-        ts.createTypeParameterDeclaration(
-          ts.createIdentifier('Data'),
-          undefined,
-          undefined
-        ),
-      ],
-      ts.createTypeLiteralNode([])
-    ),
+    // ts.createTypeAliasDeclaration(
+    //   undefined,
+    //   [ts.createModifier(ts.SyntaxKind.ExportKeyword)],
+    //   ts.createIdentifier('__Operation'),
+    //   [
+    //     ts.createTypeParameterDeclaration(
+    //       ts.createIdentifier('Kind'),
+    //       undefined,
+    //       undefined
+    //     ),
+    //     ts.createTypeParameterDeclaration(
+    //       ts.createIdentifier('Variables'),
+    //       undefined,
+    //       undefined
+    //     ),
+    //     ts.createTypeParameterDeclaration(
+    //       ts.createIdentifier('Data'),
+    //       undefined,
+    //       undefined
+    //     ),
+    //   ],
+    //   ts.createTypeLiteralNode([])
+    // ),
     //   ts.createTypeAliasDeclaration(
     //     undefined,
     //     [ts.createModifier(ts.SyntaxKind.ExportKeyword)],

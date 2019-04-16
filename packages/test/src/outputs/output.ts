@@ -168,4 +168,3 @@ export default {
 
 // Helper types
 export type Nullable<T> = T | null
-export type __Operation<Kind, Variables, Data> = {}
