@@ -16,7 +16,8 @@
     "graphql-to-typescript": "./dist/cli.js"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "@types/fs-extra": "^5.0.5",
