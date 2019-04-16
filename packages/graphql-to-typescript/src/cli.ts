@@ -16,6 +16,15 @@ program
   .option('-o, --outfile <file>', 'Path of the generated file')
   .parse(process.argv)
 
+if (!program.schema) error('No schema given (-s <uri>)')
+if (!program.documents) error('No documents given (-d <file>)')
+if (!program.outfile) error('No outfile given (-o <file>')
+
+function error(message: string) {
+  console.error(message)
+  process.exit(1)
+}
+
 main()
 
 async function main() {
