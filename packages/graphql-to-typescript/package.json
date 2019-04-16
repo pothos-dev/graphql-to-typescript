@@ -1,4 +1,7 @@
 {
+  "publishConfig": {
+    "access": "public"
+  },
   "name": "@bearbytes/graphql-to-typescript",
   "description": "",
   "version": "0.0.1-alpha.0",
@@ -29,5 +32,6 @@
     "lodash": "^4.17.11",
     "prettier": "^1.16.4",
     "rambda": "^2.4.1"
-  }
+  },
+  "gitHead": "9b102415d2d5533a26b91b25bb9df8634141892d"
 }

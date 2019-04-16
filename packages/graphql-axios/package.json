@@ -1,4 +1,7 @@
 {
+  "publishConfig": {
+    "access": "public"
+  },
   "name": "@bearbytes/graphql-axios",
   "description": "",
   "version": "0.0.1-alpha.0",
@@ -12,5 +15,6 @@
   "dependencies": {
     "@bearbytes/graphql-to-typescript": "^0.0.1-alpha.0",
     "axios": "^0.18.0"
-  }
+  },
+  "gitHead": "9b102415d2d5533a26b91b25bb9df8634141892d"
 }
