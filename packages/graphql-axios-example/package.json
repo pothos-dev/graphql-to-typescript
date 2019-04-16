@@ -1,5 +1,5 @@
 {
-  "name": "graphql-axios-example",
+  "name": "@bearbytes/graphql-axios-example",
   "version": "0.0.7-alpha.0",
   "description": "",
   "main": "dist/index.js",
