@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "graphql-axios-example",
-  "version": "0.0.4-alpha.0",
+  "version": "0.0.5-alpha.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "typescript": "^3.4.3"
   },
   "dependencies": {
-    "@bearbytes/graphql-axios": "^0.0.4-alpha.0",
+    "@bearbytes/graphql-axios": "^0.0.5-alpha.0",
     "graphql-cli": "^3.0.11"
   }
 }
