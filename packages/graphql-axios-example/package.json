@@ -3,7 +3,7 @@
     "access": "public"
   },
   "name": "graphql-axios-example",
-  "version": "0.0.11-alpha.0",
+  "version": "0.0.12-alpha.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,7 +22,7 @@
     "typescript": "^3.4.3"
   },
   "dependencies": {
-    "@bearbytes/graphql-axios": "^0.0.11-alpha.0"
+    "@bearbytes/graphql-axios": "^0.0.12-alpha.0"
   },
   "gitHead": "f83a7ffc8cdafb35edfb8427c67d1abc94cb06c1"
 }
