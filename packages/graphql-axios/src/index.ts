@@ -1,32 +1,53 @@
-import { Client, OperationOptions, OperationResult, Config } from './types'
-import axios, { AxiosRequestConfig } from 'axios'
-import { Query, Mutation } from '@bearbytes/graphql-to-typescript'
+import axios from 'axios'
+import { Query, Mutation, Subscription } from '@bearbytes/graphql-to-typescript'
+import {
+  Client,
+  ClientConfig,
+  OperationConfig,
+  OperationResult,
+  SubscriptionResult,
+} from './types'
 
 export * from './types'
 
-export function createClient<T>(
+export function createClient<T extends Record<string, any>>(
   typedGraphQL: T,
-  clientConfig: Config
+  clientConfig: ClientConfig
 ): Client<T> {
-  return {
-    query: executeOperation,
-    mutate: executeOperation,
-    subscribe: () => {
-      throw Error('not yet implemented')
-    },
+  return { query, mutate, subscribe }
+
+  function query<Name extends Query<T>>(
+    config: OperationConfig<T, Name>
+  ): Promise<OperationResult<T, Name>> {
+    return sendRequest({
+      operationName: config.operationName,
+      query: typedGraphQL[config.operationName],
+      variables: config.variables,
+    })
   }
 
-  async function executeOperation<Name extends Query<T> | Mutation<T>>(
-    operationName: Name,
-    options: OperationOptions<T, Name>
+  function mutate<Name extends Mutation<T>>(
+    config: OperationConfig<T, Name>
   ): Promise<OperationResult<T, Name>> {
-    const { url } = clientConfig
+    return sendRequest({
+      operationName: config.operationName,
+      query: typedGraphQL[config.operationName],
+      variables: config.variables,
+    })
+  }
 
-    const body = {
-      operationName,
-      query: typedGraphQL[operationName],
-      variables: options.variables,
-    }
+  function subscribe<Name extends Subscription<T>>(
+    config: OperationConfig<T, Name>
+  ): Promise<SubscriptionResult<T, Name>> {
+    throw Error('not yet implemented')
+  }
+
+  async function sendRequest(body: {
+    operationName: keyof T
+    query: string
+    variables?: object
+  }) {
+    const { url } = clientConfig
 
     const response = await axios.post(
       url,
@@ -36,7 +57,7 @@ export function createClient<T>(
           'Content-Type': 'application/json',
         },
       }
-      // axiosConfig
+      //config: clientConfig.axiosConfig
     )
     return response.data
   }

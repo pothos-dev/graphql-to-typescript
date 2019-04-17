@@ -7,59 +7,37 @@ import {
 } from '@bearbytes/graphql-to-typescript'
 // import { AxiosRequestConfig } from 'axios'
 
-export interface Config {
+export interface ClientConfig {
   url: string
   // axiosConfig?: AxiosRequestConfig
 }
 
 export interface Client<T> {
-  query: ClientQuery<T, keyof T>
-
-  // (
-  //   operationName: Name,
-  //   options: OperationOptions<T, Name>
-  // ): Promise<OperationResult<T, Name>>
+  query: <Name extends Query<T>>(
+    config: OperationConfig<T, Name>
+  ) => Promise<OperationResult<T, Name>>
 
   mutate<Name extends Mutation<T>>(
-    operationName: Name,
-    options: OperationOptions<T, Name>
+    config: OperationConfig<T, Name>
   ): Promise<OperationResult<T, Name>>
 
   subscribe<Name extends Subscription<T>>(
-    operationName: Name,
-    options: OperationOptions<T, Name>
+    config: OperationConfig<T, Name>
   ): Promise<SubscriptionResult<T, Name>>
 }
 
-export type ClientQuery<T, Name extends keyof T> = OperationOptions<
+export type OperationConfig<
   T,
-  Name
-> extends { variables: any }
-  ? (
-      operationName: Name,
-      options?: OperationOptions<T, Name>
-    ) => Promise<OperationResult<T, Name>>
-  : (
-      operationName: Name,
-      options: OperationOptions<T, Name>
-    ) => Promise<OperationResult<T, Name>>
-
-export type OperationOptions<T, Name extends keyof T> = OperationVariables<
-  T,
-  Name
-> extends {}
-  ?
-      | {
-          variables?: OperationVariables<T, Name>
-        }
-      | undefined
+  Name extends keyof T
+> = {} extends OperationVariables<T, Name>
+  ? {
+      operationName: Name
+      variables?: OperationVariables<T, Name>
+    }
   : {
+      operationName: Name
       variables: OperationVariables<T, Name>
     }
-
-// export interface OperationOptions<T, Name extends keyof T> {
-//   variables: OperationVariables<T, Name>
-// }
 
 export interface OperationResult<T, Name extends keyof T> {
   data: OperationData<T, Name>

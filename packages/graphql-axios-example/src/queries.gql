@@ -13,3 +13,19 @@ query getLocationInfo {
     }
   }
 }
+
+query getLocationInfoByIp($ip: String!) {
+  getLocation(ip: $ip) {
+    country {
+      names {
+        en
+      }
+      geoname_id
+      iso_code
+    }
+    location {
+      latitude
+      longitude
+    }
+  }
+}

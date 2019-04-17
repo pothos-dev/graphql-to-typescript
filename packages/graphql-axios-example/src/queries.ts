@@ -33,6 +33,27 @@ export default {
       }>
     }
   >,
+  getLocationInfoByIp: `query getLocationInfoByIp($ip: String!) {\n  getLocation(ip: $ip) {\n    country {\n      names {\n        en\n      }\n      geoname_id\n      iso_code\n    }\n    location {\n      latitude\n      longitude\n    }\n  }\n}` as Operation<
+    'query',
+    {
+      ip: String
+    },
+    {
+      getLocation: Nullable<{
+        country: Nullable<{
+          names: Nullable<{
+            en: Nullable<String>
+          }>
+          geoname_id: Nullable<String>
+          iso_code: Nullable<String>
+        }>
+        location: Nullable<{
+          latitude: Nullable<String>
+          longitude: Nullable<String>
+        }>
+      }>
+    }
+  >,
 }
 
 // Helper types
