@@ -13,7 +13,7 @@ export interface Config {
 }
 
 export interface Client<T> {
-  query: ExecQuery<T, keyof T>
+  query: ClientQuery<T, keyof T>
 
   // (
   //   operationName: Name,
@@ -31,10 +31,10 @@ export interface Client<T> {
   ): Promise<SubscriptionResult<T, Name>>
 }
 
-export type ExecQuery<T, Name extends keyof T> = OperationVariables<
+export type ClientQuery<T, Name extends keyof T> = OperationOptions<
   T,
   Name
-> extends {}
+> extends { variables: any }
   ? (
       operationName: Name,
       options?: OperationOptions<T, Name>
