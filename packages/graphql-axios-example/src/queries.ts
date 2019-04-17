@@ -18,19 +18,19 @@ export default {
     'query',
     {},
     {
-      getLocation: Nullable<{
-        country: Nullable<{
-          names: Nullable<{
-            en: Nullable<String>
-          }>
-          geoname_id: Nullable<String>
-          iso_code: Nullable<String>
-        }>
-        location: Nullable<{
-          latitude: Nullable<String>
-          longitude: Nullable<String>
-        }>
-      }>
+      getLocation: null | {
+        country: null | {
+          names: null | {
+            en: null | String
+          }
+          geoname_id: null | String
+          iso_code: null | String
+        }
+        location: null | {
+          latitude: null | String
+          longitude: null | String
+        }
+      }
     }
   >,
   getLocationInfoByIp: `query getLocationInfoByIp($ip: String!) {\n  getLocation(ip: $ip) {\n    country {\n      names {\n        en\n      }\n      geoname_id\n      iso_code\n    }\n    location {\n      latitude\n      longitude\n    }\n  }\n}` as Operation<
@@ -39,22 +39,19 @@ export default {
       ip: String
     },
     {
-      getLocation: Nullable<{
-        country: Nullable<{
-          names: Nullable<{
-            en: Nullable<String>
-          }>
-          geoname_id: Nullable<String>
-          iso_code: Nullable<String>
-        }>
-        location: Nullable<{
-          latitude: Nullable<String>
-          longitude: Nullable<String>
-        }>
-      }>
+      getLocation: null | {
+        country: null | {
+          names: null | {
+            en: null | String
+          }
+          geoname_id: null | String
+          iso_code: null | String
+        }
+        location: null | {
+          latitude: null | String
+          longitude: null | String
+        }
+      }
     }
   >,
 }
-
-// Helper types
-export type Nullable<T> = T | null

@@ -15,18 +15,18 @@ export type CustomScalar = string
 // Fragment Types
 export type ObjectTypeFields = {
   __typename: 'ObjectType'
-  scalar: Nullable<Boolean>
+  scalar: null | Boolean
 }
 
 // Input Types
 export interface InputType {
-  recursive: Nullable<InputType>
-  nested: Nullable<NestedInputType>
-  scalar: Nullable<Boolean>
-  list: Nullable<ReadonlyArray<String>>
+  recursive: null | InputType
+  nested: null | NestedInputType
+  scalar: null | Boolean
+  list: null | ReadonlyArray<String>
 }
 export interface NestedInputType {
-  scalar: Nullable<Int>
+  scalar: null | Int
 }
 
 // Operations
@@ -35,27 +35,27 @@ export default {
     'query',
     {},
     {
-      scalarString: Nullable<String>
+      scalarString: null | String
     }
   >,
   testScalars: \`query testScalars {\\\\n  scalarString\\\\n  scalarInt\\\\n  scalarFloat\\\\n  scalarBoolean\\\\n  scalarID\\\\n  scalarCustom\\\\n\\\\n  renamedString: scalarString\\\\n}\` as Operation<
     'query',
     {},
     {
-      scalarString: Nullable<String>
-      scalarInt: Nullable<Int>
-      scalarFloat: Nullable<Float>
-      scalarBoolean: Nullable<Boolean>
-      scalarID: Nullable<ID>
-      scalarCustom: Nullable<CustomScalar>
-      renamedString: Nullable<String>
+      scalarString: null | String
+      scalarInt: null | Int
+      scalarFloat: null | Float
+      scalarBoolean: null | Boolean
+      scalarID: null | ID
+      scalarCustom: null | CustomScalar
+      renamedString: null | String
     }
   >,
   testNullability: \`query testNullability {\\\\n  nullableBoolean\\\\n  nonNullableBoolean\\\\n}\` as Operation<
     'query',
     {},
     {
-      nullableBoolean: Nullable<Boolean>
+      nullableBoolean: null | Boolean
       nonNullableBoolean: Boolean
     }
   >,
@@ -63,36 +63,45 @@ export default {
     'query',
     {},
     {
-      nestedObject: Nullable<{
-        recursive: Nullable<{
-          recursive: Nullable<{
-            scalar: Nullable<Boolean>
-          }>
-        }>
-        nested: Nullable<{
-          scalar: Nullable<Int>
-        }>
-        scalar: Nullable<Boolean>
-        list: Nullable<ReadonlyArray<String>>
-      }>
+      nestedObject:
+        | null
+        | ({
+            recursive:
+              | null
+              | ({
+                  recursive:
+                    | null
+                    | ({
+                        scalar: null | Boolean
+                      })
+                })
+            nested:
+              | null
+              | ({
+                  scalar: null | Int
+                })
+            scalar: null | Boolean
+            list: null | ReadonlyArray<String>
+          })
     }
   >,
   testUnion: \`query testUnion {\\\\n  union {\\\\n    ... on Tomato {\\\\n      id\\\\n      color\\\\n    }\\\\n    ... on Potato {\\\\n      id\\\\n      origin\\\\n    }\\\\n  }\\\\n}\` as Operation<
     'query',
     {},
     {
-      union: Nullable<
-        | ({
-            __typename: 'Tomato'
-            id: Nullable<ID>
-            color: Nullable<String>
-          })
-        | ({
-            __typename: 'Potato'
-            id: Nullable<ID>
-            origin: Nullable<String>
-          })
-      >
+      union:
+        | null
+        | (
+            | ({
+                __typename: 'Tomato'
+                id: null | ID
+                color: null | String
+              })
+            | ({
+                __typename: 'Potato'
+                id: null | ID
+                origin: null | String
+              }))
     }
   >,
   testMethods: \`query testMethods(\\\\n  $reqParam: String!\\\\n  $optParam: Float!\\\\n  $input: InputType\\\\n  $list2: [CustomScalar!]!\\\\n) {\\\\n  method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)\\\\n  renamedMethod: method2(list2: $list2)\\\\n}\` as Operation<
@@ -100,32 +109,32 @@ export default {
     {
       reqParam: String
       optParam: Float
-      input: Nullable<InputType>
+      input: null | InputType
       list2: ReadonlyArray<CustomScalar>
     },
     {
-      method: Nullable<CustomScalar>
-      renamedMethod: Nullable<ReadonlyArray<Nullable<CustomScalar>>>
+      method: null | CustomScalar
+      renamedMethod: null | ReadonlyArray<null | CustomScalar>
     }
   >,
   testScalarsMutation: \`mutation testScalarsMutation {\\\\n  scalarString\\\\n  scalarInt\\\\n  scalarFloat\\\\n  scalarBoolean\\\\n  scalarID\\\\n  scalarCustom\\\\n\\\\n  renamedString: scalarString\\\\n}\` as Operation<
     'mutation',
     {},
     {
-      scalarString: Nullable<String>
-      scalarInt: Nullable<Int>
-      scalarFloat: Nullable<Float>
-      scalarBoolean: Nullable<Boolean>
-      scalarID: Nullable<ID>
-      scalarCustom: Nullable<CustomScalar>
-      renamedString: Nullable<String>
+      scalarString: null | String
+      scalarInt: null | Int
+      scalarFloat: null | Float
+      scalarBoolean: null | Boolean
+      scalarID: null | ID
+      scalarCustom: null | CustomScalar
+      renamedString: null | String
     }
   >,
   testNullabilityMutation: \`mutation testNullabilityMutation {\\\\n  nullableBoolean\\\\n  nonNullableBoolean\\\\n}\` as Operation<
     'mutation',
     {},
     {
-      nullableBoolean: Nullable<Boolean>
+      nullableBoolean: null | Boolean
       nonNullableBoolean: Boolean
     }
   >,
@@ -133,18 +142,26 @@ export default {
     'mutation',
     {},
     {
-      nestedObject: Nullable<{
-        recursive: Nullable<{
-          recursive: Nullable<{
-            scalar: Nullable<Boolean>
-          }>
-        }>
-        nested: Nullable<{
-          scalar: Nullable<Int>
-        }>
-        scalar: Nullable<Boolean>
-        list: Nullable<ReadonlyArray<String>>
-      }>
+      nestedObject:
+        | null
+        | ({
+            recursive:
+              | null
+              | ({
+                  recursive:
+                    | null
+                    | ({
+                        scalar: null | Boolean
+                      })
+                })
+            nested:
+              | null
+              | ({
+                  scalar: null | Int
+                })
+            scalar: null | Boolean
+            list: null | ReadonlyArray<String>
+          })
     }
   >,
   testMethodsMutation: \`mutation testMethodsMutation(\\\\n  $reqParam: String!\\\\n  $optParam: Float!\\\\n  $input: InputType\\\\n  $list2: [CustomScalar!]!\\\\n) {\\\\n  method(requiredParam: $reqParam, optionalParam: $optParam, input: $input)\\\\n  renamedMethod: method2(list2: $list2)\\\\n}\` as Operation<
@@ -152,26 +169,22 @@ export default {
     {
       reqParam: String
       optParam: Float
-      input: Nullable<InputType>
+      input: null | InputType
       list2: ReadonlyArray<CustomScalar>
     },
     {
-      method: Nullable<CustomScalar>
-      renamedMethod: Nullable<ReadonlyArray<Nullable<CustomScalar>>>
+      method: null | CustomScalar
+      renamedMethod: null | ReadonlyArray<null | CustomScalar>
     }
   >,
   testFragments: \`query testFragments {\\\\n  nestedObject {\\\\n    ...ObjectTypeFields\\\\n  }\\\\n}\` as Operation<
     'query',
     {},
     {
-      nestedObject: Nullable<ObjectTypeFields & {}>
+      nestedObject: null | (ObjectTypeFields & {})
     }
   >,
 }
-
-// Helper types
-export type Nullable<T> = T | null
-export type __Operation<Kind, Variables, Data> = {}
 "
 `;
 

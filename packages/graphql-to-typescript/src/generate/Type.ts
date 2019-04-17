@@ -18,7 +18,8 @@ export function generateType(
     return generateNonNullType(schema, schemaType.wrappedType, selectionSet)
   }
 
-  return ts.createTypeReferenceNode(ts.createIdentifier('Nullable'), [
+  return ts.createUnionTypeNode([
+    ts.createKeywordTypeNode(ts.SyntaxKind.NullKeyword),
     generateNonNullType(schema, schemaType, selectionSet, typename),
   ])
 }

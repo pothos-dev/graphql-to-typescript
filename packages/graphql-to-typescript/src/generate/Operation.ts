@@ -64,7 +64,8 @@ function generateVariables(operation: OperationIR): ts.TypeLiteralNode {
     }
 
     if (nullable == null || nullable == true) {
-      return ts.createTypeReferenceNode(ts.createIdentifier('Nullable'), [
+      return ts.createUnionTypeNode([
+        ts.createKeywordTypeNode(ts.SyntaxKind.NullKeyword),
         generateVariableType(variable, false),
       ])
     }
