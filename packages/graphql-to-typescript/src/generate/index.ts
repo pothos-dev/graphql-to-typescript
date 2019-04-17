@@ -45,6 +45,8 @@ function printScalarTypes(schema: SchemaIR): string {
 }
 
 function printFragmentTypes(schema: SchemaIR, document: DocumentIR): string {
+  if (document.fragments.length == 0) return ''
+
   return (
     '// Fragment Types\n' +
     document.fragments
@@ -55,11 +57,15 @@ function printFragmentTypes(schema: SchemaIR, document: DocumentIR): string {
 }
 
 function printInputTypes(schema: SchemaIR): string {
+  const inputTypes = Object.entries(schema.types)
+    .map(([typename, type]) => ({ typename, type }))
+    .filter((it) => it.type && it.type.kind == 'inputObject')
+
+  if (inputTypes.length == 0) return ''
+
   return (
     '// Input Types\n' +
-    Object.entries(schema.types)
-      .map(([typename, type]) => ({ typename, type }))
-      .filter((it) => it.type && it.type.kind == 'inputObject')
+    inputTypes
       .map((it) =>
         generateInputObjectTypeAsInterface(
           schema,
