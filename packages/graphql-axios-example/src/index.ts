@@ -6,5 +6,5 @@ const client = createClient(queries, {
 })
 
 client
-  .query('getLocationInfo', { variables: {} })
+  .query({ operationName: 'getLocationInfo' })
   .then((response) => console.log(JSON.stringify(response)))
