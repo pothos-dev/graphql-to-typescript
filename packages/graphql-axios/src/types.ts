@@ -13,10 +13,12 @@ export interface Config {
 }
 
 export interface Client<T> {
-  query<Name extends Query<T>>(
-    operationName: Name,
-    options: OperationOptions<T, Name>
-  ): Promise<OperationResult<T, Name>>
+  query: ExecQuery<T, keyof T>
+
+  // (
+  //   operationName: Name,
+  //   options: OperationOptions<T, Name>
+  // ): Promise<OperationResult<T, Name>>
 
   mutate<Name extends Mutation<T>>(
     operationName: Name,
@@ -29,9 +31,35 @@ export interface Client<T> {
   ): Promise<SubscriptionResult<T, Name>>
 }
 
-export interface OperationOptions<T, Name extends keyof T> {
-  variables: OperationVariables<T, Name>
-}
+export type ExecQuery<T, Name extends keyof T> = OperationVariables<
+  T,
+  Name
+> extends {}
+  ? (
+      operationName: Name,
+      options?: OperationOptions<T, Name>
+    ) => Promise<OperationResult<T, Name>>
+  : (
+      operationName: Name,
+      options: OperationOptions<T, Name>
+    ) => Promise<OperationResult<T, Name>>
+
+export type OperationOptions<T, Name extends keyof T> = OperationVariables<
+  T,
+  Name
+> extends {}
+  ?
+      | {
+          variables?: OperationVariables<T, Name>
+        }
+      | undefined
+  : {
+      variables: OperationVariables<T, Name>
+    }
+
+// export interface OperationOptions<T, Name extends keyof T> {
+//   variables: OperationVariables<T, Name>
+// }
 
 export interface OperationResult<T, Name extends keyof T> {
   data: OperationData<T, Name>
