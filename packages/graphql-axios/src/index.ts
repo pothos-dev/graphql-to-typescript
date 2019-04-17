@@ -49,16 +49,12 @@ export function createClient<T extends Record<string, any>>(
   }) {
     const { url } = clientConfig
 
-    const response = await axios.post(
-      url,
-      body,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-      //config: clientConfig.axiosConfig
-    )
+    const response = await axios.post(url, body, {
+      ...clientConfig.axiosConfig,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
     return response.data
   }
 }
