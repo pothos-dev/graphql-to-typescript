@@ -2,7 +2,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "name": "@bearbytes/graphql-axios-example",
+  "name": "graphql-axios-example",
   "version": "0.0.9-alpha.0",
   "description": "",
   "main": "dist/index.js",
