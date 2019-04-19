@@ -1,0 +1,24 @@
+{
+  "publishConfig": {
+    "access": "public"
+  },
+  "name": "@bearbytes/graphql-axios-react",
+  "description": "",
+  "version": "0.0.14-alpha.0",
+  "author": "",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "@bearbytes/graphql-axios": "^0.0.14-alpha.0",
+    "@bearbytes/graphql-to-typescript": "^0.0.14-alpha.0"
+  },
+  "gitHead": "9b102415d2d5533a26b91b25bb9df8634141892d"
+}
