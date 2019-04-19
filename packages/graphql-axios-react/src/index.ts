@@ -13,9 +13,7 @@ export function createHooks<T>(client: Client<T>): Hooks<T> {
   function useQuery<Name extends Query<T>>(
     config: OperationConfig<T, Name>
   ): OperationResult<T, Name> | undefined {
-    const [result, setResult] = useState<OperationResult<T, Name> | undefined>(
-      undefined
-    )
+    const [result, setResult] = useState<OperationResult<T, Name>>({})
     client.query(config).then(setResult)
     return result
   }

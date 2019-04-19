@@ -4,7 +4,7 @@ import { OperationConfig, OperationResult } from '@bearbytes/graphql-axios'
 export interface Hooks<T> {
   useQuery: <Name extends Query<T>>(
     config: OperationConfig<T, Name>
-  ) => OperationResult<T, Name> | undefined
+  ) => OperationResult<T, Name>
 
   // useMutation<Name extends Mutation<T>>(
   //   config: OperationConfig<T, Name>

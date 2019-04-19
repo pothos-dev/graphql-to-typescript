@@ -6,6 +6,7 @@ import {
   OperationVariables,
 } from '@bearbytes/graphql-to-typescript'
 import { AxiosRequestConfig } from 'axios'
+import { GraphQLError } from 'graphql'
 
 export interface ClientConfig {
   url: string
@@ -40,7 +41,8 @@ export type OperationConfig<
     }
 
 export interface OperationResult<T, Name extends keyof T> {
-  data: OperationData<T, Name>
+  data?: OperationData<T, Name>
+  errors?: GraphQLError[]
 }
 
 // export interface SubscriptionResult<T, Name extends Subscription<T>> {}

@@ -20,5 +20,8 @@
     "@bearbytes/graphql-to-typescript": "^0.0.17-alpha.0",
     "axios": "^0.18.0"
   },
+  "devDependencies": {
+    "@types/graphql": "^14.2.0"
+  },
   "gitHead": "6aa72d9f6673cd06cb3d42625d5c2f3e8a839f05"
 }
