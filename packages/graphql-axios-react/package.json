@@ -4,7 +4,7 @@
   },
   "name": "@bearbytes/graphql-axios-react",
   "description": "",
-  "version": "0.0.16-alpha.0",
+  "version": "0.0.17-alpha.0",
   "author": "",
   "license": "ISC",
   "main": "dist/index.js",
@@ -17,8 +17,8 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@bearbytes/graphql-axios": "^0.0.16-alpha.0",
-    "@bearbytes/graphql-to-typescript": "^0.0.16-alpha.0"
+    "@bearbytes/graphql-axios": "^0.0.17-alpha.0",
+    "@bearbytes/graphql-to-typescript": "^0.0.17-alpha.0"
   },
   "peerDependencies": {
     "react": "^16.8.6"
