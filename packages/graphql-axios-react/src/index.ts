@@ -2,7 +2,6 @@ import {
   Client,
   OperationConfig,
   OperationResult,
-  SubscriptionResult,
 } from '@bearbytes/graphql-axios'
 import { Hooks } from './types'
 import { Query, Mutation, Subscription } from '@bearbytes/graphql-to-typescript'
