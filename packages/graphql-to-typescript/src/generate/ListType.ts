@@ -9,7 +9,7 @@ export function generateListType(
   schemaType: ListTypeIR,
   selectionSet?: SelectionSetIR
 ) {
-  return ts.createTypeReferenceNode(ts.createIdentifier('ReadonlyArray'), [
+  return ts.createTypeReferenceNode(ts.createIdentifier('Array'), [
     generateType(schema, schemaType.wrappedType, selectionSet),
   ])
 }

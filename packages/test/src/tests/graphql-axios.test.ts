@@ -14,6 +14,6 @@ const client = createClient(typedGraphQL, {
 })
 
 test('simple query', async () => {
-  const response = await client.query('simpleQuery', { variables: {} })
+  const response = await client.query({ operationName: 'simpleQuery' })
   expect(response).toMatchSnapshot()
 })

@@ -20,7 +20,7 @@ export interface InputType {
   recursive: null | InputType
   nested: null | NestedInputType
   scalar: null | Boolean
-  list: null | ReadonlyArray<String>
+  list: null | Array<String>
 }
 export interface NestedInputType {
   scalar: null | Int
@@ -78,7 +78,7 @@ export default {
                   scalar: null | Int
                 })
             scalar: null | Boolean
-            list: null | ReadonlyArray<String>
+            list: null | Array<String>
           })
     }
   >,
@@ -111,7 +111,7 @@ export default {
     },
     {
       method: null | CustomScalar
-      renamedMethod: null | ReadonlyArray<null | CustomScalar>
+      renamedMethod: null | Array<null | CustomScalar>
     }
   >,
   testScalarsMutation: `mutation testScalarsMutation {\n  scalarString\n  scalarInt\n  scalarFloat\n  scalarBoolean\n  scalarID\n  scalarCustom\n\n  renamedString: scalarString\n}` as Operation<
@@ -157,7 +157,7 @@ export default {
                   scalar: null | Int
                 })
             scalar: null | Boolean
-            list: null | ReadonlyArray<String>
+            list: null | Array<String>
           })
     }
   >,
@@ -171,7 +171,7 @@ export default {
     },
     {
       method: null | CustomScalar
-      renamedMethod: null | ReadonlyArray<null | CustomScalar>
+      renamedMethod: null | Array<null | CustomScalar>
     }
   >,
   testFragments: `query testFragments {\n  nestedObject {\n    ...ObjectTypeFields\n  }\n}\nfragment ObjectTypeFields on ObjectType {\n  scalar\n}` as Operation<
