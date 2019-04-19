@@ -14,13 +14,13 @@ import {
 export interface Hooks<T> {
   useQuery: <Name extends Query<T>>(
     config: OperationConfig<T, Name>
-  ) => Promise<OperationResult<T, Name>>
+  ) => OperationResult<T, Name> | undefined
 
-  useMutation<Name extends Mutation<T>>(
-    config: OperationConfig<T, Name>
-  ): Promise<OperationResult<T, Name>>
+  // useMutation<Name extends Mutation<T>>(
+  //   config: OperationConfig<T, Name>
+  // ): () => void
 
-  useSubscription<Name extends Subscription<T>>(
-    config: OperationConfig<T, Name>
-  ): Promise<SubscriptionResult<T, Name>>
+  // useSubscription<Name extends Subscription<T>>(
+  //   config: OperationConfig<T, Name>
+  // ): Promise<SubscriptionResult<T, Name>>
 }

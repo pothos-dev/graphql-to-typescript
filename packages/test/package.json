@@ -19,7 +19,6 @@
   "dependencies": {
     "@bearbytes/graphql-axios": "^0.0.14-alpha.0",
     "@bearbytes/graphql-to-typescript": "^0.0.14-alpha.0",
-    "@bearbytes/graphql-to-typescript-cli": "^0.0.2-alpha.0",
     "graphql-yoga": "^1.17.4",
     "morgan": "^1.9.1"
   },

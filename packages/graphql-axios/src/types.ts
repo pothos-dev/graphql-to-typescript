@@ -21,9 +21,9 @@ export interface Client<T> {
     config: OperationConfig<T, Name>
   ): Promise<OperationResult<T, Name>>
 
-  subscribe<Name extends Subscription<T>>(
-    config: OperationConfig<T, Name>
-  ): Promise<SubscriptionResult<T, Name>>
+  // subscribe<Name extends Subscription<T>>(
+  //   config: OperationConfig<T, Name>
+  // ): Promise<SubscriptionResult<T, Name>>
 }
 
 export type OperationConfig<
@@ -43,4 +43,4 @@ export interface OperationResult<T, Name extends keyof T> {
   data: OperationData<T, Name>
 }
 
-export interface SubscriptionResult<T, Name extends Subscription<T>> {}
+// export interface SubscriptionResult<T, Name extends Subscription<T>> {}

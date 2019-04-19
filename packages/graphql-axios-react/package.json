@@ -20,5 +20,11 @@
     "@bearbytes/graphql-axios": "^0.0.14-alpha.0",
     "@bearbytes/graphql-to-typescript": "^0.0.14-alpha.0"
   },
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.13"
+  },
   "gitHead": "9b102415d2d5533a26b91b25bb9df8634141892d"
 }
