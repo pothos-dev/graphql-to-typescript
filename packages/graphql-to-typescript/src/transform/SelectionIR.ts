@@ -56,7 +56,7 @@ function transformInlineFragment(
   T: InlineFragmentNode
 ): [string, SelectionSetIR] {
   if (!T.typeCondition) {
-    throw 'Expected InlineFragmentNode to have a non-null typeCondition'
+    throw Error('Expected InlineFragmentNode to have a non-null typeCondition')
   }
   return [T.typeCondition.name.value, transformSelectionSet(T.selectionSet)]
 }

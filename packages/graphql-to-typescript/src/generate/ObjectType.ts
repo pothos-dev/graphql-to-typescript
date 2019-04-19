@@ -11,7 +11,7 @@ export function generateObjectType(
   typename?: string
 ) {
   if (selectionSet == null) {
-    throw 'expected ObjectType to have a SelectionSet'
+    throw Error('expected ObjectType to have a SelectionSet')
   }
 
   return ts.createIntersectionTypeNode([

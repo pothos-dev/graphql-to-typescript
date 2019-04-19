@@ -10,19 +10,23 @@ export function generateUnionType(
   selectionSet?: SelectionSetIR
 ) {
   if (selectionSet == null) {
-    throw 'expected UnionType to have a selectionSet'
+    throw Error('expected UnionType to have a selectionSet')
   }
 
   return ts.createUnionTypeNode(
     schemaType.types.map((it) => {
       if (it.kind != 'namedType') {
-        throw 'Expected union element to be NamedTypeIR, but is ' + it.kind
+        throw Error(
+          'Expected union element to be NamedTypeIR, but is ' + it.kind
+        )
       }
       const elementTypename = it.typename
       const elementType = schema.types[elementTypename]
       if (elementType.kind !== 'object') {
-        throw 'Expected Union element to be ObjectTypeIR, but is ' +
-          elementType.kind
+        throw Error(
+          'Expected Union element to be ObjectTypeIR, but is ' +
+            elementType.kind
+        )
       }
 
       const elementSelectionSet = selectionSet.unions[elementTypename]

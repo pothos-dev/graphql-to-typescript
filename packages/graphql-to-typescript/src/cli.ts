@@ -35,6 +35,6 @@ async function main() {
       outFile: program.outfile,
     })
   } catch (error) {
-    console.error(error.message)
+    console.error(error)
   }
 }

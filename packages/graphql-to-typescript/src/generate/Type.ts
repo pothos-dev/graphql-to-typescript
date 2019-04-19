@@ -54,5 +54,5 @@ export function generateNonNullType(
       return generateListType(schema, schemaType)
   }
 
-  throw 'Unhandled type in generateNonNullType: ' + schemaType.kind
+  throw Error('Unhandled type in generateNonNullType: ' + schemaType.kind)
 }

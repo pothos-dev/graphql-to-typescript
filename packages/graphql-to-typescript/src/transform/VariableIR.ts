@@ -20,6 +20,6 @@ export function transformVariable(
     if (T.kind == 'ListType') {
       return { kind: 'list', wrappedType: transformTypeNode(T.type) }
     }
-    throw 'Unexpected TypeNode.kind in transformTypeNode'
+    throw Error('Unexpected TypeNode.kind in transformTypeNode')
   }
 }
