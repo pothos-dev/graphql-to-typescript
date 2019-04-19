@@ -5,23 +5,24 @@ import { TypeIR } from '../transform/TypeIR'
 import { generateNonNullType } from './Type'
 import { toPairs } from 'lodash'
 import { VariableIR } from '../transform/VariableIR'
+import { DocumentIR } from '../transform/DocumentIR'
 
 export function generateOperations(
   schema: SchemaIR,
-  sourceCode: string,
-  operations: OperationIR[]
+  document: DocumentIR,
+  sourceCode: string
 ) {
   return ts.createExportAssignment(
     undefined,
     undefined,
     undefined,
     ts.createObjectLiteral(
-      operations.map((operation) =>
+      document.operations.map((operation) =>
         ts.createPropertyAssignment(
           ts.createIdentifier(operation.name),
           ts.createAsExpression(
             ts.createNoSubstitutionTemplateLiteral(
-              formatGqlSource(sourceCode, operation)
+              formatGqlSource(document, sourceCode, operation)
             ),
             ts.createTypeReferenceNode(ts.createIdentifier('Operation'), [
               ts.createLiteralTypeNode(ts.createLiteral(operation.kind)),
@@ -35,11 +36,29 @@ export function generateOperations(
   )
 }
 
-function formatGqlSource(sourceCode: string, operation: OperationIR): string {
-  return sourceCode.substring(
+function formatGqlSource(
+  document: DocumentIR,
+  sourceCode: string,
+  operation: OperationIR
+): string {
+  let gqlSource = sourceCode.substring(
     operation.sourceCodeRange[0],
     operation.sourceCodeRange[1]
   )
+
+  document.fragments
+    .filter((fragment) => operation.fragmentNames.includes(fragment.name))
+    .forEach(
+      (fragment) =>
+        (gqlSource +=
+          '\n' +
+          sourceCode.substring(
+            fragment.sourceCodeRange[0],
+            fragment.sourceCodeRange[1]
+          ))
+    )
+
+  return gqlSource
 }
 
 function generateVariables(operation: OperationIR): ts.TypeLiteralNode {

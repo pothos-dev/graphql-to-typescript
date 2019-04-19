@@ -174,7 +174,7 @@ export default {
       renamedMethod: null | ReadonlyArray<null | CustomScalar>
     }
   >,
-  testFragments: `query testFragments {\n  nestedObject {\n    ...ObjectTypeFields\n  }\n}` as Operation<
+  testFragments: `query testFragments {\n  nestedObject {\n    ...ObjectTypeFields\n  }\n}\nfragment ObjectTypeFields on ObjectType {\n  scalar\n}` as Operation<
     'query',
     {},
     {

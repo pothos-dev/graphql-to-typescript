@@ -177,7 +177,7 @@ export default {
       renamedMethod: null | ReadonlyArray<null | CustomScalar>
     }
   >,
-  testFragments: \`query testFragments {\\\\n  nestedObject {\\\\n    ...ObjectTypeFields\\\\n  }\\\\n}\` as Operation<
+  testFragments: \`query testFragments {\\\\n  nestedObject {\\\\n    ...ObjectTypeFields\\\\n  }\\\\n}\\\\nfragment ObjectTypeFields on ObjectType {\\\\n  scalar\\\\n}\` as Operation<
     'query',
     {},
     {
@@ -2401,6 +2401,10 @@ Object {
         "fragments": Array [],
         "unions": Object {},
       },
+      "sourceCodeRange": Array [
+        1396,
+        1448,
+      ],
     },
   ],
   "operations": Array [
@@ -2416,6 +2420,7 @@ Object {
         "fragments": Array [],
         "unions": Object {},
       },
+      "fragmentNames": Array [],
       "kind": "query",
       "name": "simpleQuery",
       "sourceCodeRange": Array [
@@ -2466,6 +2471,7 @@ Object {
         "fragments": Array [],
         "unions": Object {},
       },
+      "fragmentNames": Array [],
       "kind": "query",
       "name": "testScalars",
       "sourceCodeRange": Array [
@@ -2491,6 +2497,7 @@ Object {
         "fragments": Array [],
         "unions": Object {},
       },
+      "fragmentNames": Array [],
       "kind": "query",
       "name": "testNullability",
       "sourceCodeRange": Array [
@@ -2566,6 +2573,7 @@ Object {
         "fragments": Array [],
         "unions": Object {},
       },
+      "fragmentNames": Array [],
       "kind": "query",
       "name": "testNesting",
       "sourceCodeRange": Array [
@@ -2623,6 +2631,7 @@ Object {
         "fragments": Array [],
         "unions": Object {},
       },
+      "fragmentNames": Array [],
       "kind": "query",
       "name": "testUnion",
       "sourceCodeRange": Array [
@@ -2648,6 +2657,7 @@ Object {
         "fragments": Array [],
         "unions": Object {},
       },
+      "fragmentNames": Array [],
       "kind": "query",
       "name": "testMethods",
       "sourceCodeRange": Array [
@@ -2730,6 +2740,7 @@ Object {
         "fragments": Array [],
         "unions": Object {},
       },
+      "fragmentNames": Array [],
       "kind": "mutation",
       "name": "testScalarsMutation",
       "sourceCodeRange": Array [
@@ -2755,6 +2766,7 @@ Object {
         "fragments": Array [],
         "unions": Object {},
       },
+      "fragmentNames": Array [],
       "kind": "mutation",
       "name": "testNullabilityMutation",
       "sourceCodeRange": Array [
@@ -2830,6 +2842,7 @@ Object {
         "fragments": Array [],
         "unions": Object {},
       },
+      "fragmentNames": Array [],
       "kind": "mutation",
       "name": "testNestingMutation",
       "sourceCodeRange": Array [
@@ -2855,6 +2868,7 @@ Object {
         "fragments": Array [],
         "unions": Object {},
       },
+      "fragmentNames": Array [],
       "kind": "mutation",
       "name": "testMethodsMutation",
       "sourceCodeRange": Array [
@@ -2913,6 +2927,9 @@ Object {
         "fragments": Array [],
         "unions": Object {},
       },
+      "fragmentNames": Array [
+        "ObjectTypeFields",
+      ],
       "kind": "query",
       "name": "testFragments",
       "sourceCodeRange": Array [

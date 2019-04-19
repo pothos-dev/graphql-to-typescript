@@ -9,6 +9,7 @@ export interface OperationIR {
   data: SelectionSetIR
   variables: Record<string, VariableIR>
   sourceCodeRange: [number, number]
+  fragmentNames: string[]
 }
 
 export function transformOperation(T: OperationDefinitionNode): OperationIR {
@@ -19,11 +20,29 @@ export function transformOperation(T: OperationDefinitionNode): OperationIR {
     throw Error('expected operation to have a loc')
   }
 
+  const data = transformSelectionSet(T.selectionSet)
+
   return {
     kind: T.operation,
     name: T.name.value,
-    data: transformSelectionSet(T.selectionSet),
+    data,
     variables: fromPairs((T.variableDefinitions || []).map(transformVariable)),
     sourceCodeRange: [T.loc.start, T.loc.end],
+    fragmentNames: getFragmentsFromSelectionSet(data),
   }
+}
+
+function getFragmentsFromSelectionSet(selectionSet: SelectionSetIR): string[] {
+  return [
+    ...selectionSet.fragments,
+    ...selectionSet.fields
+      .map((field) => {
+        if (!field.selectionSet) return []
+        return getFragmentsFromSelectionSet(field.selectionSet)
+      })
+      .reduce((a, b) => [...a, ...b], []),
+    ...Object.values(selectionSet.unions)
+      .map(getFragmentsFromSelectionSet)
+      .reduce((a, b) => [...a, ...b], []),
+  ]
 }

@@ -17,7 +17,8 @@
       "sourceCodeRange": [
         0,
         36
-      ]
+      ],
+      "fragmentNames": []
     },
     {
       "kind": "query",
@@ -60,7 +61,8 @@
       "sourceCodeRange": [
         38,
         173
-      ]
+      ],
+      "fragmentNames": []
     },
     {
       "kind": "query",
@@ -83,7 +85,8 @@
       "sourceCodeRange": [
         175,
         239
-      ]
+      ],
+      "fragmentNames": []
     },
     {
       "kind": "query",
@@ -154,7 +157,8 @@
       "sourceCodeRange": [
         241,
         398
-      ]
+      ],
+      "fragmentNames": []
     },
     {
       "kind": "query",
@@ -207,7 +211,8 @@
       "sourceCodeRange": [
         400,
         528
-      ]
+      ],
+      "fragmentNames": []
     },
     {
       "kind": "query",
@@ -262,7 +267,8 @@
       "sourceCodeRange": [
         530,
         758
-      ]
+      ],
+      "fragmentNames": []
     },
     {
       "kind": "mutation",
@@ -305,7 +311,8 @@
       "sourceCodeRange": [
         760,
         906
-      ]
+      ],
+      "fragmentNames": []
     },
     {
       "kind": "mutation",
@@ -328,7 +335,8 @@
       "sourceCodeRange": [
         908,
         983
-      ]
+      ],
+      "fragmentNames": []
     },
     {
       "kind": "mutation",
@@ -399,7 +407,8 @@
       "sourceCodeRange": [
         985,
         1153
-      ]
+      ],
+      "fragmentNames": []
     },
     {
       "kind": "mutation",
@@ -454,7 +463,8 @@
       "sourceCodeRange": [
         1155,
         1394
-      ]
+      ],
+      "fragmentNames": []
     },
     {
       "kind": "query",
@@ -480,6 +490,9 @@
       "sourceCodeRange": [
         1450,
         1518
+      ],
+      "fragmentNames": [
+        "ObjectTypeFields"
       ]
     }
   ],
@@ -496,7 +509,11 @@
         ],
         "unions": {},
         "fragments": []
-      }
+      },
+      "sourceCodeRange": [
+        1396,
+        1448
+      ]
     }
   ]
 }

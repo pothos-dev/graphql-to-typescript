@@ -85,9 +85,7 @@ function printOperations(
 ) {
   return (
     '// Operations\n' +
-    [generateOperations(schema, sourceCode, document.operations)]
-      .map(print)
-      .join('\n')
+    [generateOperations(schema, document, sourceCode)].map(print).join('\n')
   )
 }
 
