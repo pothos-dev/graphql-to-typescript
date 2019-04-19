@@ -4,7 +4,7 @@
   },
   "name": "@bearbytes/graphql-to-typescript",
   "description": "",
-  "version": "0.0.19-alpha.0",
+  "version": "0.0.20-alpha.0",
   "author": "bearbytes",
   "license": "ISC",
   "main": "dist/index.js",
