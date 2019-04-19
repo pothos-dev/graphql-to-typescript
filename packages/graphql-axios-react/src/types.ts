@@ -1,15 +1,5 @@
-import {
-  Query,
-  OperationData,
-  Mutation,
-  Subscription,
-  OperationVariables,
-} from '@bearbytes/graphql-to-typescript'
-import {
-  OperationConfig,
-  OperationResult,
-  SubscriptionResult,
-} from '@bearbytes/graphql-axios'
+import { Query } from '@bearbytes/graphql-to-typescript'
+import { OperationConfig, OperationResult } from '@bearbytes/graphql-axios'
 
 export interface Hooks<T> {
   useQuery: <Name extends Query<T>>(
