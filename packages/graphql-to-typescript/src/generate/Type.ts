@@ -51,7 +51,7 @@ export function generateNonNullType(
     case 'union':
       return generateUnionType(schema, schemaType, selectionSet)
     case 'list':
-      return generateListType(schema, schemaType)
+      return generateListType(schema, schemaType, selectionSet)
   }
 
   throw Error('Unhandled type in generateNonNullType: ' + schemaType.kind)
