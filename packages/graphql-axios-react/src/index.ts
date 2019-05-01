@@ -12,7 +12,7 @@ export function createHooks<T>(client: Client<T>): Hooks<T> {
 
   function useQuery<Name extends Query<T>>(
     config: OperationConfig<T, Name>,
-    deps?: DependencyList
+    deps: DependencyList = []
   ): OperationResult<T, Name> {
     const [result, setResult] = useState<OperationResult<T, Name>>({})
     useEffect(() => {
