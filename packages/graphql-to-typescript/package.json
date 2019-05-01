@@ -35,7 +35,7 @@
     "@types/node": "^11.11.4",
     "@types/prettier": "^1.16.1",
     "graphql-tag": "^2.10.1",
-    "typescript": "^3.3.4000"
+    "typescript": "^3.4.5"
   },
   "gitHead": "6aa72d9f6673cd06cb3d42625d5c2f3e8a839f05"
 }

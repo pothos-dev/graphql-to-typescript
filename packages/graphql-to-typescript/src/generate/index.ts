@@ -66,13 +66,13 @@ function printInputTypes(schema: SchemaIR): string {
   return (
     '// Input Types\n' +
     inputTypes
-      .map((it) =>
-        generateInputObjectTypeAsInterface(
+      .map((it) => {
+        return generateInputObjectTypeAsInterface(
           schema,
           it.type as InputObjectTypeIR,
           it.typename
         )
-      )
+      })
       .map(print)
       .join('\n')
   )

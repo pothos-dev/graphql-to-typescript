@@ -2,7 +2,7 @@ import ts from 'typescript'
 import { OperationIR } from '../transform/OperationIR'
 import { SchemaIR } from '../transform/SchemaIR'
 import { TypeIR } from '../transform/TypeIR'
-import { generateNonNullType } from './Type'
+import { generateNonNullType } from './generateNonNullType'
 import { toPairs } from 'lodash'
 import { VariableIR } from '../transform/VariableIR'
 import { DocumentIR } from '../transform/DocumentIR'
@@ -103,12 +103,20 @@ function generateVariables(operation: OperationIR): ts.TypeLiteralNode {
 }
 
 function generateData(schema: SchemaIR, operation: OperationIR) {
-  return generateNonNullType(schema, getSchemaType(), operation.data)
+  const schemaType = getSchemaType()
+  if (schemaType == null) {
+    console.log(operation.name)
+    console.log(Object.keys(schema.types))
+    process.exit(0)
+  }
+  return generateNonNullType(schema, schemaType, operation.data)
 
   function getSchemaType(): TypeIR {
-    if (operation.kind == 'query') return schema.types['Query']
-    if (operation.kind == 'mutation') return schema.types['Mutation']
-    if (operation.kind == 'subscription') return schema.types['Subscription']
+    if (operation.kind == 'query') return schema.types[schema.queryTypeName!]
+    if (operation.kind == 'mutation')
+      return schema.types[schema.mutationTypeName!]
+    if (operation.kind == 'subscription')
+      return schema.types[schema.subscriptionTypeName!]
     throw Error('unexpected operation.kind ' + operation.kind)
   }
 }

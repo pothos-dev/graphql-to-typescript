@@ -4,6 +4,9 @@ import { transformType, TypeIR } from './TypeIR'
 
 export interface SchemaIR {
   types: Record<string, TypeIR>
+  queryTypeName?: string
+  mutationTypeName?: string
+  subscriptionTypeName?: string
 }
 
 export function transformSchema(schema: GraphQLSchema): SchemaIR {
@@ -14,5 +17,15 @@ export function transformSchema(schema: GraphQLSchema): SchemaIR {
       .map((T) => transformType(T, true))
   )
 
-  return { types }
+  const queryType = schema.getQueryType()
+  const mutationType = schema.getMutationType()
+  const subscriptionType = schema.getSubscriptionType()
+
+  return {
+    types,
+    queryTypeName: (queryType && queryType.name) || undefined,
+    mutationTypeName: (mutationType && mutationType.name) || undefined,
+    subscriptionTypeName:
+      (subscriptionType && subscriptionType.name) || undefined,
+  }
 }

@@ -1,12 +1,8 @@
 import ts from 'typescript'
 import { SchemaIR } from '../transform/SchemaIR'
 import { TypeIR } from '../transform/TypeIR'
-import { generateScalarType } from './ScalarType'
-import { generateObjectType } from './ObjectType'
-import { generateListType } from './ListType'
 import { SelectionSetIR } from '../transform/SelectionIR'
-import { generateUnionType } from './UnionType'
-import { generateInputObjectTypeAsNamedType } from './InputObjectType'
+import { generateNonNullType } from './generateNonNullType'
 
 export function generateType(
   schema: SchemaIR,
@@ -14,7 +10,15 @@ export function generateType(
   selectionSet?: SelectionSetIR,
   typename?: string
 ): ts.TypeNode {
+  if (schemaType == null) {
+    console.log({ schemaType, typename, selectionSet })
+  }
+
   if (schemaType.kind == 'nonNull') {
+    if (schemaType.wrappedType == null) {
+      console.log({ place: 'generateType', schemaType, typename, selectionSet })
+    }
+
     return generateNonNullType(schema, schemaType.wrappedType, selectionSet)
   }
 
@@ -22,37 +26,4 @@ export function generateType(
     ts.createKeywordTypeNode(ts.SyntaxKind.NullKeyword),
     generateNonNullType(schema, schemaType, selectionSet, typename),
   ])
-}
-
-export function generateNonNullType(
-  schema: SchemaIR,
-  schemaType: TypeIR,
-  selectionSet?: SelectionSetIR,
-  typename?: string
-): ts.TypeNode {
-  switch (schemaType.kind) {
-    case 'namedType':
-      return generateNonNullType(
-        schema,
-        schema.types[schemaType.typename],
-        selectionSet,
-        schemaType.typename
-      )
-    case 'enum':
-      break
-    case 'inputObject':
-      return generateInputObjectTypeAsNamedType(typename!)
-    case 'interface':
-      break
-    case 'object':
-      return generateObjectType(schema, schemaType, selectionSet)
-    case 'scalar':
-      return generateScalarType(schema, schemaType)
-    case 'union':
-      return generateUnionType(schema, schemaType, selectionSet)
-    case 'list':
-      return generateListType(schema, schemaType, selectionSet)
-  }
-
-  throw Error('Unhandled type in generateNonNullType: ' + schemaType.kind)
 }
