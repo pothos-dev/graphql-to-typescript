@@ -10,7 +10,8 @@
     "build": "lerna run build --stream",
     "start": "lerna run start --stream",
     "test": "lerna run test --stream",
-    "patch": "lerna publish prepatch -y"
+    "patch": "lerna publish prepatch -y",
+    "dev": "lerna run prepare --stream && cp -r packages/graphql-axios/dist/* ../guesstimate/packages/client/node_modules/@bearbytes/graphql-axios/dist && cp -r packages/graphql-axios-react/dist/* ../guesstimate/packages/client/node_modules/@bearbytes/graphql-axios-react/dist"
   },
   "devDependencies": {
     "lerna": "^3.4.0"
