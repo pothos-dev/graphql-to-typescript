@@ -61,6 +61,8 @@ function printInputTypes(schema: SchemaIR): string {
     .map(([typename, type]) => ({ typename, type }))
     .filter((it) => it.type && it.type.kind == 'inputObject')
 
+  // TODO: filter all unused inputTypes to avoid cluttering the output with dead code
+
   if (inputTypes.length == 0) return ''
 
   return (
