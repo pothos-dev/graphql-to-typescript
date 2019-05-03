@@ -10,9 +10,13 @@ import { FragmentIR, transformFragment } from './FragmentIR'
 export interface DocumentIR {
   operations: OperationIR[]
   fragments: FragmentIR[]
+  sourceCode: string
 }
 
-export function transformDocument(T: DocumentNode): DocumentIR {
+export function transformDocument(
+  T: DocumentNode,
+  sourceCode: string
+): DocumentIR {
   return {
     operations: T.definitions
       .filter((it) => it.kind == 'OperationDefinition')
@@ -22,5 +26,6 @@ export function transformDocument(T: DocumentNode): DocumentIR {
       .filter((it) => it.kind == 'FragmentDefinition')
       .map((it) => it as FragmentDefinitionNode)
       .map(transformFragment),
+    sourceCode,
   }
 }

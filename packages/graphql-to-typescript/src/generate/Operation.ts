@@ -7,11 +7,7 @@ import { toPairs } from 'lodash'
 import { VariableIR } from '../transform/VariableIR'
 import { DocumentIR } from '../transform/DocumentIR'
 
-export function generateOperations(
-  schema: SchemaIR,
-  document: DocumentIR,
-  sourceCode: string
-) {
+export function generateOperations(schema: SchemaIR, document: DocumentIR) {
   return ts.createExportAssignment(
     undefined,
     undefined,
@@ -22,7 +18,7 @@ export function generateOperations(
           ts.createIdentifier(operation.name),
           ts.createAsExpression(
             ts.createNoSubstitutionTemplateLiteral(
-              formatGqlSource(document, sourceCode, operation)
+              formatGqlSource(document, operation)
             ),
             ts.createTypeReferenceNode(ts.createIdentifier('Operation'), [
               ts.createLiteralTypeNode(ts.createLiteral(operation.kind)),
@@ -36,12 +32,8 @@ export function generateOperations(
   )
 }
 
-function formatGqlSource(
-  document: DocumentIR,
-  sourceCode: string,
-  operation: OperationIR
-): string {
-  let gqlSource = sourceCode.substring(
+function formatGqlSource(document: DocumentIR, operation: OperationIR): string {
+  let gqlSource = document.sourceCode.substring(
     operation.sourceCodeRange[0],
     operation.sourceCodeRange[1]
   )
@@ -52,7 +44,7 @@ function formatGqlSource(
       (fragment) =>
         (gqlSource +=
           '\n' +
-          sourceCode.substring(
+          document.sourceCode.substring(
             fragment.sourceCodeRange[0],
             fragment.sourceCodeRange[1]
           ))

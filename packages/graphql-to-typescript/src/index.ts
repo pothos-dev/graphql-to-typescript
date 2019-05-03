@@ -27,8 +27,8 @@ export default async function generate(opts: {
   const { sourceCode, document } = await loadDocument(opts.document)
   validateDocument(document, schema)
   const schemaIR = transformSchema(schema)
-  const documentIR = transformDocument(document)
-  const result = await generateCode(schemaIR, documentIR, sourceCode)
+  const documentIR = transformDocument(document, sourceCode)
+  const result = await generateCode(schemaIR, documentIR)
   if (opts.outFile) {
     await fs.writeFile(opts.outFile, result)
   }

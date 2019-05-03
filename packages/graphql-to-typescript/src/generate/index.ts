@@ -12,8 +12,7 @@ import { generateFragment } from './Fragment'
 
 export async function generateCode(
   schema: SchemaIR,
-  document: DocumentIR,
-  sourceCode: string
+  document: DocumentIR
 ): Promise<string> {
   return await cleanup(
     [
@@ -21,7 +20,7 @@ export async function generateCode(
       printScalarTypes(schema),
       printFragmentTypes(schema, document),
       printInputTypes(schema),
-      printOperations(schema, document, sourceCode),
+      printOperations(schema, document),
     ].join('\n\n')
   )
 }
@@ -80,14 +79,10 @@ function printInputTypes(schema: SchemaIR): string {
   )
 }
 
-function printOperations(
-  schema: SchemaIR,
-  document: DocumentIR,
-  sourceCode: string
-) {
+function printOperations(schema: SchemaIR, document: DocumentIR) {
   return (
     '// Operations\n' +
-    [generateOperations(schema, document, sourceCode)].map(print).join('\n')
+    [generateOperations(schema, document)].map(print).join('\n')
   )
 }
 
