@@ -1,13 +1,19 @@
 #!/usr/bin/env node
 import program from 'commander'
 import generate from '.'
-import { getGraphQLProjectConfig } from 'graphql-config'
+import { getGraphQLProjectConfig, GraphQLProjectConfig } from 'graphql-config'
 import { readFileSync } from 'fs'
 import { join } from 'path'
 import glob from 'glob'
 
 runCommander()
-const configFile = getGraphQLProjectConfig()
+
+let configFile: GraphQLProjectConfig | undefined
+try {
+  configFile = getGraphQLProjectConfig()
+} catch (e) {
+  // ignore
+}
 
 main()
 async function main() {
@@ -52,7 +58,7 @@ function getSchema(): string {
   )
 
   function getUrlFromEndpoints(): string | null {
-    const endpoints = configFile.extensions.endpoints
+    const endpoints = configFile!.extensions.endpoints
     if (!endpoints) return null
 
     const names = Object.keys(endpoints)
