@@ -13,22 +13,26 @@ export function generateOperations(schema: SchemaIR, documents: DocumentIR[]) {
     undefined,
     undefined,
     ts.createObjectLiteral(
-      documents.flatMap((document) =>
-        document.operations.map((operation) =>
-          ts.createPropertyAssignment(
-            ts.createIdentifier(operation.name),
-            ts.createAsExpression(
-              ts.createNoSubstitutionTemplateLiteral(
-                formatGqlSource(document, operation)
-              ),
-              ts.createTypeReferenceNode(ts.createIdentifier('Operation'), [
-                ts.createLiteralTypeNode(ts.createLiteral(operation.kind)),
-                generateVariables(operation),
-                generateData(schema, operation),
-              ])
+      documents.reduce(
+        (acc, document) =>
+          acc.concat(
+            document.operations.map((operation) =>
+              ts.createPropertyAssignment(
+                ts.createIdentifier(operation.name),
+                ts.createAsExpression(
+                  ts.createNoSubstitutionTemplateLiteral(
+                    formatGqlSource(document, operation)
+                  ),
+                  ts.createTypeReferenceNode(ts.createIdentifier('Operation'), [
+                    ts.createLiteralTypeNode(ts.createLiteral(operation.kind)),
+                    generateVariables(operation),
+                    generateData(schema, operation),
+                  ])
+                )
+              )
             )
-          )
-        )
+          ),
+        [] as ts.PropertyAssignment[]
       )
     )
   )

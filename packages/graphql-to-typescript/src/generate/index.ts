@@ -9,6 +9,9 @@ import { ScalarTypeIR } from '../transform/ScalarTypeIR'
 import { InputObjectTypeIR } from '../transform/InputObjectTypeIR'
 import { generateInputObjectTypeAsInterface } from './InputObjectType'
 import { generateFragment } from './Fragment'
+import { VariableIR } from '../transform/VariableIR'
+import { FragmentIR } from '../transform/FragmentIR'
+import { OperationIR } from '../transform/OperationIR'
 
 export async function generateCode(
   schema: SchemaIR,
@@ -19,7 +22,7 @@ export async function generateCode(
       printHeader(),
       printScalarTypes(schema),
       printFragmentTypes(schema, documents),
-      printInputTypes(schema),
+      printInputTypes(schema, getUsedInputTypes(documents)),
       printOperations(schema, documents),
     ].join('\n\n')
   )
@@ -44,7 +47,10 @@ function printScalarTypes(schema: SchemaIR): string {
 }
 
 function printFragmentTypes(schema: SchemaIR, documents: DocumentIR[]): string {
-  const fragments = documents.flatMap((document) => document.fragments)
+  const fragments = documents.reduce<FragmentIR[]>(
+    (acc, document) => acc.concat(document.fragments),
+    []
+  )
   if (fragments.length == 0) return ''
 
   return (
@@ -56,12 +62,14 @@ function printFragmentTypes(schema: SchemaIR, documents: DocumentIR[]): string {
   )
 }
 
-function printInputTypes(schema: SchemaIR): string {
+function printInputTypes(
+  schema: SchemaIR,
+  usedInputTypes: Record<string, true>
+): string {
   const inputTypes = Object.entries(schema.types)
     .map(([typename, type]) => ({ typename, type }))
     .filter((it) => it.type && it.type.kind == 'inputObject')
-
-  // TODO: filter all unused inputTypes to avoid cluttering the output with dead code
+    .filter((it) => usedInputTypes[it.typename])
 
   if (inputTypes.length == 0) return ''
 
@@ -102,4 +110,27 @@ async function cleanup(code: string) {
     ...prettierConfig,
     parser: 'typescript',
   })
+}
+
+function getUsedInputTypes(documents: DocumentIR[]) {
+  const usedInputTypes: Record<string, true> = {}
+
+  documents
+    .reduce<OperationIR[]>((acc, document) => document.operations, [])
+    .reduce<VariableIR[]>(
+      (acc, operation) => acc.concat(Object.values(operation.variables)),
+      []
+    )
+    .forEach(visit)
+
+  function visit(variable: VariableIR): void {
+    if (variable.kind == 'nonNull') {
+      return visit(variable.wrappedType)
+    }
+    if (variable.kind == 'list') {
+      return visit(variable.wrappedType)
+    }
+    usedInputTypes[variable.typename] = true
+  }
+  return usedInputTypes
 }
