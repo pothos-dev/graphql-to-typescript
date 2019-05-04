@@ -5,12 +5,16 @@ import {
   OperationVariables,
 } from '@bearbytes/graphql-to-typescript'
 import { QueryOptions, ApolloQueryResult, MutationOptions } from 'apollo-client'
-import { FetchResult } from 'apollo-link'
+import { FetchResult, Observable } from 'apollo-link'
 
 export interface Client<GQL> {
   query: <Name extends Query<GQL>>(
     config: QueryConfig<GQL, Name>
   ) => Promise<QueryResult<GQL, Name>>
+
+  watchQuery: <Name extends Query<GQL>>(
+    config: QueryConfig<GQL, Name>
+  ) => Observable<QueryResult<GQL, Name>>
 
   mutate<Name extends Mutation<GQL>>(
     config: MutateConfig<GQL, Name>

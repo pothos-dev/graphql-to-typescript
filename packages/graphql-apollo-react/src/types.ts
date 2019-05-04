@@ -14,7 +14,8 @@ export interface Hooks<GQL> {
   ) => QueryResult<GQL, Name>
 
   useMutation<Name extends Mutation<GQL>, Args extends any[]>(
-    mutate: (...args: Args) => MutateConfig<GQL, Name>
+    mutate: (...args: Args) => MutateConfig<GQL, Name>,
+    deps?: DependencyList
   ): (...args: Args) => Promise<MutateResult<GQL, Name>>
 
   // useSubscription<Name extends Subscription<T>>(

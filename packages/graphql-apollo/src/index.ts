@@ -12,6 +12,7 @@ import {
 } from './types'
 import { ApolloClient } from 'apollo-client'
 import gql from 'graphql-tag'
+import { Observable } from 'apollo-link'
 
 export * from './types'
 
@@ -19,12 +20,22 @@ export function createClient<GQL extends Record<string, any>>(
   typedGraphQL: GQL,
   apolloClient: ApolloClient<any>
 ): Client<GQL> {
-  return { query, mutate }
+  return { query, watchQuery, mutate }
 
   function query<Name extends Query<GQL>>(
     config: QueryConfig<GQL, Name>
   ): Promise<QueryResult<GQL, Name>> {
     return apolloClient.query({
+      ...config,
+      query: gql(typedGraphQL[config.operationName]),
+      variables: config.variables,
+    })
+  }
+
+  function watchQuery<Name extends Query<GQL>>(
+    config: QueryConfig<GQL, Name>
+  ): Observable<QueryResult<GQL, Name>> {
+    return apolloClient.watchQuery({
       ...config,
       query: gql(typedGraphQL[config.operationName]),
       variables: config.variables,

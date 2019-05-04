@@ -31,19 +31,26 @@ export function createHooks<GQL>(client: Client<GQL>): Hooks<GQL> {
     })
 
     useEffect(() => {
-      client.query(config).then(setResult)
+      const subscription = client.watchQuery(config).subscribe(setResult)
+      return () => subscription.unsubscribe()
     }, deps)
 
     return result
   }
 
   function useMutation<Name extends Mutation<GQL>, Args extends any[]>(
-    mutate: (...args: Args) => MutateConfig<GQL, Name>
+    mutate: (...args: Args) => MutateConfig<GQL, Name>,
+    deps?: DependencyList
   ): (...args: Args) => Promise<MutateResult<GQL, Name>> {
-    return useCallback((...args: Args) => {
+    const f = (...args: Args) => {
       const config = mutate(...args)
       return client.mutate(config)
-    }, [])
+    }
+    if (deps) {
+      return useCallback(f, deps)
+    } else {
+      return f
+    }
   }
 
   // function useSubscription<Name extends Subscription<T>>(
