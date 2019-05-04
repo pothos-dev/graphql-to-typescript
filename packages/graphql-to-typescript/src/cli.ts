@@ -28,7 +28,7 @@ async function main() {
       outFile,
     })
   } catch (error) {
-    console.error(error.message)
+    console.error(error)
     process.exit(1)
   }
 }
@@ -39,9 +39,7 @@ function getSchema(): string {
   }
 
   if (!configFile) {
-    throw Error(
-      'No schema given (-s <uri>), also no GraphQL config file found.'
-    )
+    throw exit('No schema given (-s <uri>), also no GraphQL config file found.')
   }
 
   if (configFile.schemaPath) {
@@ -53,7 +51,7 @@ function getSchema(): string {
     return url
   }
 
-  throw Error(
+  throw exit(
     'No schema given (-s <uri>), and could not find schemaPath or an endpoint url in GraphQL config file.'
   )
 
@@ -68,7 +66,7 @@ function getSchema(): string {
 
     if (names.length > 1) {
       // todo how to select the correct endpoint?
-      throw Error(
+      throw exit(
         'No schema given (-s <uri>), and multiple endpoints found in GraphQL config file.'
       )
     }
@@ -84,32 +82,36 @@ function getSchema(): string {
 }
 
 function getDocuments(): string[] {
-  if (program.documents) return program.documents
+  if (program.documents) return globify(program.documents.split(','))
 
   if (!configFile) {
-    throw Error(
+    throw exit(
       'No documents given (-d <file>), also no GraphQL config file found.'
     )
   }
 
-  const includes = configFile.includes
-  const files = includes
-    .map((pattern) => glob.sync(pattern))
-    .reduce((acc, it) => acc.concat(it), [])
-  if (files.length == 0) {
-    throw Error(
-      'No documents given (-d <file>), and glob patterns in GraphQL config file did not match any files.'
-    )
-  }
+  return globify(configFile.includes)
 
-  return files
+  function globify(globs: string[]): string[] {
+    const files = globs
+      .map((pattern) => glob.sync(pattern))
+      .reduce((acc, it) => acc.concat(it), [])
+
+    if (files.length == 0) {
+      throw exit(
+        'No documents given (-d <file>), and glob patterns in GraphQL config file did not match any files.'
+      )
+    }
+
+    return files
+  }
 }
 
 function getOutfile(): string {
   if (program.outFile) return program.outFile
 
   if (!configFile) {
-    throw Error(
+    throw exit(
       'No outFile given (-o <file>), also no GraphQL config file found.'
     )
   }
@@ -117,7 +119,7 @@ function getOutfile(): string {
   const config = configFile.extensions['@bearbytes/graphql-to-typescript']
   if (config && config.outFile) return config.outFile
 
-  throw Error(
+  throw exit(
     'No outFile given (-o <file>), and no outfile found in GraphQL config file.'
   )
 }
@@ -140,4 +142,9 @@ function runCommander() {
     )
     .option('-o, --outFile <file>', 'Path of the generated file')
     .parse(process.argv)
+}
+
+function exit(message: string) {
+  console.error(message)
+  process.exit(1)
 }
