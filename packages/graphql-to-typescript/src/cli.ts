@@ -13,12 +13,12 @@ main()
 async function main() {
   try {
     const schema = getSchema()
-    const document = getDocuments()
+    const documents = getDocuments()
     const outFile = getOutfile()
 
     await generate({
       schema,
-      document,
+      documents,
       outFile,
     })
   } catch (error) {
@@ -77,7 +77,7 @@ function getSchema(): string {
   }
 }
 
-function getDocuments(): string {
+function getDocuments(): string[] {
   if (program.documents) return program.documents
 
   if (!configFile) {
@@ -96,11 +96,7 @@ function getDocuments(): string {
     )
   }
 
-  if (files.length > 1) {
-    throw Error('NYI: support multiple document files') // todo!
-  }
-
-  return files[0]
+  return files
 }
 
 function getOutfile(): string {

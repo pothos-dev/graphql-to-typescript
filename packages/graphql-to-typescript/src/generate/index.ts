@@ -12,15 +12,15 @@ import { generateFragment } from './Fragment'
 
 export async function generateCode(
   schema: SchemaIR,
-  document: DocumentIR
+  documents: DocumentIR[]
 ): Promise<string> {
   return await cleanup(
     [
       printHeader(),
       printScalarTypes(schema),
-      printFragmentTypes(schema, document),
+      printFragmentTypes(schema, documents),
       printInputTypes(schema),
-      printOperations(schema, document),
+      printOperations(schema, documents),
     ].join('\n\n')
   )
 }
@@ -43,13 +43,14 @@ function printScalarTypes(schema: SchemaIR): string {
   )
 }
 
-function printFragmentTypes(schema: SchemaIR, document: DocumentIR): string {
-  if (document.fragments.length == 0) return ''
+function printFragmentTypes(schema: SchemaIR, documents: DocumentIR[]): string {
+  const fragments = documents.flatMap((document) => document.fragments)
+  if (fragments.length == 0) return ''
 
   return (
     '// Fragment Types\n' +
-    document.fragments
-      .map((it) => generateFragment(schema, it))
+    fragments
+      .map((fragment) => generateFragment(schema, fragment))
       .map(print)
       .join('\n')
   )
@@ -79,10 +80,10 @@ function printInputTypes(schema: SchemaIR): string {
   )
 }
 
-function printOperations(schema: SchemaIR, document: DocumentIR) {
+function printOperations(schema: SchemaIR, documents: DocumentIR[]) {
   return (
     '// Operations\n' +
-    [generateOperations(schema, document)].map(print).join('\n')
+    [generateOperations(schema, documents)].map(print).join('\n')
   )
 }
 

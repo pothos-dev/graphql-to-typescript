@@ -7,24 +7,26 @@ import { toPairs } from 'lodash'
 import { VariableIR } from '../transform/VariableIR'
 import { DocumentIR } from '../transform/DocumentIR'
 
-export function generateOperations(schema: SchemaIR, document: DocumentIR) {
+export function generateOperations(schema: SchemaIR, documents: DocumentIR[]) {
   return ts.createExportAssignment(
     undefined,
     undefined,
     undefined,
     ts.createObjectLiteral(
-      document.operations.map((operation) =>
-        ts.createPropertyAssignment(
-          ts.createIdentifier(operation.name),
-          ts.createAsExpression(
-            ts.createNoSubstitutionTemplateLiteral(
-              formatGqlSource(document, operation)
-            ),
-            ts.createTypeReferenceNode(ts.createIdentifier('Operation'), [
-              ts.createLiteralTypeNode(ts.createLiteral(operation.kind)),
-              generateVariables(operation),
-              generateData(schema, operation),
-            ])
+      documents.flatMap((document) =>
+        document.operations.map((operation) =>
+          ts.createPropertyAssignment(
+            ts.createIdentifier(operation.name),
+            ts.createAsExpression(
+              ts.createNoSubstitutionTemplateLiteral(
+                formatGqlSource(document, operation)
+              ),
+              ts.createTypeReferenceNode(ts.createIdentifier('Operation'), [
+                ts.createLiteralTypeNode(ts.createLiteral(operation.kind)),
+                generateVariables(operation),
+                generateData(schema, operation),
+              ])
+            )
           )
         )
       )

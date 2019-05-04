@@ -15,22 +15,28 @@ type FilePath = string
 
 export default async function generate(opts: {
   schema: URL | FilePath | GraphQLSchema
-  document: FilePath
+  documents: FilePath[]
   outFile?: FilePath
 }): Promise<{
   schemaIR: SchemaIR
-  documentIR: DocumentIR
+  documentsIR: DocumentIR[]
   result: string
 }> {
   const schema =
     typeof opts.schema == 'object' ? opts.schema : await loadSchema(opts.schema)
-  const { sourceCode, document } = await loadDocument(opts.document)
-  validateDocument(document, schema)
   const schemaIR = transformSchema(schema)
-  const documentIR = transformDocument(document, sourceCode)
-  const result = await generateCode(schemaIR, documentIR)
+
+  const documentsIR = await Promise.all(
+    opts.documents.map(async (documentFile) => {
+      const { sourceCode, document } = await loadDocument(documentFile)
+      validateDocument(document, schema)
+      return transformDocument(document, sourceCode)
+    })
+  )
+
+  const result = await generateCode(schemaIR, documentsIR)
   if (opts.outFile) {
     await fs.writeFile(opts.outFile, result)
   }
-  return { schemaIR, documentIR, result }
+  return { schemaIR, documentsIR, result }
 }
