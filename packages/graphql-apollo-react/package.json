@@ -1,0 +1,30 @@
+{
+  "publishConfig": {
+    "access": "public"
+  },
+  "name": "@bearbytes/graphql-apollo-react",
+  "description": "",
+  "version": "0.0.23-alpha.0",
+  "author": "",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "@bearbytes/graphql-apollo": "^0.0.23-alpha.0",
+    "@bearbytes/graphql-to-typescript": "^0.0.23-alpha.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.13"
+  },
+  "gitHead": "6aa72d9f6673cd06cb3d42625d5c2f3e8a839f05"
+}

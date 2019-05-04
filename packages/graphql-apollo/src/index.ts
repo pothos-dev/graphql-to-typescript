@@ -3,9 +3,14 @@ import {
   Mutation,
   OperationData,
 } from '@bearbytes/graphql-to-typescript'
-import { Client, OperationConfig } from './types'
-import { ApolloClient, ApolloQueryResult } from 'apollo-client'
-import { FetchResult } from 'apollo-link'
+import {
+  Client,
+  QueryConfig,
+  QueryResult,
+  MutateResult,
+  MutateConfig,
+} from './types'
+import { ApolloClient } from 'apollo-client'
 
 export * from './types'
 
@@ -16,18 +21,20 @@ export function createClient<GQL extends Record<string, any>>(
   return { query, mutate }
 
   function query<Name extends Query<GQL>>(
-    config: OperationConfig<GQL, Name>
-  ): Promise<ApolloQueryResult<OperationData<GQL, Name>>> {
+    config: QueryConfig<GQL, Name>
+  ): Promise<QueryResult<GQL, Name>> {
     return apolloClient.query({
+      ...config,
       query: typedGraphQL[config.operationName],
       variables: config.variables,
     })
   }
 
   function mutate<Name extends Mutation<GQL>>(
-    config: OperationConfig<GQL, Name>
-  ): Promise<FetchResult<OperationData<GQL, Name>>> {
-    return apolloClient.mutate({
+    config: MutateConfig<GQL, Name>
+  ): Promise<MutateResult<GQL, Name>> {
+    return apolloClient.mutate<OperationData<GQL, Name>>({
+      ...config,
       mutation: typedGraphQL[config.operationName],
       variables: config.variables,
     })
