@@ -24,7 +24,9 @@
     "react": "^16.8.6"
   },
   "devDependencies": {
-    "@types/react": "^16.8.13"
+    "@types/react": "^16.8.13",
+    "@types/node": "^12.0.0",
+    "apollo-client": "^2.5.1"
   },
   "gitHead": "6aa72d9f6673cd06cb3d42625d5c2f3e8a839f05"
 }
