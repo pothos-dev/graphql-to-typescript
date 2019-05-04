@@ -14,7 +14,7 @@ export function transformObjectType(T: GraphQLObjectType): ObjectTypeIR {
     keys(fields) as string[],
     values(fields)
       .map((field) => field.type)
-      .map(transformType)
+      .map((fieldType) => transformType(fieldType))
   )
   return {
     kind: 'object',
