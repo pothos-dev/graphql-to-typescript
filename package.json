@@ -11,7 +11,7 @@
     "start": "lerna run start --stream",
     "test": "lerna run test --stream",
     "patch": "lerna publish prepatch -y",
-    "dev": "lerna run prepare --stream && cp -r packages/* ../guesstimate/packages/client/node_modules/@bearbytes/"
+    "dev": "lerna run prepare --stream && rm -rf ../guesstimate/packages/client/node_modules/@bearbytes/* && cp -r packages/* ../guesstimate/packages/client/node_modules/@bearbytes/"
   },
   "devDependencies": {
     "lerna": "^3.4.0"

@@ -21,7 +21,10 @@ export interface Client<GQL> {
   // ): Promise<SubscriptionResult<T, Name>>
 }
 
-export type QueryConfig<GQL, Name extends keyof GQL> = QueryOptions & {
+export type QueryConfig<GQL, Name extends keyof GQL> = Omit<
+  QueryOptions,
+  'query' | 'variables'
+> & {
   operationName: Name
 } & ({} extends OperationVariables<GQL, Name>
     ? { variables?: OperationVariables<GQL, Name> }
@@ -31,7 +34,10 @@ export type QueryResult<GQL, Name extends keyof GQL> = ApolloQueryResult<
   OperationData<GQL, Name>
 >
 
-export type MutateConfig<GQL, Name extends keyof GQL> = MutationOptions & {
+export type MutateConfig<GQL, Name extends keyof GQL> = Omit<
+  MutationOptions,
+  'mutation' | 'variables'
+> & {
   operationName: Name
 } & ({} extends OperationVariables<GQL, Name>
     ? { variables?: OperationVariables<GQL, Name> }
@@ -42,3 +48,5 @@ export type MutateResult<GQL, Name extends keyof GQL> = FetchResult<
 >
 
 // export interface SubscriptionResult<T, Name extends Subscription<T>> {}
+
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>

@@ -11,6 +11,7 @@ import {
   MutateConfig,
 } from './types'
 import { ApolloClient } from 'apollo-client'
+import gql from 'graphql-tag'
 
 export * from './types'
 
@@ -25,7 +26,7 @@ export function createClient<GQL extends Record<string, any>>(
   ): Promise<QueryResult<GQL, Name>> {
     return apolloClient.query({
       ...config,
-      query: typedGraphQL[config.operationName],
+      query: gql(typedGraphQL[config.operationName]),
       variables: config.variables,
     })
   }
@@ -35,7 +36,7 @@ export function createClient<GQL extends Record<string, any>>(
   ): Promise<MutateResult<GQL, Name>> {
     return apolloClient.mutate<OperationData<GQL, Name>>({
       ...config,
-      mutation: typedGraphQL[config.operationName],
+      mutation: gql(typedGraphQL[config.operationName]),
       variables: config.variables,
     })
   }
