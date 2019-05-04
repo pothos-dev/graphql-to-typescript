@@ -4,7 +4,7 @@
   },
   "name": "@bearbytes/graphql-apollo-react",
   "description": "",
-  "version": "0.0.23-alpha.0",
+  "version": "0.0.24-alpha.0",
   "author": "",
   "license": "ISC",
   "main": "dist/index.js",
@@ -17,7 +17,7 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@bearbytes/graphql-apollo": "^0.0.23-alpha.0",
+    "@bearbytes/graphql-apollo": "^0.0.24-alpha.0",
     "@bearbytes/graphql-to-typescript": "^0.0.23-alpha.0"
   },
   "peerDependencies": {
