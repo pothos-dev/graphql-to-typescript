@@ -71,5 +71,24 @@ export type TypedVariables<
   : { variables: OperationVariables<GQL, Name> }
 
 export type TypedUpdate<GQL, Name extends keyof GQL> = {
-  update?: MutationUpdaterFn<OperationData<GQL, Name>>
+  update?: (cache: Cache<GQL>, mutateResult: MutateResult<GQL, Name>) => void
+}
+
+export interface Cache<GQL> {
+  readQuery: <Name extends Query<GQL>>(
+    config: Pick<QueryConfig<GQL, Name>, 'operationName' | 'variables'>
+  ) => OperationData<GQL, Name> | undefined
+
+  writeQuery: <Name extends Query<GQL>>(
+    config: Pick<QueryConfig<GQL, Name>, 'operationName' | 'variables'> & {
+      data: OperationData<GQL, Name>
+    }
+  ) => void
+
+  updateQuery: <Name extends Query<GQL>>(
+    config: Pick<QueryConfig<GQL, Name>, 'operationName' | 'variables'>,
+    mutate: (
+      data: OperationData<GQL, Name> | undefined
+    ) => OperationData<GQL, Name> | void
+  ) => void
 }

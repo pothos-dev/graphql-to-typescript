@@ -12,7 +12,8 @@ import {
 } from './types'
 import { ApolloClient } from 'apollo-client'
 import gql from 'graphql-tag'
-import { Observable, DocumentNode } from 'apollo-link'
+import { Observable, DocumentNode, FetchResult } from 'apollo-link'
+import { DataProxy } from 'apollo-cache'
 
 export * from './types'
 
@@ -54,7 +55,37 @@ export function createClient<GQL extends Record<string, any>>(
       ...config,
       mutation: queries[config.operationName],
       variables: config.variables,
+      update: transformUpdate(),
     })
+
+    function transformUpdate() {
+      if (!config.update) return
+      return function(
+        proxy: DataProxy,
+        result: FetchResult<OperationData<GQL, Name>>
+      ) {
+        if (!config.update) return
+        return config.update(
+          {
+            readQuery: ({ operationName, variables }) => {
+              const query = queries[operationName]
+              return proxy.readQuery({ query, variables }) as any
+            },
+            writeQuery: ({ operationName, variables, data }) => {
+              const query = queries[operationName]
+              return proxy.writeQuery({ query, variables, data })
+            },
+            updateQuery: ({ operationName, variables }, mutate) => {
+              const query = queries[operationName]
+              let data = proxy.readQuery({ query, variables }) as any
+              data = mutate(data) || data
+              proxy.writeQuery({ query, variables, data })
+            },
+          },
+          result
+        )
+      }
+    }
   }
 
   // function subscribe<Name extends Subscription<T>>(
