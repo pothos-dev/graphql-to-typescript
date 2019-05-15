@@ -12,7 +12,7 @@ import {
 } from './types'
 import { ApolloClient } from 'apollo-client'
 import gql from 'graphql-tag'
-import { Observable } from 'apollo-link'
+import { Observable, DocumentNode } from 'apollo-link'
 
 export * from './types'
 
@@ -20,14 +20,19 @@ export function createClient<GQL extends Record<string, any>>(
   typedGraphQL: GQL,
   apolloClient: ApolloClient<any>
 ): Client<GQL> {
-  return { query, watchQuery, mutate }
+  const queries: Record<any, DocumentNode> = {}
+  for (const [operationName, gqlString] of Object.entries(typedGraphQL)) {
+    queries[operationName] = gql(gqlString)
+  }
+
+  return { queries, query, watchQuery, mutate }
 
   function query<Name extends Query<GQL>>(
     config: QueryConfig<GQL, Name>
   ): Promise<QueryResult<GQL, Name>> {
     return apolloClient.query({
       ...config,
-      query: gql(typedGraphQL[config.operationName]),
+      query: queries[config.operationName],
       variables: config.variables,
     })
   }
@@ -37,7 +42,7 @@ export function createClient<GQL extends Record<string, any>>(
   ): Observable<QueryResult<GQL, Name>> {
     return apolloClient.watchQuery({
       ...config,
-      query: gql(typedGraphQL[config.operationName]),
+      query: queries[config.operationName],
       variables: config.variables,
     })
   }
@@ -47,7 +52,7 @@ export function createClient<GQL extends Record<string, any>>(
   ): Promise<MutateResult<GQL, Name>> {
     return apolloClient.mutate<OperationData<GQL, Name>>({
       ...config,
-      mutation: gql(typedGraphQL[config.operationName]),
+      mutation: queries[config.operationName],
       variables: config.variables,
     })
   }

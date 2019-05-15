@@ -10,9 +10,11 @@ import {
   MutationOptions,
   MutationUpdaterFn,
 } from 'apollo-client'
-import { FetchResult, Observable } from 'apollo-link'
+import { FetchResult, Observable, DocumentNode } from 'apollo-link'
 
 export interface Client<GQL> {
+  queries: Record<keyof GQL, DocumentNode>
+
   query: <Name extends Query<GQL>>(
     config: QueryConfig<GQL, Name>
   ) => Promise<QueryResult<GQL, Name>>
