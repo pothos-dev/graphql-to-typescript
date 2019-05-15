@@ -1,13 +1,18 @@
 import { Query, Mutation } from '@bearbytes/graphql-to-typescript'
-import { DependencyList } from 'react'
+import { ComponentType, DependencyList } from 'react'
 import {
   QueryConfig,
   QueryResult,
   MutateConfig,
   MutateResult,
+  Client,
 } from '@bearbytes/graphql-apollo'
 
 export interface Hooks<GQL> {
+  ClientProvider: ComponentType<ClientProviderProps<GQL>>
+
+  useClient(): Client<GQL>
+
   useQuery: <Name extends Query<GQL>>(
     config: QueryConfig<GQL, Name>,
     deps?: DependencyList
@@ -21,4 +26,9 @@ export interface Hooks<GQL> {
   // useSubscription<Name extends Subscription<T>>(
   //   config: OperationConfig<T, Name>
   // ): Promise<SubscriptionResult<T, Name>>
+}
+
+export interface ClientProviderProps<GQL> {
+  client: Client<GQL>
+  children?: any
 }

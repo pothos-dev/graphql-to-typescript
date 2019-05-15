@@ -1,10 +1,17 @@
-import { Hooks } from './types'
+import { Hooks, ClientProviderProps } from './types'
 import {
   Query,
   Mutation,
   OperationData,
 } from '@bearbytes/graphql-to-typescript'
-import { useState, useEffect, DependencyList, useCallback } from 'react'
+import React, {
+  useState,
+  useEffect,
+  DependencyList,
+  useCallback,
+  createContext,
+  useContext,
+} from 'react'
 import {
   Client,
   QueryConfig,
@@ -14,13 +21,29 @@ import {
 } from '@bearbytes/graphql-apollo'
 import { ApolloQueryResult, NetworkStatus } from 'apollo-client'
 
-export function createHooks<GQL>(client: Client<GQL>): Hooks<GQL> {
-  return { useQuery, useMutation }
+export function createHooks<GQL>(
+  globalClientInstance: Client<GQL>
+): Hooks<GQL> {
+  const context = createContext(globalClientInstance)
+
+  return { ClientProvider, useClient, useQuery, useMutation }
+
+  function ClientProvider(props: ClientProviderProps<GQL>) {
+    return (
+      <context.Provider value={props.client}>{props.children}</context.Provider>
+    )
+  }
+
+  function useClient() {
+    return useContext(context)
+  }
 
   function useQuery<Name extends Query<GQL>>(
     config: QueryConfig<GQL, Name>,
     deps: DependencyList = []
   ): QueryResult<GQL, Name> {
+    const client = useClient()
+
     const [result, setResult] = useState<
       ApolloQueryResult<OperationData<GQL, Name>>
     >({
@@ -42,6 +65,8 @@ export function createHooks<GQL>(client: Client<GQL>): Hooks<GQL> {
     mutate: (...args: Args) => MutateConfig<GQL, Name>,
     deps?: DependencyList
   ): (...args: Args) => Promise<MutateResult<GQL, Name>> {
+    const client = useClient()
+
     const f = (...args: Args) => {
       const config = mutate(...args)
       return client.mutate(config)
