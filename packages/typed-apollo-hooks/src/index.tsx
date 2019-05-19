@@ -18,7 +18,7 @@ import {
   QueryResult,
   MutateConfig,
   MutateResult,
-} from '@bearbytes/graphql-apollo'
+} from '@bearbytes/typed-apollo-client'
 import { ApolloQueryResult, NetworkStatus } from 'apollo-client'
 
 export function createHooks<GQL>(

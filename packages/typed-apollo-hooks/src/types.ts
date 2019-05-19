@@ -6,7 +6,7 @@ import {
   MutateConfig,
   MutateResult,
   Client,
-} from '@bearbytes/graphql-apollo'
+} from '@bearbytes/typed-apollo-client'
 
 export interface Hooks<GQL> {
   ClientProvider: ComponentType<ClientProviderProps<GQL>>

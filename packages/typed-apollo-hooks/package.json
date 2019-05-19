@@ -2,7 +2,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "name": "@bearbytes/graphql-apollo-react",
+  "name": "@bearbytes/typed-apollo-hooks",
   "description": "",
   "version": "0.0.25-alpha.0",
   "author": "",
@@ -17,7 +17,7 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@bearbytes/graphql-apollo": "^0.0.25-alpha.0",
+    "@bearbytes/typed-apollo-client": "^0.0.25-alpha.0",
     "@bearbytes/graphql-to-typescript": "^0.0.25-alpha.0"
   },
   "peerDependencies": {
