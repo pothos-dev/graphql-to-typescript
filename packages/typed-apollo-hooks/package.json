@@ -4,7 +4,7 @@
   },
   "name": "@bearbytes/typed-apollo-hooks",
   "description": "",
-  "version": "0.0.28-alpha.0",
+  "version": "0.0.29-alpha.0",
   "author": "",
   "license": "ISC",
   "main": "dist/index.js",
