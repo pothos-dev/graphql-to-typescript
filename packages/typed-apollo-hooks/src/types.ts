@@ -18,6 +18,7 @@ export interface Hooks<GQL> {
     deps?: DependencyList
   ) => QueryResult<GQL, Name>
 
+  useMutation(): Client<GQL>['mutate']
   useMutation<Name extends Mutation<GQL>, Args extends any[]>(
     mutate: (...args: Args) => MutateConfig<GQL, Name>,
     deps?: DependencyList

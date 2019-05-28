@@ -61,7 +61,11 @@ export function createHooks<GQL>(
     return result
   }
 
-  function useMutation<Name extends Mutation<GQL>, Args extends any[]>(
+  function useMutation1() {
+    const client = useClient()
+    return client.mutate
+  }
+  function useMutation2<Name extends Mutation<GQL>, Args extends any[]>(
     mutate: (...args: Args) => MutateConfig<GQL, Name>,
     deps?: DependencyList
   ): (...args: Args) => Promise<MutateResult<GQL, Name>> {
@@ -75,6 +79,13 @@ export function createHooks<GQL>(
       return useCallback(f, deps)
     } else {
       return f
+    }
+  }
+  function useMutation(arg1?: any, arg2?: any) {
+    if (arg1 == null) {
+      return useMutation1()
+    } else {
+      return useMutation2(arg1, arg2)
     }
   }
 
