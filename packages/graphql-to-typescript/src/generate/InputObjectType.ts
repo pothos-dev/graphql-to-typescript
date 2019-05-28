@@ -1,9 +1,8 @@
-import ts, { createTypeLiteralNode } from 'typescript'
+import ts from 'typescript'
 import { InputObjectTypeIR } from '../transform/InputObjectTypeIR'
 import { toPairs } from 'lodash'
 import { generateType } from './Type'
 import { SchemaIR } from '../transform/SchemaIR'
-import { TypeIR } from '../transform/TypeIR'
 
 export function generateInputObjectTypeAsInterface(
   schema: SchemaIR,
@@ -20,7 +19,9 @@ export function generateInputObjectTypeAsInterface(
       ts.createPropertySignature(
         undefined,
         ts.createIdentifier(typename),
-        undefined,
+        type.kind == 'nonNull'
+          ? undefined
+          : ts.createToken(ts.SyntaxKind.QuestionToken),
         generateType(schema, type, undefined, typename),
         undefined
       )
