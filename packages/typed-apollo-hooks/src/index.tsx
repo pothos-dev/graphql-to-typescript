@@ -88,8 +88,4 @@ export function createHooks<GQL>(
       return useMutation2(arg1, arg2)
     }
   }
-
-  // function useSubscription<Name extends Subscription<T>>(
-  //   config: OperationConfig<T, Name>
-  // ): Promise<SubscriptionResult<T, Name>>
 }
