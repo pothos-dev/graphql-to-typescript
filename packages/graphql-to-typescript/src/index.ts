@@ -12,9 +12,11 @@ export * from './types'
 
 type URL = string
 type FilePath = string
+type Headers = Record<string, string>
 
 export default async function generate(opts: {
   schema: URL | FilePath | GraphQLSchema
+  headers?: Headers
   documents: FilePath[]
   outFile?: FilePath
 }): Promise<{
@@ -23,7 +25,9 @@ export default async function generate(opts: {
   result: string
 }> {
   const schema =
-    typeof opts.schema == 'object' ? opts.schema : await loadSchema(opts.schema)
+    typeof opts.schema == 'object'
+      ? opts.schema
+      : await loadSchema(opts.schema, opts.headers)
   const schemaIR = transformSchema(schema)
 
   const documentsIR = await Promise.all(

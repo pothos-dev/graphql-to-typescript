@@ -19,11 +19,13 @@ main()
 async function main() {
   try {
     const schema = getSchema()
+    const headers = getHeaders()
     const documents = getDocuments()
     const outFile = getOutfile()
 
     await generate({
       schema,
+      headers,
       documents,
       outFile,
     })
@@ -81,6 +83,17 @@ function getSchema(): string {
   }
 }
 
+function getHeaders(): Record<string, string> {
+  const headers: Record<string, string> = {}
+  if (program.headers) {
+    for (const part of program.headers.split(',')) {
+      const [key, value] = part.trim().split('=')
+      headers[key] = value
+    }
+  }
+  return headers
+}
+
 function getDocuments(): string[] {
   if (program.documents) return globify(program.documents.split(','))
 
@@ -135,6 +148,10 @@ function runCommander() {
     .option(
       '-s, --schema <uri>',
       'Schema file, Introspection JSON file or GraphQL Endpoint'
+    )
+    .option(
+      '-h, --headers <list>',
+      'List of HTTP headers (key=value) separated by comma sent with the introspection request'
     )
     .option(
       '-d, --documents <file>',
