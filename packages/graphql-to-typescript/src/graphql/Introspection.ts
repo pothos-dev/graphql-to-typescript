@@ -24,7 +24,7 @@ export async function loadIntrospectionFromUrl(
   headers?: Record<string, string>
 ): Promise<IntrospectionQuery> {
   const query = getIntrospectionQuery({ descriptions: false })
-  const response = await axios.post(url, { query, headers })
+  const response = await axios.post(url, { query }, { headers })
   return response.data.data as IntrospectionQuery
 }
 
