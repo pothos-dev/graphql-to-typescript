@@ -39,7 +39,7 @@ export function createClient<T extends Record<string, any>>(
   async function sendRequest(body: {
     operationName: keyof T
     query: string
-    variables?: object
+    variables?: any
   }) {
     const { url } = clientConfig
 

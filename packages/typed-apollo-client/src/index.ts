@@ -54,7 +54,7 @@ export function createClient<GQL extends Record<string, any>>(
     return apolloClient.mutate<OperationData<GQL, Name>>({
       ...config,
       mutation: queries[config.operationName],
-      variables: config.variables,
+      variables: config.variables as any, // TODO fix type!
       update: transformUpdate(),
     })
 
