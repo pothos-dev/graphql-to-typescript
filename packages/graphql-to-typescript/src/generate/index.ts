@@ -12,6 +12,7 @@ import { generateFragment } from './Fragment'
 import { VariableIR } from '../transform/VariableIR'
 import { FragmentIR } from '../transform/FragmentIR'
 import { OperationIR } from '../transform/OperationIR'
+import { TypeIR } from '../transform/TypeIR'
 
 export async function generateCode(
   schema: SchemaIR,
@@ -22,7 +23,7 @@ export async function generateCode(
       printHeader(),
       printScalarTypes(schema),
       printFragmentTypes(schema, documents),
-      printInputTypes(schema, getUsedInputTypes(documents)),
+      printInputTypes(schema, getUsedInputTypes(schema, documents)),
       printOperations(schema, documents),
     ].join('\n\n')
   )
@@ -112,11 +113,14 @@ async function cleanup(code: string) {
   })
 }
 
-function getUsedInputTypes(documents: DocumentIR[]) {
+function getUsedInputTypes(schema: SchemaIR, documents: DocumentIR[]) {
   const usedInputTypes: Record<string, true> = {}
 
   documents
-    .reduce<OperationIR[]>((acc, document) => document.operations, [])
+    .reduce<OperationIR[]>(
+      (acc, document) => acc.concat(document.operations),
+      []
+    )
     .reduce<VariableIR[]>(
       (acc, operation) => acc.concat(Object.values(operation.variables)),
       []
@@ -124,13 +128,39 @@ function getUsedInputTypes(documents: DocumentIR[]) {
     .forEach(visit)
 
   function visit(variable: VariableIR): void {
-    if (variable.kind == 'nonNull') {
-      return visit(variable.wrappedType)
+    switch (variable.kind) {
+      case 'nonNull':
+        return visit(variable.wrappedType)
+      case 'list':
+        return visit(variable.wrappedType)
+      case 'namedType':
+        return visitNamedType(variable.typename)
     }
-    if (variable.kind == 'list') {
-      return visit(variable.wrappedType)
-    }
-    usedInputTypes[variable.typename] = true
   }
+
+  function visitNamedType(typename: string): void {
+    usedInputTypes[typename] = true
+    const type = schema.types[typename]
+    if (type) visitType(type)
+  }
+
+  function visitType(type: TypeIR): void {
+    switch (type.kind) {
+      case 'nonNull':
+        return visitType(type.wrappedType)
+      case 'list':
+        return visitType(type.wrappedType)
+      case 'inputObject':
+        for (const fieldType of Object.values(type.fields)) {
+          visitType(fieldType)
+        }
+        return
+      case 'namedType':
+        return visitNamedType(type.typename)
+      default:
+      // todo: interfaces, unions, enums
+    }
+  }
+
   return usedInputTypes
 }
