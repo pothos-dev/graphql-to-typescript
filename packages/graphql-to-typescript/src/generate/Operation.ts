@@ -65,7 +65,9 @@ function generateVariables(operation: OperationIR): ts.TypeLiteralNode {
       ts.createPropertySignature(
         undefined,
         ts.createIdentifier(name),
-        undefined,
+        variable.kind == 'nonNull'
+          ? undefined
+          : ts.createToken(ts.SyntaxKind.QuestionToken),
         generateVariableType(variable),
         undefined
       )
