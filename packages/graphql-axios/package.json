@@ -4,7 +4,7 @@
   },
   "name": "@bearbytes/graphql-axios",
   "description": "",
-  "version": "0.0.32-alpha.0",
+  "version": "0.1.1",
   "author": "",
   "license": "ISC",
   "main": "dist/index.js",
