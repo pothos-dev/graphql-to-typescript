@@ -1,7 +1,4 @@
 {
-  "publishConfig": {
-    "access": "public"
-  },
   "name": "@bearbytes/typed-apollo-client",
   "description": "",
   "version": "0.1.0",
@@ -26,6 +23,10 @@
   "devDependencies": {
     "@types/graphql": "^14.2.0",
     "apollo-client": "^2.5.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "gitHead": "6aa72d9f6673cd06cb3d42625d5c2f3e8a839f05"
 }
