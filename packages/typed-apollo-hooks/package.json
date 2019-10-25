@@ -1,7 +1,7 @@
 {
   "name": "@bearbytes/typed-apollo-hooks",
   "description": "",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "",
   "license": "ISC",
   "main": "dist/index.js",
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@bearbytes/graphql-to-typescript": "^0.1.1",
-    "@bearbytes/typed-apollo-client": "^0.1.1"
+    "@bearbytes/typed-apollo-client": "^0.1.2"
   },
   "peerDependencies": {
     "react": "^16.8.6"
