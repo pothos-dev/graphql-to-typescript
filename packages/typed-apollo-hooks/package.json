@@ -14,8 +14,8 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@bearbytes/graphql-to-typescript": "^0.0.32-alpha.0",
-    "@bearbytes/typed-apollo-client": "^0.0.32-alpha.0"
+    "@bearbytes/graphql-to-typescript": "^0.1.1",
+    "@bearbytes/typed-apollo-client": "^0.1.1"
   },
   "peerDependencies": {
     "react": "^16.8.6"
