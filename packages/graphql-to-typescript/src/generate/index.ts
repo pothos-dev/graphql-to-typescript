@@ -13,15 +13,18 @@ import { VariableIR } from '../transform/VariableIR'
 import { FragmentIR } from '../transform/FragmentIR'
 import { OperationIR } from '../transform/OperationIR'
 import { TypeIR } from '../transform/TypeIR'
+import { generateEnumTypeAlias } from './EnumType'
 
+// This generates the d.ts file
 export async function generateCode(
   schema: SchemaIR,
   documents: DocumentIR[]
 ): Promise<string> {
-  return await cleanup(
+  return await formatCode(
     [
       printHeader(),
       printScalarTypes(schema),
+      printEnumTypes(schema),
       printFragmentTypes(schema, documents),
       printInputTypes(schema, getUsedInputTypes(schema, documents)),
       printOperations(schema, documents),
@@ -45,6 +48,18 @@ function printScalarTypes(schema: SchemaIR): string {
       .map(print)
       .join('\n')
   )
+}
+
+function printEnumTypes(schema: SchemaIR): string {
+  // TODO: only print those enums that are actually used in operations
+  const lines = []
+  for (const [name, type] of Object.entries(schema.types)) {
+    if (type.kind != 'enum') continue
+    const node = generateEnumTypeAlias(type, name)
+    lines.push(print(node))
+  }
+  if (lines.length == 0) return ''
+  return ['// Enum Types', ...lines].join('\n')
 }
 
 function printFragmentTypes(schema: SchemaIR, documents: DocumentIR[]): string {
@@ -105,7 +120,7 @@ function printHeader() {
   )
 }
 
-async function cleanup(code: string) {
+async function formatCode(code: string) {
   const prettierConfig = await prettier.resolveConfig(process.cwd())
   return prettier.format(code, {
     ...prettierConfig,

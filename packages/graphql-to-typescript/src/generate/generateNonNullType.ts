@@ -7,7 +7,7 @@ import { generateListType } from './ListType'
 import { SelectionSetIR } from '../transform/SelectionIR'
 import { generateUnionType } from './UnionType'
 import { generateInputObjectTypeAsNamedType } from './InputObjectType'
-import { generateInputEnumType } from './generateInputEnumType'
+import { generateEnumType } from './EnumType'
 
 export function generateNonNullType(
   schema: SchemaIR,
@@ -30,7 +30,7 @@ export function generateNonNullType(
         schemaType.typename
       )
     case 'enum':
-      return generateInputEnumType(schemaType)
+      return generateEnumType(typename!)
     case 'inputObject':
       return generateInputObjectTypeAsNamedType(typename!)
     case 'interface':
