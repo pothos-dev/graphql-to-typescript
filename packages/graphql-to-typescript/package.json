@@ -17,16 +17,13 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@types/graphql": "^14.5.0",
     "axios": "^0.19.2",
     "commander": "^5.1.0",
     "fs-extra": "^9.0.1",
     "glob": "^7.1.6",
     "graphql": "^15.1.0",
     "graphql-config": "^3.0.2",
-    "lodash": "^4.17.15",
-    "prettier": "^2.0.5",
-    "rambda": "^5.7.0"
+    "prettier": "^2.0.5"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.1",

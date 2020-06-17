@@ -35,6 +35,8 @@ export type TypeIR =
   | NonNullTypeIR
   | ListTypeIR
 
+// Takes any GraphQL type and transforms it into IR.
+// Sometimes we need to skipNamedTypes (TODO: why?!)
 export function transformType(T: GraphQLType): TypeIR
 export function transformType(T: GraphQLType, skipNamedTypes: boolean): TypeIR
 export function transformType(T: GraphQLType, skipNamedTypes?: boolean) {

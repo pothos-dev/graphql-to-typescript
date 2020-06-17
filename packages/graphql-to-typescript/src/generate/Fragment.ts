@@ -11,7 +11,7 @@ export function generateFragment(
   const objectType = schema.types[fragment.schemaObjectName]
   if (objectType.kind != 'object')
     throw Error(
-      'Expected fragment to contain objectType, but has ' + objectType.kind
+      `${typename}: Expected fragment to contain objectType, but has ${objectType.kind}`
     )
 
   return ts.createTypeAliasDeclaration(

@@ -1,5 +1,4 @@
 import { GraphQLObjectType } from 'graphql'
-import { keys, values, zipObj } from 'rambda'
 import { TypeIR, transformType } from './TypeIR'
 
 export interface ObjectTypeIR {
@@ -8,14 +7,13 @@ export interface ObjectTypeIR {
   interfaces?: unknown
 }
 export function transformObjectType(T: GraphQLObjectType): ObjectTypeIR {
-  const fields = T.getFields()
+  const fieldMap = T.getFields()
 
-  const fieldsIR = zipObj(
-    keys(fields) as string[],
-    values(fields)
-      .map((field) => field.type)
-      .map((fieldType) => transformType(fieldType))
-  )
+  const fieldsIR: Record<string, TypeIR> = {}
+  for (const [name, field] of Object.entries(fieldMap)) {
+    fieldsIR[name] = transformType(field.type)
+  }
+
   return {
     kind: 'object',
     fields: fieldsIR,

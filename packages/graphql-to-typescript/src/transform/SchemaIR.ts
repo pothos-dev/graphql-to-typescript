@@ -1,6 +1,6 @@
 import { GraphQLSchema } from 'graphql'
-import { values, zipObj, keys } from 'rambda'
 import { transformType, TypeIR } from './TypeIR'
+import { TypeMap } from 'graphql/type/schema'
 
 export interface SchemaIR {
   types: Record<string, TypeIR>
@@ -10,22 +10,23 @@ export interface SchemaIR {
 }
 
 export function transformSchema(schema: GraphQLSchema): SchemaIR {
-  const types = zipObj(
-    keys(schema.getTypeMap()) as string[],
-    values(schema.getTypeMap())
-      .filter((T) => !T.name.startsWith('__'))
-      .map((T) => transformType(T, true))
-  )
-
-  const queryType = schema.getQueryType()
-  const mutationType = schema.getMutationType()
-  const subscriptionType = schema.getSubscriptionType()
-
   return {
-    types,
-    queryTypeName: (queryType && queryType.name) || undefined,
-    mutationTypeName: (mutationType && mutationType.name) || undefined,
-    subscriptionTypeName:
-      (subscriptionType && subscriptionType.name) || undefined,
+    types: transformAllTypes(schema.getTypeMap()),
+    queryTypeName: schema.getQueryType()?.name,
+    mutationTypeName: schema.getMutationType()?.name,
+    subscriptionTypeName: schema.getSubscriptionType()?.name,
   }
+}
+
+function transformAllTypes(typeMap: TypeMap): Record<string, TypeIR> {
+  // transform each Type in the schema to intermediate representation
+  const types: Record<string, TypeIR> = {}
+
+  for (const [name, type] of Object.entries(typeMap)) {
+    // ignore types starting with __
+    if (type.name.startsWith('__')) continue
+    types[name] = transformType(type, true)
+  }
+
+  return types
 }

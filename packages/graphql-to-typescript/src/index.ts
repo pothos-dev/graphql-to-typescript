@@ -24,10 +24,14 @@ export default async function generate(opts: {
   documentsIR: DocumentIR[]
   result: string
 }> {
+  // If the schema is provided as GraphQLSchema, take it as is.
+  // Otherwise, load it from file or fetch it as introspection result from URL.
   const schema =
     typeof opts.schema == 'object'
       ? opts.schema
       : await loadSchema(opts.schema, opts.headers)
+
+  // Transform schema to intermediate representation
   const schemaIR = transformSchema(schema)
 
   const documentsIR = await Promise.all(
